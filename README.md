@@ -53,6 +53,11 @@ Mostrar materiais e assuntos mais acessados.
 
 ### Diagrama ER
 
+
+Essa é uma proposta inicial para o diagrama entidade-relacionamento do projeto.
+
+![](diagramas/er_diagrama_inicial.png)
+
 ## Instruções para compilar e executar o projeto
 
 ### Conexão com o banco de dados
