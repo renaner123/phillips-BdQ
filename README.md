@@ -62,6 +62,24 @@ Essa é uma proposta inicial para o diagrama entidade-relacionamento do projeto.
 
 ### Conexão com o banco de dados
 
+<!-- % FIXME[Renan] Ajustar depois -->
+
+Subir o Oracle *database* utilizando Docker [images](https://hub.docker.com/r/gvenzl/oracle-xe)
+
+```
+docker run -d -p 1521:1521 -e ORACLE_PASSWORD=<password> -v <pwd>:/opt/oracle/oradata gvenzl/oracle-xe
+```
+
+Após a primeira inicialização, é recomendado *resetar* o *password* do usuário `SYS` e `SYSTEM` conforme passo abaixo
+```
+docker exec <container ID> resetPassword <password>
+```
+
+Com o container em execução, é recomendado utilizar a ferramenta de gerenciamento de banco de dados [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/) para acessar a *database* instanciada com o Docker.
+
+Ao ter acesso a ferramanta, é possível utilizar o *script DDL* disponível [aqui](mydb/scrip-oracle.sql) para criar as tebelas no banco de dados. 
+
+> No diretório `mydb`, também existe um script para gerar as tabelas em um banco de dados MySQL
 
 ### Compilar e executar o projeto
 

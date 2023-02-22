@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="backup-er" id="03256EED-BC9E-4D48-7D9C-1BEAEFE2D81F" version="3.5">
+<createdBy>renan</createdBy>
+<createdTime>2023-02-22 01:28:13 UTC</createdTime>
+<ownerDesignName>backup-er</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>03256EED-BC9E-4D48-7D9C-1BEAEFE2D81F</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="35E68F94-A20B-196D-D177-AB011D2EE32C">
+<designStoragePath>D:\Downloads\sqldeveloper\sqldeveloper\philips</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>
