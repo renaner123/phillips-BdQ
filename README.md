@@ -50,11 +50,14 @@ Mostrar materiais e assuntos mais acessados.
 
 ### Diagrama de classe
 
+A modelagem inicial das classes do projeto está representado no diagrama de classe UML abaixo.
+
+![](diagramas/diagrama-classe.png)
+
 
 ### Diagrama ER
 
-
-Essa é uma proposta inicial para o diagrama entidade-relacionamento do projeto.
+O diagrama ER abaixo é a proposta inicial para o diagrama entidade-relacionamento do projeto.
 
 ![](diagramas/er_diagrama_inicial.png)
 
