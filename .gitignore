@@ -232,5 +232,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+diagramas/*.bak
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,visualstudiocode,intellij,java
