@@ -96,9 +96,12 @@ Conseguimos prototipar algumas telas para definimos algumas escopos de trabalho.
 
 Para isso utilizamos o Figma para criarmos alguns modelos de telas e termos uma base inicial. 
 
-> Poderá ser acesso diretamente no Figma através do link: https://www.figma.com/file/CkA8G5aU1pIcOs4t75UNZd/Untitled?node-id=0%3A1&t=LTUyff4CvEg1euWd-1
+> Poderá ter acesso diretamente no Figma através do link: https://www.figma.com/file/CkA8G5aU1pIcOs4t75UNZd/Untitled?node-id=0%3A1&t=LTUyff4CvEg1euWd-1
 
-![](telas/Telas.pdf)
+No diretório `telas`, é possível visualizar todas as telas em um *único PDF*. Para acessar diretamente o arquivo, basta clicar [aqui](telas/Telas.pdf).
+
+
+
 
 
 
