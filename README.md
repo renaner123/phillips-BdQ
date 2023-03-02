@@ -11,6 +11,8 @@
   - [Conexão com o banco de dados](#conexão-com-o-banco-de-dados)
   - [Compilar e executar o projeto](#compilar-e-executar-o-projeto)
   - [Instruções para visualizar, filtrar, selecionar e gerar provas](#instruções-para-visualizar-filtrar-selecionar-e-gerar-provas)
+- [Design - Visual do Frontend](#design---visual-do-frontend)
+  - [Prototipos de telas (inicial)](#prototipos-de-telas-inicial)
 
 ## Descrição da narrativa
 
