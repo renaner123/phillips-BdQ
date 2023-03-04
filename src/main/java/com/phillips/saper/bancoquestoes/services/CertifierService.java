@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.phillips.saper.bancoquestoes.dtos.CertifierRequestDTO;
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
 import com.phillips.saper.bancoquestoes.repositories.CertifierRepository;
 
@@ -16,6 +17,19 @@ public class CertifierService {
 
     public List<CertifierModel> findAll() {
         return certifierRepository.findAll();
+    }
+
+    public CertifierRequestDTO save(CertifierRequestDTO certifierRequestDTO) {
+        CertifierModel certifierModel = new CertifierModel();
+        certifierModel.setCpf(certifierRequestDTO.getCpf());
+        certifierModel.setAmountCertified(certifierRequestDTO.getAmountCertified()+1);
+        certifierModel.setEmail(certifierRequestDTO.getEmail());
+        certifierModel.setIdDiscipline(certifierRequestDTO.getIdDiscipline());
+        certifierModel.setNome(certifierRequestDTO.getName());
+        
+        certifierRepository.save(certifierModel);
+
+        return certifierRequestDTO;
     }
 
 

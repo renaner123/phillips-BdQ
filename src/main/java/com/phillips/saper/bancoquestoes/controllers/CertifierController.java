@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.phillips.saper.bancoquestoes.dtos.CertifierRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.CertifierResponseDTO;
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
 import com.phillips.saper.bancoquestoes.services.CertifierService;
@@ -23,6 +26,11 @@ public class CertifierController {
         List<CertifierModel> list = certifierService.findAll();
 
         return list.stream().map(CertifierResponseDTO::new).toList();
+    }
+
+    @PostMapping
+    public CertifierRequestDTO save(@RequestBody CertifierRequestDTO certifierRequestDTO){
+        return certifierService.save(certifierRequestDTO);
     }
 
     

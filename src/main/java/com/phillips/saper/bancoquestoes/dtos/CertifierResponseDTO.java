@@ -7,12 +7,11 @@ public class CertifierResponseDTO {
     // a interação do Postman
 
     String name;
-    int id_dos_brother;
     String cpf;
+    String idTeacher;
 
     public CertifierResponseDTO(String name, int id_dos_brother, String cpf) {
         this.name = name;
-        this.id_dos_brother = id_dos_brother;
         this.cpf = cpf;
     }
 
@@ -22,7 +21,6 @@ public class CertifierResponseDTO {
     public CertifierResponseDTO(CertifierModel certifier) {
         name = certifier.getNome();
         cpf = certifier.getCpf();
-        id_dos_brother = certifier.getIdDiscipline();
     }
 
     public String getName() {
@@ -33,14 +31,6 @@ public class CertifierResponseDTO {
         this.name = name;
     }
 
-    public int getId_dos_brother() {
-        return id_dos_brother;
-    }
-
-    public void setId_dos_brother(int id_dos_brother) {
-        this.id_dos_brother = id_dos_brother;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -48,6 +38,16 @@ public class CertifierResponseDTO {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public String getIdTeacher() {
+        return idTeacher;
+    }
+
+    public void setIdTeacher(String idTeacher) {
+        this.idTeacher = idTeacher;
+    }
+
+    
 
     
 
