@@ -7,12 +7,12 @@
 - [Diagramas](#diagramas)
   - [Diagrama de classe](#diagrama-de-classe)
   - [Diagrama ER](#diagrama-er)
+- [Design - Visual do Frontend](#design---visual-do-frontend)
+  - [Prototipos de telas (inicial)](#prototipos-de-telas-inicial)
 - [Instruções para compilar e executar o projeto](#instruções-para-compilar-e-executar-o-projeto)
   - [Conexão com o banco de dados](#conexão-com-o-banco-de-dados)
   - [Compilar e executar o projeto](#compilar-e-executar-o-projeto)
   - [Instruções para visualizar, filtrar, selecionar e gerar provas](#instruções-para-visualizar-filtrar-selecionar-e-gerar-provas)
-- [Design - Visual do Frontend](#design---visual-do-frontend)
-  - [Prototipos de telas (inicial)](#prototipos-de-telas-inicial)
 
 ## Descrição da narrativa
 
@@ -63,6 +63,18 @@ O diagrama ER abaixo é a proposta inicial para o diagrama entidade-relacionamen
 
 ![](diagramas/er_diagrama_inicial.png)
 
+## Design - Visual do Frontend
+
+### Prototipos de telas (inicial)
+
+Conseguimos prototipar algumas telas para definirmos alguns escopos de trabalho. 
+
+Para isso, utilizamos o Figma para criar alguns modelos de telas e termos uma base inicial. 
+
+No diretório `telas`, é possível visualizar todas as telas em um *único PDF*. Para acessar diretamente o arquivo, basta clicar [aqui](telas/Telas.pdf).
+
+> Também é possível acessar os protótipos diretamente pelo Figma através do link: https://www.figma.com/file/CkA8G5aU1pIcOs4t75UNZd/Untitled?node-id=0%3A1&t=LTUyff4CvEg1euWd-1
+
 ## Instruções para compilar e executar o projeto
 
 ### Conexão com o banco de dados
@@ -89,19 +101,6 @@ Ao ter acesso a ferramanta, é possível utilizar o *script DDL* disponível [aq
 ### Compilar e executar o projeto
 
 ### Instruções para visualizar, filtrar, selecionar e gerar provas 
-
-## Design - Visual do Frontend
-
-### Prototipos de telas (inicial)
-
-Conseguimos prototipar algumas telas para definimos algumas escopos de trabalho. 
-
-Para isso utilizamos o Figma para criarmos alguns modelos de telas e termos uma base inicial. 
-
-> Poderá ter acesso diretamente no Figma através do link: https://www.figma.com/file/CkA8G5aU1pIcOs4t75UNZd/Untitled?node-id=0%3A1&t=LTUyff4CvEg1euWd-1
-
-No diretório `telas`, é possível visualizar todas as telas em um *único PDF*. Para acessar diretamente o arquivo, basta clicar [aqui](telas/Telas.pdf).
-
 
 
 
