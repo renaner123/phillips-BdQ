@@ -12,7 +12,7 @@ public class StudentModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idStudent;
+    private Long idStudent;
 
     private String cpf;
     private String name;

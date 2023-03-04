@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 
 @Repository
-public interface QuestionRepository extends JpaRepository<QuestionModel, Integer> {
-    
+public interface QuestionRepository extends JpaRepository<QuestionModel, Long> {
+
 }

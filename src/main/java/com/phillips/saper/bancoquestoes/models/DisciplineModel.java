@@ -13,7 +13,7 @@ public class DisciplineModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDiscipline;
+    private Long idDiscipline;
 
     private String name;
     private String description;

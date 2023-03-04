@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.phillips.saper.bancoquestoes.models.StudentModel;
 
 @Repository
-public interface StudentRepository extends JpaRepository<StudentModel, Integer> {
-    
+public interface StudentRepository extends JpaRepository<StudentModel, Long> {
+
 }

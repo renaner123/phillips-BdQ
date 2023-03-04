@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.phillips.saper.bancoquestoes.models.TestModel;
 
 @Repository
-public interface TestRepository extends JpaRepository<TestModel, Integer> {
-    
+public interface TestRepository extends JpaRepository<TestModel, Long> {
+
 }

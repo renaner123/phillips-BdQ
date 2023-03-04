@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
 
 @Repository
-public interface CertifierRepository extends JpaRepository<CertifierModel, Integer> {
-    
+public interface CertifierRepository extends JpaRepository<CertifierModel, Long> {
+
 }

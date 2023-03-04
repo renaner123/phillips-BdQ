@@ -14,7 +14,7 @@ public class TeacherModel {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTeacher;
+    private Long idTeacher;
 
     private String cpf;
     private String nome;

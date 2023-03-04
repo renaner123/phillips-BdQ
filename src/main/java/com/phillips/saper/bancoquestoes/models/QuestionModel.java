@@ -14,7 +14,7 @@ public class QuestionModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idQuestion;
+    private Long idQuestion;
 
     private Date updateDate;
     private String question;

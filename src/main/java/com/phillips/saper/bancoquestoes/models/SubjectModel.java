@@ -12,7 +12,7 @@ public class SubjectModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSubject;
+    private Long idSubject;
 
     private String descption;
     private int amountAccess;

@@ -13,7 +13,7 @@ public class MaterialModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idMaterial;
+    private Long idMaterial;
 
     private String fileName;
     private String content;

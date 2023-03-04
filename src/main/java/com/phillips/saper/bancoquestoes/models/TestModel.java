@@ -1,8 +1,7 @@
 package com.phillips.saper.bancoquestoes.models;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,10 +14,10 @@ public class TestModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTest;
+    private Long idTest;
 
     private String name;
     private Date date;
-    //Map<Integer,String> example = new HashMap<Integer,String>();
-    
+    // Map<Long,String> example = new HashMap<Long,String>();
+
 }
