@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 public class StudentModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStudent;
 
     private String cpf;

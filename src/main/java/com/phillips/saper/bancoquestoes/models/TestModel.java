@@ -14,11 +14,11 @@ import lombok.Data;
 public class TestModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTest;
 
     private String name;
     private Date date;
-    Map<Integer,String> example = new HashMap<Integer,String>();
+    //Map<Integer,String> example = new HashMap<Integer,String>();
     
 }

@@ -11,11 +11,12 @@ import jakarta.persistence.Id;
 public class SubjectModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSubject;
 
     private String descption;
     private int amountAccess;
     private int idDscipline;
+   
     
 }

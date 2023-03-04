@@ -12,7 +12,7 @@ import lombok.Data;
 public class DisciplineModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDiscipline;
 
     private String name;

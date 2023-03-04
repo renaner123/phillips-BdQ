@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 public class MaterialModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMaterial;
 
     private String fileName;

@@ -13,7 +13,7 @@ public class TeacherModel {
     public TeacherModel() {
     }
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTeacher;
 
     private String cpf;

@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 public class QuestionModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idQuestion;
 
     private Date updateDate;
