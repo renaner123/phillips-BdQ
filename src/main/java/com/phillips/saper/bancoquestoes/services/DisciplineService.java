@@ -32,7 +32,7 @@ public class DisciplineService {
         DisciplineModel disciplineModel = new DisciplineModel();
 
         disciplineModel.setName(disciplineRequestDTO.getName());
-        disciplineModel.setDescription(disciplineRequestDTO.getDescription());
+        disciplineModel.setdescrption_discipline(disciplineRequestDTO.getDescription());
         
         disciplineRepository.save(disciplineModel);
 
@@ -51,7 +51,7 @@ public class DisciplineService {
                 discipline.setName(disciplineRequestDTO.getName());
             }
             if(disciplineRequestDTO.getDescription()!=null){
-                discipline.setDescription(disciplineRequestDTO.getDescription());
+                discipline.setdescrption_discipline(disciplineRequestDTO.getDescription());
             }
 
             

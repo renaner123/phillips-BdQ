@@ -15,14 +15,14 @@ public class DisciplineModel {
     Long idDiscipline;
 
     @Column(nullable = false)
-    String name;
+    String name_discipline;
     @Column(nullable = false)
-    String description;
+    String descrption_discipline;
 
     public DisciplineModel(Long idDiscipline, String name, String description) {
         this.idDiscipline = idDiscipline;
-        this.name = name;
-        this.description = description;
+        this.name_discipline = name;
+        this.descrption_discipline = description;
     }
 
     public DisciplineModel() {
@@ -37,19 +37,19 @@ public class DisciplineModel {
     }
 
     public String getName() {
-        return name;
+        return name_discipline;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name_discipline = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescrption_Discipline() {
+        return descrption_discipline;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setdescrption_discipline(String descrption_discipline) {
+        this.descrption_discipline = descrption_discipline;
     }
 
     

@@ -18,7 +18,7 @@ public class DisciplineResponseDTO {
 
     public DisciplineResponseDTO(DisciplineModel disciplineModel) {
         name = disciplineModel.getName();
-        description = disciplineModel.getDescription();
+        description = disciplineModel.getDescrption_Discipline();
     }
 
     public String getName() {
