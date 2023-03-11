@@ -1,12 +1,12 @@
 package com.phillips.saper.bancoquestoes.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-import lombok.Data;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Data;
 
 @Data
 @Entity
@@ -16,9 +16,13 @@ public class QuestionModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idQuestion;
 
-    private Date updateDate;
+    private LocalDateTime updateDate;
     private String question;
     private String answers;
     private int difficulty;    
+    private Boolean certified;
+    private int amountAccess;
+    private int idDiscipline;
+    private int idSubject;
 
 }
