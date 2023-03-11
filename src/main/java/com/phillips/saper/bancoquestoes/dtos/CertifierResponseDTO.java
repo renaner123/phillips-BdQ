@@ -9,6 +9,15 @@ public class CertifierResponseDTO {
     String name;
     String cpf;
     String idTeacher;
+    int amountCertified;
+
+    public int getAmountCertified() {
+        return amountCertified;
+    }
+
+    public void setAmountCertified(int amountCertified) {
+        this.amountCertified = amountCertified;
+    }
 
     public CertifierResponseDTO(String name, int id_dos_brother, String cpf) {
         this.name = name;

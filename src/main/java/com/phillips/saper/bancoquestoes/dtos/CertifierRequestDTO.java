@@ -1,16 +1,15 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
-
-
 public class CertifierRequestDTO {
-    //apenas para teste, irei utilizar alguns atributos e metodos fake para testar a interação do Postman
+    // apenas para teste, irei utilizar alguns atributos e metodos fake para testar
+    // a interação do Postman
 
     String name;
     int amountCertified;
     String cpf;
     String email;
     int idDiscipline;
-    
+
     public CertifierRequestDTO(String name, int amountCertified, String cpf, String email,
             int idDiscipline) {
         this.name = name;
@@ -18,6 +17,9 @@ public class CertifierRequestDTO {
         this.cpf = cpf;
         this.email = email;
         this.idDiscipline = idDiscipline;
+    }
+
+    public CertifierRequestDTO() {
     }
 
     public int getAmountCertified() {
@@ -60,12 +62,4 @@ public class CertifierRequestDTO {
         this.idDiscipline = idDiscipline;
     }
 
-    
-
-
-
-    
-
-    
-    
 }

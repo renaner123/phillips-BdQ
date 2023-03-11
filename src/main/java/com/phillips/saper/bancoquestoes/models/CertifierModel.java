@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+
 @Entity
 public class CertifierModel extends TeacherModel {
 
@@ -12,15 +13,18 @@ public class CertifierModel extends TeacherModel {
     // TODO criar set de Subject
 
     //private ArrayList<SubjectModel> subjects = new ArrayList<SubjectModel>();
-
-    public CertifierModel(int amountCertified, ArrayList<SubjectModel> subjects) {
+    
+    public CertifierModel(String cpf, String name, String email, int idDiscipline, int amountCertified) {
+        super(cpf, name, email, idDiscipline);
         this.amountCertified = amountCertified;
     }
     
-    public CertifierModel() {
-        super();
+    public CertifierModel(int amountCertified) {
+        this.amountCertified = amountCertified;
     }
-    
+
+    public CertifierModel(){};
+
     public int getAmountCertified() {
         return amountCertified;
     }
