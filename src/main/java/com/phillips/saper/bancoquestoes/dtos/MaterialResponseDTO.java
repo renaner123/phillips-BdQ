@@ -6,10 +6,10 @@ import com.phillips.saper.bancoquestoes.models.MaterialModel;
 
 public class MaterialResponseDTO {
 
-    private String fileName;
-    private String content;
-    private Date uploadDate;
-    private int idTeacher;
+    String fileName;
+    String content;
+    Date uploadDate;
+    int idTeacher;
 
     
 

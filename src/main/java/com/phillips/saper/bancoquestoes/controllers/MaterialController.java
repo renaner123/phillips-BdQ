@@ -18,7 +18,7 @@ import com.phillips.saper.bancoquestoes.models.MaterialModel;
 import com.phillips.saper.bancoquestoes.services.MaterialService;
 
 @RestController
-@RequestMapping("/material")
+@RequestMapping("/materials")
 public class MaterialController {
 
     @Autowired

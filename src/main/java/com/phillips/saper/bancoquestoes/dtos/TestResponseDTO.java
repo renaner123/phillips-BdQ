@@ -1,26 +1,30 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.phillips.saper.bancoquestoes.models.TestModel;
 
-public class TestRequestDTO {
-    
-    String name;
+public class TestResponseDTO {
+
+    private String name;
     //private LocalDateTime dateTest;    
-    String answers;
-    LocalDateTime dateTime;
+    private String answers;
+    private LocalDateTime dateTime;
 
-
-    public TestRequestDTO(String name, String answers) {
+    
+    public TestResponseDTO(String name, String answers, LocalDateTime dateTime) {
         this.name = name;
         this.answers = answers;
+        this.dateTime = dateTime;
     }
 
-    public TestRequestDTO(){
-
+    public TestResponseDTO(TestModel save) {
+        this.name = save.getName();
+        this.answers = save.getAnswers();
+        this.dateTime = save.getDateTime();
     }
-    
+
     public String getName() {
         return name;
     }
@@ -33,6 +37,7 @@ public class TestRequestDTO {
     public void setAnswers(String answers) {
         this.answers = answers;
     }
+
     public LocalDateTime getDateTime() {
         return dateTime;
     }
@@ -40,5 +45,10 @@ public class TestRequestDTO {
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
+
+   
+
+
+    
 
 }

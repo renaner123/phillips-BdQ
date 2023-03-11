@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 public class MaterialRequestDTO {
 
-    private String fileName;
-    private String content;
-    private Date uploadDate;
-    private int idTeacher;
+    String fileName;
+    String content;
+    Date uploadDate;
+    int idTeacher;
     
 }

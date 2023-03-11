@@ -15,7 +15,7 @@ import com.phillips.saper.bancoquestoes.models.CertifierModel;
 import com.phillips.saper.bancoquestoes.services.CertifierService;
 
 @RestController
-@RequestMapping("/certifier")
+@RequestMapping("/certifiers")
 public class CertifierController {
     
     @Autowired

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.phillips.saper.bancoquestoes.services.SubjectService;
 
 @RestController
-@RequestMapping("/subject")
+@RequestMapping("/subjects")
 public class SubjectController {
 
     @Autowired

@@ -18,7 +18,7 @@ import com.phillips.saper.bancoquestoes.models.DisciplineModel;
 import com.phillips.saper.bancoquestoes.services.DisciplineService;
 
 @RestController
-@RequestMapping("/discipline")
+@RequestMapping("/disciplines")
 public class DisciplineController {
 
     @Autowired

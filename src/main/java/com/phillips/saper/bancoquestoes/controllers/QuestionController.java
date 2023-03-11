@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.phillips.saper.bancoquestoes.services.QuestionService;
 
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/questions")
 public class QuestionController {
 
     @Autowired

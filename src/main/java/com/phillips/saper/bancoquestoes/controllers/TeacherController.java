@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.phillips.saper.bancoquestoes.services.TeacherService;
 
 @RestController
-@RequestMapping("/teacher")
+@RequestMapping("/teachers")
 public class TeacherController {
     
     @Autowired

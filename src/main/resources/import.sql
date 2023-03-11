@@ -15,5 +15,11 @@ INSERT INTO DISCIPLINE_MODEL (DESCRPTION_DISCIPLINE, NAME_DISCIPLINE) VALUES ('o
 INSERT INTO DISCIPLINE_MODEL (DESCRPTION_DISCIPLINE, NAME_DISCIPLINE) VALUES ('oi2', 'Prog tbm2');
 INSERT INTO DISCIPLINE_MODEL (DESCRPTION_DISCIPLINE, NAME_DISCIPLINE) VALUES ('oi2', 'Prog tbm3');
 
-/* Os Insert's até aqui foram testados e validos no banco de dados
-Funcionaram também com o POSTMAN para recuperar   */
+
+INSERT INTO TEST_MODEL (NAME, ANSWERS, DATE_TIME) VALUES ('Prova de sip', '{"1":"C","2":"A","3":"D"}', TO_DATE('2023-04-11', 'yyyy-mm-dd'));
+INSERT INTO TEST_MODEL (NAME, ANSWERS, DATE_TIME) VALUES ('Prova de The Winter', '{"1":"D","2":"E","3":"C"}',TO_DATE('2023-05-17', 'yyyy-mm-dd'));
+INSERT INTO TEST_MODEL (NAME, ANSWERS, DATE_TIME) VALUES ('Prova de Sum', '{"1":"C","2":"A","3":"B"}', TO_DATE('2023-06-15', 'yyyy-mm-dd'));
+
+
+
+

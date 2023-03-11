@@ -18,7 +18,7 @@ import com.phillips.saper.bancoquestoes.models.StudentModel;
 import com.phillips.saper.bancoquestoes.services.StudentService;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 public class StudentController {
 
     @Autowired

@@ -1,6 +1,8 @@
 package com.phillips.saper.bancoquestoes.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +19,8 @@ public class TestModel {
     private Long idTest;
 
     private String name;
-    private Date date;
+    private String answers;
+    private LocalDateTime dateTime;
     // Map<Long,String> example = new HashMap<Long,String>();
 
 }
