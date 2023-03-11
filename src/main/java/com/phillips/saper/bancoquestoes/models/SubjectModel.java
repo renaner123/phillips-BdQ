@@ -14,9 +14,9 @@ public class SubjectModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSubject;
 
-    private String descption;
+    private String description;
     private int amountAccess;
-    private int idDscipline;
+    private int idDiscipline;
    
     
 }
