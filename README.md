@@ -83,6 +83,8 @@ No diretório `telas`, é possível visualizar todas as telas em um *único PDF*
 
 Subir o Oracle *database* utilizando Docker [images](https://hub.docker.com/r/gvenzl/oracle-xe)
 
+> Caso tenha o banco de dados instalado na máquina, não é necessário usar o Docker
+
 ```
 docker run -d -p 1521:1521 -e ORACLE_PASSWORD=<password> -v <pwd>:/opt/oracle/oradata gvenzl/oracle-xe
 ```
@@ -92,11 +94,26 @@ Após a primeira inicialização, é recomendado *resetar* o *password* do usuá
 docker exec <container ID> resetPassword <password>
 ```
 
-Com o container em execução, é recomendado utilizar a ferramenta de gerenciamento de banco de dados [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/) para acessar a *database* instanciada com o Docker.
+Com o container em execução, é recomendado utilizar a ferramenta de gerenciamento de banco de dados [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/) para acessar o *database* instanciado com o Docker para visualizar as tabelas.
 
-Ao ter acesso a ferramanta, é possível utilizar o *script DDL* disponível [aqui](mydb/scrip-oracle.sql) para criar as tebelas no banco de dados. 
+Ao ter acesso a ferramanta, é possível utilizar o *script DDL* disponível [aqui](mydb/scrip-oracle.sql) para criar as tebelas no banco de dados ou simplesmente rodar a aplicação.
 
-> No diretório `mydb`, também existe um script para gerar as tabelas em um banco de dados MySQL
+
+A configuração para a aplicação acessar o banco de dados deve ser feita no arquivo [application.properties](src/main/resources/application.properties) conforme o exemplo abaixo:
+
+```properties
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+spring.jpa.database-platform=org.hibernate.dialect.Oracle12cDialect
+spring.jpa.hibernate.ddl-auto=create
+
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+spring.datasource.username=youruser
+spring.datasource.password=yourpassword
+
+```
+> É recomendado criar um novo usuário para rodar a aplicação, ao invés de usar o usuário padrão SYSTEM
 
 ### Compilar e executar o projeto
 
