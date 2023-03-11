@@ -9,6 +9,7 @@ public class CertifierModel extends TeacherModel {
 
     @Column(nullable = true)
     int amountCertified;
+    // TODO criar set de Subject
 
     //private ArrayList<SubjectModel> subjects = new ArrayList<SubjectModel>();
 

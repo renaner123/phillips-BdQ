@@ -18,13 +18,9 @@ public class TeacherModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTeacher;
 
-    @Column(nullable = false)
     private String cpf;
-    @Column(nullable = false)
-    private String nome;
-    @Column(nullable = false)
+    private String name;
     private String email;
-    @Column(nullable = true)
     private int idDiscipline;
        
 }

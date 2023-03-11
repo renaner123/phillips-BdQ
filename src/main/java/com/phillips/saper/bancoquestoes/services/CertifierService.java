@@ -25,7 +25,7 @@ public class CertifierService {
         certifierModel.setAmountCertified(certifierRequestDTO.getAmountCertified()+1);
         certifierModel.setEmail(certifierRequestDTO.getEmail());
         certifierModel.setIdDiscipline(certifierRequestDTO.getIdDiscipline());
-        certifierModel.setNome(certifierRequestDTO.getName());
+        certifierModel.setName(certifierRequestDTO.getName());
         
         certifierRepository.save(certifierModel);
 

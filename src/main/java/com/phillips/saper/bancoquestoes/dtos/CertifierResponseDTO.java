@@ -19,7 +19,7 @@ public class CertifierResponseDTO {
     }
 
     public CertifierResponseDTO(CertifierModel certifier) {
-        name = certifier.getNome();
+        name = certifier.getName();
         cpf = certifier.getCpf();
     }
 
