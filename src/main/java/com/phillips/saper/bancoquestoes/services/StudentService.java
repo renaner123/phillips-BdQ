@@ -9,12 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.phillips.saper.bancoquestoes.dtos.DisciplineRequestDTO;
-import com.phillips.saper.bancoquestoes.dtos.DisciplineResponseDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentResponseDTO;
-import com.phillips.saper.bancoquestoes.models.DisciplineModel;
 import com.phillips.saper.bancoquestoes.models.StudentModel;
+import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
+import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
 import com.phillips.saper.bancoquestoes.repositories.StudentRepository;
 
 import jakarta.transaction.Transactional;
@@ -24,6 +23,14 @@ public class StudentService {
 
     @Autowired
     StudentRepository studentRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
+    ClientRepository clientRepository;
+
+
 
     public ResponseEntity<List<StudentModel>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(studentRepository.findAll());
