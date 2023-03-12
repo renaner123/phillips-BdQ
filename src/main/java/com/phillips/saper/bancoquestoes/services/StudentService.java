@@ -1,5 +1,6 @@
 package com.phillips.saper.bancoquestoes.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,8 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.phillips.saper.bancoquestoes.dtos.ClientRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentResponseDTO;
+import com.phillips.saper.bancoquestoes.enums.RoleNames;
+import com.phillips.saper.bancoquestoes.exception.exceptions.ConflictStoreException;
+import com.phillips.saper.bancoquestoes.models.ClientModel;
+import com.phillips.saper.bancoquestoes.models.Role;
 import com.phillips.saper.bancoquestoes.models.StudentModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
 import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
@@ -37,15 +43,57 @@ public class StudentService {
     }
 
     public ResponseEntity<Object> save(StudentRequestDTO studentRequestDTO) {
-        StudentModel studentModel = new StudentModel();
 
-        studentModel.setCpf(studentRequestDTO.getCpf());
-        studentModel.setEmail(studentRequestDTO.getEmail());
-        studentModel.setName(studentRequestDTO.getName());
+        ClientRequestDTO clientRequestDTO = new ClientRequestDTO();
+        BeanUtils.copyProperties(studentRequestDTO, clientRequestDTO);
+        ClientModel client = clientRequestDTO.toClient();
 
-        studentRepository.save(studentModel);
+        if(clientRepository.existsByLogin(client.getLogin())){
+            throw new ConflictStoreException("login already in use");
+        }
 
-        return ResponseEntity.status(HttpStatus.OK).body(studentRequestDTO);
+        Optional<Role> role = roleRepository.findByRole(RoleNames.ROLE_STUDENT);
+        List<Role> roles = new ArrayList<>();
+        roles.add(role.get());
+        client.setRoles(roles);
+
+        clientRepository.save(client);
+
+        StudentModel student = new StudentModel();
+
+        //TODO: Fazer lógica de cadastro
+        student.setCpf(studentRequestDTO.getCpf());
+        student.setName(studentRequestDTO.getName());
+        student.setEmail(studentRequestDTO.getLogin());
+        student.setClientModel(client);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(new StudentResponseDTO(studentRepository.save(student)));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public ResponseEntity<Object> findById(Long id) {
+        Optional<StudentModel> studentOptional = studentRepository.findById(id);
+
+        if(studentOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.OK).body(new StudentResponseDTO(studentOptional.get()));
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estudante não encontrado.");
+        }
     }
 
     @Transactional
@@ -58,10 +106,6 @@ public class StudentService {
 
             if (studentRequestDTO.getCpf() != null) {
                 student.setCpf(studentRequestDTO.getCpf());
-            }
-
-            if (studentRequestDTO.getEmail() != null) {
-                student.setEmail(studentRequestDTO.getEmail());
             }
 
             if (studentRequestDTO.getName() != null) {

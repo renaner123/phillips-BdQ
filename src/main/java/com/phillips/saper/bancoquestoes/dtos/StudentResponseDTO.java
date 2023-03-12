@@ -4,14 +4,23 @@ import com.phillips.saper.bancoquestoes.models.StudentModel;
 
 public class StudentResponseDTO {
 
-    private String cpf;
-    private String name;
-    private String email;
+    Long id;
+    String cpf;
+    String name;
+    Long client_id;
 
     public StudentResponseDTO(StudentModel studentModel) {
         cpf = studentModel.getCpf();
         name = studentModel.getName();
-        email = studentModel.getEmail();
+        id = studentModel.getIdStudent();
+        client_id = studentModel.getIdStudent();
+    }
+
+    public StudentResponseDTO(Long id, String cpf, String name, Long client_id) {
+        this.id = id;
+        this.cpf = cpf;
+        this.name = name;
+        this.client_id = client_id;
     }
 
     public StudentResponseDTO() {
@@ -33,12 +42,5 @@ public class StudentResponseDTO {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 }

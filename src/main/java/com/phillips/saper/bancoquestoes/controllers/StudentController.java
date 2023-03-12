@@ -24,18 +24,20 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @GetMapping
+    // Por causa do CLinet e das relações, isso imprime 1000000000000000 linhas, deixar
+
+/*     @GetMapping
     public ResponseEntity<List<StudentModel>> findAll() {
         return studentService.findAll();
-    }
+    } */
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<Object> save(
         @RequestBody StudentRequestDTO studentRequestDTO    ){
         return studentService.save(studentRequestDTO);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(
         @PathVariable(name = "id") Long id,
         @RequestBody StudentRequestDTO studentRequestDTO
