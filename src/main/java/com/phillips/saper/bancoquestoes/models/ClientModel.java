@@ -33,11 +33,14 @@ public class ClientModel implements UserDetails {
     @OneToOne(targetEntity = StudentModel.class, cascade = CascadeType.ALL, mappedBy = "clientModel")
     StudentModel student;
 
-    @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = TeacherModel.class, cascade = CascadeType.ALL, mappedBy = "clientModel")
+    TeacherModel teacher;
+
+    @ManyToMany(targetEntity = RoleModel.class, fetch = FetchType.EAGER)
     @JoinTable(name = "client_role",
         joinColumns = @JoinColumn(name = "client_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id"))
-    List<Role> roles;
+    List<RoleModel> roles;
 
     public ClientModel(String name, String login, String password) {
         this.name = name;
@@ -112,15 +115,23 @@ public class ClientModel implements UserDetails {
         this.student = student;
     }
 
-    public List<Role> getRoles() {
+    public List<RoleModel> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(List<RoleModel> roles) {
         this.roles = roles;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public TeacherModel getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(TeacherModel teacher) {
+        this.teacher = teacher;
     }
 }
