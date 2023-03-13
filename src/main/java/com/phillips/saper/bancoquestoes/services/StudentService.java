@@ -16,7 +16,7 @@ import com.phillips.saper.bancoquestoes.dtos.StudentResponseDTO;
 import com.phillips.saper.bancoquestoes.enums.RoleNames;
 import com.phillips.saper.bancoquestoes.exception.exceptions.ConflictStoreException;
 import com.phillips.saper.bancoquestoes.models.ClientModel;
-import com.phillips.saper.bancoquestoes.models.Role;
+import com.phillips.saper.bancoquestoes.models.RoleModel;
 import com.phillips.saper.bancoquestoes.models.StudentModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
 import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
@@ -52,8 +52,8 @@ public class StudentService {
             throw new ConflictStoreException("login already in use");
         }
 
-        Optional<Role> role = roleRepository.findByRole(RoleNames.ROLE_STUDENT);
-        List<Role> roles = new ArrayList<>();
+        Optional<RoleModel> role = roleRepository.findByRole(RoleNames.ROLE_STUDENT);
+        List<RoleModel> roles = new ArrayList<>();
         roles.add(role.get());
         client.setRoles(roles);
 
