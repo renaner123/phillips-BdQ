@@ -33,6 +33,9 @@ public class ClientModel implements UserDetails {
     @OneToOne(targetEntity = StudentModel.class, cascade = CascadeType.ALL, mappedBy = "clientModel")
     StudentModel student;
 
+    @OneToOne(targetEntity = TeacherModel.class, cascade = CascadeType.ALL, mappedBy = "clientModel")
+    TeacherModel teacher;
+
     @ManyToMany(targetEntity = RoleModel.class, fetch = FetchType.EAGER)
     @JoinTable(name = "client_role",
         joinColumns = @JoinColumn(name = "client_id"),
@@ -122,5 +125,13 @@ public class ClientModel implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public TeacherModel getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(TeacherModel teacher) {
+        this.teacher = teacher;
     }
 }

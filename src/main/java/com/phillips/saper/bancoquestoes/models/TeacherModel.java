@@ -1,12 +1,15 @@
 package com.phillips.saper.bancoquestoes.models;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 
+@Data
 @Entity
 public class TeacherModel {
     
@@ -19,6 +22,9 @@ public class TeacherModel {
     private String email;
     private int idDiscipline;
 
+    @OneToOne(targetEntity = ClientModel.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
+    ClientModel clientModel;
     
     public TeacherModel() {
 
