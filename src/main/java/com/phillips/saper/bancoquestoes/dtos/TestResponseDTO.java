@@ -1,7 +1,6 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 
 import com.phillips.saper.bancoquestoes.models.TestModel;
 

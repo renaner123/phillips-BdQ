@@ -17,6 +17,8 @@ import com.phillips.saper.bancoquestoes.dtos.TeacherRequestDTO;
 import com.phillips.saper.bancoquestoes.models.TeacherModel;
 import com.phillips.saper.bancoquestoes.services.TeacherService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/teachers")
 public class TeacherController {
@@ -30,7 +32,7 @@ public class TeacherController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody TeacherRequestDTO disciplineRequestDTO){
+    public ResponseEntity<Object> save(@RequestBody @Valid TeacherRequestDTO disciplineRequestDTO){
         return teacherService.save(disciplineRequestDTO);
     }
 

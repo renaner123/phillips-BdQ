@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.CertifierRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.CertifierResponseDTO;
-import com.phillips.saper.bancoquestoes.dtos.CertifierRequestDTO;
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
 import com.phillips.saper.bancoquestoes.services.CertifierService;
 

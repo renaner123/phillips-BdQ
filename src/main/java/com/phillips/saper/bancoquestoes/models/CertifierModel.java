@@ -1,7 +1,5 @@
 package com.phillips.saper.bancoquestoes.models;
 
-import java.util.ArrayList;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 

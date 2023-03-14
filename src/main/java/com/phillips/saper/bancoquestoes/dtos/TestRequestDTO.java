@@ -2,8 +2,6 @@ package com.phillips.saper.bancoquestoes.dtos;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class TestRequestDTO {
     
     String name;

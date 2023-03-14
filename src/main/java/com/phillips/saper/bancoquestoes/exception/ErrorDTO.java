@@ -1,10 +1,6 @@
 package com.phillips.saper.bancoquestoes.exception;
 
-import jakarta.validation.constraints.Min;
-
 import java.time.Instant;
-import java.util.List;
-import java.util.Map;
 
 public class ErrorDTO {
     Instant timestamp;
