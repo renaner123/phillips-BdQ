@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 public class CertifierModel extends TeacherModel {
 
     @Column(nullable = true)
-    int amountCertified;
+    private int amountCertified;
     // TODO criar set de Subject
 
     //private ArrayList<SubjectModel> subjects = new ArrayList<SubjectModel>();

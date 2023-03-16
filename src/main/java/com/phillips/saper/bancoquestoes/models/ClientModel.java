@@ -20,37 +20,28 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class ClientModel implements UserDetails {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_id")
-    Long id;
+    @Column(name = "id_client")
+    private Long id;
 
-    @Column(
-            nullable = false
-    )
-    String name;
-    @Column(
-        nullable = false,
-        unique = true
-    )
-    String login;
-    @Column(
-        nullable = false
-    )
-    String password;
+    @Column(nullable = false)
+    private String name;
+    @Column(nullable = false, unique = true)
+    private String login;
+    @Column(nullable = false)
+    private String password;
 
     @OneToOne(targetEntity = StudentModel.class, cascade = CascadeType.ALL, mappedBy = "clientModel")
-    StudentModel student;
+    private StudentModel student;
 
     @OneToOne(targetEntity = TeacherModel.class, cascade = CascadeType.ALL, mappedBy = "clientModel")
-    TeacherModel teacher;
+    private TeacherModel teacher;
 
     @ManyToMany(targetEntity = RoleModel.class, fetch = FetchType.EAGER)
-    @JoinTable(name = "client_role",
-        joinColumns = @JoinColumn(name = "client_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id"))
-    List<RoleModel> roles;
+    @JoinTable(name = "client_role", joinColumns = @JoinColumn(name = "id_client"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<RoleModel> roles;
 
     public ClientModel(String name, String login, String password) {
         this.name = name;
@@ -95,7 +86,9 @@ public class ClientModel implements UserDetails {
     }
 
     @Override
-    public String getUsername() {return login;}
+    public String getUsername() {
+        return login;
+    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -136,7 +129,7 @@ public class ClientModel implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public TeacherModel getTeacher() {
         return teacher;
     }

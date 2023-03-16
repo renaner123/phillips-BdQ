@@ -7,20 +7,20 @@ public class StudentResponseDTO {
     Long id;
     String cpf;
     String name;
-    Long client_id;
+    Long id_client;
 
     public StudentResponseDTO(StudentModel studentModel) {
         cpf = studentModel.getCpf();
         name = studentModel.getName();
         id = studentModel.getIdStudent();
-        client_id = studentModel.getIdStudent();
+        id_client = studentModel.getIdStudent();
     }
 
-    public StudentResponseDTO(Long id, String cpf, String name, Long client_id) {
+    public StudentResponseDTO(Long id, String cpf, String name, Long id_client) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
-        this.client_id = client_id;
+        this.id_client = id_client;
     }
 
     public StudentResponseDTO() {
@@ -41,6 +41,5 @@ public class StudentResponseDTO {
     public void setName(String name) {
         this.name = name;
     }
-
 
 }

@@ -9,7 +9,7 @@ public class ClientResponseDTO {
     String name;
     String login;
 
-    Long client_id;
+    Long id_client;
 
     List<RoleModel> role;
 
@@ -32,25 +32,25 @@ public class ClientResponseDTO {
         this.login = login;
     }
 
-    public Long getClient_id() {
-        return client_id;
+    public Long getid_client() {
+        return id_client;
     }
 
-    public void setClient_id(Long client_id) {
-        this.client_id = client_id;
+    public void setid_client(Long id_client) {
+        this.id_client = id_client;
     }
 
-    public ClientResponseDTO(String name, String login, Long client_id) {
+    public ClientResponseDTO(String name, String login, Long id_client) {
         this.name = name;
         this.login = login;
-        this.client_id = client_id;
+        this.id_client = id_client;
     }
 
     public ClientResponseDTO(ClientModel client) {
         this.name = client.getName();
         this.login = client.getLogin();
-        this.client_id = client.getId();
-        //TODO talvez melhorar como está sendo retornado no get
+        this.id_client = client.getId();
+        // TODO talvez melhorar como está sendo retornado no get
         this.role = client.getRoles();
     }
 
@@ -61,7 +61,5 @@ public class ClientResponseDTO {
     public void setRole(List<RoleModel> role) {
         this.role = role;
     }
-
-
 
 }

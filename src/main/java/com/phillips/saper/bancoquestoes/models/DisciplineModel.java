@@ -12,12 +12,12 @@ public class DisciplineModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idDiscipline;
+    private Long idDiscipline;
 
     @Column(nullable = false)
-    String name_discipline;
+    private String name_discipline;
     @Column(nullable = false)
-    String descrption_discipline;
+    private String descrption_discipline;
 
     public DisciplineModel(Long idDiscipline, String name, String description) {
         this.idDiscipline = idDiscipline;

@@ -20,9 +20,9 @@ public class StudentModel {
     private String cpf;
     private String name;
     private String email;
-    
+
     @OneToOne(targetEntity = ClientModel.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "id_client")
     ClientModel clientModel;
-    
+
 }

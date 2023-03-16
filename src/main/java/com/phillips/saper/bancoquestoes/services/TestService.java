@@ -1,9 +1,10 @@
 package com.phillips.saper.bancoquestoes.services;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.phillips.saper.bancoquestoes.dtos.TestRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TestResponseDTO;
+import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.models.TestModel;
-import com.phillips.saper.bancoquestoes.models.TestModel;
+import com.phillips.saper.bancoquestoes.repositories.QuestionRepository;
 import com.phillips.saper.bancoquestoes.repositories.TestRepository;
 
 import jakarta.transaction.Transactional;
@@ -23,6 +25,9 @@ public class TestService {
     @Autowired
     TestRepository testRepository;
 
+    @Autowired
+    QuestionRepository questionRepository;
+
     public ResponseEntity<List<TestModel>> findAll() {
 
         return ResponseEntity.status(HttpStatus.OK).body(testRepository.findAll());
@@ -30,11 +35,13 @@ public class TestService {
 
     public ResponseEntity<Object> save(TestRequestDTO testRequestDTO) {
         TestModel testModel = new TestModel();
-
+    
         testModel.setName(testRequestDTO.getName());
         testModel.setAnswers(testRequestDTO.getAnswers());
         testModel.setDateTime(testRequestDTO.getDateTime());
-        
+        // TODO buscar o Set de questões que vai compor a prova, talvez receber os IDs das questões no request
+        //testModel.setQuestions(questionsList);
+
         testRepository.save(testModel);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(testRequestDTO);

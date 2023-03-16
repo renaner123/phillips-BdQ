@@ -1,11 +1,15 @@
 package com.phillips.saper.bancoquestoes.models;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+
+import org.aspectj.weaver.ast.Test;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 
 @Data
@@ -24,5 +28,10 @@ public class QuestionModel {
     private int amountAccess;
     private int idDiscipline;
     private int idSubject;
+
+    @ManyToMany(
+        targetEntity = TestModel.class,
+        mappedBy = "questions")
+    Set<TestModel> tests;
 
 }
