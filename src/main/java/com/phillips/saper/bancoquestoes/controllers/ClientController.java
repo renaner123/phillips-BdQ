@@ -29,13 +29,13 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping("/{id}")
     public ResponseEntity<Object> find(@PathVariable(name = "id") Long id){
         return clientService.find(id);
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public List<ClientResponseDTO> findAll(
             @RequestParam(name = "name", defaultValue = "") String name){
@@ -43,7 +43,7 @@ public class ClientController {
         return list.stream().map(ClientResponseDTO::new).toList();
     }
 
-    // Quando criar um Student ele já vincula a uma Client, não precisa do POST
+// Quando criar um Student ele já vincula a uma Client, não precisa do POST
 //    @PostMapping
 //    public ClientResponseDTO save(@RequestBody ClientRequestDTO clientRequestDTO){
 //
@@ -58,7 +58,7 @@ public class ClientController {
 //        return clientService.save(clientRequestDTO);
 //    }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
             @PathVariable(name = "id") Long id,
@@ -66,7 +66,7 @@ public class ClientController {
         return clientService.update(id, clientRequestDTO);
     }
     
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(
             @PathVariable(name = "id") Long id){
