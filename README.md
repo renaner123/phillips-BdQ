@@ -59,7 +59,7 @@ Os seguintes diagramas são a versão definida inicialmente para modelagem do pr
 <summary>Diagrama de classe</summary>
 <br>
 
-  ![](diagramas/diagrama-classe.png)
+  ![](back-end/diagramas/diagrama-classe.png)
 
 </details>
 
@@ -67,7 +67,7 @@ Os seguintes diagramas são a versão definida inicialmente para modelagem do pr
 <summary>Diagrama entidade relacionamento</summary>
 <br>
 
-  ![](diagramas/er_diagrama_inicial.png)  
+  ![](back-end/diagramas/er_diagrama_inicial.png)  
 
 </details>
 
@@ -80,7 +80,7 @@ Conseguimos prototipar algumas telas para definirmos alguns escopos de trabalho.
 
 Para isso, utilizamos o Figma para criar alguns modelos de telas e termos uma base inicial. 
 
-No diretório `telas`, é possível visualizar todas as telas em um *único PDF*. Para acessar diretamente o arquivo, basta clicar [aqui](telas/Telas.pdf).
+No diretório `telas`, é possível visualizar todas as telas em um *único PDF*. Para acessar diretamente o arquivo, basta clicar [aqui](front-end/telas/Telas.pdf).
 
 > Também é possível acessar os protótipos diretamente pelo Figma através do link: https://www.figma.com/file/CkA8G5aU1pIcOs4t75UNZd/Untitled?node-id=0%3A1&t=LTUyff4CvEg1euWd-1
 
