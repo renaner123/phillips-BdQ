@@ -1,4 +1,4 @@
-package com.phillips.saper.bancoquestoes.configuration;
+package com.phillips.saper.bancoquestoes.security;
 
 
 import java.util.Optional;
