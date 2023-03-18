@@ -1,3 +1,4 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Sistema de banco de questões
 
 - [Sistema de banco de questões](#sistema-de-banco-de-questões)
@@ -5,14 +6,16 @@
   - [Requisitos gerais do projeto](#requisitos-gerais-do-projeto)
   - [Requisitos específicos do projeto](#requisitos-específicos-do-projeto)
 - [Diagramas](#diagramas)
-  - [Diagrama de classe](#diagrama-de-classe)
-  - [Diagrama ER](#diagrama-er)
 - [Design - Visual do Frontend](#design---visual-do-frontend)
   - [Prototipos de telas (inicial)](#prototipos-de-telas-inicial)
+- [Pré-requisito](#pré-requisito)
 - [Instruções para compilar e executar o projeto](#instruções-para-compilar-e-executar-o-projeto)
   - [Conexão com o banco de dados](#conexão-com-o-banco-de-dados)
   - [Compilar e executar o projeto](#compilar-e-executar-o-projeto)
   - [Instruções para visualizar, filtrar, selecionar e gerar provas](#instruções-para-visualizar-filtrar-selecionar-e-gerar-provas)
+- [Documentação](#documentação)
+- [Contatos](#contatos)
+- [Licença](#licença)
 
 ## Descrição da narrativa
 
@@ -50,18 +53,24 @@ Mostrar materiais e assuntos mais acessados.
 
 ## Diagramas
 
-### Diagrama de classe
+Os seguintes diagramas são a versão definida inicialmente para modelagem do projeto. Não está fidedigno com a implementação. Será atualizado posteriormente.
 
-A modelagem inicial das classes do projeto está representado no diagrama de classe UML abaixo.
+<details>
+<summary>Diagrama de classe</summary>
+<br>
 
-![](diagramas/diagrama-classe.png)
+  ![](diagramas/diagrama-classe.png)
 
+</details>
 
-### Diagrama ER
+<details>
+<summary>Diagrama entidade relacionamento</summary>
+<br>
 
-O diagrama ER abaixo é a proposta inicial para o diagrama entidade-relacionamento do projeto.
+  ![](diagramas/er_diagrama_inicial.png)  
 
-![](diagramas/er_diagrama_inicial.png)
+</details>
+
 
 ## Design - Visual do Frontend
 
@@ -74,6 +83,9 @@ Para isso, utilizamos o Figma para criar alguns modelos de telas e termos uma ba
 No diretório `telas`, é possível visualizar todas as telas em um *único PDF*. Para acessar diretamente o arquivo, basta clicar [aqui](telas/Telas.pdf).
 
 > Também é possível acessar os protótipos diretamente pelo Figma através do link: https://www.figma.com/file/CkA8G5aU1pIcOs4t75UNZd/Untitled?node-id=0%3A1&t=LTUyff4CvEg1euWd-1
+
+
+## Pré-requisito
 
 ## Instruções para compilar e executar o projeto
 
@@ -96,9 +108,6 @@ docker exec <container ID> resetPassword <password>
 
 Com o container em execução, é recomendado utilizar a ferramenta de gerenciamento de banco de dados [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/) para acessar o *database* instanciado com o Docker para visualizar as tabelas.
 
-Ao ter acesso a ferramanta, é possível utilizar o *script DDL* disponível [aqui](mydb/scrip-oracle.sql) para criar as tebelas no banco de dados ou simplesmente rodar a aplicação.
-
-
 A configuração para a aplicação acessar o banco de dados deve ser feita no arquivo [application.properties](src/main/resources/application.properties) conforme o exemplo abaixo:
 
 ```properties
@@ -117,9 +126,30 @@ spring.datasource.password=yourpassword
 
 ### Compilar e executar o projeto
 
+
 ### Instruções para visualizar, filtrar, selecionar e gerar provas 
 
 
+## Documentação
+
+O projeto utiliza a biblioteca [springdoc-openapi](https://springdoc.org/v2/) para geração da documentação da API, que pode ser acessada em ```http://127.0.0.1:8080/swagger-ui/index.html#/``` com a aplicação em execução.
 
 
+## Contatos
+<div> 
+Renan Rodolfo da Silva
 
+<a href = "mailto:rrenanrds@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"  height="25"></a>
+<a href="https://www.linkedin.com/in/renanrodolfo/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"  height="25"></a>   
+</div>    
+
+<div>
+Giovanni Curcuruto
+
+<a href = "mailto:ggcurcuruto@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"  height="25"></a>
+<a href="https://www.linkedin.com/in/giovanni-curcuruto-b6689596" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"  height="25"></a>   
+</div>    
+
+## Licença
+
+Licensed under the [MIT License](./LICENSE).
