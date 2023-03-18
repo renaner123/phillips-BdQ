@@ -4,9 +4,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+
 public class ClientRequestDTO {
+
     String name;
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
+    
+    @Schema(example = "email@email.com")
+    @NotBlank
     String login;
+
     String password;
     String repeated_password;
 

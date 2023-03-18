@@ -4,7 +4,7 @@ import com.phillips.saper.bancoquestoes.models.DisciplineModel;
 
 
 public class DisciplineResponseDTO {
-
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
     String name;
     String description;
     

@@ -3,7 +3,7 @@ package com.phillips.saper.bancoquestoes.dtos;
 import java.time.LocalDateTime;
 
 public class QuestionRequestDTO {
-
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
     private LocalDateTime updateDate;
     private String question;
     private String answers;

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 
 public class QuestionResponseDTO {
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
     private LocalDateTime updateDate;
     private String question;
     private String answers;

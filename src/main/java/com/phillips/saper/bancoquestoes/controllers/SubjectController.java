@@ -17,6 +17,8 @@ import com.phillips.saper.bancoquestoes.dtos.SubjectRequestDTO;
 import com.phillips.saper.bancoquestoes.models.SubjectModel;
 import com.phillips.saper.bancoquestoes.services.SubjectService;
 
+// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
+
 @RestController
 @RequestMapping("/subjects")
 public class SubjectController {

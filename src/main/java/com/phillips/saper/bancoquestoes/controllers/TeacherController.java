@@ -19,6 +19,8 @@ import com.phillips.saper.bancoquestoes.services.TeacherService;
 
 import jakarta.validation.Valid;
 
+// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
+
 @RestController
 @RequestMapping("/teachers")
 public class TeacherController {

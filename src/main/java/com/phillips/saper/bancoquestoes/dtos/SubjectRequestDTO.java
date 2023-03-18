@@ -1,6 +1,7 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
 public class SubjectRequestDTO {
+     //TODO Adicionar  @Schema(example = "") nos atributos e validações
     private String description;
     private int idDiscipline;
 

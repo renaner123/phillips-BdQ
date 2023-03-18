@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class StudentRequestDTO {
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
        
     @Size(min = 3, max = 10, message = "Nome tem tamanho mínimo de 3 e máximo de 10")
     @NotBlank(message = "O campo nome é obrigatório")

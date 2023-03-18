@@ -19,6 +19,8 @@ import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.services.QuestionService;
 
+// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
+
 @RestController
 @RequestMapping("/questions")
 public class QuestionController {

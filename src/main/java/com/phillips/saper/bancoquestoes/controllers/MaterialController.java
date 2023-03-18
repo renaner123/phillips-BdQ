@@ -17,6 +17,8 @@ import com.phillips.saper.bancoquestoes.dtos.MaterialRequestDTO;
 import com.phillips.saper.bancoquestoes.models.MaterialModel;
 import com.phillips.saper.bancoquestoes.services.MaterialService;
 
+// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
+
 @RestController
 @RequestMapping("/materials")
 public class MaterialController {

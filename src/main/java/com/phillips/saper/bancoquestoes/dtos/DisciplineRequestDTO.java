@@ -4,6 +4,7 @@ public class DisciplineRequestDTO {
 
     String name;
     String description;
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
     
     public DisciplineRequestDTO(String name, String description) {
         this.name = name;

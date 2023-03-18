@@ -17,6 +17,7 @@ import com.phillips.saper.bancoquestoes.dtos.DisciplineRequestDTO;
 import com.phillips.saper.bancoquestoes.models.DisciplineModel;
 import com.phillips.saper.bancoquestoes.services.DisciplineService;
 
+// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
 @RestController
 @RequestMapping("/disciplines")
 public class DisciplineController {

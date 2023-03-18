@@ -3,6 +3,7 @@ package com.phillips.saper.bancoquestoes.dtos;
 import com.phillips.saper.bancoquestoes.models.StudentModel;
 
 public class StudentResponseDTO {
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
 
     Long id;
     String cpf;

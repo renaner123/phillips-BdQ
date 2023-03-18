@@ -17,6 +17,8 @@ import com.phillips.saper.bancoquestoes.dtos.TestRequestDTO;
 import com.phillips.saper.bancoquestoes.models.TestModel;
 import com.phillips.saper.bancoquestoes.services.TestService;
 
+// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
+
 @RestController
 @RequestMapping("/tests")
 public class TestController {

@@ -4,6 +4,8 @@ public class CertifierRequestDTO {
     // apenas para teste, irei utilizar alguns atributos e metodos fake para testar
     // a interação do Postman
 
+     //TODO Adicionar  @Schema(example = "") nos atributos e validações
+
     String name;
     int amountCertified;
     String cpf;

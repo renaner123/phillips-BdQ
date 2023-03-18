@@ -18,6 +18,8 @@ import com.phillips.saper.bancoquestoes.dtos.CertifierResponseDTO;
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
 import com.phillips.saper.bancoquestoes.services.CertifierService;
 
+// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
+
 @RestController
 @RequestMapping("/certifiers")
 public class CertifierController {

@@ -4,11 +4,13 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.phillips.saper.bancoquestoes.models.TeacherModel;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class TeacherRequestDTO {
+     //TODO Adicionar  @Schema(example = "") nos atributos e validações
 
     @CPF
     @NotBlank(message = "O campo cpf é obrigatório")
@@ -42,6 +44,7 @@ public class TeacherRequestDTO {
     @NotBlank(message = "confirmação de senha obrigatória")
     String repeated_password;
 
+    @Schema(example = "email@email.com")
     @Email(message = "Informe um email válido")
     @NotBlank(message = "Login é obrigatório")
     String login;

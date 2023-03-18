@@ -8,6 +8,7 @@ import com.phillips.saper.bancoquestoes.models.RoleModel;
 public class ClientResponseDTO {
     String name;
     String login;
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
 
     Long id_client;
 

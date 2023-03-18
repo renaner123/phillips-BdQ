@@ -5,7 +5,7 @@ import com.phillips.saper.bancoquestoes.models.CertifierModel;
 public class CertifierResponseDTO {
     // apenas para teste, irei utilizar alguns atributos e metodos fake para testar
     // a interação do Postman
-
+     //TODO Adicionar  @Schema(example = "") nos atributos e validações
     String name;
     String cpf;
     String idTeacher;

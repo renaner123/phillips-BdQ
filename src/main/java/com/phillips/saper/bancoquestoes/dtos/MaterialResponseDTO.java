@@ -5,7 +5,7 @@ import java.sql.Date;
 import com.phillips.saper.bancoquestoes.models.MaterialModel;
 
 public class MaterialResponseDTO {
-
+    //TODO Adicionar  @Schema(example = "") nos atributos e validações
     String fileName;
     String content;
     Date uploadDate;
