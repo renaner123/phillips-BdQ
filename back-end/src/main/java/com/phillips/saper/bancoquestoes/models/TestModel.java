@@ -30,6 +30,11 @@ public class TestModel {
                 joinColumns = @JoinColumn(name = "id_test"),
                 inverseJoinColumns = @JoinColumn(name = "id_quest"))
     Set<QuestionModel> questions;
+
+    @ManyToMany(
+        targetEntity = StudentModel.class,
+        mappedBy = "tests")
+    Set<StudentModel> students;
      
 
 }
