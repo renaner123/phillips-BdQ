@@ -51,6 +51,11 @@ insert into student_has_test values (1,2,8.0)
 insert into student_has_test values (2,2,5.0)
 insert into student_has_test values (3,1,4.5)
 
+insert into material_has_student values (1,1)
+insert into material_has_student values (1,2)
+insert into material_has_student values (2,3)
+insert into material_has_student values (3,1)
+
 
 
 

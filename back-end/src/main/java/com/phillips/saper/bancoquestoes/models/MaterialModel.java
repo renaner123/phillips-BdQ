@@ -1,11 +1,15 @@
 package com.phillips.saper.bancoquestoes.models;
 
 import java.util.Date;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 //@Data
 @Entity
@@ -19,6 +23,13 @@ public class MaterialModel {
     private String content;
     private Date uploadDate;
     private int idTeacher;
+
+    @ManyToMany(
+        targetEntity = StudentModel.class)
+    @JoinTable(name = "Material_has_Student",
+            joinColumns = @JoinColumn(name = "id_material"),
+            inverseJoinColumns = @JoinColumn(name = "id_student"))
+    Set<StudentModel> students;
 
     
 

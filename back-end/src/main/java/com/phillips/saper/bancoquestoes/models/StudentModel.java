@@ -46,4 +46,8 @@ public class StudentModel {
     @OneToMany(mappedBy = "id.idStudent", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<StudentTest> studentTests = new HashSet<>();
 
+    @ManyToMany(
+        targetEntity = MaterialModel.class,
+        mappedBy = "students")
+    Set<MaterialModel> materials;
 }
