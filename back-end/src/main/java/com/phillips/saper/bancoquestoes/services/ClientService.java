@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.phillips.saper.bancoquestoes.dtos.ClientRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.ClientResponseDTO;
-import com.phillips.saper.bancoquestoes.exception.exceptions.ConflictStoreException;
+import com.phillips.saper.bancoquestoes.exceptions.ConflictStoreException;
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
 

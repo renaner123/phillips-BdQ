@@ -2,7 +2,7 @@ package com.phillips.saper.bancoquestoes.models;
 
 import java.io.Serializable;
 
-import com.phillips.saper.bancoquestoes.Embeddable.StudentTestPK;
+import com.phillips.saper.bancoquestoes.Embeddables.StudentTestPK;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;

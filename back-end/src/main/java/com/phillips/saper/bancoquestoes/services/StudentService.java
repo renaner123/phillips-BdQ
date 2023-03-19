@@ -14,7 +14,7 @@ import com.phillips.saper.bancoquestoes.dtos.ClientRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentResponseDTO;
 import com.phillips.saper.bancoquestoes.enums.RoleNames;
-import com.phillips.saper.bancoquestoes.exception.exceptions.ConflictStoreException;
+import com.phillips.saper.bancoquestoes.exceptions.ConflictStoreException;
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.models.RoleModel;
 import com.phillips.saper.bancoquestoes.models.StudentModel;

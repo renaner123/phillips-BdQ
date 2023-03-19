@@ -1,4 +1,4 @@
-package com.phillips.saper.bancoquestoes.exception;
+package com.phillips.saper.bancoquestoes.exceptions;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import com.phillips.saper.bancoquestoes.exception.exceptions.ConflictStoreException;
 
 import jakarta.servlet.http.HttpServletRequest;
 

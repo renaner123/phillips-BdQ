@@ -3,7 +3,7 @@ package com.phillips.saper.bancoquestoes.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.phillips.saper.bancoquestoes.Embeddable.StudentTestPK;
+import com.phillips.saper.bancoquestoes.Embeddables.StudentTestPK;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

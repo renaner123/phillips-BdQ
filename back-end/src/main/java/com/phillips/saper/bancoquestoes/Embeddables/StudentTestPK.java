@@ -1,4 +1,4 @@
-package com.phillips.saper.bancoquestoes.Embeddable;
+package com.phillips.saper.bancoquestoes.Embeddables;
 
 import java.io.Serializable;
 

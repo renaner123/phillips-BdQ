@@ -1,4 +1,4 @@
-package com.phillips.saper.bancoquestoes.exception;
+package com.phillips.saper.bancoquestoes.exceptions;
 
 import java.time.Instant;
 
