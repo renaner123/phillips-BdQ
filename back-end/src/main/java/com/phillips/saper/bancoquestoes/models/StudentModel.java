@@ -1,15 +1,21 @@
 package com.phillips.saper.bancoquestoes.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import com.phillips.saper.bancoquestoes.Embeddable.StudentTestPK;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 
@@ -19,6 +25,7 @@ public class StudentModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_student")
     private Long idStudent;
 
     private String cpf;
@@ -30,11 +37,13 @@ public class StudentModel {
     ClientModel clientModel;
 
     // DUVIDA como inserir uma nova coluna nessa tabela? no caso, precisa inserir o resultado da prova, pro aluno consultar o desempenho depois
-    @ManyToMany(
-        targetEntity = TestModel.class)
-    @JoinTable(name = "Student_has_Test",
-            joinColumns = @JoinColumn(name = "id_student"),
-            inverseJoinColumns = @JoinColumn(name = "id_test"))
-    Set<TestModel> tests;
+    @ManyToMany()
+    @JoinTable(name = "student_has_test",
+        joinColumns = @JoinColumn(name = "id_student"),
+        inverseJoinColumns = @JoinColumn(name = "id_test"))
+    private Set<TestModel> tests = new HashSet<>();
+
+    @OneToMany(mappedBy = "id.idStudent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudentTest> studentTests = new HashSet<>();
 
 }

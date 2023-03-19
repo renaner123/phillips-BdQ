@@ -46,10 +46,10 @@ insert into test_has_question values (1,1)
 insert into test_has_question values (1,2)
 insert into test_has_question values (1,3)
 
-insert into student_has_test values (1,1)
-insert into student_has_test values (1,2)
-insert into student_has_test values (2,2)
-insert into student_has_test values (3,1)
+insert into student_has_test values (1,1,8.5)
+insert into student_has_test values (1,2,8.0)
+insert into student_has_test values (2,2,5.0)
+insert into student_has_test values (3,1,4.5)
 
 
 
