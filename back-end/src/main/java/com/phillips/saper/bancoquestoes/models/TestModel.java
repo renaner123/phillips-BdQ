@@ -33,7 +33,7 @@ public class TestModel {
               targetEntity = QuestionModel.class)
     @JoinTable(name = "Test_has_Question",
                 joinColumns = @JoinColumn(name = "id_test"),
-                inverseJoinColumns = @JoinColumn(name = "id_quest"))
+                inverseJoinColumns = @JoinColumn(name = "id_question"))
     Set<QuestionModel> questions;
 
     @ManyToMany(mappedBy = "tests")

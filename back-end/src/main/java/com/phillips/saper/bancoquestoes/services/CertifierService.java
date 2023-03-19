@@ -28,7 +28,7 @@ public class CertifierService {
 
     // TODO inserir lógica para verificar se o cpf do professor existe, para ai sim, cadastrar como certificador e vincular
     public CertifierRequestDTO save(CertifierRequestDTO certifierRequestDTO) {
-        CertifierModel certifierModel = new CertifierModel(certifierRequestDTO.getCpf(), certifierRequestDTO.getEmail(), certifierRequestDTO.getName(), certifierRequestDTO.getIdDiscipline(), certifierRequestDTO.getAmountCertified());
+        CertifierModel certifierModel = new CertifierModel(certifierRequestDTO.getCpf(), certifierRequestDTO.getEmail(), certifierRequestDTO.getName(), certifierRequestDTO.getIdDiscipline(), certifierRequestDTO.getAmountCertified(), false);
         
         certifierRepository.save(certifierModel);
 

@@ -34,4 +34,9 @@ public class QuestionModel {
         mappedBy = "questions")
     Set<TestModel> tests;
 
+    @ManyToMany(
+        targetEntity = TeacherModel.class,
+        mappedBy = "questions")
+    Set<TeacherModel> teachers;
+
 }
