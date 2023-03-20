@@ -1,5 +1,7 @@
 package com.phillips.saper.bancoquestoes.controllers;
 
+import static com.phillips.saper.bancoquestoes.configuration.SwaggerConfig.BASIC_AUTH_SECURITY_SCHEME;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
@@ -19,7 +21,9 @@ import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.services.QuestionService;
 
-// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 
 @RestController
 @RequestMapping("/questions")
@@ -27,12 +31,14 @@ public class QuestionController {
 
     @Autowired
     QuestionService questionService;
-    
+
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public ResponseEntity<List<QuestionModel>> findAll() {
         return questionService.findAll();
     }
 
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(
             @RequestBody QuestionRequestDTO questionRequestDTO) {
@@ -42,6 +48,7 @@ public class QuestionController {
         return questionService.save(questionRequestDTO);
     }
 
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
             @PathVariable(name = "id") Long id,
@@ -49,6 +56,7 @@ public class QuestionController {
         return questionService.update(id, questionRequestDTO);
     }
 
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(
             @PathVariable(name = "id") Long id) {

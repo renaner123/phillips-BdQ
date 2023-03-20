@@ -1,4 +1,8 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
-public record AuthResponse(Long id, String name, String role) {
+import java.util.List;
+
+import com.phillips.saper.bancoquestoes.models.RoleModel;
+
+public record AuthResponse(Long id, String name, List<RoleModel> role) {
 }

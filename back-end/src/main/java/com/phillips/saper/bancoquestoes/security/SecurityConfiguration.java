@@ -28,6 +28,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.GET, "/clients").permitAll()
                 .requestMatchers("/my/**").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
+                .requestMatchers("/public/**", "/auth/**").permitAll()
                 .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()
                 .anyRequest().hasAnyRole("ADMIN", "TEACHER");
         http.csrf().disable();
@@ -41,8 +42,5 @@ public class SecurityConfiguration {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
-    public static final String ADMIN = "ADMIN";
-    public static final String USER = "USER";
 
 }

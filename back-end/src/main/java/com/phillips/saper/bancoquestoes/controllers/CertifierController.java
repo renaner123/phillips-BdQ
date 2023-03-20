@@ -2,6 +2,8 @@ package com.phillips.saper.bancoquestoes.controllers;
 
 import java.util.List;
 
+import static com.phillips.saper.bancoquestoes.configuration.SwaggerConfig.BASIC_AUTH_SECURITY_SCHEME;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +20,8 @@ import com.phillips.saper.bancoquestoes.dtos.CertifierResponseDTO;
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
 import com.phillips.saper.bancoquestoes.services.CertifierService;
 
-// TODO adicionar Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)}) nos recursos
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/certifiers")
@@ -27,18 +30,19 @@ public class CertifierController {
     @Autowired
     CertifierService certifierService;
 
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public List<CertifierResponseDTO> findAll(){
         List<CertifierModel> list = certifierService.findAll();
 
         return list.stream().map(CertifierResponseDTO::new).toList();
     }
-
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public CertifierRequestDTO save(@RequestBody CertifierRequestDTO certifierRequestDTO){
         return certifierService.save(certifierRequestDTO);
     }
-
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
         @PathVariable(name = "id") Long id,
@@ -46,7 +50,7 @@ public class CertifierController {
 
         return certifierService.update(id, certifierResquestDTO);
     }
-
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id){
 
