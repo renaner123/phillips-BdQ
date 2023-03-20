@@ -28,6 +28,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.GET, "/clients").permitAll()
                 .requestMatchers(HttpMethod.POST, "/students").permitAll()
                 .requestMatchers(HttpMethod.POST, "/teachers").permitAll()
+                .requestMatchers(HttpMethod.POST, "/materials").permitAll()
+                .requestMatchers(HttpMethod.GET, "/materials").permitAll()
                 .requestMatchers("/my/**").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                 .requestMatchers("/public/**", "/auth/**").permitAll()

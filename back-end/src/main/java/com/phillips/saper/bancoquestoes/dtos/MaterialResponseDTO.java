@@ -9,8 +9,8 @@ public class MaterialResponseDTO {
     String fileName;
     String content;
     Date uploadDate;
-    int idTeacher;
-
+    Long idTeacher;
+    String docType;
     
 
     public MaterialResponseDTO() {
@@ -21,6 +21,7 @@ public class MaterialResponseDTO {
         content = materialModel.getContent();
         uploadDate = (Date) materialModel.getUploadDate();
         idTeacher = materialModel.getIdTeacher();
+        docType = materialModel.getDocType();
     }
 
     public String getFileName() {
@@ -47,12 +48,20 @@ public class MaterialResponseDTO {
         this.uploadDate = uploadDate;
     }
 
-    public int getIdTeacher() {
+    public Long getIdTeacher() {
         return idTeacher;
     }
 
-    public void setIdTeacher(int idTeacher) {
+    public void setIdTeacher(Long idTeacher) {
         this.idTeacher = idTeacher;
+    }
+
+    public String getDocType() {
+        return docType;
+    }
+
+    public void setDocType(String docType) {
+        this.docType = docType;
     }
 
 }

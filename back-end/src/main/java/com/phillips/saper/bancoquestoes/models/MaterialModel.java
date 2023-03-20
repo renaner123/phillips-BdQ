@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 
 //@Data
@@ -22,7 +23,11 @@ public class MaterialModel {
     private String fileName;
     private String content;
     private Date uploadDate;
-    private int idTeacher;
+    private Long idTeacher;
+    private String docType;
+
+    @Lob
+	private byte[] data;
 
     @ManyToMany(
         targetEntity = StudentModel.class)
@@ -31,17 +36,34 @@ public class MaterialModel {
             inverseJoinColumns = @JoinColumn(name = "id_student"))
     Set<StudentModel> students;
 
-    
-
-    public MaterialModel(Long idMaterial, String fileName, String content, Date uploadDate, int idTeacher) {
-        this.idMaterial = idMaterial;
+    public MaterialModel(String fileName, String content, Date uploadDate, Long idTeacher, String docType, byte[] data) {
         this.fileName = fileName;
         this.content = content;
         this.uploadDate = uploadDate;
         this.idTeacher = idTeacher;
+        this.docType = docType;
+        this.data = data;
+    }
+
+    public String getDocType() {
+        return docType;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public Set<StudentModel> getStudents() {
+        return students;
     }
 
     public MaterialModel() {
+    }
+
+    public MaterialModel(String docname, String contentType, byte[] bytes) {
+        this.fileName = docname;
+        this.docType = contentType;
+        this.data = bytes;
     }
 
     public Long getIdMaterial() {
@@ -76,11 +98,11 @@ public class MaterialModel {
         this.uploadDate = uploadDate;
     }
 
-    public int getIdTeacher() {
+    public Long getIdTeacher() {
         return idTeacher;
     }
 
-    public void setIdTeacher(int idTeacher) {
+    public void setIdTeacher(Long idTeacher) {
         this.idTeacher = idTeacher;
     }
 
