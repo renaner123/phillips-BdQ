@@ -5,6 +5,7 @@ import static com.phillips.saper.bancoquestoes.configuration.SwaggerConfig.BASIC
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.TeacherRequestDTO;
+import com.phillips.saper.bancoquestoes.dtos.TeacherResponseDTO;
 import com.phillips.saper.bancoquestoes.models.TeacherModel;
 import com.phillips.saper.bancoquestoes.services.TeacherService;
 
@@ -32,11 +35,12 @@ public class TeacherController {
 
     @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
-    public ResponseEntity<List<TeacherModel>> findAll(){
-        return teacherService.findAll();
+    public ResponseEntity<List<TeacherResponseDTO>> findAll(){
+        return teacherService.findAll(); 
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Register a new Teacher")
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody @Valid TeacherRequestDTO disciplineRequestDTO){
         return teacherService.save(disciplineRequestDTO);

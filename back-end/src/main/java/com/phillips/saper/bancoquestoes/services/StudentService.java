@@ -38,9 +38,9 @@ public class StudentService {
     ClientRepository clientRepository;
 
 
-
-    public ResponseEntity<List<StudentModel>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(studentRepository.findAll());
+    public ResponseEntity<List<StudentResponseDTO>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            studentRepository.findAll().stream().map((student)->new StudentResponseDTO(student)).toList());
     }
 
     public ResponseEntity<Object> save(StudentRequestDTO studentRequestDTO) {

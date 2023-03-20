@@ -10,10 +10,10 @@ public class CertifierRequestDTO {
     int amountCertified;
     String cpf;
     String email;
-    int idDiscipline;
+    Long idDiscipline;
 
     public CertifierRequestDTO(String name, int amountCertified, String cpf, String email,
-            int idDiscipline) {
+    Long idDiscipline) {
         this.name = name;
         this.amountCertified = amountCertified;
         this.cpf = cpf;
@@ -56,11 +56,11 @@ public class CertifierRequestDTO {
         this.email = email;
     }
 
-    public int getIdDiscipline() {
+    public Long getIdDiscipline() {
         return idDiscipline;
     }
 
-    public void setIdDiscipline(int idDiscipline) {
+    public void setIdDiscipline(Long idDiscipline) {
         this.idDiscipline = idDiscipline;
     }
 

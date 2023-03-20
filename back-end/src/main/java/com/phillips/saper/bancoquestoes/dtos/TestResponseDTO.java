@@ -6,22 +6,33 @@ import com.phillips.saper.bancoquestoes.models.TestModel;
 
 public class TestResponseDTO {
 
+    private Long id;
     private String name;
     //private LocalDateTime dateTest;    
     private String answers;
     private LocalDateTime dateTime;
 
     
-    public TestResponseDTO(String name, String answers, LocalDateTime dateTime) {
+    public TestResponseDTO(Long id, String name, String answers, LocalDateTime dateTime) {
+        this.id = id;
         this.name = name;
         this.answers = answers;
         this.dateTime = dateTime;
     }
 
     public TestResponseDTO(TestModel save) {
+        this.id = save.getIdTest();
         this.name = save.getName();
         this.answers = save.getAnswers();
         this.dateTime = save.getDateTime();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

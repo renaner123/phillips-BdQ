@@ -28,9 +28,9 @@ public class TestService {
     @Autowired
     QuestionRepository questionRepository;
 
-    public ResponseEntity<List<TestModel>> findAll() {
-
-        return ResponseEntity.status(HttpStatus.OK).body(testRepository.findAll());
+    public ResponseEntity<List<TestResponseDTO>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            testRepository.findAll().stream().map((test)->new TestResponseDTO(test)).toList());
     }
 
     public ResponseEntity<Object> save(TestRequestDTO testRequestDTO) {

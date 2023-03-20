@@ -14,6 +14,7 @@ import com.phillips.saper.bancoquestoes.dtos.LoginRequest;
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.services.ClientService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +25,7 @@ public class AuthController {
 
     private final ClientService clientService;
 
+    @Operation(summary = "Authenticate a client")
     @PostMapping("/authenticate")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
         Optional<ClientModel> clientOptional = clientService.authenticate(loginRequest.getUsername(),

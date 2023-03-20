@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
+import com.phillips.saper.bancoquestoes.dtos.QuestionResponseDTO;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.services.QuestionService;
 
@@ -34,10 +37,11 @@ public class QuestionController {
 
     @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
-    public ResponseEntity<List<QuestionModel>> findAll() {
+    public ResponseEntity<List<QuestionResponseDTO>> findAll() {
         return questionService.findAll();
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(

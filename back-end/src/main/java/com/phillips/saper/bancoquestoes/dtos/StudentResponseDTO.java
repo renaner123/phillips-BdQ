@@ -14,13 +14,29 @@ public class StudentResponseDTO {
         cpf = studentModel.getCpf();
         name = studentModel.getName();
         id = studentModel.getIdStudent();
-        id_client = studentModel.getIdStudent();
+        id_client = studentModel.getClientModel().getId();
     }
 
     public StudentResponseDTO(Long id, String cpf, String name, Long id_client) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
+        this.id_client = id_client;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId_client() {
+        return id_client;
+    }
+
+    public void setId_client(Long id_client) {
         this.id_client = id_client;
     }
 

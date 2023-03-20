@@ -12,7 +12,7 @@ public class CertifierModel extends TeacherModel {
 
     //private ArrayList<SubjectModel> subjects = new ArrayList<SubjectModel>();
     
-    public CertifierModel(String cpf, String name, String email, int idDiscipline, int amountCertified, boolean certifier) {
+    public CertifierModel(String cpf, String name, String email, Long idDiscipline, int amountCertified, boolean certifier) {
         super(cpf, name, email, idDiscipline, false);
         this.amountCertified = amountCertified;
     }

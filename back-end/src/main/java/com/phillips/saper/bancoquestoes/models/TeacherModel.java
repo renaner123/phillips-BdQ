@@ -25,7 +25,7 @@ public class TeacherModel {
     private String name;
     private String email;
     private boolean certifier;
-    private int idDiscipline;
+    private Long idDiscipline;
 
     @OneToOne(targetEntity = ClientModel.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_client")
@@ -42,7 +42,7 @@ public class TeacherModel {
 
     }
 
-    public TeacherModel(String cpf, String name, String email, int idDiscipline, boolean certifier) {
+    public TeacherModel(String cpf, String name, String email, Long idDiscipline, boolean certifier) {
         this.cpf = cpf;
         this.name = name;
         this.email = email;
@@ -82,11 +82,11 @@ public class TeacherModel {
         this.email = email;
     }
 
-    public int getIdDiscipline() {
+    public Long getIdDiscipline() {
         return idDiscipline;
     }
 
-    public void setIdDiscipline(int idDiscipline) {
+    public void setIdDiscipline(Long idDiscipline) {
         this.idDiscipline = idDiscipline;
     }
 

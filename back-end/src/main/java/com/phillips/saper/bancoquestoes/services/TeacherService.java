@@ -36,10 +36,9 @@ public class TeacherService {
     @Autowired
     ClientRepository clientRepository;
 
-    public ResponseEntity<List<TeacherModel>> findAll() {
-
-        return ResponseEntity.status(HttpStatus.OK).body(teacherRepository.findAll());
-
+    public ResponseEntity<List<TeacherResponseDTO>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            teacherRepository.findAll().stream().map((teacher)->new TeacherResponseDTO(teacher)).toList());
     }
 
     public ResponseEntity<Object> save(TeacherRequestDTO teacherRequestDTO) {

@@ -2,17 +2,24 @@ package com.phillips.saper.bancoquestoes.controllers;
 
 import static com.phillips.saper.bancoquestoes.configuration.SwaggerConfig.BASIC_AUTH_SECURITY_SCHEME;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.StudentRequestDTO;
+import com.phillips.saper.bancoquestoes.dtos.StudentResponseDTO;
+import com.phillips.saper.bancoquestoes.models.StudentModel;
 import com.phillips.saper.bancoquestoes.services.StudentService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,13 +34,14 @@ public class StudentController {
 
     // Por causa do CLinet e das relações, isso imprime 1000000000000000 linhas, deixar
 
-/*     @GetMapping
-    public ResponseEntity<List<StudentModel>> findAll() {
+    @GetMapping
+    public ResponseEntity<List<StudentResponseDTO>> findAll() {
         return studentService.findAll();
-    } */
+    } 
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Register a new Student")
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Object> save(
         @RequestBody @Valid StudentRequestDTO studentRequestDTO    ){
         return studentService.save(studentRequestDTO);

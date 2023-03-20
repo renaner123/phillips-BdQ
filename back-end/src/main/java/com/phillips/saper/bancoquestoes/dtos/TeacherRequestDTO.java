@@ -49,14 +49,14 @@ public class TeacherRequestDTO {
     @NotBlank(message = "Login é obrigatório")
     String login;
     
-    int idDiscipline;
+    Long idDiscipline;
 
     public TeacherRequestDTO(@CPF @NotBlank(message = "O campo cpf é obrigatório") String cpf,
             @Size(min = 3, max = 10, message = "Nome tem tamanho mínimo de 3 e máximo de 10") @NotBlank(message = "O campo nome é obrigatório") String name,
             @Size(min = 3, max = 10, message = "Password tem tamanho mínimo de 3 e máximo de 10") @NotBlank(message = "Password é obrigatório") String password,
             @NotBlank(message = "confirmação de senha obrigatória") String repeated_password,
             @Email(message = "Informe um email válido") @NotBlank(message = "Login é obrigatório") String login,
-            int idDiscipline) {
+            Long idDiscipline) {
         this.cpf = cpf;
         this.name = name;
         this.password = password;
@@ -88,10 +88,10 @@ public class TeacherRequestDTO {
     public void setName(String nome) {
         this.name = nome;
     }
-    public int getIdDiscipline() {
+    public Long getIdDiscipline() {
         return idDiscipline;
     }
-    public void setIdDiscipline(int idDiscipline) {
+    public void setIdDiscipline(Long idDiscipline) {
         this.idDiscipline = idDiscipline;
     }
 

@@ -26,6 +26,8 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST, "/clients").permitAll()
                 .requestMatchers(HttpMethod.GET, "/clients").permitAll()
+                .requestMatchers(HttpMethod.POST, "/students").permitAll()
+                .requestMatchers(HttpMethod.POST, "/teachers").permitAll()
                 .requestMatchers("/my/**").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                 .requestMatchers("/public/**", "/auth/**").permitAll()

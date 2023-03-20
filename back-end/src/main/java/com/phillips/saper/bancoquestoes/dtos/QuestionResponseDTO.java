@@ -6,6 +6,7 @@ import com.phillips.saper.bancoquestoes.models.QuestionModel;
 
 public class QuestionResponseDTO {
     //TODO Adicionar  @Schema(example = "") nos atributos e validações
+    private Long id;
     private LocalDateTime updateDate;
     private String question;
     private String answers;
@@ -17,8 +18,9 @@ public class QuestionResponseDTO {
     public QuestionResponseDTO() {
     }
     private int idSubject;
-    public QuestionResponseDTO(LocalDateTime updateDate, String question, String answers, int difficulty, Boolean certified,
+    public QuestionResponseDTO(Long id, LocalDateTime updateDate, String question, String answers, int difficulty, Boolean certified,
             int amountAccess, int idDiscipline, int idSubject) {
+        this.id = id;
         this.updateDate = updateDate;
         this.question = question;
         this.answers = answers;
@@ -30,6 +32,7 @@ public class QuestionResponseDTO {
     }
 
     public QuestionResponseDTO(QuestionModel questionModel){
+        this.id = questionModel.getIdQuestion();
         this.updateDate = questionModel.getUpdateDate();
         this.question = questionModel.getQuestion();
         this.answers = questionModel.getAnswers();
@@ -40,6 +43,22 @@ public class QuestionResponseDTO {
         this.idSubject = questionModel.getIdSubject();   
 
     }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(LocalDateTime updateDate) {
+        this.updateDate = updateDate;
+    }
+
     public LocalDateTime getUpdateLocalDateTime() {
         return updateDate;
     }

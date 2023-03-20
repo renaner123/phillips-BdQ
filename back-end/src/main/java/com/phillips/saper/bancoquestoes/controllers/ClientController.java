@@ -39,7 +39,7 @@ public class ClientController {
         return clientService.find(id);
     } */
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping("/{username}")
     public ClientResponseDTO findClient(@PathVariable String username) {
 
@@ -53,7 +53,7 @@ public class ClientController {
         return clientResponse;
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public List<ClientResponseDTO> findAll(
             @RequestParam(name = "name", defaultValue = "") String name){

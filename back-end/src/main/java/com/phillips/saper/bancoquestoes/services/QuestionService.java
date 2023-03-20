@@ -22,10 +22,9 @@ public class QuestionService {
     @Autowired
     QuestionRepository questionRepository;
 
-    public ResponseEntity<List<QuestionModel>> findAll() {
-
-        return ResponseEntity.status(HttpStatus.OK).body(questionRepository.findAll());
-
+    public ResponseEntity<List<QuestionResponseDTO>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            questionRepository.findAll().stream().map((question)->new QuestionResponseDTO(question)).toList());
     }
 
     public ResponseEntity<Object> save(QuestionRequestDTO questionRequestDTO) {
