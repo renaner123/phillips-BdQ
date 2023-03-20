@@ -43,19 +43,19 @@ public class TestController {
 	}
      */
 
-    @Operation(summary = "List all Tests", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get list of all Tests", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public ResponseEntity<List<TestResponseDTO>> findAll(){
         return testService.findAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Registrar a new Test",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody TestRequestDTO testRequestDTO){
         return testService.save(testRequestDTO);
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Update a test",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
         @PathVariable(name = "id") Long id,
@@ -63,7 +63,7 @@ public class TestController {
 
         return testService.update(id, testResquestDTO);
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Delete a Test",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id){
 

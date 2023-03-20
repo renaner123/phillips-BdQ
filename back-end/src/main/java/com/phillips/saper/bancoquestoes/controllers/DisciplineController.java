@@ -32,19 +32,20 @@ public class DisciplineController {
     @Autowired
     DisciplineService disciplineService;
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get a list of all Disciplines", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public ResponseEntity<List<DisciplineModel>> findAll(){
         return disciplineService.findAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Register a Discipline", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody DisciplineRequestDTO disciplineRequestDTO){
         return disciplineService.save(disciplineRequestDTO);
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+
+    @Operation(summary = "Update a Discipline", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})    
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
         @PathVariable(name = "id") Long id,
@@ -52,7 +53,7 @@ public class DisciplineController {
 
         return disciplineService.update(id, disciplineResquestDTO);
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Delete a Discipline", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id){
 

@@ -32,20 +32,20 @@ public class SubjectController {
     @Autowired
     SubjectService subjectService;
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get list of all Subjects", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public ResponseEntity<List<SubjectModel>> findAll(){
         return subjectService.findAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Register a new Subject", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody SubjectRequestDTO subjectRequestDTO){
         return subjectService.save(subjectRequestDTO);
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Update a Subject", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
         @PathVariable(name = "id") Long id,
@@ -54,7 +54,7 @@ public class SubjectController {
         return subjectService.update(id, subjectResquestDTO);
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Delete a Subject",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id){
 

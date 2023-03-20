@@ -35,14 +35,14 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get a list of all Questions", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public ResponseEntity<List<QuestionResponseDTO>> findAll() {
         return questionService.findAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Registrar a Question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(
             @RequestBody QuestionRequestDTO questionRequestDTO) {
@@ -52,7 +52,7 @@ public class QuestionController {
         return questionService.save(questionRequestDTO);
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Update a question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
             @PathVariable(name = "id") Long id,
@@ -60,7 +60,7 @@ public class QuestionController {
         return questionService.update(id, questionRequestDTO);
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Delete a Question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(
             @PathVariable(name = "id") Long id) {

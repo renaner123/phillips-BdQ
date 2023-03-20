@@ -32,8 +32,7 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    // Por causa do CLinet e das relações, isso imprime 1000000000000000 linhas, deixar
-
+    @Operation(summary = "Get list of all Students")
     @GetMapping
     public ResponseEntity<List<StudentResponseDTO>> findAll() {
         return studentService.findAll();
@@ -47,7 +46,7 @@ public class StudentController {
         return studentService.save(studentRequestDTO);
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Update a Student", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
         @PathVariable(name = "id") Long id,
@@ -56,7 +55,7 @@ public class StudentController {
         return studentService.update(id, studentRequestDTO);
     }
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Delete a Student", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(
         @PathVariable(name = "id") Long id

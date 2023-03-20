@@ -30,27 +30,27 @@ public class MaterialController {
 
     @Autowired
     MaterialService materialService;
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get a list of all Materials", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public ResponseEntity<List<MaterialModel>> findAll() {
         return materialService.findAll();
     }
     
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Register a Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(
             @RequestBody MaterialRequestDTO materialRequestDTO) {
         return materialService.save(materialRequestDTO);
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Update a Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
             @PathVariable(name = "id") Long id,
             @RequestBody MaterialRequestDTO materialRequestDTO) {
         return materialService.update(id, materialRequestDTO);
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Delete a Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(
             @PathVariable(name = "id") Long id) {

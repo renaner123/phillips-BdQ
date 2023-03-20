@@ -30,19 +30,21 @@ public class CertifierController {
     @Autowired
     CertifierService certifierService;
 
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get a list of all Certifiers", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public List<CertifierResponseDTO> findAll(){
         List<CertifierModel> list = certifierService.findAll();
 
         return list.stream().map(CertifierResponseDTO::new).toList();
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+
+    @Operation(summary = "Register a new Certifier", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public CertifierRequestDTO save(@RequestBody CertifierRequestDTO certifierRequestDTO){
         return certifierService.save(certifierRequestDTO);
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+
+    @Operation(summary = "Update a Certifier by Id", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
         @PathVariable(name = "id") Long id,
@@ -50,7 +52,8 @@ public class CertifierController {
 
         return certifierService.update(id, certifierResquestDTO);
     }
-    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    
+    @Operation(summary = "Delete a Certifier by Id", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id){
 

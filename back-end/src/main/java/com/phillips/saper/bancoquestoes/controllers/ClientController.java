@@ -40,6 +40,7 @@ public class ClientController {
     } */
 
     //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get Client by username/login")
     @GetMapping("/{username}")
     public ClientResponseDTO findClient(@PathVariable String username) {
 
@@ -54,6 +55,7 @@ public class ClientController {
     }
 
     //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get a list of all Clients")
     @GetMapping
     public List<ClientResponseDTO> findAll(
             @RequestParam(name = "name", defaultValue = "") String name){
@@ -76,7 +78,7 @@ public class ClientController {
 //        return clientService.save(clientRequestDTO);
 //    }
 
-    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
             @PathVariable(name = "id") Long id,
@@ -84,7 +86,7 @@ public class ClientController {
         return clientService.update(id, clientRequestDTO);
     }
     
-    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(
             @PathVariable(name = "id") Long id){
