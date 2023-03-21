@@ -7,6 +7,7 @@ import com.phillips.saper.bancoquestoes.models.MaterialModel;
 
 public class MaterialResponseDTO {
     //TODO Adicionar  @Schema(example = "") nos atributos e validações
+    Long id;
     String fileName;
     LocalDateTime uploadDate;
     Long idClient;
@@ -17,6 +18,7 @@ public class MaterialResponseDTO {
     }
 
     public MaterialResponseDTO(MaterialModel materialModel) {
+        id = materialModel.getIdMaterial();
         fileName = materialModel.getFileName();
         uploadDate = materialModel.getUploadDate();
         idClient = materialModel.getIdClient();
@@ -53,6 +55,14 @@ public class MaterialResponseDTO {
 
     public void setDocType(String docType) {
         this.docType = docType;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

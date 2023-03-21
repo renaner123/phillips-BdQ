@@ -37,7 +37,7 @@ public class MaterialController {
     MaterialService materialService;
 
     // TODO ver como vai jogar na tela a lista de arquivos
-    @Operation(summary = "Get a list of all Materials", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(summary = "Get a list of all Materials", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping()
     public ResponseEntity<List<MaterialResponseDTO>> findAll() {
         return materialService.findAll();
@@ -66,7 +66,7 @@ public class MaterialController {
                 return materialService.delete(id);
     }
 
-    @Operation(summary = "Upload a PDF file", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(summary = "Upload a PDF file", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/uploadFiles")
 	public void uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,
@@ -76,7 +76,7 @@ public class MaterialController {
 		}		
 	}
 
-    @Operation(summary = "Download a PDF file", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    //@Operation(summary = "Download a PDF file", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
 	@GetMapping("/downloadFile/{fileId}")
 	public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Long fileId){
 		MaterialModel doc = materialService.getFile(fileId).get();
