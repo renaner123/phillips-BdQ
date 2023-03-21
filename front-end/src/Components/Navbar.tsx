@@ -6,12 +6,14 @@ import Navbar from 'react-bootstrap/Navbar';
 export default function NavbarComponent() {
     return (
         <>
-
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <div className="title-navbar-login">
-                        Faça o seu Login
-                    </div>
+                <nav aria-label="Page navigation example">
+                    <ul className="pagination justify-content-center">
+                      <li className="page-item"><a className="page-link pk" href="/">Login</a></li>
+                      <li className="page-item"><a className="page-link pk" href="/download">Download</a></li>
+                    </ul>
+                  </nav>
                 </Container>
             </Navbar>
         </>
