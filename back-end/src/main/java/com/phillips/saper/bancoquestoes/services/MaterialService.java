@@ -1,5 +1,7 @@
 package com.phillips.saper.bancoquestoes.services;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -98,8 +100,8 @@ public class MaterialService {
         try {
             MaterialModel doc = new MaterialModel(docname,file.getContentType(),file.getBytes());
             Long clientId = clientRepository.findByLogin(username).get().getId();
-            //TODO depois alterar pra pegar o ID do professor. Buscar na tebela de clientes.
-            doc.setIdTeacher(clientId);
+            doc.setIdClient(clientId);
+            doc.setUploadDate(LocalDateTime.now(ZoneId.of("UTC")));
             return materialRepository.save(doc);
         }
         catch(Exception e) {

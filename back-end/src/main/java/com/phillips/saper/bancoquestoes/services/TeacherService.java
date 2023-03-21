@@ -110,4 +110,9 @@ public class TeacherService {
         }
 
      }    
+
+     public Optional<TeacherModel> findByName(String name) {
+        Optional<TeacherModel> teacher = teacherRepository.findByName(name);        
+        return teacher;
+    }
 }

@@ -8,4 +8,6 @@ import com.phillips.saper.bancoquestoes.models.TeacherModel;
 
 public interface TeacherRepository extends JpaRepository<TeacherModel, Long> {
 
+    Optional<TeacherModel> findByName(String username);
+
 }

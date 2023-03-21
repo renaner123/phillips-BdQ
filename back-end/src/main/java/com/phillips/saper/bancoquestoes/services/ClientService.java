@@ -57,6 +57,11 @@ public class ClientService {
         return client;
     }
 
+    public Optional<ClientModel> findById(Long id) {
+        Optional<ClientModel> client = clientRepository.findById(id);        
+        return client;
+    }
+
     @Transactional
     public ResponseEntity<Object> update(Long id, ClientRequestDTO clientRequestDTO) {
         // Achar
@@ -76,8 +81,6 @@ public class ClientService {
         ClientResponseDTO clientResponseDTO = new ClientResponseDTO(clientRepository.save(client));
         return ResponseEntity.status(HttpStatus.CREATED).body(clientResponseDTO);
     }
-
-    
 
     @Transactional
     public ResponseEntity<Object> delete(Long id) {

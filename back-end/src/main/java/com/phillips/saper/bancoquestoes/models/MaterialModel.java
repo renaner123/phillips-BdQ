@@ -1,5 +1,6 @@
 package com.phillips.saper.bancoquestoes.models;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,8 +23,8 @@ public class MaterialModel {
 
     private String fileName;
     private String content;
-    private Date uploadDate;
-    private Long idTeacher;
+    private LocalDateTime uploadDate;
+    private Long idClient;
     private String docType;
 
     @Lob
@@ -36,11 +37,11 @@ public class MaterialModel {
             inverseJoinColumns = @JoinColumn(name = "id_student"))
     Set<StudentModel> students;
 
-    public MaterialModel(String fileName, String content, Date uploadDate, Long idTeacher, String docType, byte[] data) {
+    public MaterialModel(String fileName, String content, LocalDateTime uploadDate, Long idClient, String docType, byte[] data) {
         this.fileName = fileName;
         this.content = content;
         this.uploadDate = uploadDate;
-        this.idTeacher = idTeacher;
+        this.idClient = idClient;
         this.docType = docType;
         this.data = data;
     }
@@ -90,20 +91,20 @@ public class MaterialModel {
         this.content = content;
     }
 
-    public Date getUploadDate() {
+    public LocalDateTime getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(Date uploadDate) {
+    public void setUploadDate(LocalDateTime uploadDate) {
         this.uploadDate = uploadDate;
     }
 
-    public Long getIdTeacher() {
-        return idTeacher;
+    public Long getIdClient() {
+        return idClient;
     }
 
-    public void setIdTeacher(Long idTeacher) {
-        this.idTeacher = idTeacher;
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
     }
 
 }

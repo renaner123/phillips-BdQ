@@ -40,21 +40,6 @@ public class ClientController {
     } */
 
     //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
-    @Operation(summary = "Get Client by username/login")
-    @GetMapping("/{username}")
-    public ClientResponseDTO findClient(@PathVariable String username) {
-
-        Optional<ClientModel> client = clientService.findByLogin(username);
-        ClientResponseDTO clientResponse = new ClientResponseDTO();
-        clientResponse.setLogin(client.get().getLogin());
-        clientResponse.setName(client.get().getName());
-        clientResponse.setRole(client.get().getRoles());
-        clientResponse.setid_client(client.get().getId());
-
-        return clientResponse;
-    }
-
-    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @Operation(summary = "Get a list of all Clients")
     @GetMapping
     public List<ClientResponseDTO> findAll(
@@ -91,5 +76,20 @@ public class ClientController {
     public ResponseEntity<Object> delete(
             @PathVariable(name = "id") Long id){
         return clientService.delete(id);
+    }
+
+    //@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get Client by Id")
+    @GetMapping("/{id}")
+    public ClientResponseDTO findClient(@PathVariable Long id) {
+
+        Optional<ClientModel> client = clientService.findById(id);
+        ClientResponseDTO clientResponse = new ClientResponseDTO();
+        clientResponse.setLogin(client.get().getLogin());
+        clientResponse.setName(client.get().getName());
+        clientResponse.setRole(client.get().getRoles());
+        clientResponse.setid_client(client.get().getId());
+
+        return clientResponse;
     }
 }

@@ -1,15 +1,15 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import com.phillips.saper.bancoquestoes.models.MaterialModel;
 
 public class MaterialResponseDTO {
     //TODO Adicionar  @Schema(example = "") nos atributos e validações
     String fileName;
-    String content;
-    Date uploadDate;
-    Long idTeacher;
+    LocalDateTime uploadDate;
+    Long idClient;
     String docType;
     
 
@@ -18,9 +18,8 @@ public class MaterialResponseDTO {
 
     public MaterialResponseDTO(MaterialModel materialModel) {
         fileName = materialModel.getFileName();
-        content = materialModel.getContent();
-        uploadDate = (Date) materialModel.getUploadDate();
-        idTeacher = materialModel.getIdTeacher();
+        uploadDate = materialModel.getUploadDate();
+        idClient = materialModel.getIdClient();
         docType = materialModel.getDocType();
     }
 
@@ -32,28 +31,20 @@ public class MaterialResponseDTO {
         this.fileName = fileName;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getUploadDate() {
+    public LocalDateTime getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(Date uploadDate) {
+    public void setUploadDate(LocalDateTime uploadDate) {
         this.uploadDate = uploadDate;
     }
 
-    public Long getIdTeacher() {
-        return idTeacher;
+    public Long getIdClient() {
+        return idClient;
     }
 
-    public void setIdTeacher(Long idTeacher) {
-        this.idTeacher = idTeacher;
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
     }
 
     public String getDocType() {

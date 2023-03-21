@@ -12,6 +12,8 @@ public interface ClientRepository extends JpaRepository<ClientModel, Long> {
 
     Optional<ClientModel> findByLogin(String username);
 
+    Optional<ClientModel> findById(Long id);
+
     boolean existsByLogin(String login);
 
 }
