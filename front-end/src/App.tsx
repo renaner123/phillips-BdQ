@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './StyleSheet/index.scss';
 import NavbarComponent from './Components/Navbar';
 import Home from './Pages/Home';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import FileList from './Pages/FileList';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './StyleSheet/index.scss';
 
 
 
