@@ -16,12 +16,18 @@ function FileList() {
   }, []);
 
   const downloadFile = (id: any) => {
+    const username = 'renan';
+    const password = '123';
+    const base64Credentials = btoa(`${username}:${password}`);
+    
     axios
       .get(`http://localhost:8080/materials/downloadFile/${id}`, {
         responseType: "blob",
-        headers:{
-          
-        }
+        headers: {
+          Authorization: `Basic ${base64Credentials}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
       })
       .then((response) => {
         const url = window.URL.createObjectURL(new Blob([response.data]));
