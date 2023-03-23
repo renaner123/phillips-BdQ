@@ -19,7 +19,7 @@ function Login() {
         password: password,
       }).then((res) => {
         if (res.status === 200) {
-          navigate('/register');
+          navigate('/download');
         }
         else {
           alert("Tratar erro");
@@ -67,7 +67,7 @@ function Login() {
           </div>
           <button type="submit" className="btn btn-primary" onClick={login}>LOGIN</button>
 
-          <h2 className="criesuaconta-login pt-3"><a href="#">Crie sua conta</a></h2>
+          <h2 className="criesuaconta-login pt-3"><a href="/register">Crie sua conta</a></h2>
         </div>
       </Row>
     </Container>
