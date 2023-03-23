@@ -11,7 +11,7 @@ function Login() {
   const navigate = useNavigate();
 
 
-  async function login(event) {
+  async function login(event: { preventDefault: () => void; }) {
     event.preventDefault();
     try {
       await axios.post("http://127.0.0.1:8080/auth/authenticate", {
@@ -19,7 +19,7 @@ function Login() {
         password: password,
       }).then((res) => {
         if (res.status === 200) {
-          navigate('/download');
+          navigate('/register');
         }
         else {
           alert("Tratar erro");

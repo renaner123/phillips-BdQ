@@ -4,11 +4,11 @@ import { Container, Row } from "react-bootstrap";
 
 function Register() {
 
-  const [nome, setNome] = useState("");
+  const [name, setNome] = useState("");
   const [cpf, setCpf] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  //const [password2, setPassword2] = useState("");
+  const [password2, setPassword2] = useState("");
   const [jobtype, setJobType] = useState("");
 
   /*     Não mexi nesse, usar como base para fazer o cadastro */
@@ -22,15 +22,33 @@ function Register() {
   
   */
   async function save(event: any) {
+
+    const data = {
+      name: name,
+      cpf: cpf,
+      login: login,
+      password: password,
+      repeated_password: password2
+    };
+    
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${btoa(`${'renan'}:${'123'}`)}`,
+        Accept: 'application/json',
+      }
+    };
+
     event.preventDefault();
     try {
-      await axios.post("http://localhost:8080/student", {
-        nome: nome,
-        cpf: cpf,
-        login: login,
-        password: password,
+      axios.post('http://localhost:8080/students', data, config)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      alert("Cadastro efetuado com sucesso!");
+
 
     } catch (err) {
       alert(err);
@@ -49,7 +67,7 @@ function Register() {
                 Nome
               </label>
               {/* VERIFICAR AQUI OS sets,onchanges entre outros   */}
-              <input type="text" id="nome" className="form-control" placeholder="Digite seu e-mail" name="nome" value={nome} 
+              <input type="text" id="name" className="form-control" placeholder="Digite seu e-mail" name="name" value={name} 
               onChange={(event) =>{
                 setNome(event.target.value);
               }}/>
@@ -92,7 +110,10 @@ function Register() {
             <div className="mb-3">
               {/* REVISAR*/}
               <label htmlFor="password2" className="form-label">Repita a Senha</label>
-              <input type="password" className="form-control" placeholder="Informe novamente a sua senha - revisar" />
+              <input type="password2" className="form-control" placeholder="Informe novamente a sua senha - revisar" value={password2}
+              onChange={ (e) =>{
+                setPassword2(e.target.value);
+              }}/>
             </div>
             {/* VERIFICAR AQUI OS sets,onchanges entre outros   */}
             <div className="form-floating">
