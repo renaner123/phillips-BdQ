@@ -13,6 +13,7 @@
   - [Conexão com o banco de dados](#conexão-com-o-banco-de-dados)
   - [Compilar e executar o projeto](#compilar-e-executar-o-projeto)
   - [Instruções para visualizar, filtrar, selecionar e gerar provas](#instruções-para-visualizar-filtrar-selecionar-e-gerar-provas)
+- [Roadmap/Backlog/TODO LIST do projeto](#roadmapbacklogtodo-list-do-projeto)
 - [Documentação](#documentação)
 - [Contatos](#contatos)
 - [Licença](#licença)
@@ -129,6 +130,9 @@ spring.datasource.password=yourpassword
 
 ### Instruções para visualizar, filtrar, selecionar e gerar provas 
 
+## Roadmap/Backlog/TODO LIST do projeto
+
+Criamos um quadro no Trello, para controlar e planejar nossas demandas para projetarmos e prospectarmos de maneira mais eficiente nossas atividades. A nossa *"metodologia Agil"/Kanban/Scrum* está disponível [aqui](https://trello.com/b/PoC6jXiZ/ifce-banco-de-questões-todo)! 
 
 ## Documentação
 
