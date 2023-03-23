@@ -14,7 +14,6 @@
   - [Compilar e executar o projeto](#compilar-e-executar-o-projeto)
   - [Instruções para visualizar, filtrar, selecionar e gerar provas](#instruções-para-visualizar-filtrar-selecionar-e-gerar-provas)
 - [Roadmap/Backlog/TODO LIST do projeto](#roadmapbacklogtodo-list-do-projeto)
-- [Documentação](#documentação)
 - [Contatos](#contatos)
 - [Licença](#licença)
 
@@ -88,6 +87,11 @@ No diretório `telas`, é possível visualizar todas as telas em um *único PDF*
 
 ## Pré-requisito
 
+* npm (react)
+* Java 17+ (mvn)
+* Oracle Database
+* Docker (Opcional)
+
 ## Instruções para compilar e executar o projeto
 
 ### Conexão com o banco de dados
@@ -127,16 +131,45 @@ spring.datasource.password=yourpassword
 
 ### Compilar e executar o projeto
 
+1. Clonar o repositório com o comanbo abaixo:
+
+```bash
+  git clone https://github.com/giovannicurcuruto/phillips-BdQ.git
+```
+
+2. Para iniciar o back-end é necessário os seguintes passos:
+
+```bash
+  cd back-end
+  mvn clean install
+  java -jar target/banco-questoes-0.0.1-SNAPSHOT.jar
+```
+
+
+
+1. Para iniciar o front-end, em um novo terminal, é necessário os seguintes passos:
+
+```bash
+  cd front-end
+  npm install
+  npm start
+```
+
+4. Após a instalação/execução, as seguintes URLs estarão disponíveis para serem acessadas.
+
+| Application | URL                                   | Credentials                                         |
+| ----------- | ------------------------------------- | --------------------------------------------------- |
+| back-end    | http://localhost:8080/swagger-ui.html | `renan/123`, `giovani/123` ou criar um novo         |
+| front-end   | http://localhost:3000                 | `renan/123`, `giovani/123` ou criar um novo         |
+
+
+> O projeto utiliza a biblioteca [springdoc-openapi](https://springdoc.org/v2/) para geração da documentação da API.
 
 ### Instruções para visualizar, filtrar, selecionar e gerar provas 
 
 ## Roadmap/Backlog/TODO LIST do projeto
 
 Criamos um quadro no Trello, para controlar e planejar nossas demandas para projetarmos e prospectarmos de maneira mais eficiente nossas atividades. A nossa *"metodologia Agil"/Kanban/Scrum* está disponível [aqui](https://trello.com/b/PoC6jXiZ/ifce-banco-de-questões-todo)! 
-
-## Documentação
-
-O projeto utiliza a biblioteca [springdoc-openapi](https://springdoc.org/v2/) para geração da documentação da API, que pode ser acessada em ```http://127.0.0.1:8080/swagger-ui/index.html#/``` com a aplicação em execução.
 
 
 ## Contatos
