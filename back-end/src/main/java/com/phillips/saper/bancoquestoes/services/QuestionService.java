@@ -89,5 +89,8 @@ public class QuestionService {
 
         }
 
-     }    
+     }   
+     public long countQuestions() {
+        return questionRepository.count();
+    }  
 }

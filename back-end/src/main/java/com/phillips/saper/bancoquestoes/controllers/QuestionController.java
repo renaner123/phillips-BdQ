@@ -66,4 +66,9 @@ public class QuestionController {
             @PathVariable(name = "id") Long id) {
                 return questionService.delete(id);
     }
+
+    @Operation(summary = "Return the number of questions stored in the database")
+    @GetMapping("/count")
+    public long count(){
+        return questionService.countQuestions();}
 }
