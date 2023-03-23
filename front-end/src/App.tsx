@@ -8,19 +8,26 @@ import FileList from './pages/FileList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styleSheet/index.scss';
 import Home from './pages/Home';
+import QuestionsCount from "./services/QuestionsCount";
+import { useState } from 'react';
 
 // Inserir no banco de dados um recurso para retornar a quantidade de questões que o banco de dados possui para mostrar aqui
 
-const numQuestions = 100; 
+
 
 function App() {
+  const [data, setData] = useState<any>(null);
   return (
     <div>
+      <QuestionsCount setData={setData} />
       <NavbarComponent/>
+      <script>
+      console.log(data)
+      </script>
       <BrowserRouter>
             <Routes>            
               <Route path="/register" element= { <Register/>} />
-              <Route path="/home" element= { <Home numQuestions={numQuestions}/>} />
+              <Route path="/home" element= { <Home numQuestions={data}/>} />
               <Route path="/login" element= { <Login/>} />
               <Route path="/download" element= { <FileList/>} />
             </Routes>
