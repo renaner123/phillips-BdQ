@@ -75,7 +75,7 @@ public class MaterialController {
 
     @Operation(summary = "Upload a PDF file", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/uploadFiles")
+    @PostMapping("/upload-files")
 	public void uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,
                                     @AuthenticationPrincipal UserDetails userDetails) {
 		for (MultipartFile file: files) {
@@ -84,7 +84,7 @@ public class MaterialController {
 	}
 
     @Operation(summary = "Download a PDF file", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
-	@GetMapping("/downloadFile/{fileId}")
+	@GetMapping("/download-file/{fileId}")
 	public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Long fileId){
 		MaterialModel doc = materialService.getFile(fileId).get();
 		return ResponseEntity.ok()

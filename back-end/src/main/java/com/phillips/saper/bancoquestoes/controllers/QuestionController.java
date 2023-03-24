@@ -49,7 +49,7 @@ public class QuestionController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Registrar a Question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Register a new Question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(
             @RequestBody QuestionRequestDTO questionRequestDTO) {
