@@ -92,5 +92,10 @@ public class QuestionService {
      }   
      public long countQuestions() {
         return questionRepository.count();
-    }  
+    }
+
+	public ResponseEntity<List<QuestionResponseDTO>> findByCertifiedTrue() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            questionRepository.findByCertifiedTrue().stream().map((question)->new QuestionResponseDTO(question)).toList());
+	}  
 }

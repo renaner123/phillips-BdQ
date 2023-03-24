@@ -41,6 +41,12 @@ public class QuestionController {
         return questionService.findAll();
     }
 
+    @Operation(summary = "Get a list of all Questions certifieds", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @GetMapping("/certifieds")
+    public ResponseEntity<List<QuestionResponseDTO>> findAllCertified() {
+        return questionService.findByCertifiedTrue();
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Registrar a Question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
@@ -71,4 +77,6 @@ public class QuestionController {
     @GetMapping("/count")
     public long count(){
         return questionService.countQuestions();}
+
+        
 }
