@@ -92,5 +92,33 @@ public class QuestionService {
      }   
      public long countQuestions() {
         return questionRepository.count();
-    }  
+    }
+
+	public ResponseEntity<List<QuestionResponseDTO>> findByCertifiedTrue() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            questionRepository.findByCertifiedTrue().stream().map((question)->new QuestionResponseDTO(question)).toList());
+	}
+
+    @Transactional
+    public ResponseEntity<QuestionResponseDTO> updateTag(Long id, String tag){
+
+        Optional<QuestionModel> questionOptional = questionRepository.findById(id);
+
+        if(questionOptional.isPresent()){
+            QuestionModel question = questionOptional.get();
+
+            question.setTag(tag);
+            
+            QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO(questionRepository.save(question));
+            
+            return ResponseEntity.ok().body(questionResponseDTO);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+     }
+
+	public ResponseEntity<List<QuestionResponseDTO>> findByTag(String tag) {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            questionRepository.findByTag(tag).stream().map((question)->new QuestionResponseDTO(question)).toList());
+	}
 }

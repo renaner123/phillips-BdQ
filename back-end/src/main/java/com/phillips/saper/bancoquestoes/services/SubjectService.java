@@ -76,5 +76,10 @@ public class SubjectService {
 
         }
 
-     }    
+     }
+
+    public ResponseEntity<List<SubjectResponseDTO>> findTop5ByOrderByAmountAccessDesc() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            subjectRepository.findTop5ByOrderByAmountAccessDesc().stream().map((subject)->new SubjectResponseDTO(subject)).toList());
+	}
 }

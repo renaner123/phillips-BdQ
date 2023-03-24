@@ -98,7 +98,7 @@ public class MaterialService {
     public MaterialModel saveFile(MultipartFile file, String username) {
         String docname = file.getOriginalFilename();
         try {
-            MaterialModel doc = new MaterialModel(docname,file.getContentType(),file.getBytes());
+            MaterialModel doc = new MaterialModel(docname,file.getContentType(),file.getBytes(),0);
             Long clientId = clientRepository.findByLogin(username).get().getId();
             doc.setIdClient(clientId);
             doc.setUploadDate(LocalDateTime.now(ZoneId.of("UTC")));
@@ -115,6 +115,39 @@ public class MaterialService {
     public List<MaterialModel> getFiles(){
         return materialRepository.findAll();
     }
+
+	public ResponseEntity<List<MaterialResponseDTO>> findTop5ByOrderByAmountAccessDesc() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            materialRepository.findTop5ByOrderByAmountAccessDesc().stream().map((material)->new MaterialResponseDTO(material)).toList());
+	}
+
+    public long countMaterials() {
+        return materialRepository.count();
+    }
+
+    @Transactional
+    public ResponseEntity<MaterialResponseDTO> updateTag(Long id, String tag){
+
+        Optional<MaterialModel> materialOptinal = materialRepository.findById(id);
+
+        if(materialOptinal.isPresent()){
+            MaterialModel material = materialOptinal.get();
+
+            material.setTag(tag);
+            
+            MaterialResponseDTO materialResponseDTO = new MaterialResponseDTO(materialRepository.save(material));
+            
+            return ResponseEntity.ok().body(materialResponseDTO);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+     }
+
+     public ResponseEntity<List<MaterialResponseDTO>> findByTag(String tag) {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            materialRepository.findByTag(tag).stream().map((material)->new MaterialResponseDTO(material)).toList());
+	}
+
 
 
 

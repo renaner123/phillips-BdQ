@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.SubjectRequestDTO;
+import com.phillips.saper.bancoquestoes.dtos.SubjectResponseDTO;
 import com.phillips.saper.bancoquestoes.models.SubjectModel;
 import com.phillips.saper.bancoquestoes.services.SubjectService;
 
@@ -36,6 +37,12 @@ public class SubjectController {
     @GetMapping
     public ResponseEntity<List<SubjectModel>> findAll(){
         return subjectService.findAll();
+    }
+
+    @Operation(summary = "Return the top five Subject access", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @GetMapping("/amount-access")
+    public ResponseEntity<List<SubjectResponseDTO>> FiveAmountAccess() {
+                return subjectService.findTop5ByOrderByAmountAccessDesc();
     }
 
     @ResponseStatus(HttpStatus.CREATED)

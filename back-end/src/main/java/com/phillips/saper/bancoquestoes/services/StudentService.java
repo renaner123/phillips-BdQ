@@ -9,21 +9,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import java.util.Set;
 
+import com.phillips.saper.bancoquestoes.Embeddables.StudentTestPK;
 import com.phillips.saper.bancoquestoes.dtos.ClientRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentResponseDTO;
+import com.phillips.saper.bancoquestoes.dtos.StudentTestResponseDTO;
 import com.phillips.saper.bancoquestoes.enums.RoleNames;
 import com.phillips.saper.bancoquestoes.exceptions.ConflictStoreException;
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.models.RoleModel;
 import com.phillips.saper.bancoquestoes.models.StudentModel;
+import com.phillips.saper.bancoquestoes.models.StudentTest;
+import com.phillips.saper.bancoquestoes.models.TestModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
 import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
 import com.phillips.saper.bancoquestoes.repositories.StudentRepository;
+import com.phillips.saper.bancoquestoes.repositories.TestRepository;
 
 import jakarta.transaction.Transactional;
-
 
 @Service
 public class StudentService {
@@ -36,6 +41,9 @@ public class StudentService {
 
     @Autowired
     ClientRepository clientRepository;
+
+    @Autowired
+    TestRepository testRepository;
 
 
     public ResponseEntity<List<StudentResponseDTO>> findAll() {
@@ -70,22 +78,6 @@ public class StudentService {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new StudentResponseDTO(studentRepository.save(student)));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public ResponseEntity<Object> findById(Long id) {
         Optional<StudentModel> studentOptional = studentRepository.findById(id);
@@ -134,6 +126,20 @@ public class StudentService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+	public ResponseEntity<List<StudentTestResponseDTO>> findResultById(Long id) {
+
+        Optional<StudentModel> studentOptional = studentRepository.findById(id);
+        Set<StudentTest> studentTests =  studentOptional.get().getStudentTests();
+        List<StudentTestResponseDTO> listStudentsTest = new ArrayList<>();
+
+        for (StudentTest studentTest : studentTests) {
+            listStudentsTest.add(new StudentTestResponseDTO(studentTest.getId().getIdTest(), studentTest.getResult(), 
+            testRepository.findById(studentTest.getId().getIdTest()).get().getDateTime()));           
+        }
+
+        return ResponseEntity.ok().body(listStudentsTest);
     }
 
 }

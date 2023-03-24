@@ -50,7 +50,7 @@ public class TestController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Registrar a new Test",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Register a new Test",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody TestRequestDTO testRequestDTO){
         return testService.save(testRequestDTO);

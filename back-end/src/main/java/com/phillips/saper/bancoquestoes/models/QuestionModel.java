@@ -28,6 +28,7 @@ public class QuestionModel {
     private int amountAccess;
     private int idDiscipline;
     private int idSubject;
+    private String tag;
 
     @ManyToMany(
         targetEntity = TestModel.class,

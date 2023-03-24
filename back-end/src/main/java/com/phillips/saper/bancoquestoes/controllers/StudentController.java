@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.StudentRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentResponseDTO;
-import com.phillips.saper.bancoquestoes.models.StudentModel;
+import com.phillips.saper.bancoquestoes.dtos.StudentTestResponseDTO;
 import com.phillips.saper.bancoquestoes.services.StudentService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,6 +37,14 @@ public class StudentController {
     public ResponseEntity<List<StudentResponseDTO>> findAll() {
         return studentService.findAll();
     } 
+
+    @Operation(summary = "Get student''s performance on Tests", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @GetMapping("performance/{id}")
+    public ResponseEntity<List<StudentTestResponseDTO>> studentPerformance(
+        @PathVariable(name = "id") Long id
+    ){
+        return studentService.findResultById(id);
+    }
 
     @Operation(summary = "Register a new Student")
     @PostMapping

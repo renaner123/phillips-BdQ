@@ -22,7 +22,7 @@ function FileList() {
     const base64Credentials = btoa(`${username}:${password}`);
     
     axios
-      .get(`http://localhost:8080/materials/downloadFile/${id}`, {
+      .get(`http://localhost:8080/materials/download-file/${id}`, {
         responseType: "blob",
         headers: {
           Authorization: `Basic ${base64Credentials}`,
