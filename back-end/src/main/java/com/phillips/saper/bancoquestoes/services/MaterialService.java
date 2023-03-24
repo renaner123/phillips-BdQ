@@ -116,6 +116,12 @@ public class MaterialService {
         return materialRepository.findAll();
     }
 
+	public ResponseEntity<List<MaterialResponseDTO>> findTop5ByOrderByAmountAccessDesc() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            materialRepository.findTop5ByOrderByAmountAccessDesc().stream().map((material)->new MaterialResponseDTO(material)).toList());
+	}
+
+
 
 
 

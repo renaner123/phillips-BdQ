@@ -42,22 +42,13 @@ public class MaterialController {
     public ResponseEntity<List<MaterialResponseDTO>> findAll() {
         return materialService.findAll();
     } 
-    
-    // @ResponseStatus(HttpStatus.CREATED)
-    // @Operation(summary = "Register a Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
-    // @PostMapping
-    // public ResponseEntity<Object> save(
-    //         @RequestBody MaterialRequestDTO materialRequestDTO) {
-    //     return materialService.save(materialRequestDTO);
-    // }
 
-    // @Operation(summary = "Update a Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
-    // @PutMapping("/{id}")
-    // public ResponseEntity<Object> update(
-    //         @PathVariable(name = "id") Long id,
-    //         @RequestBody MaterialRequestDTO materialRequestDTO) {
-    //     return materialService.update(id, materialRequestDTO);
-    // }
+    @Operation(summary = "Return the top five Materials access", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @GetMapping("/amount-access")
+    public ResponseEntity<List<MaterialResponseDTO>> FiveAmountAccess() {
+                return materialService.findTop5ByOrderByAmountAccessDesc();
+    }
+
 
     @Operation(summary = "Delete a Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
