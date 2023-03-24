@@ -116,4 +116,9 @@ public class QuestionService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
      }
+
+	public ResponseEntity<List<QuestionResponseDTO>> findByTag(String tag) {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            questionRepository.findByTag(tag).stream().map((question)->new QuestionResponseDTO(question)).toList());
+	}
 }
