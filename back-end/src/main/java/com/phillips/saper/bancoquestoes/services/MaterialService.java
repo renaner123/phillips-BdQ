@@ -98,7 +98,7 @@ public class MaterialService {
     public MaterialModel saveFile(MultipartFile file, String username) {
         String docname = file.getOriginalFilename();
         try {
-            MaterialModel doc = new MaterialModel(docname,file.getContentType(),file.getBytes());
+            MaterialModel doc = new MaterialModel(docname,file.getContentType(),file.getBytes(),0);
             Long clientId = clientRepository.findByLogin(username).get().getId();
             doc.setIdClient(clientId);
             doc.setUploadDate(LocalDateTime.now(ZoneId.of("UTC")));

@@ -26,6 +26,7 @@ public class MaterialModel {
     private LocalDateTime uploadDate;
     private Long idClient;
     private String docType;
+    private int amountAccess;
 
     @Lob
 	private byte[] data;
@@ -37,13 +38,14 @@ public class MaterialModel {
             inverseJoinColumns = @JoinColumn(name = "id_student"))
     Set<StudentModel> students;
 
-    public MaterialModel(String fileName, String content, LocalDateTime uploadDate, Long idClient, String docType, byte[] data) {
+    public MaterialModel(String fileName, String content, LocalDateTime uploadDate, Long idClient, String docType, byte[] data, int amountAccess) {
         this.fileName = fileName;
         this.content = content;
         this.uploadDate = uploadDate;
         this.idClient = idClient;
         this.docType = docType;
         this.data = data;
+        this.amountAccess = amountAccess;
     }
 
     public String getDocType() {
@@ -61,13 +63,34 @@ public class MaterialModel {
     public MaterialModel() {
     }
 
-    public MaterialModel(String docname, String contentType, byte[] bytes) {
+    public MaterialModel(String docname, String contentType, byte[] bytes, int amountAccess) {
         this.fileName = docname;
         this.docType = contentType;
         this.data = bytes;
+        this.amountAccess = amountAccess;
     }
 
-    public Long getIdMaterial() {
+    public void setDocType(String docType) {
+		this.docType = docType;
+	}
+
+	public int getAmountAccess() {
+		return amountAccess;
+	}
+
+	public void setAmountAccess(int amountAccess) {
+		this.amountAccess = amountAccess;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
+
+	public void setStudents(Set<StudentModel> students) {
+		this.students = students;
+	}
+
+	public Long getIdMaterial() {
         return idMaterial;
     }
 

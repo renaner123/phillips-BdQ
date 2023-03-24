@@ -12,6 +12,7 @@ public class MaterialResponseDTO {
     LocalDateTime uploadDate;
     Long idClient;
     String docType;
+    int amountAccess;
     
 
     public MaterialResponseDTO() {
@@ -23,6 +24,7 @@ public class MaterialResponseDTO {
         uploadDate = materialModel.getUploadDate();
         idClient = materialModel.getIdClient();
         docType = materialModel.getDocType();
+        amountAccess = materialModel.getAmountAccess();
     }
 
     public String getFileName() {
@@ -64,5 +66,13 @@ public class MaterialResponseDTO {
     public void setId(Long id) {
         this.id = id;
     }
+
+	public int getAmountAccess() {
+		return amountAccess;
+	}
+
+	public void setAmountAccess(int amountAccess) {
+		this.amountAccess = amountAccess;
+	}
 
 }
