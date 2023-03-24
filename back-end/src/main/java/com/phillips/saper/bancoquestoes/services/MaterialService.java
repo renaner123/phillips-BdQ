@@ -121,6 +121,10 @@ public class MaterialService {
             materialRepository.findTop5ByOrderByAmountAccessDesc().stream().map((material)->new MaterialResponseDTO(material)).toList());
 	}
 
+    public long countMaterials() {
+        return materialRepository.count();
+    }  
+
 
 
 
