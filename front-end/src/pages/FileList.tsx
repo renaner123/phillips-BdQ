@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Outlet } from "react-router-dom";
 
 function FileList() {
   const [files, setFiles] = useState<any[]>([]);
@@ -77,6 +78,7 @@ function FileList() {
           ))}
         </tbody>
       </table>
+      <Outlet/>
     </div>
   );
 }

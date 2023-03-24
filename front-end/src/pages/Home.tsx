@@ -1,5 +1,6 @@
 import React from "react";
-import "../styleSheet/home.css";
+import { Outlet } from "react-router-dom";
+//import "../styleSheet/home.css";
 
 interface Props {
   numQuestions: number;
@@ -16,6 +17,7 @@ const Home: React.FC<Props> = ({ numQuestions }) => {
       <p className="home-text">
         There are {numQuestions} Materials in the database.
       </p>
+      <Outlet/>
     </div>
   );
 };

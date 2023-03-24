@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Container, Row } from "react-bootstrap";
 import axios from "axios";
 
@@ -70,7 +70,9 @@ function Login() {
           <h2 className="criesuaconta-login pt-3"><a href="/register">Crie sua conta</a></h2>
         </div>
       </Row>
+      <Outlet/>
     </Container>
+    
   );
 
 

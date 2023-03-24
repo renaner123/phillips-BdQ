@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
 
 function Register() {
 
@@ -149,8 +150,9 @@ function Register() {
 
           </div>
         </Row>
+        
       </Container>
-
+      <Outlet/>
     </>
 
 
