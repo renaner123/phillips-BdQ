@@ -123,7 +123,30 @@ public class MaterialService {
 
     public long countMaterials() {
         return materialRepository.count();
-    }  
+    }
+
+    @Transactional
+    public ResponseEntity<MaterialResponseDTO> updateTag(Long id, String tag){
+
+        Optional<MaterialModel> materialOptinal = materialRepository.findById(id);
+
+        if(materialOptinal.isPresent()){
+            MaterialModel material = materialOptinal.get();
+
+            material.setTag(tag);
+            
+            MaterialResponseDTO materialResponseDTO = new MaterialResponseDTO(materialRepository.save(material));
+            
+            return ResponseEntity.ok().body(materialResponseDTO);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+     }
+
+     public ResponseEntity<List<MaterialResponseDTO>> findByTag(String tag) {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            materialRepository.findByTag(tag).stream().map((material)->new MaterialResponseDTO(material)).toList());
+	}
 
 
 

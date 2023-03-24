@@ -13,6 +13,7 @@ public class MaterialResponseDTO {
     Long idClient;
     String docType;
     int amountAccess;
+    String tag;
     
 
     public MaterialResponseDTO() {
@@ -25,6 +26,7 @@ public class MaterialResponseDTO {
         idClient = materialModel.getIdClient();
         docType = materialModel.getDocType();
         amountAccess = materialModel.getAmountAccess();
+        tag = materialModel.getTag();
     }
 
     public String getFileName() {
@@ -73,6 +75,14 @@ public class MaterialResponseDTO {
 
 	public void setAmountAccess(int amountAccess) {
 		this.amountAccess = amountAccess;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 
 }

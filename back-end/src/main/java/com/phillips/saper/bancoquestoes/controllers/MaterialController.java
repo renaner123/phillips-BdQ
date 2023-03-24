@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -49,12 +50,27 @@ public class MaterialController {
                 return materialService.findTop5ByOrderByAmountAccessDesc();
     }
 
+    @Operation(summary = "Get all Materials by Tag", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @GetMapping("/{tag}")
+    public ResponseEntity<List<MaterialResponseDTO>> materialByTag(
+            @PathVariable(name = "tag") String tag) {
+        return materialService.findByTag(tag);
+    }
+
 
     @Operation(summary = "Delete a Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(
             @PathVariable(name = "id") Long id) {
                 return materialService.delete(id);
+    }
+
+    @Operation(summary = "Update a tag of the Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @PutMapping("/tags/{id}")
+    public ResponseEntity<MaterialResponseDTO> updateTag(
+            @RequestParam(name = "tag") String tag,
+            @PathVariable(name = "id") Long id) {
+        return materialService.updateTag(id, tag);
     }
 
     @Operation(summary = "Upload a PDF file", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})

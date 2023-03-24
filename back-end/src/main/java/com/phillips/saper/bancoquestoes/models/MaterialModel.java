@@ -27,6 +27,7 @@ public class MaterialModel {
     private Long idClient;
     private String docType;
     private int amountAccess;
+    private String tag;
 
     @Lob
 	private byte[] data;
@@ -38,7 +39,7 @@ public class MaterialModel {
             inverseJoinColumns = @JoinColumn(name = "id_student"))
     Set<StudentModel> students;
 
-    public MaterialModel(String fileName, String content, LocalDateTime uploadDate, Long idClient, String docType, byte[] data, int amountAccess) {
+    public MaterialModel(String fileName, String content, LocalDateTime uploadDate, Long idClient, String docType, byte[] data, int amountAccess, String tag) {
         this.fileName = fileName;
         this.content = content;
         this.uploadDate = uploadDate;
@@ -46,6 +47,7 @@ public class MaterialModel {
         this.docType = docType;
         this.data = data;
         this.amountAccess = amountAccess;
+        this.tag = tag;
     }
 
     public String getDocType() {
@@ -61,6 +63,14 @@ public class MaterialModel {
     }
 
     public MaterialModel() {
+    }
+
+    public MaterialModel(String docname, String contentType, byte[] bytes, int amountAccess, String tag) {
+        this.fileName = docname;
+        this.docType = contentType;
+        this.data = bytes;
+        this.amountAccess = amountAccess;
+        this.tag = tag;
     }
 
     public MaterialModel(String docname, String contentType, byte[] bytes, int amountAccess) {
@@ -129,5 +139,13 @@ public class MaterialModel {
     public void setIdClient(Long idClient) {
         this.idClient = idClient;
     }
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 
 }
