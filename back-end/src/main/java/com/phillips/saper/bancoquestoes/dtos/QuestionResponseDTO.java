@@ -14,12 +14,13 @@ public class QuestionResponseDTO {
     private Boolean certified;
     private int amountAccess;
     private int idDiscipline;
+    private String tag;
 
     public QuestionResponseDTO() {
     }
     private int idSubject;
     public QuestionResponseDTO(Long id, LocalDateTime updateDate, String question, String answers, int difficulty, Boolean certified,
-            int amountAccess, int idDiscipline, int idSubject) {
+            int amountAccess, int idDiscipline, int idSubject, String tag) {
         this.id = id;
         this.updateDate = updateDate;
         this.question = question;
@@ -29,6 +30,7 @@ public class QuestionResponseDTO {
         this.amountAccess = amountAccess;
         this.idDiscipline = idDiscipline;
         this.idSubject = idSubject;
+        this.tag = tag;
     }
 
     public QuestionResponseDTO(QuestionModel questionModel){
@@ -41,6 +43,7 @@ public class QuestionResponseDTO {
         this.amountAccess = questionModel.getAmountAccess();
         this.idDiscipline = questionModel.getIdDiscipline();
         this.idSubject = questionModel.getIdSubject();   
+        this.tag = questionModel.getTag();
 
     }
     public Long getId() {
@@ -106,7 +109,15 @@ public class QuestionResponseDTO {
     }
     public void setIdSubject(int idSubject) {
         this.idSubject = idSubject;
-    } 
+    }
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	} 
 
         
 }
