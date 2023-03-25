@@ -10,10 +10,7 @@ import './styleSheet/index.scss';
 import Home from './pages/Home';
 import QuestionsCount from "./services/QuestionsCount";
 import { useState } from 'react';
-import MaterialsCount from './services/MaterialsCount';
-import StudentTestResultTable from './pages/PerfomanceStudent';
-import UploadFiles from './pages/UploadFiles';
-import Questions from './pages/Questions';
+import Institutional from './pages/Institutional';
 
 // FIXME para buscar a performance do STUDENT logado, é necessário pegar o ID do usuário que está logado pra passar no studentId
 
@@ -24,9 +21,19 @@ function App() {
   const [countMaterials, setCountMaterials] = useState<any>(null);
   return (
     <>
-      <QuestionsCount setData={setCountQuestions} />
-      <MaterialsCount setData={setCountMaterials} />
-      <BrowserRouter>
+
+    <Institutional/>
+      
+    </>
+
+  );
+}
+
+export default App
+
+
+/*   <BrowserRouter>
+
         <Routes>
           <Route path='/' element={<NavSideBarComponent />}>
             <Route path="/home" element={<Home numQuestions={countQuestions} numMaterials={countMaterials} />} />
@@ -40,28 +47,4 @@ function App() {
 
 
         </Routes>
-      </BrowserRouter>
-    </>
-  );
-}
-
-export default App
-
-
-/*     <div>
-                  <NavbarComponent/>
-    <SidebarComponent/>
-
-      <SidebarComponent/>
-      <QuestionsCount setData={setData} />
-
-      <BrowserRouter>
-        
-            <Routes>            
-              <Route path="/register" element= { <Register/>} />
-              <Route path="/home" element= { <Home numQuestions={data}/>} />
-              <Route path="/login" element= { <Login/>} />
-              <Route path="/download" element= { <FileList/>} />
-            </Routes>
-        </BrowserRouter>
-    </div>  */
+      </BrowserRouter> */
