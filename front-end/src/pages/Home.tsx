@@ -4,10 +4,11 @@ import { Outlet } from "react-router-dom";
 
 interface Props {
   numQuestions: number;
+  numMaterials: number;
 }
 
 
-const Home: React.FC<Props> = ({ numQuestions }) => {
+const Home: React.FC<Props> = ({ numQuestions, numMaterials }) => {
   return (
     <div className="home-container">
       <h1>Welcome to database Questions!</h1>
@@ -15,7 +16,7 @@ const Home: React.FC<Props> = ({ numQuestions }) => {
         There are {numQuestions} questions in the database.
       </p>
       <p className="home-text">
-        There are {numQuestions} Materials in the database.
+        There are {numMaterials} Materials in the database.
       </p>
       <Outlet/>
     </div>
