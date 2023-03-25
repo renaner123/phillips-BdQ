@@ -151,6 +151,7 @@ const Register = () => {
             <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
           </div>
         </Row>
+        
       </Container>
         );
       case 'professor':
@@ -297,7 +298,7 @@ const Register = () => {
             <div className="col-md-6 offset-mf-3 rouded p-4 mt-2 shadow align-self-center">
                 <form>
                 <label htmlFor="tipoCadastro">Tipo de cadastro:  </label>
-                <select className="form-control" id="tipoCadastro" value={tipoCadastro} onChange={handleTipoCadastroChange}>
+                <select className="form-select" id="tipoCadastro" value={tipoCadastro} onChange={handleTipoCadastroChange}>
                     <option value="">Selecione</option>
                     <option value="estudante">Estudante</option>
                     <option value="professor">Professor</option>
