@@ -1,19 +1,31 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
 import java.time.LocalDateTime;
+import java.util.Map;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class TestRequestDTO {
      //TODO Adicionar  @Schema(example = "") nos atributos e validações
     
     String name;
     //private LocalDateTime dateTest;    
-    String answers;
+    @Schema(example = "{ \"1\": \"A\", \"2\": \"B\", \"3\": \"C\"}")
+    private Map<String, String> answersHash;
     LocalDateTime dateTime;
 
 
-    public TestRequestDTO(String name, String answers) {
+    public Map<String, String> getAnswersHash() {
+        return answersHash;
+    }
+
+    public void setAnswersHash(Map<String, String> answersHash) {
+        this.answersHash = answersHash;
+    }
+
+    public TestRequestDTO(String name, String answers, Map<String, String> answersHash) {
         this.name = name;
-        this.answers = answers;
+        this.answersHash = answersHash;
     }
 
     public TestRequestDTO(){
@@ -25,12 +37,6 @@ public class TestRequestDTO {
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public String getAnswers() {
-        return answers;
-    }
-    public void setAnswers(String answers) {
-        this.answers = answers;
     }
     public LocalDateTime getDateTime() {
         return dateTime;

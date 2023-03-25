@@ -37,7 +37,7 @@ public class TestService {
         TestModel testModel = new TestModel();
     
         testModel.setName(testRequestDTO.getName());
-        testModel.setAnswers(testRequestDTO.getAnswers());
+        testModel.setAnswersHash(testRequestDTO.getAnswersHash());
         testModel.setDateTime(testRequestDTO.getDateTime());
         // TODO buscar o Set de questões que vai compor a prova, talvez receber os IDs das questões no request
         //testModel.setQuestions(questionsList);      
@@ -57,9 +57,6 @@ public class TestService {
 
             if(testRequestDTO.getName()!=null){
                 test.setName(testRequestDTO.getName());
-            }
-            if(testRequestDTO.getAnswers()!=null){
-                test.setAnswers(testRequestDTO.getAnswers());
             }
 
             if(testRequestDTO.getDateTime()!=null){
