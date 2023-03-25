@@ -1,15 +1,42 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
+import com.phillips.saper.bancoquestoes.models.TeacherModel;
 
 public class CertifierResponseDTO {
     // apenas para teste, irei utilizar alguns atributos e metodos fake para testar
     // a interação do Postman
      //TODO Adicionar  @Schema(example = "") nos atributos e validações
-    String name;
-    String cpf;
-    String idTeacher;
+     Long id;
+     String cpf;
+     String name;
+     String email;
+     Long idDiscipline;
     int amountCertified;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getIdDiscipline() {
+        return idDiscipline;
+    }
+
+    public void setIdDiscipline(Long idDiscipline) {
+        this.idDiscipline = idDiscipline;
+    }
 
     public int getAmountCertified() {
         return amountCertified;
@@ -27,9 +54,23 @@ public class CertifierResponseDTO {
     public CertifierResponseDTO() {
     }
 
-    public CertifierResponseDTO(CertifierModel certifier) {
-        name = certifier.getName();
-        cpf = certifier.getCpf();
+    public CertifierResponseDTO(Long id, String cpf, String name, String email, Long idDiscipline, Long idClient,
+            int amountCertified) {
+        this.id = id;
+        this.cpf = cpf;
+        this.name = name;
+        this.email = email;
+        this.idDiscipline = idDiscipline;
+        this.amountCertified = amountCertified;
+    }
+
+    
+    public CertifierResponseDTO(TeacherModel teacherModel){
+        this.id = teacherModel.getIdTeacher();
+        this.cpf = teacherModel.getCpf();
+        this.name = teacherModel.getName();
+        this.email = teacherModel.getEmail();
+        this.idDiscipline = teacherModel.getIdDiscipline();
     }
 
     public String getName() {
@@ -48,13 +89,6 @@ public class CertifierResponseDTO {
         this.cpf = cpf;
     }
 
-    public String getIdTeacher() {
-        return idTeacher;
-    }
-
-    public void setIdTeacher(String idTeacher) {
-        this.idTeacher = idTeacher;
-    }
 
     
 

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.CertifierRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.CertifierResponseDTO;
+import com.phillips.saper.bancoquestoes.dtos.TeacherRequestDTO;
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
 import com.phillips.saper.bancoquestoes.services.CertifierService;
 
@@ -40,7 +41,7 @@ public class CertifierController {
 
     @Operation(summary = "Register a new Certifier", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
-    public CertifierRequestDTO save(@RequestBody CertifierRequestDTO certifierRequestDTO){
+    public ResponseEntity<CertifierResponseDTO> save(@RequestBody TeacherRequestDTO certifierRequestDTO){
         return certifierService.save(certifierRequestDTO);
     }
 

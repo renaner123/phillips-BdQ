@@ -1,5 +1,6 @@
 package com.phillips.saper.bancoquestoes.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,9 +11,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.phillips.saper.bancoquestoes.dtos.CertifierRequestDTO;
+import com.phillips.saper.bancoquestoes.dtos.CertifierResponseDTO;
+import com.phillips.saper.bancoquestoes.dtos.ClientRequestDTO;
+import com.phillips.saper.bancoquestoes.dtos.TeacherRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TeacherResponseDTO;
+import com.phillips.saper.bancoquestoes.enums.RoleNames;
+import com.phillips.saper.bancoquestoes.exceptions.ConflictStoreException;
 import com.phillips.saper.bancoquestoes.models.CertifierModel;
+import com.phillips.saper.bancoquestoes.models.ClientModel;
+import com.phillips.saper.bancoquestoes.models.RoleModel;
 import com.phillips.saper.bancoquestoes.repositories.CertifierRepository;
+import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
+import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
+import com.phillips.saper.bancoquestoes.repositories.TeacherRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -22,17 +33,40 @@ public class CertifierService {
     @Autowired
     CertifierRepository certifierRepository;
 
+    @Autowired
+    TeacherRepository teacherRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
+    ClientRepository clientRepository;
+
     public List<CertifierModel> findAll() {
         return certifierRepository.findAll();
     }
 
-    // TODO inserir lógica para verificar se o cpf do professor existe, para ai sim, cadastrar como certificador e vincular
-    public CertifierRequestDTO save(CertifierRequestDTO certifierRequestDTO) {
-        CertifierModel certifierModel = new CertifierModel(certifierRequestDTO.getCpf(), certifierRequestDTO.getEmail(), certifierRequestDTO.getName(), certifierRequestDTO.getIdDiscipline(), certifierRequestDTO.getAmountCertified(), false);
-        
-        certifierRepository.save(certifierModel);
+    public ResponseEntity<CertifierResponseDTO> save(TeacherRequestDTO certifierRequestDTO) {
+        ClientRequestDTO clientRequestDTO = new ClientRequestDTO();
+        BeanUtils.copyProperties(certifierRequestDTO, clientRequestDTO);
+        ClientModel client = clientRequestDTO.toClient();
 
-        return certifierRequestDTO;
+        if(clientRepository.existsByLogin(client.getLogin())){
+            throw new ConflictStoreException("login already in use");
+        }
+        
+        Optional<RoleModel> role = roleRepository.findByRole(RoleNames.ROLE_CERTIFIER);
+        List<RoleModel> roles = new ArrayList<>();
+        roles.add(role.get());
+        client.setRoles(roles);
+
+        clientRepository.save(client);
+
+        CertifierModel certifierModel = new CertifierModel(certifierRequestDTO.getCpf(), certifierRequestDTO.getName(), certifierRequestDTO.getLogin(),certifierRequestDTO.getIdDiscipline(),0, false);
+
+        certifierModel.setClientModel(client);   
+        System.out.println(certifierRepository.save(certifierModel));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new CertifierResponseDTO(certifierRepository.save(certifierModel)));
     }
 
     @Transactional
@@ -46,14 +80,11 @@ public class CertifierService {
             if(certifierRequestDTO.getName()!=null){
                 certifier.setName(certifierRequestDTO.getName());
             }
-            if(certifierRequestDTO.getEmail()!=null){
-                certifier.setEmail(certifierRequestDTO.getEmail());
+            if(certifierRequestDTO.getLogin()!=null){
+                certifier.setEmail(certifierRequestDTO.getLogin());
             }
             if(certifierRequestDTO.getCpf()!=null){
                 certifier.setCpf(certifierRequestDTO.getCpf());
-            }
-            if(certifierRequestDTO.getAmountCertified()!=0){
-                certifier.setAmountCertified(certifierRequestDTO.getAmountCertified());
             }
             if(certifierRequestDTO.getIdDiscipline()!=0){
                 certifier.setIdDiscipline(certifierRequestDTO.getIdDiscipline());

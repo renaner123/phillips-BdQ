@@ -10,7 +10,6 @@ public class TeacherResponseDTO {
     String name;
     String email;
     Long idDiscipline;
-    Long idClient;
 
 
     public TeacherResponseDTO(Long id, String cpf, String nome, String email, Long idDiscipline, Long idClient) {
@@ -19,7 +18,6 @@ public class TeacherResponseDTO {
         this.name = nome;
         this.email = email;
         this.idDiscipline = idDiscipline;
-        this.idClient = idClient;
     }
 
     public TeacherResponseDTO(TeacherModel teacherModel){
@@ -28,7 +26,6 @@ public class TeacherResponseDTO {
         this.name = teacherModel.getName();
         this.email = teacherModel.getEmail();
         this.idDiscipline = teacherModel.getIdDiscipline();
-        this.idClient = teacherModel.getClientModel().getId();
     }
 
     public String getCpf() {
