@@ -11,7 +11,9 @@ import Home from './pages/Home';
 import QuestionsCount from "./services/QuestionsCount";
 import { useState } from 'react';
 import MaterialsCount from './services/MaterialsCount';
+import StudentTestResultTable from './pages/PerfomanceStudent';
 
+// FIXME para buscar a performance do STUDENT logado, é necessário pegar o ID do usuário que está logado pra passar no studentId
 
 function App() {
   const [countQuestions, setCountQuestions] = useState<any>(null);
@@ -27,6 +29,7 @@ function App() {
             <Route path="/download" element={<FileList />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/performance" element={<StudentTestResultTable studentId={1} />} />
           </Route>
 
 
