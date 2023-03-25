@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavSideBarComponent from './components/NavSidebar';
+import NavBarLogin from './components/NavbarLogin';
 
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -16,14 +17,26 @@ import Institutional from './pages/Institutional';
 
 // NOTE a disposição dos menus está assim apenas para facilitar os testes. Será adicionado os devidos campos na área de cada ROLE
 
+
 function App() {
   const [countQuestions, setCountQuestions] = useState<any>(null);
   const [countMaterials, setCountMaterials] = useState<any>(null);
   return (
     <>
+<BrowserRouter>
 
-    <Institutional/>
-      
+<Routes>
+
+  <Route path='/' element={<NavBarLogin />}>
+    <Route path="/index" element={<Institutional/>} />
+
+  </Route>
+
+
+</Routes>
+</BrowserRouter>
+
+
     </>
 
   );
