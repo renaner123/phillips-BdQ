@@ -36,50 +36,6 @@ public class MaterialService {
             materialRepository.findAll().stream().map((material)->new MaterialResponseDTO(material)).toList());
     }
 
-    // public ResponseEntity<Object> save(MaterialRequestDTO materialRequestDTO) {
-    //     MaterialModel materialModel = new MaterialModel();
-
-    //     materialModel.setContent(materialRequestDTO.getContent());
-    //     materialModel.setFileName(materialRequestDTO.getFileName());
-    //     materialModel.setUploadDate(materialModel.getUploadDate());
-    //     materialModel.setIdTeacher(materialRequestDTO.getIdTeacher());
-
-    //     materialRepository.save(materialModel);
-
-    //     return ResponseEntity.status(HttpStatus.CREATED).body(materialRequestDTO);
-    // }
-
-    // @Transactional
-    // public ResponseEntity<Object> update(Long id, MaterialRequestDTO materialRequestDTO) {
-    //     Optional<MaterialModel> materialOptional = materialRepository.findById(id);
-
-    //     if (materialOptional.isPresent()) {
-    //         MaterialModel material = materialOptional.get();
-
-    //         if (materialRequestDTO.getContent() != null) {
-    //             material.setContent(materialRequestDTO.getContent());
-    //         }
-
-    //         if (materialRequestDTO.getFileName() != null) {
-    //             material.setFileName(materialRequestDTO.getFileName());
-    //         }
-
-    //         if (materialRequestDTO.getUploadDate() != null) {
-    //             material.setUploadDate(materialRequestDTO.getUploadDate());
-    //         }
-
-    //         if (materialRequestDTO.getIdTeacher() != 0) {
-    //             material.setIdTeacher(materialRequestDTO.getIdTeacher());
-    //         }
-
-    //         BeanUtils.copyProperties(materialRequestDTO, material);
-    //         MaterialResponseDTO materialResponseDTO = new MaterialResponseDTO();
-
-    //         return ResponseEntity.status(HttpStatus.OK).body(materialResponseDTO);
-    //     } else {
-    //         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    //     }
-    // }
 
     @Transactional
     public ResponseEntity<Object> delete(Long id) {
@@ -110,7 +66,19 @@ public class MaterialService {
         return null;
     }
     public Optional<MaterialModel> getFile(Long fileId) {
-        return materialRepository.findById(fileId);
+        Optional<MaterialModel> materialOptional = materialRepository.findById(fileId);
+
+        if(materialOptional.isPresent()){
+
+            MaterialModel materialModel = materialOptional.get();
+            materialModel.setAmountAccess(materialModel.getAmountAccess()+1);
+            materialRepository.save(materialModel);
+            
+            return materialOptional;
+        }
+
+        return null;
+
     }
     public List<MaterialModel> getFiles(){
         return materialRepository.findAll();
