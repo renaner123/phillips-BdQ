@@ -2,24 +2,42 @@ package com.phillips.saper.bancoquestoes.dtos;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class StudentRequestDTO {
-    //TODO Adicionar  @Schema(example = "") nos atributos e validações
-       
-    @Size(min = 3, max = 10, message = "Nome tem tamanho mínimo de 3 e máximo de 10")
+
+    @Size(min = 3, max = 55, message = "Nome tem tamanho mínimo de 3 e máximo de 55")
+    @Schema(example = "User")
     @NotBlank(message = "O campo nome é obrigatório")
     String name;
 
     @CPF
+    @Schema(example = "082.991.529-09")
     @NotBlank(message = "O campo cpf é obrigatório")
     private String cpf;
 
     @Email(message = "Informe um email válido")
+    @Schema(example = "email@email.com")
     @NotBlank(message = "Login é obrigatório")
     String login;
+
+    @Size(min = 8, max = 55, message = "Password tem tamanho mínimo de 8 e máximo de 55")
+    @NotBlank(message = "Password é obrigatório")
+    String password;
+
+    @Size(min = 8, max = 55, message = "Password tem tamanho mínimo de 8 e máximo de 55")
+    @NotBlank(message = "confirmação de senha obrigatória")
+    String repeated_password;
+
+    public StudentRequestDTO(String name, String login, String password, String repeated_password) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.repeated_password = repeated_password;
+    }
 
     public String getName() {
         return name;
@@ -61,23 +79,7 @@ public class StudentRequestDTO {
         this.repeated_password = repeated_password;
     }
 
-    @Size(min = 3, max = 10, message = "Password tem tamanho mínimo de 3 e máximo de 10")
-    @NotBlank(message = "Password é obrigatório")
-    String password;
-
-    @NotBlank(message = "confirmação de senha obrigatória")
-    String repeated_password;
-
-    public StudentRequestDTO(String name, String login, String password, String repeated_password) {
-        this.name = name;
-        this.login = login;
-        this.password = password;
-        this.repeated_password = repeated_password;
-    }
-
     public StudentRequestDTO() {
     }
-
-    
 
 }

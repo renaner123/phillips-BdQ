@@ -23,6 +23,7 @@ import com.phillips.saper.bancoquestoes.models.RoleModel;
 import com.phillips.saper.bancoquestoes.repositories.CertifierRepository;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
 import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
+import com.phillips.saper.bancoquestoes.repositories.StudentRepository;
 import com.phillips.saper.bancoquestoes.repositories.TeacherRepository;
 
 import jakarta.transaction.Transactional;
@@ -42,6 +43,9 @@ public class CertifierService {
     @Autowired
     ClientRepository clientRepository;
 
+    @Autowired
+    StudentRepository studentRepository;
+
     public List<CertifierModel> findAll() {
         return certifierRepository.findAll();
     }
@@ -53,6 +57,11 @@ public class CertifierService {
 
         if(clientRepository.existsByLogin(client.getLogin())){
             throw new ConflictStoreException("login already in use");
+        }
+
+        // FIXME [Renan] certo seria deixar o cpf na tabela cliente para evitar essa double query. Alterar futuramente
+        if(teacherRepository.existsByCpf(certifierRequestDTO.getCpf()) || studentRepository.existsByCpf(certifierRequestDTO.getCpf())){
+            throw new ConflictStoreException("cpf already in use");
         }
         
         Optional<RoleModel> role = roleRepository.findByRole(RoleNames.ROLE_CERTIFIER);

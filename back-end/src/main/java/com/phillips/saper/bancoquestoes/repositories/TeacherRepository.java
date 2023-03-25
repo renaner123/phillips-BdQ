@@ -10,4 +10,6 @@ public interface TeacherRepository extends JpaRepository<TeacherModel, Long> {
 
     Optional<TeacherModel> findByName(String username);
 
+    boolean existsByCpf(String cpf);
+
 }

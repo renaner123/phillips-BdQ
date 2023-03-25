@@ -26,6 +26,7 @@ import com.phillips.saper.bancoquestoes.models.TestModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
 import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
 import com.phillips.saper.bancoquestoes.repositories.StudentRepository;
+import com.phillips.saper.bancoquestoes.repositories.TeacherRepository;
 import com.phillips.saper.bancoquestoes.repositories.TestRepository;
 
 import jakarta.transaction.Transactional;
@@ -45,6 +46,9 @@ public class StudentService {
     @Autowired
     TestRepository testRepository;
 
+    @Autowired
+    TeacherRepository teacherRepository;
+
 
     public ResponseEntity<List<StudentResponseDTO>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(
@@ -59,6 +63,11 @@ public class StudentService {
 
         if(clientRepository.existsByLogin(client.getLogin())){
             throw new ConflictStoreException("login already in use");
+        }
+
+        // FIXME [Renan] certo seria deixar o cpf na tabela cliente para evitar essa double query. Alterar futuramente
+        if(teacherRepository.existsByCpf(studentRequestDTO.getCpf()) || studentRepository.existsByCpf(studentRequestDTO.getCpf())){
+            throw new ConflictStoreException("cpf already in use");
         }
 
         Optional<RoleModel> role = roleRepository.findByRole(RoleNames.ROLE_STUDENT);

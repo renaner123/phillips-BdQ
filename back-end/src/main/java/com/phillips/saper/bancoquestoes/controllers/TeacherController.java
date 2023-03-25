@@ -42,7 +42,7 @@ public class TeacherController {
     @Operation(summary = "Register a new Teacher")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody @Valid TeacherRequestDTO disciplineRequestDTO){
+    public ResponseEntity<TeacherResponseDTO> save(@RequestBody @Valid TeacherRequestDTO disciplineRequestDTO){
         return teacherService.save(disciplineRequestDTO);
     }
 

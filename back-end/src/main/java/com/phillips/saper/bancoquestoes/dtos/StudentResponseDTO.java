@@ -2,11 +2,14 @@ package com.phillips.saper.bancoquestoes.dtos;
 
 import com.phillips.saper.bancoquestoes.models.StudentModel;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class StudentResponseDTO {
-    //TODO Adicionar  @Schema(example = "") nos atributos e validações
 
     Long id;
+    @Schema(example = "123.456.789-09")
     String cpf;
+    @Schema(example = "User")
     String name;
     Long id_client;
 

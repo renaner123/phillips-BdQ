@@ -1,17 +1,19 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
-import com.phillips.saper.bancoquestoes.models.CertifierModel;
 import com.phillips.saper.bancoquestoes.models.TeacherModel;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class CertifierResponseDTO {
-    // apenas para teste, irei utilizar alguns atributos e metodos fake para testar
-    // a interação do Postman
-     //TODO Adicionar  @Schema(example = "") nos atributos e validações
-     Long id;
-     String cpf;
-     String name;
-     String email;
-     Long idDiscipline;
+
+    Long id;
+    @Schema(example = "123.456.789-09")
+    String cpf;
+    @Schema(example = "User ")
+    String name;
+    @Schema(example = "email@email.com")
+    String email;
+    Long idDiscipline;
     int amountCertified;
 
     public Long getId() {

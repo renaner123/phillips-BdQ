@@ -10,18 +10,18 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class TeacherRequestDTO {
-     //TODO Adicionar  @Schema(example = "") nos atributos e validações
 
     @CPF
+    @Schema(example = "123.456.789-09")
     @NotBlank(message = "O campo cpf é obrigatório")
     String cpf;
 
-    @Size(min = 3, max = 10, message = "Nome tem tamanho mínimo de 3 e máximo de 10")
+    @Size(min = 3, max = 55, message = "Nome tem tamanho mínimo de 3 e máximo de 10")
     @NotBlank(message = "O campo nome é obrigatório")
-
+    @Schema(example = "User")
     String name;
 
-    @Size(min = 3, max = 10, message = "Password tem tamanho mínimo de 3 e máximo de 10")
+    @Size(min = 8, max = 55, message = "Password tem tamanho mínimo de 8 e máximo de 55")
     @NotBlank(message = "Password é obrigatório")
     String password;
 
@@ -37,10 +37,12 @@ public class TeacherRequestDTO {
         return repeated_password;
     }
 
+    
     public void setRepeated_password(String repeated_password) {
         this.repeated_password = repeated_password;
     }
-
+    
+    @Size(min = 8, max = 55, message = "Password tem tamanho mínimo de 8 e máximo de 55")
     @NotBlank(message = "confirmação de senha obrigatória")
     String repeated_password;
 

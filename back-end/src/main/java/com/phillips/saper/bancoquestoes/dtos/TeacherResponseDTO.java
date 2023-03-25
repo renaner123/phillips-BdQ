@@ -2,13 +2,18 @@ package com.phillips.saper.bancoquestoes.dtos;
 
 import com.phillips.saper.bancoquestoes.models.TeacherModel;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class TeacherResponseDTO {
-     //TODO Adicionar  @Schema(example = "") nos atributos e validações
-    
+
     Long id;
+    @Schema(example = "123.456.789-09")
     String cpf;
+    @Schema(example = "User ")
     String name;
+    @Schema(example = "email@email.com")
     String email;
+    @Schema(example = "1")
     Long idDiscipline;
 
 

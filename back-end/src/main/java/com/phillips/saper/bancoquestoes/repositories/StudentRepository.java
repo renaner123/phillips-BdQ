@@ -6,4 +6,6 @@ import com.phillips.saper.bancoquestoes.models.StudentModel;
 
 public interface StudentRepository extends JpaRepository<StudentModel, Long> {
 
+    boolean existsByCpf(String cpf);
+
 }
