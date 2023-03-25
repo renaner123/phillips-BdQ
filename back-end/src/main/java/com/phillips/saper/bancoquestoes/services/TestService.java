@@ -33,18 +33,18 @@ public class TestService {
             testRepository.findAll().stream().map((test)->new TestResponseDTO(test)).toList());
     }
 
-    public ResponseEntity<Object> save(TestRequestDTO testRequestDTO) {
+    public ResponseEntity<TestResponseDTO> save(TestRequestDTO testRequestDTO) {
         TestModel testModel = new TestModel();
     
         testModel.setName(testRequestDTO.getName());
         testModel.setAnswers(testRequestDTO.getAnswers());
         testModel.setDateTime(testRequestDTO.getDateTime());
         // TODO buscar o Set de questões que vai compor a prova, talvez receber os IDs das questões no request
-        //testModel.setQuestions(questionsList);
+        //testModel.setQuestions(questionsList);      
 
-        testRepository.save(testModel);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(testRequestDTO);
+        TestResponseDTO testResponseDTO = new TestResponseDTO(testRepository.save(testModel));
+            
+        return ResponseEntity.ok().body(testResponseDTO);
     }
 
     @Transactional

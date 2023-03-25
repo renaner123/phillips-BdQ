@@ -28,15 +28,15 @@ public class DisciplineService {
 
     }
 
-    public ResponseEntity<Object> save(DisciplineRequestDTO disciplineRequestDTO) {
+    public ResponseEntity<DisciplineResponseDTO> save(DisciplineRequestDTO disciplineRequestDTO) {
         DisciplineModel disciplineModel = new DisciplineModel();
 
         disciplineModel.setName(disciplineRequestDTO.getName());
         disciplineModel.setdescrption_discipline(disciplineRequestDTO.getDescription());
         
-        disciplineRepository.save(disciplineModel);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(disciplineRequestDTO);
+        DisciplineResponseDTO disciplineResponseDTO = new DisciplineResponseDTO( disciplineRepository.save(disciplineModel));
+            
+        return ResponseEntity.ok().body(disciplineResponseDTO);
     }
 
     @Transactional

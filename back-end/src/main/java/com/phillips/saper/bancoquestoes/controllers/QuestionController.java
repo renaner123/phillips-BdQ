@@ -51,7 +51,7 @@ public class QuestionController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Register a new Question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
-    public ResponseEntity<Object> save(
+    public ResponseEntity<QuestionResponseDTO> save(
             @RequestBody QuestionRequestDTO questionRequestDTO) {
         
         questionRequestDTO.setUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));

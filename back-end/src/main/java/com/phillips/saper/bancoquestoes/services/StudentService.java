@@ -51,7 +51,7 @@ public class StudentService {
             studentRepository.findAll().stream().map((student)->new StudentResponseDTO(student)).toList());
     }
 
-    public ResponseEntity<Object> save(StudentRequestDTO studentRequestDTO) {
+    public ResponseEntity<StudentResponseDTO> save(StudentRequestDTO studentRequestDTO) {
 
         ClientRequestDTO clientRequestDTO = new ClientRequestDTO();
         BeanUtils.copyProperties(studentRequestDTO, clientRequestDTO);

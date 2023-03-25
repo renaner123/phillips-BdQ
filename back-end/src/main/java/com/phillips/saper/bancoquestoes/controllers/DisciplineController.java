@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.DisciplineRequestDTO;
+import com.phillips.saper.bancoquestoes.dtos.DisciplineResponseDTO;
 import com.phillips.saper.bancoquestoes.models.DisciplineModel;
 import com.phillips.saper.bancoquestoes.services.DisciplineService;
 
@@ -41,7 +42,7 @@ public class DisciplineController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Register a Discipline", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody DisciplineRequestDTO disciplineRequestDTO){
+    public ResponseEntity<DisciplineResponseDTO> save(@RequestBody DisciplineRequestDTO disciplineRequestDTO){
         return disciplineService.save(disciplineRequestDTO);
     }
 

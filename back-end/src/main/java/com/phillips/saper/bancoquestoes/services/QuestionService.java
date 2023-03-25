@@ -27,7 +27,7 @@ public class QuestionService {
             questionRepository.findAll().stream().map((question)->new QuestionResponseDTO(question)).toList());
     }
 
-    public ResponseEntity<Object> save(QuestionRequestDTO questionRequestDTO) {
+    public ResponseEntity<QuestionResponseDTO> save(QuestionRequestDTO questionRequestDTO) {
         QuestionModel questionModel = new QuestionModel();
 
         questionModel.setUpdateDate(questionRequestDTO.getUpdateDate());
@@ -37,9 +37,10 @@ public class QuestionService {
         questionModel.setCertified(questionRequestDTO.getCertified());
         questionModel.setIdDiscipline(questionRequestDTO.getIdDiscipline());
         
-        questionRepository.save(questionModel);
+       
+        QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO(questionRepository.save(questionModel));
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(questionRequestDTO);
+        return ResponseEntity.ok().body(questionResponseDTO);
     }
 
     @Transactional

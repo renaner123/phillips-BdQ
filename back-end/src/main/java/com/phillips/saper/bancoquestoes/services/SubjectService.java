@@ -28,15 +28,16 @@ public class SubjectService {
 
     }
 
-    public ResponseEntity<Object> save(SubjectRequestDTO subjectRequestDTO) {
+    public ResponseEntity<SubjectResponseDTO> save(SubjectRequestDTO subjectRequestDTO) {
         SubjectModel subjectModel = new SubjectModel();
 
         subjectModel.setDescription(subjectRequestDTO.getDescription());
         subjectModel.setIdDiscipline(subjectRequestDTO.getIdDiscipline());
         
-        subjectRepository.save(subjectModel);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(subjectRequestDTO);
+        SubjectResponseDTO subjectResponseDTO = new SubjectResponseDTO(subjectRepository.save(subjectModel));   
+
+        return ResponseEntity.ok().body(subjectResponseDTO);
     }
 
     @Transactional

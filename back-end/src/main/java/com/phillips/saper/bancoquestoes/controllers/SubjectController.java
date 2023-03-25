@@ -48,7 +48,7 @@ public class SubjectController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Register a new Subject", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody SubjectRequestDTO subjectRequestDTO){
+    public ResponseEntity<SubjectResponseDTO> save(@RequestBody SubjectRequestDTO subjectRequestDTO){
         return subjectService.save(subjectRequestDTO);
     }
 

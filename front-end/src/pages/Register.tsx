@@ -26,6 +26,15 @@ const Register = () => {
       repeated_password: password2
     };
 
+    const dataTeacher = {
+      name: name,
+      cpf: cpf,
+      login: login,
+      password: password,
+      repeated_password: password2,
+      idDiscipline: idDiscipline
+    };
+
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +48,7 @@ const Register = () => {
     if (tipoCadastro === "certificador") {
 
       try {
-        axios.post('http://localhost:8080/certifiers', data, config)
+        axios.post('http://localhost:8080/certifiers', dataTeacher, config)
           .then((response) => {
             alert("Conta criada com sucesso");
             console.log(response.data);
@@ -57,7 +66,7 @@ const Register = () => {
     if (tipoCadastro === "professor") {
 
       try {
-        axios.post('http://localhost:8080/teachers', data, config)
+        axios.post('http://localhost:8080/teachers', dataTeacher, config)
           .then((response) => {
             alert("Conta criada com sucesso");
             console.log(response.data);

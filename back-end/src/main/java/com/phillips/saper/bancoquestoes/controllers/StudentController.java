@@ -49,7 +49,7 @@ public class StudentController {
     @Operation(summary = "Register a new Student")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Object> save(
+    public ResponseEntity<StudentResponseDTO> save(
         @RequestBody @Valid StudentRequestDTO studentRequestDTO    ){
         return studentService.save(studentRequestDTO);
     }
