@@ -12,8 +12,11 @@ import QuestionsCount from "./services/QuestionsCount";
 import { useState } from 'react';
 import MaterialsCount from './services/MaterialsCount';
 import StudentTestResultTable from './pages/PerfomanceStudent';
+import UploadFiles from './pages/UploadFiles';
 
 // FIXME para buscar a performance do STUDENT logado, é necessário pegar o ID do usuário que está logado pra passar no studentId
+
+// NOTE a disposição dos menus está assim apenas para facilitar os testes. Será adicionado os devidos campos na área de cada ROLE
 
 function App() {
   const [countQuestions, setCountQuestions] = useState<any>(null);
@@ -27,6 +30,7 @@ function App() {
           <Route path='/' element={<NavSideBarComponent />}>
             <Route path="/home" element={<Home numQuestions={countQuestions} numMaterials={countMaterials} />} />
             <Route path="/download" element={<FileList />} />
+            <Route path="/upload" element={<UploadFiles />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/performance" element={<StudentTestResultTable studentId={1} />} />

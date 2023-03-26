@@ -17,11 +17,8 @@ export default function NavbarComponent() {
             <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="/performance">Performance</Nav.Link>
             <NavDropdown title="Materials" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                  Download Material 1
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Download Material 2
+                <NavDropdown.Item href="/upload">
+                  Upload Materials
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/download">
