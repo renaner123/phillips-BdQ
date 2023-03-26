@@ -6,6 +6,7 @@ import config from '../services/ConfigHeader';
 interface StudentTestResult {
   idTest: number;
   result: number;
+  name: string;
   date: string;
 }
 
@@ -35,7 +36,8 @@ const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
       <table className="table table-striped">
         <thead>
           <tr>
-          <th>Test ID</th>
+            <th>Test ID</th>
+            <th>Name</th>
             <th>Date</th>
             <th>Result</th>
           </tr>
@@ -44,6 +46,7 @@ const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
           {testResults.sort((a,b) => b.result - a.result).map((result) => (
             <tr key={result.date}>
               <td>{result.idTest}</td>
+              <td>{result.name}</td>
               <td>{result.date}</td>
               <td>
                 <span className={`badge bg-${getColorForResult(result.result)}`}>{result.result}</span>

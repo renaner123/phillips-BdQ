@@ -145,8 +145,10 @@ public class StudentService {
 
         for (StudentTest studentTest : studentTests) {
             listStudentsTest.add(new StudentTestResponseDTO(studentTest.getId().getIdTest(), studentTest.getResult(), 
-            testRepository.findById(studentTest.getId().getIdTest()).get().getDateTime()));           
+            testRepository.findById(studentTest.getId().getIdTest()).get().getDateTime(), testRepository.findById(studentTest.getId().getIdTest()).get().getName()));                       
         }
+
+        
 
         return ResponseEntity.ok().body(listStudentsTest);
     }

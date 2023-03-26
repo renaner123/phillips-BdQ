@@ -1,6 +1,4 @@
 package com.phillips.saper.bancoquestoes.dtos;
-
-import com.phillips.saper.bancoquestoes.models.StudentModel;
 import java.time.LocalDateTime;
 
 public class StudentTestResponseDTO {
@@ -9,11 +7,13 @@ public class StudentTestResponseDTO {
     Long idTest;
     double result;
     LocalDateTime date;
+	String name;
     
-	public StudentTestResponseDTO(Long idTest, double result, LocalDateTime date) {
+	public StudentTestResponseDTO(Long idTest, double result, LocalDateTime date, String name) {
 		this.idTest = idTest;
 		this.result = result;
 		this.date = date;
+		this.name = name;
 	}
 	public Long getIdTest() {
 		return idTest;
@@ -32,6 +32,12 @@ public class StudentTestResponseDTO {
 	}
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
