@@ -13,6 +13,7 @@ import { useState } from 'react';
 import MaterialsCount from './services/MaterialsCount';
 import StudentTestResultTable from './pages/PerfomanceStudent';
 import UploadFiles from './pages/UploadFiles';
+import Questions from './pages/Questions';
 
 // FIXME para buscar a performance do STUDENT logado, é necessário pegar o ID do usuário que está logado pra passar no studentId
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/upload" element={<UploadFiles />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/questions" element={<Questions />} />
             <Route path="/performance" element={<StudentTestResultTable studentId={1} />} />
           </Route>
 

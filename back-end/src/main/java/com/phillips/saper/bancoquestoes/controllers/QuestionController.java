@@ -53,9 +53,7 @@ public class QuestionController {
     @PostMapping
     public ResponseEntity<QuestionResponseDTO> save(
             @RequestBody QuestionRequestDTO questionRequestDTO) {
-        
-        questionRequestDTO.setUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
-
+                
         return questionService.save(questionRequestDTO);
     }
 

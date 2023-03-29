@@ -16,6 +16,7 @@ export default function NavbarComponent() {
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="/performance">Performance</Nav.Link>
+            <Nav.Link href="/questions">Questions</Nav.Link>
             <NavDropdown title="Materials" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/upload">
                   Upload Materials

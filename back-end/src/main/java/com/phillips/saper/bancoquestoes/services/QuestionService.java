@@ -1,5 +1,7 @@
 package com.phillips.saper.bancoquestoes.services;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,15 +32,15 @@ public class QuestionService {
     public ResponseEntity<QuestionResponseDTO> save(QuestionRequestDTO questionRequestDTO) {
         QuestionModel questionModel = new QuestionModel();
 
-        questionModel.setUpdateDate(questionRequestDTO.getUpdateDate());
         questionModel.setQuestion(questionRequestDTO.getQuestion());
         questionModel.setAnswers(questionRequestDTO.getAnswers());
         questionModel.setDifficulty(questionRequestDTO.getDifficulty());
-        questionModel.setCertified(questionRequestDTO.getCertified());
-        questionModel.setIdDiscipline(questionRequestDTO.getIdDiscipline());
+        questionModel.setIdDiscipline(questionRequestDTO.getIdDiscipline());     
+        questionModel.setIdSubject(questionRequestDTO.getIdSubject());  
+        questionModel.setUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
         
-       
-        QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO(questionRepository.save(questionModel));
+        QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO(questionRepository.
+        save(questionModel));
 
         return ResponseEntity.ok().body(questionResponseDTO);
     }
@@ -59,9 +61,6 @@ public class QuestionService {
             }
             if(questionRequestDTO.getDifficulty()!=0){
                 question.setDifficulty(questionRequestDTO.getDifficulty());
-            }
-            if(questionRequestDTO.getCertified()!=null){
-                question.setCertified(questionRequestDTO.getCertified());
             }
             if(questionRequestDTO.getIdDiscipline()!=0){
                 question.setIdDiscipline(questionRequestDTO.getIdDiscipline());

@@ -1,15 +1,19 @@
 package com.phillips.saper.bancoquestoes.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
-import org.aspectj.weaver.ast.Test;
-
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.MapKeyColumn;
 import lombok.Data;
 
 @Data
@@ -22,7 +26,10 @@ public class QuestionModel {
 
     private LocalDateTime updateDate;
     private String question;
-    private String answers;
+    @ElementCollection
+    @CollectionTable(name = "answersList", joinColumns = @JoinColumn(name = "question_id"))
+    @Column(name = "value")
+    private List<String> answers;
     private int difficulty;    
     private Boolean certified;
     private int amountAccess;
