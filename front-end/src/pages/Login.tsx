@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Container, Row } from "react-bootstrap";
 import axios from "axios";
+import { config } from "../Constant";
 
 
 function Login() {
@@ -14,7 +15,7 @@ function Login() {
   async function login(event: { preventDefault: () => void; }) {
     event.preventDefault();
     try {
-      await axios.post("http://127.0.0.1:8080/auth/authenticate", {
+      await axios.post(`${config.url.BASE_URL}/auth/authenticate`, {
         username: username,
         password: password,
       }).then((res) => {

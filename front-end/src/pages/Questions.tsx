@@ -113,6 +113,17 @@ function App() {
     });
     const data = await response.json();
     console.log(data);
+    alert('Question Uploaded Successfully!');
+    
+    setQuestion((prevQuestion) => ({
+      ...prevQuestion,
+      difficulty: 0,
+      idSubject: 0,
+      question: "",
+      idDiscipline: 0,
+      answers: [""],
+    }));
+
   };
 
   return (

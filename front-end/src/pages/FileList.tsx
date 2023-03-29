@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
+import { config } from "../Constant";
 
 function FileList() {
   const [files, setFiles] = useState<any[]>([]);
   // os 3 primeiros arquivos do banco não possuem link, para testar é necessário fazer o upload de arquivos
   useEffect(() => {
     axios
-      .get("http://localhost:8080/materials")
+      .get(`${config.url.BASE_URL}/materials`)
       .then((response) => {
         setFiles(response.data);
       })

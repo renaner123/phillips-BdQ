@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import { config } from '../Constant';
+import configHeader from '../services/ConfigHeader';
 
 const Register = () => {
   const [tipoCadastro, setTipoCadastro] = useState('');
@@ -35,20 +37,12 @@ const Register = () => {
       idDiscipline: idDiscipline
     };
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Basic ${btoa(`${'renan'}:${'123'}`)}`,
-        Accept: 'application/json',
-      }
-    };
-
     event.preventDefault();
 
     if (tipoCadastro === "certificador") {
 
       try {
-        axios.post('http://localhost:8080/certifiers', dataTeacher, config)
+        axios.post(`${config.url.BASE_URL}/certifiers`, dataTeacher, configHeader)
           .then((response) => {
             alert("Conta criada com sucesso");
             console.log(response.data);
@@ -66,7 +60,7 @@ const Register = () => {
     if (tipoCadastro === "professor") {
 
       try {
-        axios.post('http://localhost:8080/teachers', dataTeacher, config)
+        axios.post(`${config.url.BASE_URL}/teachers`, dataTeacher, configHeader)
           .then((response) => {
             alert("Conta criada com sucesso");
             console.log(response.data);
@@ -83,7 +77,7 @@ const Register = () => {
 
     if (tipoCadastro === "estudante") {
       try {
-        axios.post('http://localhost:8080/students', data, config)
+        axios.post(`${config.url.BASE_URL}/students`, data, configHeader)
           .then((response) => {
             alert("Conta criada com sucesso");
             console.log(response.data);
@@ -96,7 +90,6 @@ const Register = () => {
         alert(err);
       }
     }
-
   }
 
   // TODO ver como reaproveitar o código. Está repetindo muito

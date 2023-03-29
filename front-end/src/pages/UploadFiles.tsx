@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Table, Button, Form } from 'react-bootstrap';
+import { config } from '../Constant';
 
 const UploadFiles: React.FC = () => {
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
@@ -19,7 +20,7 @@ const UploadFiles: React.FC = () => {
       formData.append('files', selectedFiles[i]);
     }
 
-    axios.post('http://localhost:8080/materials/upload-files', formData,{
+    axios.post(`${config.url.BASE_URL}/materials/upload-files`, formData,{
         headers: {
             'Content-Type': 'multipart/form-data',
             Authorization: `Basic ${btoa(`${'renan'}:${'123'}`)}`,

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import config from '../services/ConfigHeader';
+import { config } from '../Constant';
+import configHeader from '../services/ConfigHeader';
 
 interface StudentTestResult {
   idTest: number;
@@ -19,7 +20,7 @@ const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
 
   useEffect(() => {
     // Fetch the test results for the student with the given ID
-    fetch(`http://127.0.0.1:8080/students/performance/${studentId}`, config)
+    fetch(`${config.url.BASE_URL}/students/performance/${studentId}`, configHeader)
       .then(response => response.json())
       .then(data => setTestResults(data));
   }, [studentId]);
