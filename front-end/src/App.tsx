@@ -23,20 +23,15 @@ function App() {
   const [countMaterials, setCountMaterials] = useState<any>(null);
   return (
     <>
-<BrowserRouter>
-
-<Routes>
-
-  <Route path='/' element={<NavBarLogin />}>
-    <Route path="/index" element={<Institutional/>} />
-
-  </Route>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Institutional />}></Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />}/>
 
 
-</Routes>
-</BrowserRouter>
-
-
+        </Routes>
+      </BrowserRouter>
     </>
 
   );
@@ -45,7 +40,7 @@ function App() {
 export default App
 
 
-/*   <BrowserRouter>
+/*          <BrowserRouter>
 
         <Routes>
           <Route path='/' element={<NavSideBarComponent />}>
@@ -54,8 +49,8 @@ export default App
             <Route path="/upload" element={<UploadFiles />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/questions" element={<Questions />} />
             <Route path="/performance" element={<StudentTestResultTable studentId={1} />} />
+            <Route path="/institucional" element={ <Institutional/> } />
           </Route>
 
 
