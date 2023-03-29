@@ -12,16 +12,14 @@ export default function NavbarComponent() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link href="/login">Login</Nav.Link>
-          <Nav.Link href="/register">Register</Nav.Link>
-          <Nav.Link href="/performance">Performance</Nav.Link>
+          <Nav.Link href="/index/home">Home</Nav.Link>
+          <Nav.Link href="/index/performance">Performance</Nav.Link>
           <NavDropdown title="Materials" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/upload">
+            <NavDropdown.Item href="/index/upload">
               Upload Materials
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/download">
+            <NavDropdown.Item href="/index/download">
               All Materials
             </NavDropdown.Item>
           </NavDropdown>

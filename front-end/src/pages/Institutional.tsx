@@ -1,7 +1,6 @@
 import React from 'react';
 import { Carousel, Container, Navbar, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import Banner from '../components/Banner';
 import NavBarLogin from '../components/NavbarLogin';
 import Sidebar from '../components/Sidebar';
 

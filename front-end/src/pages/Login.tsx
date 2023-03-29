@@ -20,7 +20,7 @@ function Login() {
         password: password,
       }).then((res) => {
         if (res.status === 200) {
-          navigate('/download');
+          navigate('/index');
         }
         else {
           alert("Tratar erro");

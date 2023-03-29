@@ -25,10 +25,16 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Institutional />}></Route>
+          <Route path='/' element={<Institutional />}/>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />}/>
+          <Route path="/register" element={<Register />} />
 
+          <Route path='/index' element={<NavSideBarComponent />}>
+            <Route path="/index/home" element={<Home numQuestions={countQuestions} numMaterials={countMaterials} />} />
+            <Route path="/index/download" element={<FileList />} />
+            <Route path="/index/upload" element={<UploadFiles />} />
+            <Route path="/index/performance" element={<StudentTestResultTable studentId={1} />} />
+          </Route>
 
         </Routes>
       </BrowserRouter>
