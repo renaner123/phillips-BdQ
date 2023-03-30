@@ -27,7 +27,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
-@RequestMapping("/subjects")
+@RequestMapping("/v1/subjects")
 public class SubjectController {
 
     @Autowired

@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/v1/students")
 public class StudentController {
 
     @Autowired

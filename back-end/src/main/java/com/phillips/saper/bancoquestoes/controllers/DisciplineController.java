@@ -27,7 +27,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
-@RequestMapping("/disciplines")
+@RequestMapping("/v1/disciplines")
 public class DisciplineController {
 
     @Autowired

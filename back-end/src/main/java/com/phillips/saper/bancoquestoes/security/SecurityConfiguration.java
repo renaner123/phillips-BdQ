@@ -24,15 +24,15 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.httpBasic();
         http.authorizeHttpRequests()
-                .requestMatchers(HttpMethod.POST, "/clients").permitAll()
-                .requestMatchers(HttpMethod.GET, "/clients").permitAll()
-                .requestMatchers(HttpMethod.POST, "/students").permitAll()
-                .requestMatchers(HttpMethod.POST, "/teachers").permitAll()
-                .requestMatchers(HttpMethod.POST, "/materials").permitAll()
-                .requestMatchers(HttpMethod.GET, "/materials").permitAll()
-                .requestMatchers("/auth/authenticate/").authenticated()
+                .requestMatchers(HttpMethod.POST, "/v1/clients").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/clients").permitAll()
+                .requestMatchers(HttpMethod.POST, "/v1/students").permitAll()
+                .requestMatchers(HttpMethod.POST, "/v1/teachers").permitAll()
+                .requestMatchers(HttpMethod.POST, "/v1/materials").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/materials").permitAll()
+                .requestMatchers("/my/**").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
-                .requestMatchers("/public/**", "/auth/**").permitAll()
+                .requestMatchers("/public/**", "/v1/auth/**").permitAll()
                 .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()
                 .anyRequest().hasAnyRole("ADMIN", "TEACHER");
         http.csrf().disable();

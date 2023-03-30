@@ -27,7 +27,7 @@ import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 import static com.phillips.saper.bancoquestoes.configuration.SwaggerConfig.BASIC_AUTH_SECURITY_SCHEME;
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/v1/clients")
 public class ClientController {
 
     @Autowired

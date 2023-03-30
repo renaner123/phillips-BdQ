@@ -25,7 +25,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/certifiers")
+@RequestMapping("/v1/certifiers")
 public class CertifierController {
     
     @Autowired

@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
-@RequestMapping("/questions")
+@RequestMapping("/v1/questions")
 public class QuestionController {
 
     @Autowired

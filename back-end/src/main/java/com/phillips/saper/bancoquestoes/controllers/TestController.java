@@ -27,7 +27,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
-@RequestMapping("/tests")
+@RequestMapping("/v1/tests")
 public class TestController {
     
     @Autowired
