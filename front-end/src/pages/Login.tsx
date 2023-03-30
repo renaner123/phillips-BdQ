@@ -1,25 +1,40 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Container, Row } from "react-bootstrap";
 import axios from "axios";
 import { config } from "../Constant";
+import { AuthContext } from "../context/authContext";
+
+
+type LoginData = {
+  username:string,
+  password: string
+}
 
 
 function Login() {
-
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const auth = useContext(AuthContext);
+  const [state, setState] = useState<LoginData>({ username: '', password: '' });
   const navigate = useNavigate();
-
+  
+  const onUpdate = (e: React.ChangeEvent<any>, name: 'username' | 'password') => {
+    setState((state) => ({ ...state, [name]: e.target.value }))
+  }
 
   async function login(event: { preventDefault: () => void; }) {
     event.preventDefault();
+   
     try {
-      await axios.post(`${config.url.BASE_URL}/auth/authenticate`, {
-        username: username,
-        password: password,
+      await axios.post(`${config.url.BASE_URL}/auth/authenticate`, {}, {
+        headers:{
+          'Content-Type': 'application/json',
+          Authorization: 'Basic ' + btoa(state.username +':'+ state.password),
+          Accept: 'application/json',
+        }
+        
       }).then((res) => {
-        if (res.status === 200) {
+        if(auth.updateUser) auth.updateUser(res);
+        if (res.status === 200) {          
           navigate('/index');
         }
         else {
@@ -47,9 +62,9 @@ function Login() {
             </label>
             <input type={"username"} className="form-control" id="username" placeholder="Informe o seu e-mail"
               name="email"
-              value={username}
+              value={state.username}
               onChange={(event) => {
-                setUsername(event.target.value);
+                onUpdate(event, 'username');
               }}
 
             />
@@ -59,9 +74,9 @@ function Login() {
               Senha
             </label>
             <input type={"password"} className="form-control" id="password" placeholder="Informe a sua senha" name="password"
-              value={password}
+              value={state.password}
               onChange={(event) => {
-                setPassword(event.target.value);
+                onUpdate(event, 'password')
               }}
             />
 

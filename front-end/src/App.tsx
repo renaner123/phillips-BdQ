@@ -14,6 +14,9 @@ import { useState } from 'react';
 import Institutional from './pages/Institutional';
 
 // FIXME para buscar a performance do STUDENT logado, é necessário pegar o ID do usuário que está logado pra passar no studentId
+import Institutional from './pages/Institutional';
+import MaterialsCount from './services/MaterialsCount';
+import { AuthContext, User } from './context/authContext';
 
 // NOTE a disposição dos menus está assim apenas para facilitar os testes. Será adicionado os devidos campos na área de cada ROLE
 
@@ -21,23 +24,29 @@ import Institutional from './pages/Institutional';
 function App() {
   const [countQuestions, setCountQuestions] = useState<any>(null);
   const [countMaterials, setCountMaterials] = useState<any>(null);
+  const [user, setUser] = useState<User>();
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Institutional />}/>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+      <AuthContext.Provider value={{user, updateUser: setUser}}>
 
-          <Route path='/index' element={<NavSideBarComponent />}>
-            <Route path="/index/home" element={<Home numQuestions={countQuestions} numMaterials={countMaterials} />} />
-            <Route path="/index/download" element={<FileList />} />
-            <Route path="/index/upload" element={<UploadFiles />} />
-            <Route path="/index/performance" element={<StudentTestResultTable studentId={1} />} />
-          </Route>
+        <QuestionsCount setData={setCountQuestions} />
+        <MaterialsCount setData={setCountMaterials} />
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Institutional />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path='/index' element={<NavSideBarComponent />}>
+              <Route path="/index/home" element={<Home numQuestions={countQuestions} numMaterials={countMaterials} />} />
+              <Route path="/index/questions" element={<Questions />} />
+              <Route path="/index/download" element={<FileList />} />
+              <Route path="/index/upload" element={<UploadFiles />} />
+              <Route path="/index/performance" element={<StudentTestResultTable studentId={1} />} />
+            </Route>
+          </Routes>
 
-        </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+      </AuthContext.Provider>
     </>
 
   );
