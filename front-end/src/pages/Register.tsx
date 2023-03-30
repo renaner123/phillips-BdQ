@@ -54,7 +54,7 @@ const Register = () => {
 
       } catch (err) {
         alert(err);
-      }            
+      }
     }
 
     if (tipoCadastro === "professor") {
@@ -99,68 +99,9 @@ const Register = () => {
     switch (tipoCadastro) {
       case 'estudante':
         return (
-      <Container>
-        <Row className="pt-3 justify-content-center">
-          <div>         
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">
-                Nome
-              </label>
-              <input type="text" id="name" className="form-control" placeholder="Digite seu e-mail" name="name" value={name}
-                onChange={(event) => {
-                  setNome(event.target.value);
-                }} />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="cpf" className="form-label">
-                CPF
-              </label>
-              <input type="cpf" id="cpf" className="form-control" placeholder="Informe o seu CPF" name="cpf" value={cpf}
-                onChange={(e) => {
-                  setCpf(e.target.value);
-                }}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                E-mail
-              </label>
-              <input type="email" className="form-control" placeholder="Informe o seu e-mail" name="email" value={login}
-                onChange={(e) => {
-                  setLogin(e.target.value);
-                }}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">Senha</label>
-              <input type="password" className="form-control" placeholder="Informe a sua senha" value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="password2" className="form-label">Repita a Senha</label>
-              <input type="password" className="form-control" placeholder="Informe novamente a sua senha - revisar" value={password2}
-                onChange={(e) => {
-                  setPassword2(e.target.value);
-                }} />
-            </div>
-            <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
-          </div>
-        </Row>
-        
-      </Container>
-        );
-      case 'professor':
-        return (
-            <Container>
+          <Container>
             <Row className="pt-3 justify-content-center">
-              <div>          
+              <div>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">
                     Nome
@@ -170,7 +111,7 @@ const Register = () => {
                       setNome(event.target.value);
                     }} />
                 </div>
-    
+
                 <div className="mb-3">
                   <label htmlFor="cpf" className="form-label">
                     CPF
@@ -181,7 +122,7 @@ const Register = () => {
                     }}
                   />
                 </div>
-    
+
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">
                     E-mail
@@ -192,7 +133,7 @@ const Register = () => {
                     }}
                   />
                 </div>
-    
+
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">Senha</label>
                   <input type="password" className="form-control" placeholder="Informe a sua senha" value={password}
@@ -201,7 +142,74 @@ const Register = () => {
                     }}
                   />
                 </div>
-    
+
+                <div className="mb-3">
+                  <label htmlFor="password2" className="form-label">Repita a Senha</label>
+                  <input type="password" className="form-control" placeholder="Informe novamente a sua senha - revisar" value={password2}
+                    onChange={(e) => {
+                      setPassword2(e.target.value);
+                    }} />
+                </div>
+                <Row>
+                  <div className="col-6">
+
+                    <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
+                  </div>
+                  <div className="col-6">
+                    <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
+                  </div>
+                </Row>
+              </div>
+            </Row>
+
+          </Container>
+        );
+      case 'professor':
+        return (
+          <Container>
+            <Row className="pt-3 justify-content-center">
+              <div>
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label">
+                    Nome
+                  </label>
+                  <input type="text" id="name" className="form-control" placeholder="Digite seu e-mail" name="name" value={name}
+                    onChange={(event) => {
+                      setNome(event.target.value);
+                    }} />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="cpf" className="form-label">
+                    CPF
+                  </label>
+                  <input type="cpf" id="cpf" className="form-control" placeholder="Informe o seu CPF" name="cpf" value={cpf}
+                    onChange={(e) => {
+                      setCpf(e.target.value);
+                    }}
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">
+                    E-mail
+                  </label>
+                  <input type="email" className="form-control" placeholder="Informe o seu e-mail" name="email" value={login}
+                    onChange={(e) => {
+                      setLogin(e.target.value);
+                    }}
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Senha</label>
+                  <input type="password" className="form-control" placeholder="Informe a sua senha" value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                </div>
+
                 <div className="mb-3">
                   <label htmlFor="password2" className="form-label">Repita a Senha</label>
                   <input type="password" className="form-control" placeholder="Informe novamente a sua senha - revisar" value={password2}
@@ -217,16 +225,24 @@ const Register = () => {
                       setIdDiscipline(e.target.value);
                     }} />
                 </div>
-                <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
+                <Row>
+                  <div className="col-6">
+
+                    <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
+                  </div>
+                  <div className="col-6">
+                    <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
+                  </div>
+                </Row>
               </div>
             </Row>
           </Container>
         );
       case 'certificador':
         return (
-            <Container>
+          <Container>
             <Row className="pt-3 justify-content-center">
-              <div>          
+              <div>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">
                     Nome
@@ -236,7 +252,7 @@ const Register = () => {
                       setNome(event.target.value);
                     }} />
                 </div>
-    
+
                 <div className="mb-3">
                   <label htmlFor="cpf" className="form-label">
                     CPF
@@ -247,7 +263,7 @@ const Register = () => {
                     }}
                   />
                 </div>
-    
+
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">
                     E-mail
@@ -258,7 +274,7 @@ const Register = () => {
                     }}
                   />
                 </div>
-    
+
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">Senha</label>
                   <input type="password" className="form-control" placeholder="Informe a sua senha" value={password}
@@ -267,7 +283,7 @@ const Register = () => {
                     }}
                   />
                 </div>
-    
+
                 <div className="mb-3">
                   <label htmlFor="password2" className="form-label">Repita a Senha</label>
                   <input type="password" className="form-control" placeholder="Informe novamente a sua senha - revisar" value={password2}
@@ -283,7 +299,14 @@ const Register = () => {
                       setIdDiscipline(e.target.value);
                     }} />
                 </div>
-      <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
+                <Row>
+                  <div className="col-6">
+                    <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
+                  </div>
+                  <div className="col-6">
+                    <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
+                  </div>
+                </Row>
               </div>
             </Row>
           </Container>
@@ -296,20 +319,20 @@ const Register = () => {
 
   return (
     <Container>
-        <Row className="pt-3 justify-content-center">
-            <div className="col-md-6 offset-mf-3 rouded p-4 mt-2 shadow align-self-center">
-                <form>
-                <label htmlFor="tipoCadastro">Tipo de cadastro:  </label>
-                <select className="form-select" id="tipoCadastro" value={tipoCadastro} onChange={handleTipoCadastroChange}>
-                    <option value="">Selecione</option>
-                    <option value="estudante">Estudante</option>
-                    <option value="professor">Professor</option>
-                    <option value="certificador">Certificador</option>
-                </select>
-                {renderCamposCadastro()}
-                </form>
-            </div>
-        </Row>
+      <Row className="pt-3 justify-content-center">
+        <div className="col-md-6 offset-mf-3 rouded p-4 mt-2 shadow align-self-center">
+          <form>
+            <label htmlFor="tipoCadastro">Tipo de cadastro:  </label>
+            <select className="form-select" id="tipoCadastro" value={tipoCadastro} onChange={handleTipoCadastroChange}>
+              <option value="">Selecione</option>
+              <option value="estudante">Estudante</option>
+              <option value="professor">Professor</option>
+              <option value="certificador">Certificador</option>
+            </select>
+            {renderCamposCadastro()}
+          </form>
+        </div>
+      </Row>
     </Container>
   );
 };

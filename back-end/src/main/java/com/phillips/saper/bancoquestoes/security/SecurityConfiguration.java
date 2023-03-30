@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/teachers").permitAll()
                 .requestMatchers(HttpMethod.POST, "/materials").permitAll()
                 .requestMatchers(HttpMethod.GET, "/materials").permitAll()
-                .requestMatchers("/my/**").authenticated()
+                .requestMatchers("/auth/authenticate/").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                 .requestMatchers("/public/**", "/auth/**").permitAll()
                 .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()

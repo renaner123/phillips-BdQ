@@ -3,7 +3,10 @@ package com.phillips.saper.bancoquestoes.controllers;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +38,18 @@ public class AuthController {
             return ResponseEntity.ok(new AuthResponse(client.getId(), client.getName(), client.getRoles()));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+    @GetMapping("/authenticate")
+    public ResponseEntity<Object> loginWithContext(){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(principal instanceof ClientModel clientModel){
+            return ResponseEntity.status(HttpStatus.OK)
+            .body(clientService.find(clientModel.getId()).getBody());
+        }else{
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     /*
