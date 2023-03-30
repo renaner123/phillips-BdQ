@@ -79,6 +79,14 @@ public class MaterialController {
         return materialService.updateTag(id, tag);
     }
 
+    @Operation(summary = "Update a certified of the Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @PutMapping("/certified/{id}")
+    public ResponseEntity<MaterialResponseDTO> updateCertified(
+            @RequestParam(name = "certified") Boolean certified,
+            @PathVariable(name = "id") Long id) {
+        return materialService.updateCertified(id, certified);
+    }
+
     @Operation(summary = "Upload a PDF file", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/upload-files")

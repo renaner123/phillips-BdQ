@@ -121,6 +121,22 @@ public class MaterialService {
             materialRepository.findByCertifiedTrue().stream().map((material)->new MaterialResponseDTO(material)).toList());
     }
 
+    public ResponseEntity<MaterialResponseDTO> updateCertified(Long id, Boolean certified) {
+        Optional<MaterialModel> materialOptinal = materialRepository.findById(id);
+
+        if(materialOptinal.isPresent()){
+            MaterialModel material = materialOptinal.get();
+
+            material.setCertified(certified);
+            
+            MaterialResponseDTO materialResponseDTO = new MaterialResponseDTO(materialRepository.save(material));
+            
+            return ResponseEntity.ok().body(materialResponseDTO);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 
 
 
