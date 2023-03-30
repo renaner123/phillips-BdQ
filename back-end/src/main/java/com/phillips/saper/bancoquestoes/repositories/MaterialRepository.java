@@ -12,4 +12,6 @@ public interface MaterialRepository extends JpaRepository<MaterialModel, Long> {
 
 	List<MaterialModel> findByTag(String tag);
 
+    List<MaterialModel> findByCertifiedTrue();
+
 }

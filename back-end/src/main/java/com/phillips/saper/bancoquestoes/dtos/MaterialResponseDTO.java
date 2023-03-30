@@ -14,7 +14,20 @@ public class MaterialResponseDTO {
     String docType;
     int amountAccess;
     String tag;
+    Boolean certified;
     
+
+    public MaterialResponseDTO(Long id, String fileName, LocalDateTime uploadDate, Long idClient, String docType,
+            int amountAccess, String tag, Boolean certified) {
+        this.id = id;
+        this.fileName = fileName;
+        this.uploadDate = uploadDate;
+        this.idClient = idClient;
+        this.docType = docType;
+        this.amountAccess = amountAccess;
+        this.tag = tag;
+        this.certified = certified;
+    }
 
     public MaterialResponseDTO() {
     }
@@ -27,6 +40,7 @@ public class MaterialResponseDTO {
         docType = materialModel.getDocType();
         amountAccess = materialModel.getAmountAccess();
         tag = materialModel.getTag();
+        certified = materialModel.getCertified();
     }
 
     public String getFileName() {
@@ -84,5 +98,13 @@ public class MaterialResponseDTO {
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
+
+    public Boolean getCertified() {
+        return certified;
+    }
+
+    public void setCertified(Boolean certified) {
+        this.certified = certified;
+    }
 
 }

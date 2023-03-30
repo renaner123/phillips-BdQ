@@ -57,6 +57,12 @@ public class MaterialController {
         return materialService.findByTag(tag);
     }
 
+    @Operation(summary = "Get a list of all Materials certifieds", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @GetMapping("/certifieds")
+    public ResponseEntity<List<MaterialResponseDTO>> findAllCertified() {
+        return materialService.findByCertifiedTrue();
+    }
+
 
     @Operation(summary = "Delete a Material", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")

@@ -116,6 +116,11 @@ public class MaterialService {
             materialRepository.findByTag(tag).stream().map((material)->new MaterialResponseDTO(material)).toList());
 	}
 
+    public ResponseEntity<List<MaterialResponseDTO>> findByCertifiedTrue() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            materialRepository.findByCertifiedTrue().stream().map((material)->new MaterialResponseDTO(material)).toList());
+    }
+
 
 
 

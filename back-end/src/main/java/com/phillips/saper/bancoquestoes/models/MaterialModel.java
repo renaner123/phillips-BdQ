@@ -28,6 +28,7 @@ public class MaterialModel {
     private String docType;
     private int amountAccess;
     private String tag;
+    private Boolean certified;
 
     @Lob
 	private byte[] data;
@@ -147,5 +148,13 @@ public class MaterialModel {
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
+
+    public Boolean getCertified() {
+        return certified;
+    }
+
+    public void setCertified(Boolean certified) {
+        this.certified = certified;
+    }
 
 }
