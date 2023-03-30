@@ -80,6 +80,14 @@ public class QuestionController {
         return questionService.updateTag(id, tag);
     }
 
+    @Operation(summary = "Update a certified of the question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @PutMapping("/certified/{id}")
+    public ResponseEntity<QuestionResponseDTO> updateCertified(
+            @RequestParam(name = "certified") Boolean certified,
+            @PathVariable(name = "id") Long id) {
+        return questionService.updateCertified(id, certified);
+    }
+
     @Operation(summary = "Delete a Question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(

@@ -117,6 +117,22 @@ public class QuestionService {
         }
      }
 
+    public ResponseEntity<QuestionResponseDTO> updateCertified(Long id, Boolean certified) {
+        Optional<QuestionModel> questionOptional = questionRepository.findById(id);
+
+        if(questionOptional.isPresent()){
+            QuestionModel question = questionOptional.get();
+
+            question.setCertified(certified);
+            
+            QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO(questionRepository.save(question));
+            
+            return ResponseEntity.ok().body(questionResponseDTO);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 	public ResponseEntity<List<QuestionResponseDTO>> findByTag(String tag) {
         return ResponseEntity.status(HttpStatus.OK).body(
             questionRepository.findByTag(tag).stream().map((question)->new QuestionResponseDTO(question)).toList());
