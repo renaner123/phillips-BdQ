@@ -36,7 +36,7 @@ function Login() {
         }).then(
           (res: AxiosResponse<User, any>) => {
             if (auth.updateUser) auth.updateUser(res.data);
-            //console.log(res.data);
+            console.log(res.data.role);
             if (res.status === 200) {
               navigate('/index');
 
@@ -100,20 +100,3 @@ function Login() {
 
 export default Login;
 
-/**
-[
-  {
-    "timestamp": 1680210496.714609700,
-    "status": 400,
-    "error": "username",
-    "message": "não deve estar em branco",
-    "path": "/auth/authenticate"
-  },
-  {
-    "timestamp": 1680210496.714609700,
-    "status": 400,
-    "error": "password",
-    "message": "não deve estar em branco",
-    "path": "/auth/authenticate"
-  }]
-   */
