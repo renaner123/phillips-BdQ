@@ -156,6 +156,7 @@ const Register = () => {
                     <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
                   </div>
                   <div className="col-6">
+                    {/* FIXME voltar para página inicial, não save */}
                     <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
                   </div>
                 </Row>
@@ -231,6 +232,7 @@ const Register = () => {
                     <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
                   </div>
                   <div className="col-6">
+                    {/* FIXME voltar para página inicial, não save */}
                     <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
                   </div>
                 </Row>
@@ -304,6 +306,7 @@ const Register = () => {
                     <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
                   </div>
                   <div className="col-6">
+                    {/* FIXME voltar para página inicial, não save */}
                     <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
                   </div>
                 </Row>

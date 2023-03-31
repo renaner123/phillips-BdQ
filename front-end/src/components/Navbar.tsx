@@ -14,6 +14,7 @@ export default function NavbarComponent() {
         <Nav className="mr-auto">
           <Nav.Link href="/index/home">Home</Nav.Link>
           <Nav.Link href="/index/performance">Performance</Nav.Link>
+          <Nav.Link href="/index/questions">Questions</Nav.Link>
           <NavDropdown title="Materials" id="basic-nav-dropdown">
             <NavDropdown.Item href="/index/upload">
               Upload Materials

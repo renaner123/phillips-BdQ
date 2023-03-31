@@ -38,7 +38,7 @@ function Login() {
             if (auth.updateUser) auth.updateUser(res.data);
             console.log(res.data.role);
             if (res.status === 200) {
-              navigate('/index');
+              navigate('/index/home');
 
             }
             else {
