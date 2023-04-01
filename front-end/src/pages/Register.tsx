@@ -48,7 +48,12 @@ const Register = () => {
             console.log(response.data);
           })
           .catch((error) => {
-            console.log(error);
+            if(error.response.status===409){
+              alert(error.response.data['message'])
+            }else if(error.response.status===400){
+              alert(error.response.data[0]['message'])
+            }
+            console.log(error);    
           });
 
 
@@ -66,7 +71,12 @@ const Register = () => {
             console.log(response.data);
           })
           .catch((error) => {
-            console.log(error);
+            if(error.response.status===409){
+              alert(error.response.data['message'])
+            }else if(error.response.status===400){
+              alert(error.response.data[0]['message'])
+            }
+            console.log(error);    
           });
 
 
@@ -82,8 +92,13 @@ const Register = () => {
             alert("Conta criada com sucesso");
             console.log(response.data);
           })
-          .catch((error) => {
-            console.log(error);
+          .catch((error) => {       
+            if(error.response.status===409){
+              alert(error.response.data['message'])
+            }else if(error.response.status===400){
+              alert(error.response.data[0]['message'])
+            }
+            console.log(error);    
           });
 
       } catch (err) {
@@ -92,7 +107,7 @@ const Register = () => {
     }
   }
 
-  // TODO ver como reaproveitar o código. Está repetindo muito
+  // FIXME ver como reaproveitar o código. Está repetindo muito. Usar mesmo formulário e só adicionar o que falta
 
   const renderCamposCadastro = () => {
 

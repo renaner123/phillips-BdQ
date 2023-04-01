@@ -23,6 +23,7 @@ import com.phillips.saper.bancoquestoes.services.CertifierService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/v1/certifiers")
@@ -41,7 +42,7 @@ public class CertifierController {
 
     @Operation(summary = "Register a new Certifier", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PostMapping
-    public ResponseEntity<CertifierResponseDTO> save(@RequestBody TeacherRequestDTO certifierRequestDTO){
+    public ResponseEntity<CertifierResponseDTO> save(@RequestBody @Valid TeacherRequestDTO certifierRequestDTO){
         return certifierService.save(certifierRequestDTO);
     }
 

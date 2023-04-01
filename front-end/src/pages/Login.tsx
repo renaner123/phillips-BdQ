@@ -23,7 +23,6 @@ function Login() {
 
   async function login(event: { preventDefault: () => void; }) {
     event.preventDefault();
-    console.log(state.password + " aloan " + state.username);
     try {
       await axios.get<User>(`${config.url.BASE_URL}/auth/authenticate`,
         {
@@ -40,13 +39,16 @@ function Login() {
             if (res.status === 200) {
               navigate('/index/home');
 
-            }
-            else {
-              alert("Tratar erro");
-            }
-          }, fail => {
-            console.error(fail); // Error!
-          });
+            }            
+          }
+          ).catch((error) => {      
+
+            alert("E-mail or password incorrect!")
+
+            console.log(error);    
+          });;
+    
+    
     }
     catch (err) {
       alert(err);
