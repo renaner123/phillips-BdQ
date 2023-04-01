@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Sidebar, { MenuData } from './Sidebar';
 
 
+//FIXME arrumar as cores definitivas
 //Testando as ROLES
 /** ROLE_TEACHER,
     ROLE_STUDENT,
@@ -21,6 +22,11 @@ export default function NavSideBarComponent() {
                     text: 'Cadastrar Questão',
                     path: '#'
                 }
+            ],
+            styles: [
+                {
+                    path: 'col-10 min-vh-100 role_teacher_color_schema align-text-center'
+                }
             ]
         },
         ROLE_STUDENT: {
@@ -28,6 +34,11 @@ export default function NavSideBarComponent() {
                 {
                     text: 'BUSCAR PROVA',
                     path: '#'
+                }
+            ],
+            styles: [
+                {
+                    path: 'col-10 min-vh-100 role_student_color_schema align-text-center'
                 }
             ]
         },
@@ -38,6 +49,11 @@ export default function NavSideBarComponent() {
                     path: '#'
                 }
             ],
+            styles: [
+                {
+                    path: 'col-10 min-vh-100 role_certifier_color_schma align-text-center'
+                }
+            ]
         }
         //TESTE COM ALGUMAS QUESTÕES ALTERANDO DINAMICAMENTE
     }

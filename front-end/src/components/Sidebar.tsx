@@ -8,23 +8,22 @@ import { AuthContext } from '../context/authContext';
 import { link } from 'fs';
 import { Link } from 'react-router-dom';
 
-
 //Tipos de dados para alterar entre roles no sideBar
 type LinksData = {
     text: string
     path: string
 }
 
-type UserLinkData = {
-    text: string
+type StyleOfRolesData = {
     path: string
 }
 
 export type MenuData = {
     links: LinksData[]
+    styles: StyleOfRolesData[]
 }
 
-export default function Sidebar({ links }:MenuData) {
+export default function Sidebar({ links, styles }:MenuData) {
     const auth = useContext(AuthContext);
 
     function signOut() {
@@ -34,8 +33,11 @@ export default function Sidebar({ links }:MenuData) {
         <>
             <div className="container-fluid">
                 <Row>
-                    <div className="col-10 min-vh-100 bg-success align-text-center">
-                        <ul>
+                    {styles.map( (teste) =>{
+
+                        return (
+                            <div className={teste.path}>
+                                <ul>
                             {links.map((link) => {
                                 return (
                                     <li key={link.path} className='nav-item'>
@@ -46,7 +48,9 @@ export default function Sidebar({ links }:MenuData) {
                                 )
                             })}
                         </ul>
-                    </div>
+                            </div>
+                        )
+                    })}
                 </Row>
             </div>
         </>
@@ -77,3 +81,20 @@ export default function Sidebar({ links }:MenuData) {
 
                                 </a>
                             </li> */
+
+
+                            /**<Row>
+                    <div className='col-10 min-vh-100 bg-primary align-text-center'>
+                        <ul>
+                            {links.map((link) => {
+                                return (
+                                    <li key={link.path} className='nav-item'>
+                                        <Link to={link.path} className='nav-link text-white' aria-current='page'>
+                                            {(link.text)}
+                                        </Link>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </Row> */
