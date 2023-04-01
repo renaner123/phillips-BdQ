@@ -43,17 +43,18 @@ INSERT INTO DISCIPLINE_MODEL (DESCRPTION_DISCIPLINE, NAME_DISCIPLINE) VALUES ('o
 INSERT INTO DISCIPLINE_MODEL (DESCRPTION_DISCIPLINE, NAME_DISCIPLINE) VALUES ('oi2', 'Prog tbm3');
 
 
-INSERT INTO TEST_MODEL (NAME, ANSWERS, DATE_TIME) VALUES ('Prova de sip', '{"1":"C","2":"A","3":"D"}', TO_DATE('2023-04-11', 'yyyy-mm-dd'));
-INSERT INTO TEST_MODEL (NAME, ANSWERS, DATE_TIME) VALUES ('Prova de The Winter', '{"1":"D","2":"E","3":"C"}',TO_DATE('2023-05-17', 'yyyy-mm-dd'));
-INSERT INTO TEST_MODEL (NAME, ANSWERS, DATE_TIME) VALUES ('Prova de Sum', '{"1":"C","2":"A","3":"B"}', TO_DATE('2023-06-15', 'yyyy-mm-dd'));
+INSERT INTO TEST_MODEL (NAME, DATE_TIME) VALUES ('Prova de sip', TO_DATE('2023-04-11', 'yyyy-mm-dd'));
+INSERT INTO TEST_MODEL (NAME, DATE_TIME) VALUES ('Prova de The Winter',TO_DATE('2023-05-17', 'yyyy-mm-dd'));
+INSERT INTO TEST_MODEL (NAME, DATE_TIME) VALUES ('Prova de Sum', TO_DATE('2023-06-15', 'yyyy-mm-dd'));
 
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código funciona', 1, 1, 1, 1, 0, TO_DATE('2023-04-11', 'yyyy-mm-dd'))
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código nunca funciona', 2, 1, 3, 2,0,TO_DATE('2023-04-11', 'yyyy-mm-dd'))
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque eu não sei', 4, 0, 2, 3,10,TO_DATE('2023-04-11', 'yyyy-mm-dd'))
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'1', 'A')
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'2', 'B')
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'3', 'D')
 
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código funciona', 1, 0, 1, 1, 0, TO_DATE('2023-04-11', 'yyyy-mm-dd'))
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código nunca funciona', 2, 0, 3, 2,0,TO_DATE('2023-04-11', 'yyyy-mm-dd'))
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque eu não sei', 4, 1, 2, 3,10,TO_DATE('2023-04-11', 'yyyy-mm-dd'))
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'1', 'A')
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'2', 'A')
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'3', 'C')
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'4', 'B')
 
 INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'1', 'B')
 INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'2', 'D')
@@ -99,6 +100,7 @@ insert into student_has_test values (1,1,8.5)
 insert into student_has_test values (1,2,8.0)
 insert into student_has_test values (2,2,5.0)
 insert into student_has_test values (3,1,4.5)
+insert into student_has_test values (1,3,4)
 
 insert into material_has_student values (1,1)
 insert into material_has_student values (1,2)
@@ -109,9 +111,3 @@ insert into teacher_has_question values (1,1)
 insert into teacher_has_question values (1,2)
 insert into teacher_has_question values (2,3)
 insert into teacher_has_question values (3,1)
-
-
-
-
-
-
