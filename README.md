@@ -8,6 +8,7 @@
 - [Diagramas](#diagramas)
 - [Design - Visual do Frontend](#design---visual-do-frontend)
   - [Prototipos de telas (inicial)](#prototipos-de-telas-inicial)
+  - [Palheta de cores](#palheta-de-cores)
 - [Pré-requisito](#pré-requisito)
 - [Instruções para compilar e executar o projeto](#instruções-para-compilar-e-executar-o-projeto)
   - [Conexão com o banco de dados](#conexão-com-o-banco-de-dados)
@@ -83,6 +84,18 @@ Para isso, utilizamos o Figma para criar alguns modelos de telas e termos uma ba
 No diretório `telas`, é possível visualizar todas as telas em um *único PDF*. Para acessar diretamente o arquivo, basta clicar [aqui](front-end/telas/Telas.pdf).
 
 > Também é possível acessar os protótipos diretamente pelo Figma através do link: https://www.figma.com/file/CkA8G5aU1pIcOs4t75UNZd/Untitled?node-id=0%3A1&t=LTUyff4CvEg1euWd-1
+
+ ### Palheta de cores
+
+ As cores utilizadas nos protótipos de telas são  as seguintes:
+
+| Aluno | Certificador | Professor | Certificador |
+|-------|--------------|-----------|--------------|
+|![#628f66](https://via.placeholder.com/15/628f66/000000?text=+) - `#628f66`  | ![#8f628a](https://via.placeholder.com/15/8f628a/000000?text=+) - `#8f628a` | ![#7d827d](https://via.placeholder.com/15/7d827d/000000?text=+) - `#7d827d`  | ![#394139](https://via.placeholder.com/15/394139/000000?text=+) - `#394139`             |
+|![#34733a](https://via.placeholder.com/15/34733a/000000?text=+) - `#34733a`  | ![#628f66](https://via.placeholder.com/15/628f66/000000?text=+) - `#628f66` | ![#aa9ea9](https://via.placeholder.com/15/aa9ea9/000000?text=+) - `#aa9ea9`  | ![#665d65](https://via.placeholder.com/15/#665d65/000000?text=+) - `#665d65`             |
+|![#d9d9d9](https://via.placeholder.com/15/d9d9d9/000000?text=+) - `#d9d9d9`  | ![#d9d9d9](https://via.placeholder.com/15/d9d9d9/000000?text=+) - `#d9d9d9` | ![#628f66](https://via.placeholder.com/15/628f66/000000?text=+) - `#628f66`  | ![#628f66](https://via.placeholder.com/15/628f66/000000?text=+) - `#628f66`             |
+|                                                                             | ![#62455e](https://via.placeholder.com/15/62455e/000000?text=+) - `#62455e` | ![#d9d9d9](https://via.placeholder.com/15/d9d9d9/000000?text=+) - `#d9d9d9`  | ![#d9d9d9](https://via.placeholder.com/15/d9d9d9/000000?text=+) - `#d9d9d9`             |
+
 
 
 ## Pré-requisito
