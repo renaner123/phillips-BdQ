@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import { config } from '../Constant';
 import configHeader from '../services/ConfigHeader';
 
@@ -151,13 +151,16 @@ const Register = () => {
                     }} />
                 </div>
                 <Row>
-                  <div className="col-6">
+                  <div className="col-4">
 
                     <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
                   </div>
-                  <div className="col-6">
-                    {/* FIXME voltar para página inicial, não save */}
-                    <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
+                  <div className="col-4">
+                    <Button type="submit" className="mt-3 btn btn-success" href='/'>Login</Button>
+                  </div>
+                  <div className="col-4">
+
+                    <Button type="submit" className="mt-3 btn btn-secondary" href='/'>Voltar</Button>
                   </div>
                 </Row>
               </div>
@@ -227,13 +230,15 @@ const Register = () => {
                     }} />
                 </div>
                 <Row>
-                  <div className="col-6">
+                  <div className="col-4">
 
                     <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
                   </div>
-                  <div className="col-6">
-                    {/* FIXME voltar para página inicial, não save */}
-                    <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
+                  <div className="col-4">
+                    <Button type="submit" className="mt-3 btn btn-success" href='/'>Login</Button>
+                  </div>
+                  <div className="col-4">
+                    <Button type="submit" className="mt-3 btn btn-secondary" href='/'>Voltar</Button>
                   </div>
                 </Row>
               </div>
@@ -302,12 +307,14 @@ const Register = () => {
                     }} />
                 </div>
                 <Row>
-                  <div className="col-6">
+                  <div className="col-4">
                     <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
                   </div>
-                  <div className="col-6">
-                    {/* FIXME voltar para página inicial, não save */}
-                    <button type="submit" className="mt-3 btn btn-secondary" onClick={save}>Voltar para página principal</button>
+                  <div className="col-4">
+                    <Button type="submit" className="mt-3 btn btn-success" href='/'>Login</Button>
+                  </div>
+                  <div className="col-4">
+                    <Button type="submit" className="mt-3 btn btn-secondary" href='/'>Voltar</Button>
                   </div>
                 </Row>
               </div>
