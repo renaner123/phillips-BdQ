@@ -20,7 +20,11 @@ export default function NavSideBarComponent() {
             links: [
                 {
                     text: 'Cadastrar Questão',
-                    path: '#'
+                    path: '/index/questions'
+                },
+                {
+                    text: 'Listar Questões',
+                    path: '/index/list-questions'
                 }
             ],
             styles: [
@@ -33,7 +37,7 @@ export default function NavSideBarComponent() {
             links: [
                 {
                     text: 'BUSCAR PROVA',
-                    path: '#'
+                    path: '/index/performance'
                 }
             ],
             styles: [
