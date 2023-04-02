@@ -22,7 +22,8 @@ const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
     // Fetch the test results for the student with the given ID
     fetch(`${config.url.BASE_URL}/students/performance/${studentId}`, configHeader)
       .then(response => response.json())
-      .then(data => setTestResults(data));
+      .then(data => setTestResults(data))
+      console.log(testResults);
   }, [studentId]);
   const getColorForResult = (result: number) => {
     return result >= 6 ? 'success' : 'danger';
@@ -44,8 +45,8 @@ const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
           </tr>
         </thead>
         <tbody>
-          {testResults.sort((a,b) => b.result - a.result).map((result) => (
-            <tr key={result.date}>
+        {Array.isArray(testResults) && testResults.sort((a,b) => b.result - a.result).map((result) => (
+            <tr key={result.idTest}>
               <td>{result.idTest}</td>
               <td>{result.name}</td>
               <td>{result.date}</td>

@@ -60,7 +60,7 @@ const TestListQuestionTable = ({ id }: TestListQuestionProps) => {
       <div className="row text-center">
         <p className="h2">Questions</p>
       </div>
-      {/* TODO estilizar esse trecho, talvez alterar os radios por buttons. Deixar parecido com o do qconcursos */}
+      {/* // TODO estilizar esse trecho, talvez alterar os radios por buttons. Deixar parecido com o do qconcursos */}
       {testQuestions.map((question, index) => (
         <div className="row" key={question.id}>
           <div className="col-sm-auto">

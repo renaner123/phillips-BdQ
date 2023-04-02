@@ -40,6 +40,7 @@ export default function Sidebar({ links, styles }:MenuData) {
                                 <ul>
                             {links.map((link) => {
                                 return (
+                                    // FIXME essa key a principio tá gerando warning -> Warning: Each child in a list should have a unique "key" prop.
                                     <li key={link.path} className='nav-item'>
                                         <Link to={link.path} className='nav-link text-white' aria-current='page'>
                                             {(link.text)}
