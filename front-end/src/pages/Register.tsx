@@ -171,7 +171,7 @@ const Register = () => {
                     <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
                   </div>
                   <div className="col-4">
-                    <Button type="submit" className="mt-3 btn btn-success" href='/'>Login</Button>
+                    <Button type="submit" className="mt-3 btn btn-success" href='/login'>Login</Button>
                   </div>
                   <div className="col-4">
 
@@ -326,7 +326,7 @@ const Register = () => {
                     <button type="submit" className="mt-3 btn btn-primary" onClick={save}>Criar a conta!</button>
                   </div>
                   <div className="col-4">
-                    <Button type="submit" className="mt-3 btn btn-success" href='/'>Login</Button>
+                    <Button type="submit" className="mt-3 btn btn-success" href='/login'>Login</Button>
                   </div>
                   <div className="col-4">
                     <Button type="submit" className="mt-3 btn btn-secondary" href='/'>Voltar</Button>

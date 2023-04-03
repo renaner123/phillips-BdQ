@@ -16,6 +16,7 @@ import UploadFiles from './pages/UploadFiles';
 import Questions from './pages/Questions';
 
 // FIXME para buscar a performance do STUDENT logado, é necessário pegar o ID do usuário que está logado pra passar no studentId
+// FIXME Valor do id está setado manualmente para 1
 import Institutional from './pages/Institutional';
 import MaterialsCount from './services/MaterialsCount';
 import { AuthContext, User } from './context/authContext';
@@ -42,6 +43,7 @@ function App() {
               <Route path="/index/questions" element={<Questions />} />
               <Route path="/index/download" element={<FileList />} />
               <Route path="/index/upload" element={<UploadFiles />} />
+              {/**user?.id_client! */}
               <Route path="/index/performance" element={<StudentTestResultTable studentId={1} />} />
             </Route>
           </Routes>

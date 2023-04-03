@@ -1,4 +1,3 @@
-import path from 'path';
 import { useContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
@@ -20,8 +19,13 @@ export default function NavSideBarComponent() {
             links: [
                 {
                     text: 'Cadastrar Questão',
-                    path: '#'
-                }
+                    path: '/index/questions'
+                },
+                {
+                    text: 'Enviar arquivo',
+                    path: '/index/upload'
+                },
+                
             ],
             styles: [
                 {
@@ -32,9 +36,13 @@ export default function NavSideBarComponent() {
         ROLE_STUDENT: {
             links: [
                 {
-                    text: 'BUSCAR PROVA',
+                    text: 'Desempenho',
+                    path: '/index/performance'
+                },
+                {
+                    text: 'REALIZAR OUTRA PROVA',
                     path: '#'
-                }
+                },
             ],
             styles: [
                 {

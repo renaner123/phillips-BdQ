@@ -1,8 +1,11 @@
+import { error } from 'console';
+import test from 'node:test';
 import { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import { config } from '../Constant';
 import configHeader from '../services/ConfigHeader';
+
 
 interface StudentTestResult {
   idTest: number;
@@ -15,19 +18,37 @@ interface StudentTestResultProps {
   studentId: number;
 }
 
+let erroStatus;
+
 const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
   const [testResults, setTestResults] = useState<StudentTestResult[]>([]);
+
+
 
   useEffect(() => {
     // Fetch the test results for the student with the given ID
     fetch(`${config.url.BASE_URL}/students/performance/${studentId}`, configHeader)
-      .then(response => response.json())
-      .then(data => setTestResults(data));
+      .then(response =>  response.json())
+      .then(data => erroStatus = setTestResults(data))
+      .catch((error) => {
+        console.log("Error: " + error);
+        erroStatus = error;
+      });
   }, [studentId]);
   const getColorForResult = (result: number) => {
     return result >= 6 ? 'success' : 'danger';
   };
 
+  console.log( erroStatus + " aloan");
+
+
+  /**.catch((error) => {       
+            if(error.response.status===409){
+              alert(error.response.data['message'])
+            }else if(error.response.status===400){
+              alert(error.response.data[0]['message'])
+            }
+            console.log(error);   */
   return (
     <div className="container">
       <div className="row text-center">
@@ -44,19 +65,32 @@ const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
           </tr>
         </thead>
         <tbody>
-          {testResults.sort((a,b) => b.result - a.result).map((result) => (
-            <tr key={result.date}>
-              <td>{result.idTest}</td>
-              <td>{result.name}</td>
-              <td>{result.date}</td>
-              <td>
-                <span className={`badge bg-${getColorForResult(result.result)}`}>{result.result}</span>
-              </td>
-            </tr>
-          ))}
+          <div>
+            {/* // FIXME corrigir casos do sort, quando o estudante não tiver avaliações.*/ }
+            {testResults == null ? (
+              <p>Error: {"Opa"}</p>
+            ) : (
+              <p>Success!</p>
+            )}
+          </div>
+          {
+
+
+
+
+            testResults.sort((a, b) => b.result - a.result).map((result) => (
+              <tr key={result.date}>
+                <td>{result.idTest}</td>
+                <td>{result.name}</td>
+                <td>{result.date}</td>
+                <td>
+                  <span className={`badge bg-${getColorForResult(result.result)}`}>{result.result}</span>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
-      <Outlet/>
+      <Outlet />
     </div>
   );
 };

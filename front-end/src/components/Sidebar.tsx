@@ -34,7 +34,6 @@ export default function Sidebar({ links, styles }:MenuData) {
             <div className="container-fluid">
                 <Row>
                     {styles.map( (teste) =>{
-
                         return (
                             <div className={teste.path}>
                                 <ul>
