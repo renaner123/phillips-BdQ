@@ -22,10 +22,9 @@ export default function NavSideBarComponent() {
                     path: '/index/questions'
                 },
                 {
-                    text: 'Enviar arquivo',
-                    path: '/index/upload'
-                },
-                
+                    text: 'Listar Questões',
+                    path: '/index/list-questions'
+                }
             ],
             styles: [
                 {
@@ -36,13 +35,9 @@ export default function NavSideBarComponent() {
         ROLE_STUDENT: {
             links: [
                 {
-                    text: 'Desempenho',
+                    text: 'BUSCAR PROVA',
                     path: '/index/performance'
-                },
-                {
-                    text: 'REALIZAR OUTRA PROVA',
-                    path: '#'
-                },
+                }
             ],
             styles: [
                 {
