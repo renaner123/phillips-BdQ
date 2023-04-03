@@ -11,7 +11,7 @@ import './styleSheet/index.scss';
 import Home from './pages/Home';
 import QuestionsCount from "./services/QuestionsCount";
 import { useState } from 'react';
-import StudentTestResultTable from './pages/PerfomanceStudent';
+//import StudentTestResultTable from './pages/PerfomanceStudent';
 import UploadFiles from './pages/UploadFiles';
 import Questions from './pages/Questions';
 
