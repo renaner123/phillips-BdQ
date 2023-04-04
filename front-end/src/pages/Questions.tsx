@@ -96,7 +96,21 @@ function App() {
     }));
   };
 
+  // para caso o usuário adicionar uma resposta em branco conseguir validar
+  const isValidAnswer = (answer: string) => {
+    return answer.trim().length > 0;
+  };
+
   const handleSubmit = async () => {
+
+    // filtra somente se a resposta for válida
+    const validAnswers = question.answers.filter((answer) => isValidAnswer(answer));
+
+    if (validAnswers.length < 2) {
+      alert("Por favor, adicione pelo menos duas respostas.");
+      return;
+    }
+
     const response = await fetch(`${config.url.BASE_URL}/questions`, {
       method: "POST",
       headers: {
