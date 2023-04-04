@@ -23,9 +23,10 @@ export type MenuData = {
     styles: StyleOfRolesData[]
 }
 
+
+
 export default function Sidebar({ links, styles }:MenuData) {
     const auth = useContext(AuthContext);
-
     function signOut() {
         if (auth.updateUser) auth.updateUser(undefined)
     }
@@ -33,19 +34,20 @@ export default function Sidebar({ links, styles }:MenuData) {
         <>
             <div className="container-fluid">
                 <Row>
-                    {styles.map( (teste) =>{
+                    {styles?.map( (teste, index1) =>{
                         return (
-                            <div className={teste.path}>
+                            <div key={index1+1} className={teste.path}>
                                 <ul>
-                            {links.map((link) => {
+                            {links?.map((link,index2) => {
                                 return (
                                     // FIXME essa key a principio tá gerando warning -> Warning: Each child in a list should have a unique "key" prop.
-                                    <li key={link.path} className='nav-item'>
+                                    <li key={index2+1} className='nav-item'>
                                         <Link to={link.path} className='nav-link text-white' aria-current='page'>
                                             {(link.text)}
                                         </Link>
                                     </li>
                                 )
+                                    
                             })}
                         </ul>
                             </div>

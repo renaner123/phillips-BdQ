@@ -31,15 +31,17 @@ function App() {
   const [user, setUser] = useState<User>();
   return (
     <>
-      <AuthContext.Provider value={{user, updateUser: setUser}}>
-        
+      <AuthContext.Provider value={{ user, updateUser: setUser }}>
+
         <QuestionsCount setData={setCountQuestions} />
         <MaterialsCount setData={setCountMaterials} />
         <BrowserRouter>
+
           <Routes>
             <Route path='/' element={<Institutional />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            
             <Route path='/index' element={<NavSideBarComponent />}>
               <Route path="/index/home" element={<Home numQuestions={countQuestions} numMaterials={countMaterials} />} />
               <Route path="/index/questions" element={<Questions />} />
@@ -49,10 +51,10 @@ function App() {
               <Route path="/index/performance" element={<StudentTestResultTable studentId={user?.id_client!} />} />
             </Route>
           </Routes>
-      
+
         </BrowserRouter>
       </AuthContext.Provider>
-      
+
     </>
 
   );

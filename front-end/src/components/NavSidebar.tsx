@@ -20,12 +20,12 @@ export default function NavSideBarComponent() {
             links: [
                 {
                     text: 'Home',
-                    path: '/index/home'
+                    path_link: '/index/home'
                 },
                 {
-                    text: 'Material',
-                    path: "#"
-                },
+                    text: 'Listar material',
+                    path_link: '/index/download'
+                }
             ],
             userScreen: [
                 {
@@ -33,22 +33,13 @@ export default function NavSideBarComponent() {
                     role: auth.user?.role[0].authority!
                 }
             ],
-            dropDown: [
-                {
-                    text: 'Upload Materiais',
-                    path: '/index/upload'
-                },
-                {
-                    text: 'Todos os Materiais',
-                    path: '/index/download'
-                }
-            ]
+            
         },
         ROLE_STUDENT:{
             links: [
                 {
                     text: 'Home',
-                    path: '/index/home'
+                    path_link: '/index/home'
                 }
             ],
             userScreen: [
@@ -57,22 +48,13 @@ export default function NavSideBarComponent() {
                     role: auth.user?.role[0].authority!
                 }
             ],
-            dropDown: [
-                {
-                    text: 'Upload Materiais',
-                    path: '/index/upload'
-                },
-                {
-                    text: 'Todos os Materiais',
-                    path: '/index/download'
-                }
-            ]
+           
         },
         ROLE_CERTIFIER:{
             links: [
                 {
                     text: 'Home',
-                    path: '/index/home'
+                    path_link: '/index/home'
                 }
             ],
             userScreen: [
@@ -81,16 +63,7 @@ export default function NavSideBarComponent() {
                     role: auth.user?.role[0].authority!
                 }
             ],
-            dropDown: [
-                {
-                    text: 'Upload Materiais',
-                    path: '/index/upload'
-                },
-                {
-                    text: 'Todos os Materiais',
-                    path: '/index/download'
-                }
-            ]
+
         }
     }
 
@@ -143,7 +116,7 @@ export default function NavSideBarComponent() {
     }
     return (
         <>
-
+            
             <Navbar {...MenuNavBarRoles[auth.user?.role[0].authority || 'ROLE_USER']}/>
             <Row>
                 <Col className='col-2'>
@@ -153,7 +126,8 @@ export default function NavSideBarComponent() {
                     <Outlet />
                 </Col>
             </Row>
-            {console.log(auth.user?.role[0].authority)}
+            
+            
         </>
         
     )
