@@ -1,8 +1,9 @@
+import { text } from 'body-parser';
 import { useContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
-import Navbar from './Navbar';
+import Navbar, { MenuNavBarData } from './Navbar';
 import Sidebar, { MenuData } from './Sidebar';
 
 
@@ -13,6 +14,86 @@ import Sidebar, { MenuData } from './Sidebar';
     ROLE_CERTIFIER */
 export default function NavSideBarComponent() {
     const auth = useContext(AuthContext);
+
+    const MenuNavBarRoles: { [role: string]:MenuNavBarData } = {
+        ROLE_TEACHER:{
+            links: [
+                {
+                    text: 'Home',
+                    path: '/index/home'
+                },
+                {
+                    text: 'Material',
+                    path: "#"
+                },
+            ],
+            userScreen: [
+                {
+                    text_name: auth.user?.name!,
+                    role: auth.user?.role[0].authority!
+                }
+            ],
+            dropDown: [
+                {
+                    text: 'Upload Materiais',
+                    path: '/index/upload'
+                },
+                {
+                    text: 'Todos os Materiais',
+                    path: '/index/download'
+                }
+            ]
+        },
+        ROLE_STUDENT:{
+            links: [
+                {
+                    text: 'Home',
+                    path: '/index/home'
+                }
+            ],
+            userScreen: [
+                {
+                    text_name: auth.user?.name!,
+                    role: auth.user?.role[0].authority!
+                }
+            ],
+            dropDown: [
+                {
+                    text: 'Upload Materiais',
+                    path: '/index/upload'
+                },
+                {
+                    text: 'Todos os Materiais',
+                    path: '/index/download'
+                }
+            ]
+        },
+        ROLE_CERTIFIER:{
+            links: [
+                {
+                    text: 'Home',
+                    path: '/index/home'
+                }
+            ],
+            userScreen: [
+                {
+                    text_name: auth.user?.name!,
+                    role: auth.user?.role[0].authority!
+                }
+            ],
+            dropDown: [
+                {
+                    text: 'Upload Materiais',
+                    path: '/index/upload'
+                },
+                {
+                    text: 'Todos os Materiais',
+                    path: '/index/download'
+                }
+            ]
+        }
+    }
+
 
     const MenuRoles: { [role: string]: MenuData } = {
         ROLE_TEACHER: {
@@ -58,17 +139,23 @@ export default function NavSideBarComponent() {
                 }
             ]
         }
-        //TESTE COM ALGUMAS QUESTÕES ALTERANDO DINAMICAMENTE
+        
     }
     return (
         <>
 
-            <Navbar />
+            <Navbar {...MenuNavBarRoles[auth.user?.role[0].authority || 'ROLE_USER']}/>
             <Row>
-                <Col className='col-2'><Sidebar {...MenuRoles[auth.user?.role[0].authority || 'ROLE_USER']} /></Col>
-                <Col><Outlet /></Col>
+                <Col className='col-2'>
+                    <Sidebar {...MenuRoles[auth.user?.role[0].authority || 'ROLE_USER']} />
+                </Col>
+                <Col>
+                    <Outlet />
+                </Col>
             </Row>
+            {console.log(auth.user?.role[0].authority)}
         </>
+        
     )
 
 }
