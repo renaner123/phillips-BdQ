@@ -6,10 +6,10 @@ interface Question {
   question: string;
   difficulty: number;
   answers: string[];
+  answersSheet: number[];
   idDiscipline: number;
   idSubject: number;
 }
-
 interface Discipline {
   id: number;
   name: string;
@@ -25,6 +25,7 @@ function App() {
     question: "",
     difficulty: 1,
     answers: [""],
+    answersSheet: [0],
     idDiscipline: 0,
     idSubject: 0,
   });
@@ -111,6 +112,11 @@ function App() {
       return;
     }
 
+    if (selectedOptions.length === 0) {
+      alert("Adicione o Gabarito.");
+      return;
+    }
+
     const response = await fetch(`${config.url.BASE_URL}/questions`, {
       method: "POST",
       headers: {
@@ -123,21 +129,40 @@ function App() {
         answers: question.answers.filter((answer) => answer !== ""),
         idDiscipline: question.idDiscipline,
         idSubject: question.idSubject,
+        answersSheet: selectedOptions,
       }),
     });
     const data = await response.json();
     console.log(data);
     alert('Question Uploaded Successfully!');
-    
+
+    toggleOpen()
+
+    setSelectedOptions([])
+
     setQuestion((prevQuestion) => ({
       ...prevQuestion,
       difficulty: 0,
       idSubject: 0,
       question: "",
       idDiscipline: 0,
+      answersSheet: [],
       answers: [""],
     }));
 
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
+
+  const toggleOpen = () => setIsOpen(!isOpen);
+
+  const handleAddGabarito = (option: number) => {
+    if (selectedOptions.includes(option)) {
+      setSelectedOptions(selectedOptions.filter((o) => o !== option));
+    } else {
+      setSelectedOptions([...selectedOptions, option]);
+    }
   };
 
   return (
@@ -169,7 +194,7 @@ function App() {
 
         <div className="row-md-6 mb-1">
           <label>
-            Assunto:    
+            Assunto:
             <select value={question.idSubject} onChange={handleSubjectChange}>
               {subjects.map((subject) => (
                 <option key={subject.id} value={subject.id}>
@@ -178,7 +203,7 @@ function App() {
               ))}
             </select>
           </label>
-          </div>
+        </div>
 
         <div className="row-md-6 mb-1">
           <label>
@@ -209,13 +234,47 @@ function App() {
           {question.answers.length < 5 && <button className="btn btn-secondary  me-1 btn-sm" onClick={handleAddAnswer}>Adicionar Resposta</button>}
           <button className="btn btn-secondary btn-sm " onClick={handleClearAnswers}>Limpar Respostas</button>
           <div>
-          {question.answers.length >= 5 && <p className=" mt-1 alert alert-warning " role="alert">Máximo de 5 respostas atingido.</p>}
+            {question.answers.length >= 5 && <p className=" mt-1 alert alert-warning " role="alert">Máximo de 5 respostas atingido.</p>}
           </div>
         </div>
-          <br />
-          <div>
+        <br />
+
+        <div>
+          <button className="btn btn-secondary btn-sm" onClick={toggleOpen}>Salvar gabarito</button>
+          {isOpen && (
+            <div className="row">
+              <p className="mb-2 mt-2">Selecione as respostas corretas:</p>
+              {(Array.from({ length: question.answers.length }, (_, index) => index + 1)).map((option) => (
+                <>
+
+                  <div className="col-sm-auto">
+                    <label>
+                      {option}
+                    </label>
+                  </div>
+
+                  <div className="col-sm-auto">
+                    <label key={option}>
+                      <input className="me-1"
+                        type="checkbox"
+                        checked={selectedOptions.includes(option)}
+                        onChange={() => handleAddGabarito(option)} />
+                    </label>
+                  </div>
+
+                </>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div>
           <button className="btn btn-primary btn-sm mt-3" onClick={handleSubmit}>Enviar</button>
-          </div>
+        </div>
+
+
+
+
       </Row>
     </Container >
   );
