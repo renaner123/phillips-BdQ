@@ -29,31 +29,48 @@ export default function NavbarComponent({ links, userScreen }: MenuNavBarData) {
   function signOut() {
     if (auth.updateUser) auth.updateUser(undefined)
   }
-
+  /** ROLE_TEACHER,
+      ROLE_STUDENT,
+      ROLE_CERTIFIER */
   return (
     // Está tudo no navbar apenas para facilitar os testes, precisa inserir a lógica de autenticação e quais páginas o usuário pode ver
     <Navbar bg="light" expand="lg">
       {userScreen.map((Roles, index1) => {
+        let roleOption;
+        if (Roles.role === "ROLE_TEACHER") {
+          roleOption = "Professor";
+        }
+        if (Roles.role === "ROLE_STUDENT") {
+          roleOption = "Aluno";
+        }
+        if (Roles.role === "ROLE_CERTIFIER") {
+          roleOption = "Certificador";
+        }
+
         return (
-          <Navbar.Brand key={index1 + 1} className='mx-5' href="/">{Roles.role}</Navbar.Brand>
+          <Navbar.Brand key={index1 + 1} className='mx-5' href="/">{roleOption}</Navbar.Brand>
         )
       })}
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto"> 
-               <>
+        <Nav className="mr-auto">
+          <>
             {links.map((itensNavBar, index2) => {
-              return (                
-                  <Link key={index2 + 1} to={itensNavBar.path_link}>
-                    {itensNavBar.text}
-                  </Link>                
+              return (
+                <Link key={index2 + 1} className="nav-link" to={itensNavBar.path_link}>
+                  {itensNavBar.text}
+                </Link>
               )
             })}
-            <Link onClick={signOut} to={'/login'}   >Pagina Principal ou Sair</Link>
           </>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   )
 }
+/**
+ *                   <Link key={index2 + 1} className="nav-link" to={itensNavBar.path_link}>
+                    {itensNavBar.text}
+                  </Link>      
+ */

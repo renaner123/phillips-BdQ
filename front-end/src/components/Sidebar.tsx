@@ -25,7 +25,7 @@ export type MenuData = {
 
 
 
-export default function Sidebar({ links, styles }:MenuData) {
+export default function Sidebar({ links, styles }: MenuData) {
     const auth = useContext(AuthContext);
     function signOut() {
         if (auth.updateUser) auth.updateUser(undefined)
@@ -34,26 +34,31 @@ export default function Sidebar({ links, styles }:MenuData) {
         <>
             <div className="container-fluid">
                 <Row>
-                    {styles?.map( (teste, index1) =>{
+                    {styles?.map((teste, index1) => {
                         return (
-                            <div key={index1+1} className={teste.path}>
-                                <ul>
-                            {links?.map((link,index2) => {
-                                return (
-                                    // FIXME essa key a principio tá gerando warning -> Warning: Each child in a list should have a unique "key" prop.
-                                    <li key={index2+1} className='nav-item'>
-                                        <Link to={link.path} className='nav-link text-white' aria-current='page'>
-                                            {(link.text)}
-                                        </Link>
-                                    </li>
-                                )
-                                    
-                            })}
-                        </ul>
+                            <div key={index1 + 1} className={teste.path}>
+                                <ul className="nav flex-column mb-auto">
+                                    {links?.map((link, index2) => {
+                                        return (
+                                            // FIXME essa key a principio tá gerando warning -> Warning: Each child in a list should have a unique "key" prop.
+                                            <li key={index2 + 1} className='nav-item'>
+                                                <Link to={link.path} className='nav-link text-white' aria-current='page'>
+                                                    {(link.text)}
+                                                </Link>
+                                            </li>
+                                        )
+
+                                    })}
+                                </ul>
+                                <hr/>
+                                <Link className="nav-link d-flex align-items-center text-white text-decoration-none " onClick={signOut} to={'/login'}   >Logoff</Link>
                             </div>
+
                         )
                     })}
+
                 </Row>
+
             </div>
         </>
 
@@ -85,18 +90,18 @@ export default function Sidebar({ links, styles }:MenuData) {
                             </li> */
 
 
-                            /**<Row>
-                    <div className='col-10 min-vh-100 bg-primary align-text-center'>
-                        <ul>
-                            {links.map((link) => {
-                                return (
-                                    <li key={link.path} className='nav-item'>
-                                        <Link to={link.path} className='nav-link text-white' aria-current='page'>
-                                            {(link.text)}
-                                        </Link>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                </Row> */
+/**<Row>
+<div className='col-10 min-vh-100 bg-primary align-text-center'>
+<ul>
+{links.map((link) => {
+    return (
+        <li key={link.path} className='nav-item'>
+            <Link to={link.path} className='nav-link text-white' aria-current='page'>
+                {(link.text)}
+            </Link>
+        </li>
+    )
+})}
+</ul>
+</div>
+</Row> */
