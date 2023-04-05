@@ -45,12 +45,12 @@ export default function NavbarComponent({ links, userScreen }: MenuNavBarData) {
                <>
             {links.map((itensNavBar, index2) => {
               return (                
-                  <Nav.Link key={index2 + 1} href={itensNavBar.path_link}>
+                  <Link key={index2 + 1} to={itensNavBar.path_link}>
                     {itensNavBar.text}
-                  </Nav.Link>                
+                  </Link>                
               )
             })}
-            <Nav.Link href="/">Pagina Principal ou Sair</Nav.Link>
+            <Link onClick={signOut} to={'/login'}   >Pagina Principal ou Sair</Link>
           </>
         </Nav>
       </Navbar.Collapse>
