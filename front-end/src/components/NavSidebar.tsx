@@ -40,6 +40,10 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Home',
                     path_link: '/index/home'
+                },
+                {
+                    text: 'Listar material',
+                    path_link: '/index/download'
                 }
             ],
             userScreen: [
@@ -55,6 +59,10 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Home',
                     path_link: '/index/home'
+                },
+                {
+                    text: 'Listar material',
+                    path_link: '/index/download'
                 }
             ],
             userScreen: [
@@ -78,6 +86,10 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Listar Questões',
                     path: '/index/list-questions'
+                },
+                {
+                    text: 'Adicionar Materiais',
+                    path: '/index/upload'
                 }
             ],
             styles: [

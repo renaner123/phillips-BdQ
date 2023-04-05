@@ -69,8 +69,3 @@ export default function NavbarComponent({ links, userScreen }: MenuNavBarData) {
     </Navbar>
   )
 }
-/**
- *                   <Link key={index2 + 1} className="nav-link" to={itensNavBar.path_link}>
-                    {itensNavBar.text}
-                  </Link>      
- */

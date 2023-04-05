@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
 import { config } from "../Constant";
+import { AuthContext } from "../context/authContext";
+import configHeader from "../services/ConfigHeader";
+
+type LoginData = {
+  username: string,
+  password: string
+}
 
 function FileList() {
+  const auth = useContext(AuthContext);
   const [files, setFiles] = useState<any[]>([]);
+  const [state, setState] = useState<LoginData>({ username: '', password: '' });
+
+
   // os 3 primeiros arquivos do banco não possuem link, para testar é necessário fazer o upload de arquivos
   useEffect(() => {
     axios
-      .get(`${config.url.BASE_URL}/materials`)
+      .get(`${config.url.BASE_URL}/materials`, configHeader)
       .then((response) => {
         setFiles(response.data);
       })
@@ -18,19 +29,13 @@ function FileList() {
   }, []);
 
   const downloadFile = (id: any) => {
-    const username = 'renan';
-    const password = '123';
-    const base64Credentials = btoa(`${username}:${password}`);
     
+    /** const username = 'renan';
+    const password = '123';
+    const base64Credentials = btoa(`${username}:${password}`);*/
+
     axios
-      .get(`${config.url.BASE_URL}/materials/download-file/${id}`, {
-        responseType: "blob",
-        headers: {
-          Authorization: `Basic ${base64Credentials}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      })
+      .get(`${config.url.BASE_URL}/materials/download-file/${id}`, configHeader)
       .then((response) => {
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");
