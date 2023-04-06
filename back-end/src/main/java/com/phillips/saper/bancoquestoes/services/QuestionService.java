@@ -38,6 +38,7 @@ public class QuestionService {
         questionModel.setIdDiscipline(questionRequestDTO.getIdDiscipline());     
         questionModel.setIdSubject(questionRequestDTO.getIdSubject());  
         questionModel.setUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
+        questionModel.setAnswersSheet(questionRequestDTO.getAnswersSheet());
         
         QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO(questionRepository.
         save(questionModel));

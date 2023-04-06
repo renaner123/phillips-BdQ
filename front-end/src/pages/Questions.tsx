@@ -6,7 +6,7 @@ interface Question {
   question: string;
   difficulty: number;
   answers: string[];
-  answersSheet: number[];
+  answersSheet: string[];
   idDiscipline: number;
   idSubject: number;
 }
@@ -25,7 +25,7 @@ function App() {
     question: "",
     difficulty: 1,
     answers: [""],
-    answersSheet: [0],
+    answersSheet: [""],
     idDiscipline: 0,
     idSubject: 0,
   });
@@ -120,7 +120,7 @@ function App() {
     const response = await fetch(`${config.url.BASE_URL}/questions`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Basic ${btoa(`${'renan'}:${'123'}`)}`,
       },
       body: JSON.stringify({
@@ -129,7 +129,7 @@ function App() {
         answers: question.answers.filter((answer) => answer !== ""),
         idDiscipline: question.idDiscipline,
         idSubject: question.idSubject,
-        answersSheet: selectedOptions,
+        answersSheet: selectedOptions.map((num) => num.toString()),
       }),
     });
     const data = await response.json();
@@ -146,7 +146,7 @@ function App() {
       idSubject: 0,
       question: "",
       idDiscipline: 0,
-      answersSheet: [],
+      answersSheet: [""],
       answers: [""],
     }));
 

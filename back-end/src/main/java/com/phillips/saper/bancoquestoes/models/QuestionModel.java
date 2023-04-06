@@ -30,6 +30,11 @@ public class QuestionModel {
     @CollectionTable(name = "answersList", joinColumns = @JoinColumn(name = "question_id"))
     @Column(name = "value")
     private List<String> answers;
+    
+    @ElementCollection
+    @CollectionTable(name = "answersSheetList", joinColumns = @JoinColumn(name = "question_id"))
+    @Column(name = "value")
+    private List<String> answersSheet;
     private int difficulty;    
     private Boolean certified;
     private int amountAccess;

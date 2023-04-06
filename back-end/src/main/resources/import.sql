@@ -47,39 +47,39 @@ INSERT INTO TEST_MODEL (NAME, DATE_TIME) VALUES ('Prova de sip', TO_DATE('2023-0
 INSERT INTO TEST_MODEL (NAME, DATE_TIME) VALUES ('Prova de The Winter',TO_DATE('2023-05-17', 'yyyy-mm-dd'));
 INSERT INTO TEST_MODEL (NAME, DATE_TIME) VALUES ('Prova de Sum', TO_DATE('2023-06-15', 'yyyy-mm-dd'));
 
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'1', 'A')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'2', 'B')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'3', 'D')
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'1', 'A');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'2', 'B');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (1,'3', 'D');
 
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'1', 'A')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'2', 'A')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'3', 'C')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'4', 'B')
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'1', 'A');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'2', 'A');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'3', 'C');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (2,'4', 'B');
 
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'1', 'B')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'2', 'D')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'3', 'C')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'4', 'B')
-INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'5', 'D')
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'1', 'B');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'2', 'D');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'3', 'C');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'4', 'B');
+INSERT INTO ANSWERS_HASH (TEST_ID, KEY, VALUE) VALUES (3,'5', 'D');
 
 
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código funciona', 1, 1, 1, 1, 0, TO_DATE('2023-04-11', 'yyyy-mm-dd'))
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código nunca funciona', 2, 1, 3, 2,0,TO_DATE('2023-04-11', 'yyyy-mm-dd'))
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque eu Nao sei', 4, 0, 2, 3,10,TO_DATE('2023-04-11', 'yyyy-mm-dd'))
+INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código funciona', 1, 1, 1, 1, 0, TO_DATE('2023-04-11', 'yyyy-mm-dd'));
+INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código nunca funciona', 2, 1, 3, 2,0,TO_DATE('2023-04-11', 'yyyy-mm-dd'));
+INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque eu Nao sei', 4, 0, 2, 3,10,TO_DATE('2023-04-11', 'yyyy-mm-dd'));
 
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código funciona', 1, 0, 1, 1, 0, TO_DATE('2023-04-11', 'yyyy-mm-dd'))
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código nunca funciona', 2, 0, 3, 2,0,TO_DATE('2023-04-11', 'yyyy-mm-dd'))
-INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque eu Nao sei', 4, 1, 2, 3,10,TO_DATE('2023-04-11', 'yyyy-mm-dd'))
+INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código funciona', 1, 0, 1, 1, 0, TO_DATE('2023-04-11', 'yyyy-mm-dd'));
+INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque o código nunca funciona', 2, 0, 3, 2,0,TO_DATE('2023-04-11', 'yyyy-mm-dd'));
+INSERT INTO QUESTION_MODEL (QUESTION, DIFFICULTY, CERTIFIED, ID_DISCIPLINE, ID_SUBJECT, AMOUNT_ACCESS, UPDATE_DATE) VALUES ('Porque eu Nao sei', 4, 1, 2, 3,10,TO_DATE('2023-04-11', 'yyyy-mm-dd'));
 
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (1, ENCODE('Nao sei o motivo exato, mas sei que o stackoverflow sabe'))
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (1, 'Amora Nao eh doce')
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (1, 'Abacaxi tem uma coroa mas Nao eh rei')
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (2, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe')
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (2, 'CSASS eh uma coisa')
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (3, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe')
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (4, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe')
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (5, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe')
-INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (6, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe')
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (1, ('Nao sei o motivo exato, mas sei que o stackoverflow sabe'));
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (1, 'Amora Nao eh doce');
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (1, 'Abacaxi tem uma coroa mas Nao eh rei');
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (2, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe');
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (2, 'CSASS eh uma coisa');
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (3, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe');
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (4, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe');
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (5, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe');
+INSERT INTO ANSWERS_LIST (QUESTION_ID, VALUE) VALUES (6, 'Nao sei o motivo exato, mas sei que o stackoverflow sabe');
 
 
 INSERT INTO SUBJECT_MODEL (DESCRIPTION, AMOUNT_ACCESS, ID_DISCIPLINE) VALUES ('Algas', 0, 2);
@@ -92,22 +92,32 @@ INSERT INTO SUBJECT_MODEL (DESCRIPTION, AMOUNT_ACCESS, ID_DISCIPLINE) VALUES ('A
 INSERT INTO SUBJECT_MODEL (DESCRIPTION, AMOUNT_ACCESS, ID_DISCIPLINE) VALUES ('Rochas', 47, 1);
 INSERT INTO SUBJECT_MODEL (DESCRIPTION, AMOUNT_ACCESS, ID_DISCIPLINE) VALUES ('Magma', 5, 3);
 
-insert into test_has_question values (1,1)
-insert into test_has_question values (1,2)
-insert into test_has_question values (1,3)
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (6, '1');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (6, '2');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (1, '1');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (2, '5');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (2, '3');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (2, '2');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (4, '3');
 
-insert into student_has_test values (1,1,8.5)
-insert into student_has_test values (1,2,8.0)
-insert into student_has_test values (2,2,5.0)
-insert into student_has_test values (3,1,4.5)
-insert into student_has_test values (1,3,4)
 
-insert into material_has_student values (1,1)
-insert into material_has_student values (1,2)
-insert into material_has_student values (2,3)
-insert into material_has_student values (3,1)
 
-insert into teacher_has_question values (1,1)
-insert into teacher_has_question values (1,2)
-insert into teacher_has_question values (2,3)
-insert into teacher_has_question values (3,1)
+insert into test_has_question values (1,1);
+insert into test_has_question values (1,2);
+insert into test_has_question values (1,3);
+
+insert into student_has_test values (1,1,8.5);
+insert into student_has_test values (1,2,8.0);
+insert into student_has_test values (2,2,5.0);
+insert into student_has_test values (3,1,4.5);
+insert into student_has_test values (1,3,4);
+
+insert into material_has_student values (1,1);
+insert into material_has_student values (1,2);
+insert into material_has_student values (2,3);
+insert into material_has_student values (3,1);
+
+insert into teacher_has_question values (1,1);
+insert into teacher_has_question values (1,2);
+insert into teacher_has_question values (2,3);
+insert into teacher_has_question values (3,1);

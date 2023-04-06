@@ -53,7 +53,7 @@ public class QuestionController {
     @PostMapping
     public ResponseEntity<QuestionResponseDTO> save(
             @RequestBody QuestionRequestDTO questionRequestDTO) {
-                
+    
         return questionService.save(questionRequestDTO);
     }
 
