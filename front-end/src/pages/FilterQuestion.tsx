@@ -55,6 +55,7 @@ const Legend = () => {
 const FiltroDisciplinas = ({ idDiscipline }: FilterQuestionProp) => {
     const [stateDiscipline, setStateDiscipline] = useState('');
     const [stateSubject, setStateSubject] = useState('');
+    
     const [listQuestions, setListQuestions] = useState<ListQuestion[]>([]);
 
     //#TODO finalizar o código para recuperar os dados
@@ -78,6 +79,8 @@ const FiltroDisciplinas = ({ idDiscipline }: FilterQuestionProp) => {
             .then(data => setListQuestions(data))
     }, [stateDiscipline, stateSubject]);
 
+
+
     return (
         <div className="container">
             <select className="form-select"
@@ -100,9 +103,8 @@ const FiltroDisciplinas = ({ idDiscipline }: FilterQuestionProp) => {
                         {op.idSubject}
                     </option>
                 ))}
+                
             </select>
-
-
 
             <div className="row text-center">
                 <p className="h2">Questions</p>
