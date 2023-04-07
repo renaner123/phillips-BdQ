@@ -38,8 +38,8 @@ public class QuestionModel {
     private int difficulty;    
     private Boolean certified;
     private int amountAccess;
-    private int idDiscipline;
-    private int idSubject;
+    private Long idDiscipline;
+    private Long idSubject;
     private String tag;
 
     @ManyToMany(

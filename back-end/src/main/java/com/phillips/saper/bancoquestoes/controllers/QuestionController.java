@@ -65,12 +65,21 @@ public class QuestionController {
         return questionService.update(id, questionRequestDTO);
     }
 
+    @Operation(summary = "Get all questions certifieds by discipline and subject", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @GetMapping("/certifieds/{id-discipline}")
+    public ResponseEntity<List<QuestionResponseDTO>> questionByDisciplineAndSubject(
+        @PathVariable(name = "id-discipline") Long idDiscipline,
+        @RequestParam(name = "id-subject") Long idSubject) {
+        return questionService.findByidDisciplineAndidSubject(idDiscipline, idSubject);
+    }
+
     @Operation(summary = "Get all questions by Tag", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping("/{tag}")
     public ResponseEntity<List<QuestionResponseDTO>> questionByTag(
             @PathVariable(name = "tag") String tag) {
         return questionService.findByTag(tag);
     }
+
 
     @Operation(summary = "Update a tag of the question", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @PutMapping("/tags/{id}")

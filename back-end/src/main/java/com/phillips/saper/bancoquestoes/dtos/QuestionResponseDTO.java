@@ -14,13 +14,14 @@ public class QuestionResponseDTO {
     private int difficulty;    
     private Boolean certified;
     private int amountAccess;
-    private int idDiscipline;
+    private Long idDiscipline;
     private String tag;
 
     public QuestionResponseDTO() {
     }
-    private int idSubject;
-    public QuestionResponseDTO(Long id, LocalDateTime updateDate, String question, List<String> answers, int difficulty,int amountAccess, int idDiscipline, int idSubject, String tag) {
+    private Long idSubject;
+
+    public QuestionResponseDTO(Long id, LocalDateTime updateDate, String question, List<String> answers, int difficulty,int amountAccess, Long idDiscipline, Long idSubject, String tag) {
         this.id = id;
         this.updateDate = updateDate;
         this.question = question;
@@ -97,16 +98,16 @@ public class QuestionResponseDTO {
     public void setAmountAccess(int amountAccess) {
         this.amountAccess = amountAccess;
     }
-    public int getIdDiscipline() {
+    public Long getIdDiscipline() {
         return idDiscipline;
     }
-    public void setIdDiscipline(int idDiscipline) {
+    public void setIdDiscipline(Long idDiscipline) {
         this.idDiscipline = idDiscipline;
     }
-    public int getIdSubject() {
+    public Long getIdSubject() {
         return idSubject;
     }
-    public void setIdSubject(int idSubject) {
+    public void setIdSubject(Long idSubject) {
         this.idSubject = idSubject;
     }
 

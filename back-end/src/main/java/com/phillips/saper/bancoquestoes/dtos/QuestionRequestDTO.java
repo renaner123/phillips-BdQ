@@ -7,15 +7,15 @@ public class QuestionRequestDTO {
     private String question;
     private List<String> answers;
     private int difficulty;    
-    private int idDiscipline;
-    private int idSubject;
+    private Long idDiscipline;
+    private Long idSubject;
     private List<String> answersSheet;
 
     public QuestionRequestDTO() {
     }
 
     public QuestionRequestDTO(String question, List<String> answers, int difficulty,
-            int amountAccess, int idDiscipline, int idSubject, List<String> answersSheet) {
+            int amountAccess, Long idDiscipline, Long idSubject, List<String> answersSheet) {
         this.question = question;
         this.answers = answers;
         this.difficulty = difficulty;
@@ -42,16 +42,16 @@ public class QuestionRequestDTO {
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
-    public int getIdDiscipline() {
+    public Long getIdDiscipline() {
         return idDiscipline;
     }
-    public void setIdDiscipline(int idDiscipline) {
+    public void setIdDiscipline(Long idDiscipline) {
         this.idDiscipline = idDiscipline;
     }
-    public int getIdSubject() {
+    public Long getIdSubject() {
         return idSubject;
     }
-    public void setIdSubject(int idSubject) {
+    public void setIdSubject(Long idSubject) {
         this.idSubject = idSubject;
     }
 
