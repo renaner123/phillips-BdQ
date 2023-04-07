@@ -90,6 +90,10 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Adicionar Materiais',
                     path: '/index/upload'
+                },
+                {
+                    text: 'Listar Questões',
+                    path: '/index/filterQuestion'
                 }
             ],
             styles: [
