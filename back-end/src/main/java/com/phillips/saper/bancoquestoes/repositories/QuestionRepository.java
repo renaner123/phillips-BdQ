@@ -10,5 +10,5 @@ public interface QuestionRepository extends JpaRepository<QuestionModel, Long> {
     long count();
     List<QuestionModel> findByCertifiedTrue();
 	List<QuestionModel> findByTag(String tag);
-    List<QuestionModel> findByIdDisciplineAndIdSubject(Long idDiscipline, Long idSubject);
+    List<QuestionModel> findByIdDisciplineAndIdSubjectAndCertifiedTrue(Long idDiscipline, Long idSubject);
 }
