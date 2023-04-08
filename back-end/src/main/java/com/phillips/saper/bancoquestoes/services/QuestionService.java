@@ -4,13 +4,20 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.phillips.saper.bancoquestoes.configuration.ModelMapperConfig;
 import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionResponseDTO;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
@@ -24,10 +31,29 @@ public class QuestionService {
     @Autowired
     QuestionRepository questionRepository;
 
-    public ResponseEntity<List<QuestionResponseDTO>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(
-            questionRepository.findAll().stream().map((question)->new QuestionResponseDTO(question)).toList());
+    @Autowired
+    private ModelMapper modelMapper;
+
+/*     public Page<QuestionResponseDTO> findAll(Pageable pageable) {
+        TypeMap<QuestionModel, QuestionResponseDTO> typeMap = modelMapper.createTypeMap(QuestionModel.class, QuestionResponseDTO.class);
+
+        typeMap.addMapping(QuestionModel::getIdQuestion, QuestionResponseDTO::setId);
+        typeMap.addMapping(QuestionModel::getIdDiscipline, QuestionResponseDTO::setIdDiscipline);
+        typeMap.addMapping(QuestionModel::getIdSubject, QuestionResponseDTO::setIdSubject);
+
+        Page<QuestionModel> questionPage = questionRepository.findAll(pageable);
+        return questionPage.map(product -> modelMapper.map(product, QuestionResponseDTO.class));    
+    } */
+
+    public Page<QuestionResponseDTO> findAll(Pageable pageable) {
+        Page<QuestionModel> questionPage = questionRepository.findAll(pageable);
+
+        List<QuestionResponseDTO> questionResponseDTO = questionPage.getContent().stream()
+            .map(product -> modelMapper.map(product, QuestionResponseDTO.class))
+            .collect(Collectors.toList());
+        return new PageImpl<>(questionResponseDTO, pageable, questionPage.getTotalElements());
     }
+
 
     public ResponseEntity<QuestionResponseDTO> save(QuestionRequestDTO questionRequestDTO) {
         QuestionModel questionModel = new QuestionModel();
