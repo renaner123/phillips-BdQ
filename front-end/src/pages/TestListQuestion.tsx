@@ -51,7 +51,9 @@ const TestListQuestionTable = ({ id }: TestListQuestionProps) => {
     // Fetch the test results for the student with the given ID
     fetch(`${config.url.BASE_URL}/questions`, configHeader)
       .then(response => response.json())
-      .then(data => setTestQuestions(data));
+      // TODO backend está paginando essa rota, por padrão vai retornar a página 0 com 10 itens dentro do content. Necessário adicionar lógica de pagina aqui no frontend. Pode usar usar page e size no query Parameter pra pegar a página e o tamanho que quiser, por exemplo, /questions?page=1&size=5
+
+      .then(data => setTestQuestions(data['content']));
   }, [id]);
 
   return (
