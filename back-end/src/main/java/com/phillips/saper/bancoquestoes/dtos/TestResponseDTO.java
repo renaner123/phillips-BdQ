@@ -32,8 +32,7 @@ public class TestResponseDTO {
         Set<QuestionModel> questionOcult = save.getQuestions();
         // Informações que o estudante não deve ver
         for(QuestionModel question : questionOcult){
-            // FIXME comentar apenas para teste
-            //question.setAnswersSheet(null);
+            question.setAnswersSheet(null);
             question.setTeachers(null);
             question.setTests(null);
         }

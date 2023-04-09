@@ -110,9 +110,14 @@ public class TestService {
         }
 
         for(QuestionModel question : questionSet){
-            if(testRequestDTO.getAnswersHash().get(String.valueOf(question.getIdQuestion())).equals(question.getAnswersSheet())){
-                hits = hits + 1;
+            if(testRequestDTO.getAnswersHash().get(String.valueOf(question.getIdQuestion())) != null){
+                if(testRequestDTO.getAnswersHash().get(String.valueOf(question.getIdQuestion())).equals(question.getAnswersSheet())){
+                    hits = hits + 1;
+                }
+            }else{
+                throw new IllegalArgumentException("IdQuestion missing!");
             }
+
         }
 
         StudentModel studentModel = studentOptional.get();
