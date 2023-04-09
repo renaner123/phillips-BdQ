@@ -25,47 +25,40 @@ import com.phillips.saper.bancoquestoes.services.TestService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-
 @RestController
 @RequestMapping("/v1/tests")
 public class TestController {
-    
+
     @Autowired
     TestService testService;
 
-    // TODO ver como receber e responder um objeto json na chave answers (e.g {"1":"B","2":"C"}) No momento está como string "{\"1\":\"B\",\"2\":\"C\"}",
-
-    /*
-     {
-		"name": "Prova de alfabeto",
-		"answers":"{\"1\":\"B\",\"2\":\"C\"}",
-		"dateTime": "2022-03-12T00:13:40Z"
-	}
-     */
-
-    @Operation(summary = "Get list of all Tests", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Get list of all Tests", security = {
+            @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
     @GetMapping
-    public ResponseEntity<List<TestResponseDTO>> findAll(){
+    public ResponseEntity<List<TestResponseDTO>> findAll() {
         return testService.findAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Register a new Test",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    @Operation(summary = "Generate a new test by discipline and subject of interest", security = {
+            @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
     @PostMapping
-    public ResponseEntity<TestResponseDTO> save(@RequestBody TestRequestDTO testRequestDTO){
+    public ResponseEntity<TestResponseDTO> save(@RequestBody TestRequestDTO testRequestDTO) {
         return testService.save(testRequestDTO);
     }
-    @Operation(summary = "Update a test",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+
+/*     @Operation(summary = "Update a test", security = { @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
-        @PathVariable(name = "id") Long id,
-        @RequestBody TestRequestDTO testResquestDTO){
+            @PathVariable(name = "id") Long id,
+            @RequestBody TestRequestDTO testResquestDTO) {
 
         return testService.update(id, testResquestDTO);
-    }
-    @Operation(summary = "Delete a Test",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+    } */
+
+    @Operation(summary = "Delete a Test", security = { @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id){
+    public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id) {
 
         return testService.delete(id);
     }
