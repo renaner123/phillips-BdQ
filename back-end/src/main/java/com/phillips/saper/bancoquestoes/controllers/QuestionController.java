@@ -26,10 +26,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionResponseDTO;
+import com.phillips.saper.bancoquestoes.enums.CertifiedValues;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.services.QuestionService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
@@ -51,8 +53,9 @@ public class QuestionController {
     @Operation(summary = "Get a list of all Questions certifieds", security = {
             @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
     @GetMapping("/certifieds")
-    public ResponseEntity<List<QuestionResponseDTO>> findAllCertified() {
-        return questionService.findByCertifiedTrue();
+    public ResponseEntity<List<QuestionResponseDTO>> findAllCertified(
+        @RequestParam(name = "certified", defaultValue= "TRUE") CertifiedValues certified ) { 
+        return questionService.findByCertified(certified);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
