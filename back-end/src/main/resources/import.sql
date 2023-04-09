@@ -180,7 +180,7 @@ INSERT INTO QUESTION_MODEL (question, difficulty, id_discipline, id_subject, amo
 
 INSERT INTO QUESTION_MODEL (question, difficulty, id_discipline, id_subject, amount_access, update_date) VALUES ('Qual eh a capital da Suehcia?', 2, 1, 7, 100, TO_DATE('2025-07-01', 'yyyy-mm-dd'));
 
-INSERT INTO QUESTION_MODEL (question, difficulty, certified, id_discipline, id_subject, amount_access, update_date) VALUES ('O que eh um atomo?', 2, 0, 3, 8, 300, TO_DATE('2025-08-01', 'yyyy-mm-dd'));
+INSERT INTO QUESTION_MODEL (question,  difficulty, certified, id_discipline, id_subject, amount_access, update_date) VALUES ('O que eh um atomo?', 2, 0, 3, 8, 300, TO_DATE('2025-08-01', 'yyyy-mm-dd'));
 
 
 
@@ -396,18 +396,24 @@ INSERT INTO SUBJECT_MODEL (DESCRIPTION, AMOUNT_ACCESS, ID_DISCIPLINE) VALUES ('G
 INSERT INTO SUBJECT_MODEL (DESCRIPTION, AMOUNT_ACCESS, ID_DISCIPLINE) VALUES ('Ecologia', 47, 1);
 INSERT INTO SUBJECT_MODEL (DESCRIPTION, AMOUNT_ACCESS, ID_DISCIPLINE) VALUES ('Fisiologia', 5, 3);
 
-INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (6, '1');
-INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (6, '2');
 INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (1, '1');
-INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (2, '5');
-INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (2, '3');
 INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (2, '2');
-INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (4, '3');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (3, '1');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (4, '5');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (5, '3');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (6, '2');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (7, '3');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (27, '1');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (27, '2');
+INSERT INTO ANSWERS_SHEET_LIST (QUESTION_ID, VALUE) VALUES (36, '2');
 
 
 insert into test_has_question values (1,1);
 insert into test_has_question values (1,2);
-insert into test_has_question values (1,3);
+insert into test_has_question values (2,1);
+insert into test_has_question values (2,2);
+insert into test_has_question values (3,1);
+insert into test_has_question values (3,2);
 
 insert into student_has_test values (1,1,8.5);
 insert into student_has_test values (1,2,8.0);

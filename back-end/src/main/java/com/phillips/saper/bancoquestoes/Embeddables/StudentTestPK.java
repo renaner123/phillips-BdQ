@@ -6,7 +6,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.Data;
 
-@Data
 @Embeddable
 public class StudentTestPK implements Serializable {
 
@@ -15,6 +14,31 @@ public class StudentTestPK implements Serializable {
     
         @Column(name = "id_test")
         private Long idTest;
+
+        public StudentTestPK(Long idStudent, Long idTest) {
+                this.idStudent = idStudent;
+                this.idTest = idTest;
+        }
+
+        public StudentTestPK() {
+        }
+
+        public Long getIdStudent() {
+                return idStudent;
+        }
+
+        public void setIdStudent(Long idStudent) {
+                this.idStudent = idStudent;
+        }
+
+        public Long getIdTest() {
+                return idTest;
+        }
+
+        public void setIdTest(Long idTest) {
+                this.idTest = idTest;
+        }
+
 
 }
     

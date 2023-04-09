@@ -22,11 +22,22 @@ public class TestResponseDTO {
         this.questions = questions;
     }
 
+    public TestResponseDTO() {
+    }
+
     public TestResponseDTO(TestModel save) {
         this.idTest = save.getIdTest();
         this.name = save.getName();
         this.dateTime = save.getDateTime();
-        this.questions = save.getQuestions();
+        Set<QuestionModel> questionOcult = save.getQuestions();
+        // Informações que o estudante não deve ver
+        for(QuestionModel question : questionOcult){
+            // FIXME comentar apenas para teste
+            //question.setAnswersSheet(null);
+            question.setTeachers(null);
+            question.setTests(null);
+        }
+        this.questions = questionOcult;
     }
 
     public Long getidTest() {

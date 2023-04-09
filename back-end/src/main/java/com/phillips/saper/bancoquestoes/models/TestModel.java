@@ -20,9 +20,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.MapKeyColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 
-@Data
 @Entity
 public class TestModel {
 
@@ -53,6 +51,77 @@ public class TestModel {
 
     @OneToMany(mappedBy = "id.idTest", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<StudentTest> studentTestSet = new HashSet<>();
+    
+    public TestModel(Long idTest, @NotBlank String name, Map<String, String> answersHash, LocalDateTime dateTime,
+            Set<QuestionModel> questions, Set<StudentModel> students, Set<StudentTest> studentTestSet) {
+        this.idTest = idTest;
+        this.name = name;
+        this.answersHash = answersHash;
+        this.dateTime = dateTime;
+        this.questions = questions;
+        this.students = students;
+        this.studentTestSet = studentTestSet;
+    }
+
+    public TestModel() {
+    }
+
+    public Long getIdTest() {
+        return idTest;
+    }
+
+    public void setIdTest(Long idTest) {
+        this.idTest = idTest;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Map<String, String> getAnswersHash() {
+        return answersHash;
+    }
+
+    public void setAnswersHash(Map<String, String> answersHash) {
+        this.answersHash = answersHash;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public Set<QuestionModel> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<QuestionModel> questions) {
+        this.questions = questions;
+    }
+
+    public Set<StudentModel> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<StudentModel> students) {
+        this.students = students;
+    }
+
+    public Set<StudentTest> getStudentTestSet() {
+        return studentTestSet;
+    }
+
+    public void setStudentTestSet(Set<StudentTest> studentTestSet) {
+        this.studentTestSet = studentTestSet;
+    }
      
+    
 
 }

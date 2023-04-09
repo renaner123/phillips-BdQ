@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -15,14 +16,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.phillips.saper.bancoquestoes.Embeddables.StudentTestPK;
+import com.phillips.saper.bancoquestoes.dtos.StudentTestResponseDTO;
+import com.phillips.saper.bancoquestoes.dtos.TestCorrectRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TestRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TestResponseDTO;
+import com.phillips.saper.bancoquestoes.exceptions.ConflictStoreException;
 import com.phillips.saper.bancoquestoes.models.DisciplineModel;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
+import com.phillips.saper.bancoquestoes.models.StudentModel;
+import com.phillips.saper.bancoquestoes.models.StudentTest;
 import com.phillips.saper.bancoquestoes.models.SubjectModel;
 import com.phillips.saper.bancoquestoes.models.TestModel;
 import com.phillips.saper.bancoquestoes.repositories.DisciplineRepository;
 import com.phillips.saper.bancoquestoes.repositories.QuestionRepository;
+import com.phillips.saper.bancoquestoes.repositories.StudentRepository;
 import com.phillips.saper.bancoquestoes.repositories.SubjectRepository;
 import com.phillips.saper.bancoquestoes.repositories.TestRepository;
 
@@ -33,6 +41,9 @@ public class TestService {
 
     @Autowired
     TestRepository testRepository;
+
+    @Autowired
+    StudentRepository studentRepository;
 
     @Autowired
     DisciplineRepository disciplinRepository;
@@ -49,6 +60,7 @@ public class TestService {
     }
 
     // Monta uma prova de acordo com IdDiscipline, IdSubject e numberOfQuestions informado, e incrementa a quantidade de acesso de cada questão usada
+    
     public ResponseEntity<TestResponseDTO> save(TestRequestDTO testRequestDTO) {
         TestModel testModel = new TestModel();
         Optional<DisciplineModel> dOptional = disciplinRepository.findById(testRequestDTO.getIdDiscipline());
@@ -69,10 +81,6 @@ public class TestService {
             //incrementa quantidade de acessos
             for(QuestionModel question : questionSet){
                 question.setAmountAccess(question.getAmountAccess()+1);
-                // Para não retornar as respostas para front, evitar que os estudantes vejam as respostas xD
-                question.setAnswersSheet(null);
-                question.setTeachers(null);
-                question.setTests(null);
             }
 
             testModel.setDateTime(LocalDateTime.now(ZoneId.of("UTC")));
@@ -84,9 +92,52 @@ public class TestService {
         }
 
         TestResponseDTO testResponseDTO = new TestResponseDTO(testRepository.save(testModel));
-            
+        
         return ResponseEntity.ok().body(testResponseDTO);
     }
+
+    @Transactional
+    public ResponseEntity<StudentTestResponseDTO> update(Long id, TestCorrectRequestDTO testRequestDTO){
+
+        Optional<TestModel> testOptional = testRepository.findById(id);
+        Optional<StudentModel> studentOptional = studentRepository.findById(testRequestDTO.getIdStudent());
+        Set<QuestionModel> questionSet = testOptional.get().getQuestions();
+        int hits = 0;
+        double result = 0.0;
+
+        for(StudentTest student : studentOptional.get().getStudentTests()){
+            if(student.getId().getIdStudent()==testRequestDTO.getIdStudent() && student.getId().getIdTest()==id){
+                throw new ConflictStoreException("This test has already been answered");
+            }
+        }
+
+        for(QuestionModel question : questionSet){
+            if(testRequestDTO.getAnswersHash().get(String.valueOf(question.getIdQuestion())).equals(question.getAnswersSheet())){
+                hits = hits + 1;
+            }
+        }
+
+        StudentModel studentModel = studentOptional.get();
+        TestModel testModel = testOptional.get();
+        StudentTest studentTest = new StudentTest();
+
+        if(testOptional.isPresent() && studentOptional.isPresent()){
+            studentTest.setId(new StudentTestPK(testRequestDTO.getIdStudent(), id));
+            // FIXME calcula uma nota simples, pode ser possível alterar a lógica da nota posteriormente
+            result = (hits*10)/questionSet.size();
+            studentTest.setResult(result);
+            studentModel.getStudentTests().add(studentTest);
+            testModel.getStudentTestSet().add(studentTest);
+            studentRepository.save(studentModel);
+            testRepository.save(testModel);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }      
+
+        StudentTestResponseDTO studentTestResponseDTO = new StudentTestResponseDTO(id, result, testModel.getDateTime(), testModel.getName());
+
+        return ResponseEntity.ok().body(studentTestResponseDTO);
+     }
 
     @Transactional
      public ResponseEntity<Object> delete(Long id){
@@ -102,5 +153,16 @@ public class TestService {
 
         }
 
-     }   
+     }
+
+    public ResponseEntity<TestResponseDTO> findById(Long id) {
+        Optional<TestModel> testOptional = testRepository.findById(id);
+
+        TestModel testModel = testOptional.get();
+
+        TestResponseDTO questionResponseDTO = new TestResponseDTO(testModel);
+
+        return ResponseEntity.ok().body(questionResponseDTO);
+    }   
+
 }

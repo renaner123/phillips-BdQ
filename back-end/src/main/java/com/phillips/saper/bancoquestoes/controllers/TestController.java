@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.phillips.saper.bancoquestoes.dtos.StudentTestResponseDTO;
+import com.phillips.saper.bancoquestoes.dtos.TestCorrectRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TestRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TestResponseDTO;
 import com.phillips.saper.bancoquestoes.models.TestModel;
@@ -47,14 +49,22 @@ public class TestController {
         return testService.save(testRequestDTO);
     }
 
-/*     @Operation(summary = "Update a test", security = { @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
+    @Operation(summary = "Get an Test by Id", security = { @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
+    @GetMapping("/{id}")
+    public ResponseEntity<TestResponseDTO> getById(
+            @PathVariable(name = "id") Long id ) {
+
+        return testService.findById(id);
+    }
+
+    @Operation(summary = "Correct a test", security = { @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(
+    public ResponseEntity<StudentTestResponseDTO> update(
             @PathVariable(name = "id") Long id,
-            @RequestBody TestRequestDTO testResquestDTO) {
+            @RequestBody TestCorrectRequestDTO testResquestDTO) {
 
         return testService.update(id, testResquestDTO);
-    } */
+    }
 
     @Operation(summary = "Delete a Test", security = { @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
     @DeleteMapping("/{id}")
