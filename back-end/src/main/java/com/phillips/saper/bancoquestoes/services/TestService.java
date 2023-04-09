@@ -8,10 +8,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -33,6 +30,7 @@ import com.phillips.saper.bancoquestoes.repositories.QuestionRepository;
 import com.phillips.saper.bancoquestoes.repositories.StudentRepository;
 import com.phillips.saper.bancoquestoes.repositories.SubjectRepository;
 import com.phillips.saper.bancoquestoes.repositories.TestRepository;
+import com.phillips.saper.bancoquestoes.utils.Formatter;
 
 import jakarta.transaction.Transactional;
 
@@ -124,7 +122,7 @@ public class TestService {
         if(testOptional.isPresent() && studentOptional.isPresent()){
             studentTest.setId(new StudentTestPK(testRequestDTO.getIdStudent(), id));
             // FIXME calcula uma nota simples, pode ser possível alterar a lógica da nota posteriormente
-            result = (hits*10)/questionSet.size();
+            result = (Formatter.FormatterDoubleTwoCases((hits*10.0)/questionSet.size()));
             studentTest.setResult(result);
             studentModel.getStudentTests().add(studentTest);
             testModel.getStudentTestSet().add(studentTest);
