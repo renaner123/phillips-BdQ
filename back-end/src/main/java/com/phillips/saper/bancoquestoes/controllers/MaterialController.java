@@ -37,7 +37,6 @@ public class MaterialController {
     @Autowired
     MaterialService materialService;
 
-    // TODO ver como vai jogar na tela a lista de arquivos
     @Operation(summary = "Get a list of all Materials", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping()
     public ResponseEntity<List<MaterialResponseDTO>> findAll() {

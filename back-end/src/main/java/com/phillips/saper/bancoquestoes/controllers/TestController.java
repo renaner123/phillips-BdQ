@@ -21,7 +21,6 @@ import com.phillips.saper.bancoquestoes.dtos.StudentTestResponseDTO;
 import com.phillips.saper.bancoquestoes.dtos.TestCorrectRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TestRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TestResponseDTO;
-import com.phillips.saper.bancoquestoes.models.TestModel;
 import com.phillips.saper.bancoquestoes.services.TestService;
 
 import io.swagger.v3.oas.annotations.Operation;

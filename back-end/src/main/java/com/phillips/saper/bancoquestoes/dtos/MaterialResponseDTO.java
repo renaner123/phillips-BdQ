@@ -1,6 +1,5 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import com.phillips.saper.bancoquestoes.models.MaterialModel;

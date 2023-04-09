@@ -3,8 +3,6 @@ package com.phillips.saper.bancoquestoes.dtos;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public class TestCorrectRequestDTO {

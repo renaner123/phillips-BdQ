@@ -2,18 +2,16 @@ package com.phillips.saper.bancoquestoes.controllers;
 
 import static com.phillips.saper.bancoquestoes.configuration.SwaggerConfig.BASIC_AUTH_SECURITY_SCHEME;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,11 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionResponseDTO;
 import com.phillips.saper.bancoquestoes.enums.CertifiedValues;
-import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.services.QuestionService;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController

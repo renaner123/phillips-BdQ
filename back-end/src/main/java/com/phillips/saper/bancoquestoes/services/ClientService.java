@@ -3,7 +3,6 @@ package com.phillips.saper.bancoquestoes.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.phillips.saper.bancoquestoes.dtos.ClientRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.ClientResponseDTO;
 import com.phillips.saper.bancoquestoes.exceptions.ConflictStoreException;
-import com.phillips.saper.bancoquestoes.exceptions.UserNotFoundException;
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
 

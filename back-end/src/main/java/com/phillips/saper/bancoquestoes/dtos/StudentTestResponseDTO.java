@@ -1,8 +1,6 @@
 package com.phillips.saper.bancoquestoes.dtos;
 import java.time.LocalDateTime;
 
-import com.phillips.saper.bancoquestoes.models.StudentTest;
-
 public class StudentTestResponseDTO {
     //TODO Adicionar  @Schema(example = "") nos atributos e validações
 
