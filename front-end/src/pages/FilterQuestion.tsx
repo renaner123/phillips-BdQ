@@ -37,35 +37,29 @@ interface ListSubject {
 }
 
 
-interface FilterQuestionProp {
-    idDiscipline: number;
-}
 
 const FiltroDisciplinas = () => {
     const [stateDiscipline, setStateDiscipline] = useState('');
     const [stateSubject, setStateSubject] = useState('');
     const [stateNameDiscipline, setStateNameDiscipline] = useState<ListDiscipline[]>([]);
     const [stateNameSubject, setStateNameSubject] = useState<ListSubject[]>([]);
-
-    const [listQuestions, setListQuestions] = useState<ListQuestion[]>([]);
-
-    //#TODO finalizar o código para recuperar os dados
-    let idDis = parseInt(stateDiscipline);
-    let idSub = parseInt(stateSubject);
-
-    let requestBody = {
-        "idDiscipline": stateNameDiscipline,
-        "idSubject": 1,
-        "numberOfQuestions": 3
-    }
+    const [listQuestions, setListQuestions] = useState([]);
 
     const Test = () => {
-        useEffect(() => {
-            axios.post(`${config.url.BASE_URL}/tests`, requestBody, configHeader)
-                .then(response => setListQuestions(response.data))
-                .catch(error => console.error(error));
-        }, [stateDiscipline, stateSubject]);
+        const dataRB = {
+            "idDiscipline": parseInt(stateDiscipline),
+            "idSubject": parseInt(stateSubject),
+            "numberOfQuestions": 3
+        }
+
+        axios.post(`${config.url.BASE_URL}/tests`, dataRB, configHeader)
+            .then(response => setListQuestions(response.data))
+            .catch(error => console.error(error));
     }
+
+    useEffect(() => {
+        Test();
+    }, [stateDiscipline, stateSubject]);
 
 
     useEffect(() => {
@@ -89,6 +83,8 @@ const FiltroDisciplinas = () => {
         }
     }, [stateNameDiscipline]);
 
+    console.log(listQuestions)
+    //console.log("stateNameDiscipline"+stateNameDiscipline);
 
 
     return (
@@ -116,6 +112,12 @@ const FiltroDisciplinas = () => {
             </select>
 
             <button onClick={Test}>Buscar Questões</button>
+            <div className="row text-center">
+                <p className="h2">Questions</p>
+            </div>
+
+    
+
 
 
             <Outlet />
