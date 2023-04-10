@@ -24,7 +24,7 @@ const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
   const [testResults, setTestResults] = useState<StudentTestResult[]>([]);
 
 
-
+    // FIXME retirar login estático - Exemplo no Arquivo TestCertifieds.tsx
   useEffect(() => {
     // Fetch the test results for the student with the given ID
     fetch(`${config.url.BASE_URL}/students/performance/${studentId}`, configHeader)

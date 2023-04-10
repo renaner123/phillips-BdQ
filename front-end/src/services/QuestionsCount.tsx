@@ -9,7 +9,7 @@ type QuestionsCountProps = {
 
 const QuestionsCount: React.FC<QuestionsCountProps> = ({ setData }) => {
   const [loading, setLoading] = useState(false);
-
+  // Esse não da pra usar o useApi porque antes de logar ele não tem as informações do usuário, vai ficar retornando 401.
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

@@ -9,7 +9,7 @@ type MaterialsCount = {
 
 const QuestionsCount: React.FC<MaterialsCount> = ({ setData }) => {
   const [loading, setLoading] = useState(false);
-
+  // Esse não da pra usar o useApi porque antes de logar ele não tem as informações do usuário, vai ficar retornando 401.
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

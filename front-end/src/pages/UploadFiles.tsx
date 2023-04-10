@@ -20,6 +20,7 @@ const UploadFiles: React.FC = () => {
       formData.append('files', selectedFiles[i]);
     }
 
+    // FIXME retirar login estático - Exemplo no Arquivo TestCertifieds.tsx
     axios.post(`${config.url.BASE_URL}/materials/upload-files`, formData,{
         headers: {
             'Content-Type': 'multipart/form-data',

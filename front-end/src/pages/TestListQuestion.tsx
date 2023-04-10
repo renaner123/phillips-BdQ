@@ -10,7 +10,7 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 // FIXME ajustar para celular, tá esquisito
 
 interface TestListQuestion {
-  id: number;
+  idQuestion: number;
   question: string;
   difficulty: number;
   answers: string[];
@@ -46,7 +46,7 @@ const Legend = () => {
 
 const TestListQuestionTable = ({ id }: TestListQuestionProps) => {
   const [testQuestions, setTestQuestions] = useState<TestListQuestion[]>([]);
-
+    // FIXME retirar login estático - Exemplo no Arquivo TestCertifieds.tsx
   useEffect(() => {
     // Fetch the test results for the student with the given ID
     fetch(`${config.url.BASE_URL}/questions`, configHeader)
@@ -64,7 +64,7 @@ const TestListQuestionTable = ({ id }: TestListQuestionProps) => {
       </div>
       {/* // TODO estilizar esse trecho, talvez alterar os radios por buttons. Deixar parecido com o do qconcursos */}
       {testQuestions.map((question, index) => (
-        <div className="row" key={question.id}>
+        <div className="row" key={question.idQuestion}>
           <div className="col-sm-auto">
             <p className="h4">{`${index + 1}. ${question.question}`}</p>
           </div>
@@ -85,7 +85,7 @@ const TestListQuestionTable = ({ id }: TestListQuestionProps) => {
                   <label>{`${String.fromCharCode(65 + index)}`}</label>
                 </div>
                 <div className="col-sm-auto">
-                  <input type="radio" name={`question-${question.id}`} value={answer} />
+                  <input type="radio" name={`question-${question.idQuestion}`} value={answer} />
                 </div>
                 <div className="col-sm-auto">
                   <label>{`${answer}`}</label>

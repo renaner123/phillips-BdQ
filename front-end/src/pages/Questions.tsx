@@ -117,6 +117,7 @@ function App() {
       return;
     }
 
+    // FIXME retirar login estático - Exemplo no Arquivo TestCertifieds.tsx
     const response = await fetch(`${config.url.BASE_URL}/questions`, {
       method: "POST",
       headers: {
