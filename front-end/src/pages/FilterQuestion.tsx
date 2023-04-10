@@ -15,7 +15,7 @@ import axios from 'axios';
 
 interface ListQuestion {
     idQuestion: number;
-    question: string;
+    question: string[];
     difficulty: number;
     answers: string[];
     idDiscipline: number;
@@ -43,25 +43,25 @@ const FiltroDisciplinas = () => {
     const [stateSubject, setStateSubject] = useState('');
     const [stateNameDiscipline, setStateNameDiscipline] = useState<ListDiscipline[]>([]);
     const [stateNameSubject, setStateNameSubject] = useState<ListSubject[]>([]);
-    const [listQuestions, setListQuestions] = useState([]);
+    const [listQuestions, setListQuestions] = useState<ListQuestion[]>([]);
 
     const Test = () => {
         const dataRB = {
             "idDiscipline": parseInt(stateDiscipline),
             "idSubject": parseInt(stateSubject),
-            "numberOfQuestions": 3
+            "numberOfQuestions": Math.random() *10,
         }
 
         axios.post(`${config.url.BASE_URL}/tests`, dataRB, configHeader)
-            .then(response => setListQuestions(response.data))
+            .then(response => setListQuestions(response.data.questions))
             .catch(error => console.error(error));
     }
-
+/**
     useEffect(() => {
         Test();
     }, [stateDiscipline, stateSubject]);
 
-
+ */
     useEffect(() => {
         if (stateNameSubject.length === 0) {
             try {
@@ -83,7 +83,8 @@ const FiltroDisciplinas = () => {
         }
     }, [stateNameDiscipline]);
 
-    console.log(listQuestions)
+    console.log(listQuestions[0])
+
     //console.log("stateNameDiscipline"+stateNameDiscipline);
 
 
@@ -111,12 +112,39 @@ const FiltroDisciplinas = () => {
                 ))}
             </select>
 
-            <button onClick={Test}>Buscar Questões</button>
+            <button onClick={Test}>Filtrar</button>
             <div className="row text-center">
                 <p className="h2">Questions</p>
             </div>
 
-    
+            {listQuestions.map((question, index) => (
+                <>
+                    <div className="row" key={question.idQuestion}>
+                        <div className="col-sm-auto">
+                            <p className="h4">{`${index + 1}. ${question.question}`}</p>
+                        </div>
+                        <div className="col-sm-auto">                             </div>
+                        <div className="row-sm-6">
+                            {question.answers.map((answer, index) => (
+                                <div className="row mb-3 mx-4" key={index}>
+                                    <div className="col-sm-auto">
+                                        <label>{`${String.fromCharCode(65 + index)}`}</label>
+                                    </div>
+                                    <div className="col-sm-auto">
+                                        <input type="radio" name={`question-${question.idQuestion}`} value={answer} />
+                                    </div>
+                                    <div className="col-sm-auto">
+                                        <label>{`${answer}`}</label>
+                                    </div>
+                                </div>
+                            ))}
+                            <hr />
+                        </div>
+                    </div>
+
+
+                </>
+            ))}
 
 
 
