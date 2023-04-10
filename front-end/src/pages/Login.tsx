@@ -22,20 +22,21 @@ function Login() {
   }
 
   async function login(event: { preventDefault: () => void; }) {
+    const basicAuth = 'Basic ' + btoa(state.username + ':' + state.password)
     event.preventDefault();
     try {
       await axios.get<User>(`${config.url.BASE_URL}/auth/authenticate`,
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Basic ' + btoa(state.username + ':' + state.password),
+            Authorization: basicAuth,
             Accept: 'application/json',
           }
           
         }).then(
           (res: AxiosResponse<User, any>) => {
+            res.data.basicAuth = basicAuth
             if (auth.updateUser) auth.updateUser(res.data);
-            console.log(res.data.role);
             if (res.status === 200) {
               navigate('/index/home');
 
