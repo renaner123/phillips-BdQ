@@ -103,7 +103,12 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Buscar Prova',
                     path: '/index/performance'
+                },
+                {
+                    text: 'Responder Prova',
+                    path: '/index/filterQuestion'
                 }
+
             ],
             styles: [
                 {
