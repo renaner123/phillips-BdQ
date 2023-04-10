@@ -30,25 +30,25 @@ Ademais, o primeiro módulo, o de armazenamento de questões, também é respons
 
 ### Requisitos gerais do projeto
 
-- [ ] Precisa ter uma página inicial institucional estática, a página inicial;
-- [ ] Demais páginas precisam ser dinâmicas e abordar os casos de uso;
-- [ ] Ser responsivo, ter pontos de quebra para celular e Desktop;
-- [ ] Identidade visual com palheta de cores (até 05) e fontes;
-- [ ] Possuir controle de acesso de usuários;
-- [ ] Ter entre 05 e 10 componentes distintos do Bootstrap. Entende-se como componentes tudo da seção Components;
-- [ ] Diagrama Entidade-Relacionamento do banco de dados;
-- [ ] O sistema precisa ter autenticação de usuários.
+- [x] Precisa ter uma página inicial institucional estática, a página inicial;
+- [x] Demais páginas precisam ser dinâmicas e abordar os casos de uso;
+- [x] Ser responsivo, ter pontos de quebra para celular e Desktop;
+- [x] Identidade visual com palheta de cores (até 05) e fontes;
+- [x] Possuir controle de acesso de usuários;
+- [x] Ter entre 05 e 10 componentes distintos do Bootstrap. Entende-se como componentes tudo da seção Components;
+- [x] Diagrama Entidade-Relacionamento do banco de dados;
+- [x] O sistema precisa ter autenticação de usuários.
 
 ### Requisitos específicos do projeto
 
-- [ ] Fazer cadastro de aluno, professores e certificadores;
-- [ ] Professores cadastram questões de escolha única, múltipla escolha;
-- [ ] Professores podem cadastrar material de estudo (PDFs);
-- [ ] Professores podem enviar para certificação questões e materiais de estudo;
-- [ ] Alunos podem baixar material de estudo;
+- [x] Fazer cadastro de aluno, professores e certificadores;
+- [x] Professores cadastram questões de escolha única, múltipla escolha;
+- [x] Professores podem cadastrar material de estudo (PDFs);
+- [x] Professores podem enviar para certificação questões e materiais de estudo;
+- [x] Alunos podem baixar material de estudo;
 - [ ] Alunos podem responder provas geradas com base nos assuntos de interesse;
-- [ ] Alunos podem acessar seu desempenho;
-- [ ] Certificadores podem aprovar ou desaprovar questões e materiais de estudo;
+- [x] Alunos podem acessar seu desempenho;
+- [x] Certificadores podem aprovar ou desaprovar questões e materiais de estudo;
 - [ ] É possível classificar as questões e materiais por categorias (tags) e fazer busca dos mesmos no sistema;
 Mostrar materiais e assuntos mais acessados.
 
