@@ -70,21 +70,4 @@ public class StudentController {
     ){
         return studentService.delete(id);
     }
-
-
-    /*
-     * Não pagar. Será necessário essa lógica
-     * 
-     * Student student = new Student();
-        Test test = new Test();
-        StudentTest studentTest = new StudentTest();
-        studentTest.setId(new StudentTestPK(student.getId(), test.getId()));
-        studentTest.setTestScore(90.0);
-        student.getStudentTests().add(studentTest);
-        test.getStudentTests().add(studentTest);
-        studentRepository.save(student);
-        testRepository.save(test);
-     * 
-     * 
-     */
 }

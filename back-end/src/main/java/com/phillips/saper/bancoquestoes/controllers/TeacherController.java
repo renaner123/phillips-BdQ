@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.phillips.saper.bancoquestoes.dtos.TeacherRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.TeacherResponseDTO;
-import com.phillips.saper.bancoquestoes.models.TeacherModel;
 import com.phillips.saper.bancoquestoes.services.TeacherService;
 
 import io.swagger.v3.oas.annotations.Operation;

@@ -8,9 +8,6 @@ public class CertifierModel extends TeacherModel {
 
     @Column(nullable = true)
     private int amountCertified;
-    // TODO criar set de Subject
-
-    //private ArrayList<SubjectModel> subjects = new ArrayList<SubjectModel>();
     
     public CertifierModel(String cpf, String name, String email, Long idDiscipline, int amountCertified, boolean certifier) {
         super(cpf, name, email, idDiscipline, false);

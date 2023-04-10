@@ -90,10 +90,6 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Adicionar Materiais',
                     path: '/index/upload'
-                },
-                {
-                    text: 'Listar Questões',
-                    path: '/index/filterQuestion'
                 }
             ],
             styles: [
@@ -107,7 +103,12 @@ export default function NavSideBarComponent() {
                 {
                     text: 'BUSCAR PROVA',
                     path: '/index/performance'
+                },
+                {
+                    text: 'Responder Prova',
+                    path: '/index/filterQuestion'
                 }
+
             ],
             styles: [
                 {

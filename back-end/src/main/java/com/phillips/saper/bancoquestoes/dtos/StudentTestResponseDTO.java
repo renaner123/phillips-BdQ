@@ -15,6 +15,7 @@ public class StudentTestResponseDTO {
 		this.date = date;
 		this.name = name;
 	}
+
 	public Long getIdTest() {
 		return idTest;
 	}

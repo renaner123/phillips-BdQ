@@ -49,7 +49,7 @@ function App() {
               <Route path="/index/download" element={<FileList />} />
               <Route path="/index/upload" element={<UploadFiles />} />
               <Route path="/index/list-questions" element={<TestListQuestion id={0} />} />
-              <Route path='/index/filterQuestion' element={<FiltroDisciplinas idDiscipline={0} />} />
+              <Route path='/index/filterQuestion' element={<FiltroDisciplinas />} />
               <Route path="/index/performance" element={<StudentTestResultTable studentId={user?.id_client!} />} />
             </Route>
           </Routes>

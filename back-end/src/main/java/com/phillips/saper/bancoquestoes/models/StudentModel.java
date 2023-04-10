@@ -3,12 +3,9 @@ package com.phillips.saper.bancoquestoes.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.phillips.saper.bancoquestoes.Embeddables.StudentTestPK;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,7 +33,6 @@ public class StudentModel {
     @JoinColumn(name = "id_client")
     ClientModel clientModel;
 
-    // DUVIDA como inserir uma nova coluna nessa tabela? no caso, precisa inserir o resultado da prova, pro aluno consultar o desempenho depois
     @ManyToMany()
     @JoinTable(name = "student_has_test",
         joinColumns = @JoinColumn(name = "id_student"),

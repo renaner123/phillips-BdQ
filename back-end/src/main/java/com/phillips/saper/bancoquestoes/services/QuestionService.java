@@ -4,15 +4,20 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-import org.springframework.beans.BeanUtils;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionResponseDTO;
+import com.phillips.saper.bancoquestoes.enums.CertifiedValues;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.repositories.QuestionRepository;
 
@@ -24,9 +29,16 @@ public class QuestionService {
     @Autowired
     QuestionRepository questionRepository;
 
-    public ResponseEntity<List<QuestionResponseDTO>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(
-            questionRepository.findAll().stream().map((question)->new QuestionResponseDTO(question)).toList());
+    @Autowired
+    private ModelMapper modelMapper;
+
+    public Page<QuestionResponseDTO> findAll(Pageable pageable) {
+        Page<QuestionModel> questionPage = questionRepository.findAll(pageable);
+
+        List<QuestionResponseDTO> questionResponseDTO = questionPage.getContent().stream()
+            .map(product -> modelMapper.map(product, QuestionResponseDTO.class))
+            .collect(Collectors.toList());
+        return new PageImpl<>(questionResponseDTO, pageable, questionPage.getTotalElements());
     }
 
     public ResponseEntity<QuestionResponseDTO> save(QuestionRequestDTO questionRequestDTO) {
@@ -100,6 +112,20 @@ public class QuestionService {
             questionRepository.findByCertifiedTrue().stream().map((question)->new QuestionResponseDTO(question)).toList());
 	}
 
+    public ResponseEntity<List<QuestionResponseDTO>> findByCertified(CertifiedValues certified) {
+
+        if(certified==(CertifiedValues.NULL)){
+            return ResponseEntity.status(HttpStatus.OK).body(
+                questionRepository.findByCertifiedIsNull().stream().map((question)->new QuestionResponseDTO(question)).toList());
+        }else if(certified==(CertifiedValues.FALSE)){
+            return ResponseEntity.status(HttpStatus.OK).body(
+                questionRepository.findByCertifiedFalse().stream().map((question)->new QuestionResponseDTO(question)).toList());
+        }else{
+            return ResponseEntity.status(HttpStatus.OK).body(
+                questionRepository.findByCertifiedTrue().stream().map((question)->new QuestionResponseDTO(question)).toList());
+        }
+	}
+
     @Transactional
     public ResponseEntity<QuestionResponseDTO> updateTag(Long id, String tag){
 
@@ -141,6 +167,6 @@ public class QuestionService {
 
     public ResponseEntity<List<QuestionResponseDTO>> findByidDisciplineAndidSubject(Long idDiscipline, Long idSubject) {
         return ResponseEntity.status(HttpStatus.OK).body(
-            questionRepository.findByIdDisciplineAndIdSubject(idDiscipline, idSubject).stream().map((question)->new QuestionResponseDTO(question)).toList());
+            questionRepository.findByIdDisciplineAndIdSubjectAndCertifiedTrue(idDiscipline, idSubject).stream().map((question)->new QuestionResponseDTO(question)).toList());
     }
 }

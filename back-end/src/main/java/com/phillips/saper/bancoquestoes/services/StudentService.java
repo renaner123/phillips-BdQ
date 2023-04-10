@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Set;
 
-import com.phillips.saper.bancoquestoes.Embeddables.StudentTestPK;
 import com.phillips.saper.bancoquestoes.dtos.ClientRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.StudentResponseDTO;
@@ -22,7 +21,6 @@ import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.models.RoleModel;
 import com.phillips.saper.bancoquestoes.models.StudentModel;
 import com.phillips.saper.bancoquestoes.models.StudentTest;
-import com.phillips.saper.bancoquestoes.models.TestModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
 import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
 import com.phillips.saper.bancoquestoes.repositories.StudentRepository;

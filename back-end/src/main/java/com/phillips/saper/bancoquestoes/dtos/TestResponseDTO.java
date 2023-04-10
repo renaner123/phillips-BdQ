@@ -2,48 +2,57 @@ package com.phillips.saper.bancoquestoes.dtos;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Set;
 
+import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.models.TestModel;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 public class TestResponseDTO {
 
-    private Long id;
+    private Long idTest;
     private String name;
 
-    @Schema(example = "{ \"1\": \"A\", \"2\": \"B\", \"3\": \"C\"}")
-    private Map<String, String> answersHash;
     private LocalDateTime dateTime;
-    
-    public Map<String, String> getAnswersHash() {
-        return answersHash;
-    }
+    private Set<QuestionModel> questions;  
 
-    public void setAnswersHash(Map<String, String> answersHash) {
-        this.answersHash = answersHash;
-    }
-
-    public TestResponseDTO(Long id, String name, LocalDateTime dateTime, Map<String, String> hash) {
-        this.id = id;
+    public TestResponseDTO(Long idTest, String name, LocalDateTime dateTime, Map<String, String> hash, Set<QuestionModel> questions) {
+        this.idTest = idTest;
         this.name = name;
         this.dateTime = dateTime;
-        this.answersHash = hash;
+        this.questions = questions;
+    }
+
+    public TestResponseDTO() {
     }
 
     public TestResponseDTO(TestModel save) {
-        this.id = save.getIdTest();
+        this.idTest = save.getIdTest();
         this.name = save.getName();
         this.dateTime = save.getDateTime();
-        this.answersHash = save.getAnswersHash();
+        Set<QuestionModel> questionOcult = save.getQuestions();
+        // Informações que o estudante não deve ver
+        for(QuestionModel question : questionOcult){
+            question.setAnswersSheet(null);
+            question.setTeachers(null);
+            question.setTests(null);
+        }
+        this.questions = questionOcult;
     }
 
-    public Long getId() {
-        return id;
+    public Long getidTest() {
+        return idTest;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Set<QuestionModel> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<QuestionModel> questions) {
+        this.questions = questions;
+    }
+
+    public void setidTest(Long idTest) {
+        this.idTest = idTest;
     }
 
     public String getName() {
