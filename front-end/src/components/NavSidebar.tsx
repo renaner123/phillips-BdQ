@@ -101,7 +101,7 @@ export default function NavSideBarComponent() {
         ROLE_STUDENT: {
             links: [
                 {
-                    text: 'BUSCAR PROVA',
+                    text: 'Buscar Prova',
                     path: '/index/performance'
                 }
             ],
@@ -114,8 +114,8 @@ export default function NavSideBarComponent() {
         ROLE_CERTIFIER: {
             links: [
                 {
-                    text: 'QUESTÕES PARA APROVAÇÃO',
-                    path: '#'
+                    text: 'Questões para aprovação',
+                    path: '/index/tests-certifieds'
                 }
             ],
             styles: [

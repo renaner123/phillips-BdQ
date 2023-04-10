@@ -27,12 +27,13 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/v1/students/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/teachers/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/materials/").permitAll()
+                .requestMatchers(HttpMethod.POST, "/v1/questions/certified/**").hasRole("CERTIFIER")
                 .requestMatchers(HttpMethod.GET, "/v1/materials/").permitAll()
                 .requestMatchers("/auth/authenticate").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                 .requestMatchers("/public/**", "/v1/auth/**").permitAll()
                 .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()
-                .anyRequest().hasAnyRole("ADMIN", "TEACHER");
+                .anyRequest().hasAnyRole("ADMIN", "TEACHER", "CERTIFIER");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.cors().and().csrf().disable();

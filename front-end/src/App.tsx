@@ -21,6 +21,8 @@ import Institutional from './pages/Institutional';
 import MaterialsCount from './services/MaterialsCount';
 import { AuthContext, User } from './context/authContext';
 import TestListQuestion from './pages/TestListQuestion';
+import TestCertifieds from './pages/TestCertifieds';
+
 
 
 // NOTE a disposição dos menus está assim apenas para facilitar os testes. Será adicionado os devidos campos na área de cada ROLE
@@ -47,6 +49,7 @@ function App() {
               <Route path="/index/questions" element={<Questions />} />
               <Route path="/index/download" element={<FileList />} />
               <Route path="/index/upload" element={<UploadFiles />} />
+              <Route path="/index/tests-certifieds" element={<TestCertifieds />} />
               <Route path="/index/list-questions" element={<TestListQuestion id={0} />} />
               <Route path="/index/performance" element={<StudentTestResultTable studentId={user?.id_client!} />} />
             </Route>
