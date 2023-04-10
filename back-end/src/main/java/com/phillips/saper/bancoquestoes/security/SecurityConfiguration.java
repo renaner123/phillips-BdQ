@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/v1/students/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/teachers/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/materials/").permitAll()
-                .requestMatchers(HttpMethod.POST, "/v1/questions/certified/**").hasRole("CERTIFIER")
+                .requestMatchers(HttpMethod.PUT, "/v1/questions/certified/**").hasRole("CERTIFIER")
                 .requestMatchers(HttpMethod.GET, "/v1/materials/").permitAll()
                 .requestMatchers("/auth/authenticate").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")

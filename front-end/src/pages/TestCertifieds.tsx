@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { config } from '../Constant';
-import configHeader from '../services/ConfigHeader';
-import axios from 'axios';
+import { AuthContext } from '../context/authContext';
+import { useAPI } from '../services/Api';
 
 interface TestCertifieds {
   idQuestion: number;
@@ -14,44 +13,23 @@ interface TestCertifieds {
   certified: boolean;
 }
 
-
 const TestCertifiedsTable = () => {
   const [testQuestions, setTestQuestions] = useState<TestCertifieds[]>([]);
-
-  const approveQuestion = (questionId: number, certified: string) => {
-    axios
-      .put(`${config.url.BASE_URL}/questions/certified/${questionId}?certified=${certified}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          // FIXME passar o state.username e state.password
-          Authorization: `Basic ${btoa(`${'certificador@gmail.com'}:${'12345678'}`)}`,
-        }
-      })
-      .then((response) => {
-        // remove da tela se for aprovada/reprovada
-        setTestQuestions(testQuestions.filter((question) => question.idQuestion !== questionId));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const api = useAPI()
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
-    axios
-      .get(`${config.url.BASE_URL}/questions/certifieds?certified=NULL`, {
-        headers: {
-          'Content-Type': 'application/json',
-           // FIXME passar o state.username e state.password
-          Authorization: `Basic ${btoa(`${'certificador@gmail.com'}:${'12345678'}`)}`,
-        },
-      })
-      .then((response) => {
-        setTestQuestions(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    api.get('/questions/certifieds?certified=NULL', {}).then((res) => {
+      setTestQuestions(res);
+    })
+  }, [])
+
+  const approveQuestion = (questionId: number, certified: string) => {
+    api.put(`/questions/certified/${questionId}?certified=${certified}`, {}).then((res) => {
+      setTestQuestions(testQuestions.filter((question) => question.idQuestion !== questionId));
+    })
+  };
+  
 
   return (
     <div className="container">
@@ -79,8 +57,8 @@ const TestCertifiedsTable = () => {
               </div>
             ))}
             {/* // FIXME estilizar, não deu tempo */}
-            <button onClick={() => approveQuestion(question.idQuestion,"true")}>Aprovar</button>
-            <button onClick={() => approveQuestion(question.idQuestion,"false")}>Reprovar</button>
+            <button className ="btn btn-success sm btn-sm mx-3"onClick={() => approveQuestion(question.idQuestion,"true")}>Aprovar</button>
+            <button className="btn btn-danger sm btn-sm mx-3" onClick={() => approveQuestion(question.idQuestion,"false")}>Reprovar</button>
             <hr />
           </div>
         </div>
