@@ -15,9 +15,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.httpBasic();
@@ -27,12 +29,19 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/v1/students/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/teachers/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/materials/").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/disciplines").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/subjects").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/tests").permitAll()
+                .requestMatchers(HttpMethod.POST, "/v1/tests").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/v1/tests/**").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/v1/questions/certified/**").hasRole("CERTIFIER")
                 .requestMatchers(HttpMethod.GET, "/v1/materials/").permitAll()
                 .requestMatchers("/auth/authenticate").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                 .requestMatchers("/public/**", "/v1/auth/**").permitAll()
-                .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()
+                .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs",
+                        "/v3/api-docs/**")
+                .permitAll()
                 .anyRequest().hasAnyRole("ADMIN", "TEACHER", "CERTIFIER");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -40,9 +49,8 @@ public class SecurityConfiguration {
         return http.build();
     }
 
-
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

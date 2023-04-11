@@ -98,14 +98,18 @@ public class TestService {
     public ResponseEntity<StudentTestResponseDTO> update(Long id, TestCorrectRequestDTO testRequestDTO){
 
         Optional<TestModel> testOptional = testRepository.findById(id);
-        Optional<StudentModel> studentOptional = studentRepository.findById(testRequestDTO.getIdStudent());
+        System.out.println("ID client -: " + testRequestDTO.getIdStudent());
+        Optional<StudentModel> studentOptional = studentRepository.findByClientModelId(testRequestDTO.getIdStudent());
         Set<QuestionModel> questionSet = testOptional.get().getQuestions();
+        System.out.println("ID Student -: " + studentOptional.get().getIdStudent());
         int hits = 0;
         double result = 0.0;
-
-        for(StudentTest student : studentOptional.get().getStudentTests()){
-            if(student.getId().getIdStudent()==testRequestDTO.getIdStudent() && student.getId().getIdTest()==id){
-                throw new ConflictStoreException("This test has already been answered");
+               
+        if(!testOptional.isPresent()){
+            for(StudentTest student : studentOptional.get().getStudentTests()){
+                if(student.getId().getIdStudent()==testRequestDTO.getIdStudent() && student.getId().getIdTest()==id){
+                    throw new ConflictStoreException("This test has already been answered");
+                }
             }
         }
 
@@ -124,8 +128,9 @@ public class TestService {
         TestModel testModel = testOptional.get();
         StudentTest studentTest = new StudentTest();
 
+
         if(testOptional.isPresent() && studentOptional.isPresent()){
-            studentTest.setId(new StudentTestPK(testRequestDTO.getIdStudent(), id));
+            studentTest.setId(new StudentTestPK(studentOptional.get().getIdStudent(), id));
             // FIXME calcula uma nota simples, pode ser possível alterar a lógica da nota posteriormente
             result = (Formatter.FormatterDoubleTwoCases((hits*10.0)/questionSet.size()));
             studentTest.setResult(result);
