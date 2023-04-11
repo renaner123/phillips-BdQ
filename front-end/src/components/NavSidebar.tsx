@@ -25,7 +25,12 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Listar material',
                     path_link: '/index/download'
+                },
+                {
+                    text: 'Listar Questões',
+                    path_link: '/index/filterTag'
                 }
+
             ],
             userScreen: [
                 {
@@ -44,6 +49,10 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Listar material',
                     path_link: '/index/download'
+                },
+                {
+                    text: 'Listar Questões',
+                    path_link: '/index/filterTag'
                 }
             ],
             userScreen: [
@@ -63,6 +72,10 @@ export default function NavSideBarComponent() {
                 {
                     text: 'Listar material',
                     path_link: '/index/download'
+                },
+                {
+                    text: 'Listar Questões',
+                    path_link: '/index/filterTag'
                 }
             ],
             userScreen: [
@@ -91,6 +104,7 @@ export default function NavSideBarComponent() {
                     text: 'Adicionar Materiais',
                     path: '/index/upload'
                 }
+                
             ],
             styles: [
                 {

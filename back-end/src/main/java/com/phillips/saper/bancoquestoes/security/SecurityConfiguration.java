@@ -34,6 +34,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.GET, "/v1/tests").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/tests").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/v1/tests/**").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/v1/questions/tags/**").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/v1/questions/certified/**").hasRole("CERTIFIER")
                 .requestMatchers(HttpMethod.GET, "/v1/materials/").permitAll()
                 .requestMatchers("/auth/authenticate").authenticated()
