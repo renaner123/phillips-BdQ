@@ -25,7 +25,7 @@ public class SecurityConfiguration {
         http.httpBasic();
         http.authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST, "/v1/clients/").permitAll()
-                .requestMatchers(HttpMethod.GET, "/v1/clients/").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/clients").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/students/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/teachers/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/materials/").permitAll()

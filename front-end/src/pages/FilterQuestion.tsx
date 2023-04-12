@@ -199,7 +199,7 @@ const FiltroDisciplinas = () => {
                                                     event.target.value,
                                                 ];
                                                 const updatedStudentAnswers: StudentAnswers = {
-                                                    idStudent: auth.user?.id_client,
+                                                    idStudent: auth.user?.id_client!,
                                                     answersHash: {
                                                         ...studentAnswers.answersHash,
                                                         ...answerHash,

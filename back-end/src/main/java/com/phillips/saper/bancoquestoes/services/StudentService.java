@@ -137,7 +137,7 @@ public class StudentService {
 
 	public ResponseEntity<List<StudentTestResponseDTO>> findResultById(Long id) {
 
-        Optional<StudentModel> studentOptional = studentRepository.findById(id);
+        Optional<StudentModel> studentOptional = studentRepository.findByClientModelId(id);
         Set<StudentTest> studentTests =  studentOptional.get().getStudentTests();
         List<StudentTestResponseDTO> listStudentsTest = new ArrayList<>();
 
