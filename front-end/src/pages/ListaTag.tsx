@@ -3,9 +3,6 @@ import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { config } from '../Constant';
 import configHeader from '../services/ConfigHeader';
-import { FaBeer } from 'react-icons/fa';
-import { AiOutlineSafetyCertificate } from "react-icons/ai";
-import { parse } from 'path';
 import axios from 'axios';
 import { useAPI } from '../services/Api';
 
@@ -43,9 +40,6 @@ interface StudentAnswers {
     answersHash: StudentAnswer;
 }
 
-
-
-
 const ListaTag = () => {
     const [stateDiscipline, setStateDiscipline] = useState('');
     const [stateSubject, setStateSubject] = useState('');
@@ -69,30 +63,20 @@ const ListaTag = () => {
             "idSubject": parseInt(stateSubject),
             "numberOfQuestions": Math.random() * 10,
         }
-        /**    if ((stateRescueTag.length > 1) && (parseInt(stateDiscipline) || parseInt(stateSubject))) {
-                alert("Selecione APENAS a TAG")
-                return;
-            }
-    
-            if (!parseInt(stateDiscipline) || !parseInt(stateSubject)) {
-                alert("Selecione a Disciplina e o Assunto")
-                return;
-            }
-            */
 
-        if (stateRescueTag.length > 1) {
+        if (stateRescueTag.length != 0) {
             api.get(`/questions/${stateRescueTag}`, {})
                 .then((response) => setListQuestions(response))
                 .catch(error => console.error(error));
-            console.log("##### HELP");
-        } else {
-            console.log("OI");
+            
+        } else if (parseInt(stateDiscipline) && parseInt(stateSubject)) {
             axios.post(`${config.url.BASE_URL}/tests`, dataRB, configHeader)
                 .then(response => setListQuestions(response.data.questions))
                 .catch(error => console.error(error));
+            
+        } else {
+            alert("Selecione os parametros faltantes. ");
         }
-        console.log(listQuestions);
-
 
     }
 
@@ -104,15 +88,6 @@ const ListaTag = () => {
     };
 
 
-    /**
-    const getTag = (stateRescueTag: string) => {
-        api.get(`/questions/${stateRescueTag}`, {})
-            .then((response) => response.data)
-            .catch(error => console.error(error));
-    }
-    console.log(stateRescueTag);
- */
-
     useEffect(() => {
         if (stateNameSubject.length === 0) {
             try {
@@ -123,9 +98,6 @@ const ListaTag = () => {
             }
         }
     }, [stateNameSubject]);
-
-    ///questions/{tag}
-
 
     useEffect(() => {
         if (stateNameDiscipline.length === 0) {
@@ -183,9 +155,6 @@ const ListaTag = () => {
                 </div>
 
             </div>
-
-
-
 
             <button onClick={() => Test(stateRescueTag)}>Filtrar</button>
 
