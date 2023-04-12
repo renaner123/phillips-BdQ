@@ -17,6 +17,7 @@ interface ListQuestion {
     answers: string[];
     idDiscipline: number;
     idSubject: number;
+    tag: string;
     certified: boolean;
 }
 
@@ -51,23 +52,37 @@ const ListaTag = () => {
     const [stateNameDiscipline, setStateNameDiscipline] = useState<ListDiscipline[]>([]);
     const [stateNameSubject, setStateNameSubject] = useState<ListSubject[]>([]);
     const [listQuestions, setListQuestions] = useState<ListQuestion[]>([]);
+    const [listQuestionsTest, setListQuestionsTest] = useState<ListQuestion[]>([]);
+    const [stateTags, setStateTags] = useState(Array(listQuestions.length).fill(""));
     const [stateTag, setStateTag] = useState('');
+    const [stateRescueTag, setStateRescueTag] = useState('');
     const [tags, setTags] = useState([]);
     const [stateQuestionID, setStateQuestionID] = useState('');
-    const [stateTags, setStateTags] = useState(Array(listQuestions.length).fill(""));
+
 
     const api = useAPI();
 
 
-    const Test = () => {
+    const Test = (stateRescueTag: string) => {
         const dataRB = {
             "idDiscipline": parseInt(stateDiscipline),
             "idSubject": parseInt(stateSubject),
             "numberOfQuestions": Math.random() * 10,
         }
-        axios.post(`${config.url.BASE_URL}/tests`, dataRB, configHeader)
-            .then(response => setListQuestions(response.data.questions))
-            .catch(error => console.error(error));
+        if (stateRescueTag.length > 1) {
+            api.get(`/questions/${stateRescueTag}`, {})
+                .then((response) => setListQuestions(response))
+                .catch(error => console.error(error));
+            console.log("##### HELP");
+        } else {
+            console.log("OI");
+            axios.post(`${config.url.BASE_URL}/tests`, dataRB, configHeader)
+                .then(response => setListQuestions(response.data.questions))
+                .catch(error => console.error(error));
+        }
+        console.log(listQuestions);
+
+
     }
 
     const sendTag = (stateQuestionID: number, stateTag: string) => {
@@ -76,6 +91,16 @@ const ListaTag = () => {
             .catch(error => console.error(error));
         console.log(stateTag);
     };
+
+
+    /**
+    const getTag = (stateRescueTag: string) => {
+        api.get(`/questions/${stateRescueTag}`, {})
+            .then((response) => response.data)
+            .catch(error => console.error(error));
+    }
+    console.log(stateRescueTag);
+ */
 
     useEffect(() => {
         if (stateNameSubject.length === 0) {
@@ -88,6 +113,9 @@ const ListaTag = () => {
         }
     }, [stateNameSubject]);
 
+    ///questions/{tag}
+
+
     useEffect(() => {
         if (stateNameDiscipline.length === 0) {
             try {
@@ -98,13 +126,15 @@ const ListaTag = () => {
         }
     }, [stateNameDiscipline]);
 
-    
-
     const handleTagChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const newTags = [...stateTags];
         newTags[index] = event.target.value;
         setStateTags(newTags);
     };
+
+    const handleRescueTagChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setStateRescueTag(event.target.value);
+    }
 
     return (
         <div className="container">
@@ -128,9 +158,26 @@ const ListaTag = () => {
                     </option>
                 ))}
             </select>
+            <div className="row">
+                <div className="col-6"><div className="form-group">
+                    <input type="text"
+                        className="form-control"
+                        id="example-input"
+                        placeholder="TAG"
+                        value={stateRescueTag}
+                        onChange={(event) =>
+                            handleRescueTagChange(event)
+                        } />
+                </div>
+                </div>
+
+            </div>
 
 
-            <button onClick={Test}>Filtrar</button>
+
+
+            <button onClick={() => Test(stateRescueTag)}>Filtrar</button>
+
             <div className="row text-center">
                 <p className="h2">Questions</p>
             </div>
@@ -165,7 +212,7 @@ const ListaTag = () => {
                                         className="form-control"
                                         name={`tag of question ${question.idQuestion}`}
                                         value={stateTag[index]}
-                                        onChange={(event) => 
+                                        onChange={(event) =>
                                             handleTagChange(event, index)
                                         }
                                     />
