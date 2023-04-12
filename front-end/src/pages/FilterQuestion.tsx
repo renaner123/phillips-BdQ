@@ -89,11 +89,17 @@ const FiltroDisciplinas = () => {
     });
 
     const Test = () => {
+
+        if (!parseInt(stateDiscipline) || !parseInt(stateSubject)) {
+            alert("Selecione a Disciplina e o Assunto")
+            return;
+        }
         const dataRB = {
             "idDiscipline": parseInt(stateDiscipline),
             "idSubject": parseInt(stateSubject),
             "numberOfQuestions": Math.random() * (10 - 3) + 3,
         }
+
 
         api.post(`/tests`, dataRB,).then((res) => {
             setListQuestions(res.data.questions)
