@@ -69,6 +69,17 @@ const ListaTag = () => {
             "idSubject": parseInt(stateSubject),
             "numberOfQuestions": Math.random() * 10,
         }
+        /**    if ((stateRescueTag.length > 1) && (parseInt(stateDiscipline) || parseInt(stateSubject))) {
+                alert("Selecione APENAS a TAG")
+                return;
+            }
+    
+            if (!parseInt(stateDiscipline) || !parseInt(stateSubject)) {
+                alert("Selecione a Disciplina e o Assunto")
+                return;
+            }
+            */
+
         if (stateRescueTag.length > 1) {
             api.get(`/questions/${stateRescueTag}`, {})
                 .then((response) => setListQuestions(response))

@@ -1,7 +1,7 @@
 import { text } from 'body-parser';
 import { useContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import Navbar, { MenuNavBarData } from './Navbar';
 import Sidebar, { MenuData } from './Sidebar';
@@ -15,8 +15,12 @@ import Sidebar, { MenuData } from './Sidebar';
 export default function NavSideBarComponent() {
     const auth = useContext(AuthContext);
 
-    const MenuNavBarRoles: { [role: string]:MenuNavBarData } = {
-        ROLE_TEACHER:{
+    if (!auth.user) {
+        return <Navigate to='/login' />
+    }
+
+    const MenuNavBarRoles: { [role: string]: MenuNavBarData } = {
+        ROLE_TEACHER: {
             links: [
                 {
                     text: 'Home',
@@ -38,9 +42,9 @@ export default function NavSideBarComponent() {
                     role: auth.user?.role[0].authority!
                 }
             ],
-            
+
         },
-        ROLE_STUDENT:{
+        ROLE_STUDENT: {
             links: [
                 {
                     text: 'Home',
@@ -61,9 +65,9 @@ export default function NavSideBarComponent() {
                     role: auth.user?.role[0].authority!
                 }
             ],
-           
+
         },
-        ROLE_CERTIFIER:{
+        ROLE_CERTIFIER: {
             links: [
                 {
                     text: 'Home',
@@ -104,7 +108,7 @@ export default function NavSideBarComponent() {
                     text: 'Adicionar Materiais',
                     path: '/index/upload'
                 }
-                
+
             ],
             styles: [
                 {
@@ -143,12 +147,12 @@ export default function NavSideBarComponent() {
                 }
             ]
         }
-        
+
     }
     return (
         <>
-            
-            <Navbar {...MenuNavBarRoles[auth.user?.role[0].authority || 'ROLE_USER']}/>
+
+            <Navbar {...MenuNavBarRoles[auth.user?.role[0].authority || 'ROLE_USER']} />
             <Row>
                 <Col className='col-2'>
                     <Sidebar {...MenuRoles[auth.user?.role[0].authority || 'ROLE_USER']} />
@@ -157,10 +161,10 @@ export default function NavSideBarComponent() {
                     <Outlet />
                 </Col>
             </Row>
-            
-            
+
+
         </>
-        
+
     )
 
 }

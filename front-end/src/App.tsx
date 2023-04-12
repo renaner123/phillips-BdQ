@@ -25,6 +25,7 @@ import TestCertifieds from './pages/TestCertifieds';
 
 import FiltroDisciplinas from './pages/FilterQuestion';
 import ListaTag from './pages/ListaTag';
+import NotFound from './pages/NotFound';
 
 
 // NOTE a disposição dos menus está assim apenas para facilitar os testes. Será adicionado os devidos campos na área de cada ROLE
@@ -56,14 +57,13 @@ function App() {
               <Route path='/index/filterQuestion' element={<FiltroDisciplinas />} />
               <Route path='/index/filterTag' element={<ListaTag/>} />
               <Route path="/index/performance" element={<StudentTestResultTable studentId={user?.id_client!} />} />
+              
             </Route>
+            <Route path="*" element={<NotFound />} errorElement={<NotFound />} />
           </Routes>
-
         </BrowserRouter>
       </AuthContext.Provider>
-
     </>
-
   );
 }
 
