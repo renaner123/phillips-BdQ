@@ -101,11 +101,11 @@ export default function NavSideBarComponent() {
         ROLE_STUDENT: {
             links: [
                 {
-                    text: 'Buscar Prova',
+                    text: 'Consultar desempenho',
                     path: '/index/performance'
                 },
                 {
-                    text: 'Responder Prova',
+                    text: 'Gerar prova',
                     path: '/index/filterQuestion'
                 }
 

@@ -25,6 +25,16 @@ interface ListQuestion {
     certified: boolean;
 }
 
+const initialListQuestion: ListQuestion = {
+    idQuestion: 0,
+    question: [],
+    difficulty: 0,
+    answers: [],
+    idDiscipline: 0,
+    idSubject: 0,
+    certified: false,
+};
+
 interface Test {
     idTest: number;
 }
@@ -70,6 +80,7 @@ const FiltroDisciplinas = () => {
     const [stateNameSubject, setStateNameSubject] = useState<ListSubject[]>([]);
     const [listQuestions, setListQuestions] = useState<ListQuestion[]>([]);
     const [test, setTest] = useState<Test[]>([]);
+    const [showButton, setShowButton] = useState(false);
     const auth = useContext(AuthContext);
     const api = useAPI()
     const [studentAnswers, setStudentAnswers] = useState<StudentAnswers>({
@@ -87,12 +98,12 @@ const FiltroDisciplinas = () => {
         api.post(`/tests`, dataRB,).then((res) => {
             setListQuestions(res.data.questions)
             setTest(res.data.idTest)
-        })
+        }).then(() => setShowButton(true));
     }
-
 
     useEffect(() => {
         if (stateNameSubject.length === 0) {
+            setShowButton(false);
             try {
                 axios.get(`${config.url.BASE_URL}/subjects`, {
                     headers: {
@@ -106,7 +117,7 @@ const FiltroDisciplinas = () => {
                 console.error(error)
             }
         }
-    }, [stateNameSubject]);
+    }, [auth.user?.basicAuth, stateNameSubject]);
 
     useEffect(() => {
         if (stateNameDiscipline.length === 0) {
@@ -122,7 +133,7 @@ const FiltroDisciplinas = () => {
                 console.error(error);
             }
         }
-    }, [stateNameDiscipline]);
+    }, [auth.user?.basicAuth, stateNameDiscipline]);
 
     const correctTest = () => {
         try {
@@ -133,6 +144,8 @@ const FiltroDisciplinas = () => {
                     Accept: 'application/json',
                 }
             }).then(response => setStudentAnswers(initialAnswers))
+              .then(( () => setShowButton(false)))
+              alert("Prova respondida. Consulte sua performance!")
         } catch (error) {
             console.error(error);
         }
@@ -165,7 +178,7 @@ const FiltroDisciplinas = () => {
                 ))}
             </select>
 
-            <button onClick={Test}>Filtrar</button>
+            <button className="btn btn-primary btn-sm mt-1" onClick={Test}>Gerar prova</button>
             <div className="row text-center">
                 <p className="h2">Questions</p>
             </div>
@@ -219,7 +232,7 @@ const FiltroDisciplinas = () => {
                     </div>
                 </>
             ))}
-            <button onClick={correctTest}>Enviar</button>
+            {showButton && <button className="btn btn-primary btn-sm" onClick={correctTest}>Enviar para correção</button>}
 
             <Outlet />
         </div>
