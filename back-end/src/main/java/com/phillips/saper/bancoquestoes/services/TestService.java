@@ -75,10 +75,15 @@ public class TestService {
             .collect(Collectors.toList());
 
             Set<QuestionModel> questionSet = new HashSet<>(randonQuestions);
+            SubjectModel subjectModel = sOptional.get();
+            subjectModel.setAmountAccess(subjectModel.getAmountAccess()+1);
+
+            subjectRepository.save(subjectModel);
 
             //incrementa quantidade de acessos
             for(QuestionModel question : questionSet){
                 question.setAmountAccess(question.getAmountAccess()+1);
+                
             }
 
             testModel.setDateTime(LocalDateTime.now(ZoneId.of("UTC")));

@@ -27,12 +27,16 @@ export default function NavSideBarComponent() {
                     path_link: '/index/home'
                 },
                 {
-                    text: 'Listar material',
+                    text: 'Listar Materiais',
                     path_link: '/index/download'
                 },
                 {
                     text: 'Listar Questões',
                     path_link: '/index/filterTag'
+                },
+                {
+                    text: 'Materiais mais acessados',
+                    path_link: '/index/top-materials'
                 }
 
             ],
@@ -51,12 +55,16 @@ export default function NavSideBarComponent() {
                     path_link: '/index/home'
                 },
                 {
-                    text: 'Listar material',
+                    text: 'Listar Materiais',
                     path_link: '/index/download'
                 },
                 {
                     text: 'Listar Questões',
                     path_link: '/index/filterTag'
+                },
+                {
+                    text: 'Materiais mais acessados',
+                    path_link: '/index/top-materials'
                 }
             ],
             userScreen: [
@@ -74,12 +82,16 @@ export default function NavSideBarComponent() {
                     path_link: '/index/home'
                 },
                 {
-                    text: 'Listar material',
+                    text: 'Listar Materiais',
                     path_link: '/index/download'
                 },
                 {
                     text: 'Listar Questões',
                     path_link: '/index/filterTag'
+                },
+                {
+                    text: 'Materiais mais acessados',
+                    path_link: '/index/top-materials'
                 }
             ],
             userScreen: [
