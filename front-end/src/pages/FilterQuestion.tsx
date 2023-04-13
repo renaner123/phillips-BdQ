@@ -192,7 +192,7 @@ const FiltroDisciplinas = () => {
 
             <button className="btn btn-primary btn-sm mt-1" onClick={Test}>Gerar prova</button>
             <div className="row text-center">
-                <p className="h2">Questions</p>
+                <p className="h2">Questões</p>
             </div>
             {listQuestions.map((question, index) => (
                 <>
