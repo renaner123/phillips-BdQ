@@ -81,12 +81,12 @@ public class QuestionController {
         return questionService.findByidDisciplineAndidSubject(idDiscipline, idSubject);
     }
 
-    @Operation(summary = "Get all questions non certified by subject", security = {
+    @Operation(summary = "Get all questions non certifieds by discipline of the certifier", security = {
         @SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME) })
-    @GetMapping("/certifieds/subjects/{id-subject}")
+    @GetMapping("/certifieds/disciplines/{id-client-certifier}")
     public ResponseEntity<List<QuestionResponseDTO>> questionBySubject(
-        @RequestParam(name = "id-subject") Long idSubject) {
-    return questionService.findByIdSubject(idSubject);
+        @PathVariable(name = "id-client-certifier") Long idSubject) {
+    return questionService.findByIdClient(idSubject);
 }
 
     @Operation(summary = "Get all questions by Tag", security = {

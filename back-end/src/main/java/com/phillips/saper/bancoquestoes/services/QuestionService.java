@@ -19,7 +19,9 @@ import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionResponseDTO;
 import com.phillips.saper.bancoquestoes.enums.CertifiedValues;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
+import com.phillips.saper.bancoquestoes.models.TeacherModel;
 import com.phillips.saper.bancoquestoes.repositories.QuestionRepository;
+import com.phillips.saper.bancoquestoes.repositories.TeacherRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -28,6 +30,9 @@ public class QuestionService {
 
     @Autowired
     QuestionRepository questionRepository;
+
+    @Autowired
+    TeacherRepository teacherRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -170,8 +175,11 @@ public class QuestionService {
             questionRepository.findByIdDisciplineAndIdSubjectAndCertifiedTrue(idDiscipline, idSubject).stream().map((question)->new QuestionResponseDTO(question)).toList());
     }
 
-    public ResponseEntity<List<QuestionResponseDTO>> findByIdSubject(Long idSubject) {
+    public ResponseEntity<List<QuestionResponseDTO>> findByIdClient(Long id) {
+
+        Optional<TeacherModel> optionalTeacher = teacherRepository.findByClientModelId(id);
+        
         return ResponseEntity.status(HttpStatus.OK).body(
-            questionRepository.findByIdSubjectAndCertifiedIsNull(idSubject).stream().map((question)->new QuestionResponseDTO(question)).toList());
+            questionRepository.findByIdDisciplineAndCertifiedIsNull(optionalTeacher.get().getIdDiscipline()).stream().map((question)->new QuestionResponseDTO(question)).toList());
     }
 }

@@ -19,7 +19,7 @@ const TestCertifiedsTable = () => {
   const auth = useContext(AuthContext);
 
   useEffect(() => {
-    api.get('/questions/certifieds?certified=NULL', {}).then((res) => {
+    api.get(`/questions/certifieds/disciplines/${auth.user?.id_client}`, {}).then((res) => {
       setTestQuestions(res);
     })
   }, [])
