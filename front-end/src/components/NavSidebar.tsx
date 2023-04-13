@@ -113,10 +113,6 @@ export default function NavSideBarComponent() {
                     path: '/index/questions'
                 },
                 {
-                    text: 'Listar Questões',
-                    path: '/index/list-questions'
-                },
-                {
                     text: 'Adicionar Materiais',
                     path: '/index/upload'
                 }
