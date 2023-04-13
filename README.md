@@ -13,7 +13,6 @@
 - [Instruções para compilar e executar o projeto](#instruções-para-compilar-e-executar-o-projeto)
   - [Conexão com o banco de dados](#conexão-com-o-banco-de-dados)
   - [Compilar e executar o projeto](#compilar-e-executar-o-projeto)
-  - [Instruções para visualizar, filtrar, selecionar e gerar provas](#instruções-para-visualizar-filtrar-selecionar-e-gerar-provas)
 - [Roadmap/Backlog/TODO LIST do projeto](#roadmapbacklogtodo-list-do-projeto)
 - [Contatos](#contatos)
 - [Licença](#licença)
@@ -46,10 +45,10 @@ Ademais, o primeiro módulo, o de armazenamento de questões, também é respons
 - [x] Professores podem cadastrar material de estudo (PDFs);
 - [x] Professores podem enviar para certificação questões e materiais de estudo;
 - [x] Alunos podem baixar material de estudo;
-- [ ] Alunos podem responder provas geradas com base nos assuntos de interesse;
+- [x] Alunos podem responder provas geradas com base nos assuntos de interesse;
 - [x] Alunos podem acessar seu desempenho;
 - [x] Certificadores podem aprovar ou desaprovar questões e materiais de estudo;
-- [ ] É possível classificar as questões e materiais por categorias (tags) e fazer busca dos mesmos no sistema;
+- [x] É possível classificar as questões e materiais por categorias (tags) e fazer busca dos mesmos no sistema;
 Mostrar materiais e assuntos mais acessados.
 
 ## Diagramas
@@ -176,9 +175,7 @@ spring.datasource.password=yourpassword
 | front-end   | http://localhost:3000                 | `renan/123`, `giovani/123` ou criar um novo         |
 
 
-> O projeto utiliza a biblioteca [springdoc-openapi](https://springdoc.org/v2/) para geração da documentação da API.
-
-### Instruções para visualizar, filtrar, selecionar e gerar provas 
+> O projeto utiliza a biblioteca [springdoc-openapi](https://springdoc.org/v2/) para documentação da API.
 
 ## Roadmap/Backlog/TODO LIST do projeto
 

@@ -26,6 +26,7 @@ import TestCertifieds from './pages/TestCertifieds';
 import FiltroDisciplinas from './pages/FilterQuestion';
 import ListaTag from './pages/ListaTag';
 import NotFound from './pages/NotFound';
+import TopMaterials from './pages/TopSubjects';
 
 
 // NOTE a disposição dos menus está assim apenas para facilitar os testes. Será adicionado os devidos campos na área de cada ROLE
@@ -52,7 +53,8 @@ function App() {
               <Route path="/index/questions" element={<Questions />} />
               <Route path="/index/download" element={<FileList />} />
               <Route path="/index/upload" element={<UploadFiles />} />
-              <Route path="/index/tests-certifieds" element={<TestCertifieds />} />
+              <Route path="/index/tests-certifieds" element={<TestCertifieds />} />              
+              <Route path="/index/top-materials" element={<TopMaterials />} />
               <Route path="/index/list-questions" element={<TestListQuestion id={0} />} />
               <Route path='/index/filterQuestion' element={<FiltroDisciplinas />} />
               <Route path='/index/filterTag' element={<ListaTag/>} />

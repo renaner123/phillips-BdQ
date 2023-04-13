@@ -48,17 +48,18 @@ const StudentTestResultTable = ({ studentId }: StudentTestResultProps) => {
             console.log(error);   */
   return (
     <div className="container">
-      <div className="row text-center">
-        <h1>Student's performance</h1>
-      </div>
 
+
+      <div className="row text-center">
+        <p className="h2">Performance do estudante</p>
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
             <th>Test ID</th>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Result</th>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Resultado</th>
           </tr>
         </thead>
         <tbody>

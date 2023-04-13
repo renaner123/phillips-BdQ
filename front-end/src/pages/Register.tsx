@@ -18,6 +18,15 @@ const Register = () => {
     setTipoCadastro(event.target.value);
   };
 
+  const clearInputs = () => {
+    setNome('');
+    setCpf('');
+    setLogin('');
+    setPassword('');
+    setPassword2('');
+    setIdDiscipline('');
+  };
+
   async function save(event: any) {
 
     const data = {
@@ -99,13 +108,16 @@ const Register = () => {
               alert(error.response.data[0]['message'])
             }
             console.log(error);    
-          });
+          });          
 
       } catch (err) {
         alert(err);
       }
     }
+    clearInputs();
+
   }
+
 
   // FIXME ver como reaproveitar o código. Está repetindo muito. Usar mesmo formulário e só adicionar o que falta
 
@@ -158,9 +170,10 @@ const Register = () => {
                   />
                 </div>
 
+                {/* // FIXME inserir lógica para validar a senha repetida */}
                 <div className="mb-3">
                   <label htmlFor="password2" className="form-label">Repita a Senha</label>
-                  <input type="password" className="form-control" placeholder="Informe novamente a sua senha - revisar" value={password2}
+                  <input type="password" className="form-control" placeholder="Informe novamente a sua senha" value={password2}
                     onChange={(e) => {
                       setPassword2(e.target.value);
                     }} />
@@ -231,7 +244,7 @@ const Register = () => {
 
                 <div className="mb-3">
                   <label htmlFor="password2" className="form-label">Repita a Senha</label>
-                  <input type="password" className="form-control" placeholder="Informe novamente a sua senha - revisar" value={password2}
+                  <input type="password" className="form-control" placeholder="Informe novamente a sua senha" value={password2}
                     onChange={(e) => {
                       setPassword2(e.target.value);
                     }} />
@@ -308,7 +321,7 @@ const Register = () => {
 
                 <div className="mb-3">
                   <label htmlFor="password2" className="form-label">Repita a Senha</label>
-                  <input type="password" className="form-control" placeholder="Informe novamente a sua senha - revisar" value={password2}
+                  <input type="password" className="form-control" placeholder="Informe novamente a sua senha" value={password2}
                     onChange={(e) => {
                       setPassword2(e.target.value);
                     }} />

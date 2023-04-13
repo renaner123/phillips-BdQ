@@ -9,7 +9,8 @@ import com.phillips.saper.bancoquestoes.models.TeacherModel;
 public interface TeacherRepository extends JpaRepository<TeacherModel, Long> {
 
     Optional<TeacherModel> findByName(String username);
-
+    Optional<TeacherModel> findByClientModelId(Long id);
     boolean existsByCpf(String cpf);
+    
 
 }

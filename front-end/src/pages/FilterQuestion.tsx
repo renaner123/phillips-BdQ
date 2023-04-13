@@ -1,13 +1,8 @@
 
 
 import { useContext, useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import { config } from '../Constant';
-import configHeader from '../services/ConfigHeader';
-import { FaBeer } from 'react-icons/fa';
-import { AiOutlineSafetyCertificate } from "react-icons/ai";
-import { parse } from 'path';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext';
 import { useAPI } from '../services/Api';
@@ -71,6 +66,12 @@ const initialAnswers: StudentAnswers = {
     answersHash: {}
 };
 
+function allQuestionsAnswered(questions: ListQuestion[], answers: StudentAnswer): boolean {
+    const answeredIds = Object.keys(answers);
+    const allIds = questions.map((q) => q.idQuestion.toString());
+  
+    return answeredIds.length === allIds.length && answeredIds.every((id) => allIds.includes(id));
+}
 
 
 const FiltroDisciplinas = () => {
@@ -89,11 +90,17 @@ const FiltroDisciplinas = () => {
     });
 
     const Test = () => {
+
+        if (!parseInt(stateDiscipline) || !parseInt(stateSubject)) {
+            alert("Selecione a Disciplina e o Assunto")
+            return;
+        }
         const dataRB = {
             "idDiscipline": parseInt(stateDiscipline),
             "idSubject": parseInt(stateSubject),
             "numberOfQuestions": Math.random() * (10 - 3) + 3,
         }
+
 
         api.post(`/tests`, dataRB,).then((res) => {
             setListQuestions(res.data.questions)
@@ -135,7 +142,13 @@ const FiltroDisciplinas = () => {
         }
     }, [auth.user?.basicAuth, stateNameDiscipline]);
 
+    // FIXME tratar caso não seja selecionado nada
     const correctTest = () => {
+
+        if (!allQuestionsAnswered(listQuestions, studentAnswers.answersHash)) {
+            alert('Responda todas as questões antes de enviar!');
+            return;
+        }
         try {
             axios.put(`${config.url.BASE_URL}/tests/${test}`, studentAnswers, {
                 headers: {
@@ -150,7 +163,6 @@ const FiltroDisciplinas = () => {
             console.error(error);
         }
     };
-
 
     // FIXME warning de key em algum lugar
     // FIXME Não está tratando questões que sejam múltipla escolha
@@ -180,7 +192,7 @@ const FiltroDisciplinas = () => {
 
             <button className="btn btn-primary btn-sm mt-1" onClick={Test}>Gerar prova</button>
             <div className="row text-center">
-                <p className="h2">Questions</p>
+                <p className="h2">Questões</p>
             </div>
             {listQuestions.map((question, index) => (
                 <>
@@ -199,6 +211,7 @@ const FiltroDisciplinas = () => {
                                         <input
                                             type="radio"
                                             name={`question-${question.idQuestion}`}
+                                            required
                                             value={(index + 1).toString()}
                                             checked={
                                                 studentAnswers.answersHash[question.idQuestion] &&
@@ -232,7 +245,8 @@ const FiltroDisciplinas = () => {
                     </div>
                 </>
             ))}
-            {showButton && <button className="btn btn-primary btn-sm" onClick={correctTest}>Enviar para correção</button>}
+
+            {showButton && <button  className="btn btn-primary btn-sm" onClick={correctTest}>Enviar para correção</button>}
 
             <Outlet />
         </div>

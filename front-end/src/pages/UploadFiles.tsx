@@ -40,7 +40,9 @@ const UploadFiles: React.FC = () => {
   return (
     <div className="container">
       <Form.Group>
-        <Form.Label>Select files:</Form.Label>
+      <div className="row text-center">
+        <p className="h2">Adicionar materiais</p>
+      </div>
         <Form.Control type="file" multiple onChange={handleFileSelect} />
       </Form.Group>
 
