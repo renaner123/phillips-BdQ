@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavSideBarComponent from './components/NavSidebar';
 import NavBarLogin from './components/NavbarLogin';
-
+import 'materialize-css';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import FileList from './pages/FileList';

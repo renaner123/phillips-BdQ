@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import axios, { AxiosResponse } from "axios";
 import { config } from "../Constant";
 import { AuthContext, User } from "../context/authContext";
@@ -32,7 +32,7 @@ function Login() {
             Authorization: basicAuth,
             Accept: 'application/json',
           }
-          
+
         }).then(
           (res: AxiosResponse<User, any>) => {
             res.data.basicAuth = basicAuth
@@ -40,16 +40,16 @@ function Login() {
             if (res.status === 200) {
               navigate('/index/home');
 
-            }            
+            }
           }
-          ).catch((error) => {      
+        ).catch((error) => {
 
-            alert("E-mail or password incorrect!")
+          alert("E-mail or password incorrect!")
 
-            console.log(error);    
-          });;
-    
-    
+          console.log(error);
+        });;
+
+
     }
     catch (err) {
       alert(err);
@@ -88,7 +88,16 @@ function Login() {
             />
 
           </div>
-          <button type="submit" className="btn btn-primary" onClick={login}>LOGIN</button>
+          <div className="row">
+            <div className="col-auto">
+              <button type="submit" className="btn btn-primary" onClick={login}>Login</button>
+            </div>
+            <div className="col-auto">
+              <Button type="submit" className="btn btn-secondary" href='/'>Home</Button>
+            </div>
+          </div>
+
+
 
           <h2 className="criesuaconta-login pt-3"><a href="/register">Crie sua conta</a></h2>
         </div>

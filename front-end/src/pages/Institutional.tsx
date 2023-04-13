@@ -6,9 +6,9 @@ import NavBarLogin from '../components/NavbarLogin';
 import Sidebar from '../components/Sidebar';
 import FooterComponent from '../components/Footer';
 import CarouselComponent from '../components/Carousel';
-import formatura from '../assets/Images/pexels-emily-ranquist-1205651.jpg';
-import provasGeracao from '../assets/Images/pexels-lee-campbell-89724.jpg';
-import programadores from '../assets/Images/pexels-cottonbro-studio-6804081.jpg';
+import Card1 from '../components/Cards/Card1';
+import Card2 from '../components/Cards/Card2';
+import Card3 from '../components/Cards/Card3';
 
 export default function Institutional() {
     return (
@@ -16,23 +16,14 @@ export default function Institutional() {
             <CarouselComponent />
             <div className="container marketing">
                 <div className="row">
-                    <div className="col-lg-4">                      
-                        <img src={formatura} className="img-thumbnail rounded-circle" role='img' alt="..." style={{objectFit: 'cover', width: '140px', height: '140px'}} />                        
-                        <h2 className="fw-normal my-2">Auto indice de aprovação!</h2>
-                        <p className='my-3'>9 em cada 10 alunos, nos relatam bons resultados em sua vida academica!</p>
-                        <p><a className="btn btn-secondary" href="#">Junte-se a nós! &raquo;</a></p>
+                    <div className="col-lg-4">
+                        <Card1 />
                     </div>
                     <div className="col-lg-4">
-                    <img src={provasGeracao} className="img-thumbnail rounded-circle" role='img' alt="..." style={{objectFit: 'cover', width: '140px', height: '140px'}} />                        
-                        <h2 className="fw-normal my-2">Provas geradas automaticamente</h2>
-                        <p className='my-3'>Provas sendo geradas pelo nosso sistema técnologico, para o melhor aproveitamento e acertividade.</p>
-                        <p><a className="btn btn-secondary" href="#">Junte-se a nós! &raquo;</a></p>
+                        <Card2 />
                     </div>
                     <div className="col-lg-4">
-                    <img src={programadores} className="img-thumbnail rounded-circle" role='img' alt="..." style={{objectFit: 'cover', width: '140px', height: '140px'}} />                        
-                        <h2 className="fw-normal my-2">Equipe em desenvolvimento constante</h2>
-                        <p className='my-3'>Desenvolvedores altamente capacitados para gerar mecanismos para os nossos alunos e professores.</p>
-                        <p><a className="btn btn-secondary" href="#">Junte-se a nós! &raquo;</a></p>
+                        <Card3 />
                     </div>
                 </div>
                 <hr className="featurette-divider" />
