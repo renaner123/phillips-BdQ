@@ -48,7 +48,7 @@ export default function NavbarComponent({ links, userScreen }: MenuNavBarData) {
         }
 
         return (
-          <Navbar.Brand key={index1 + 1} className='mx-5' href="/">{roleOption}</Navbar.Brand>
+          <Navbar.Brand key={index1 + 1} className='mx-5' href="">{roleOption}</Navbar.Brand>
         )
       })}
 
