@@ -127,10 +127,10 @@ function App() {
       },
       body: JSON.stringify({
         question: question.question,
-        difficulty: question.difficulty,
+        difficulty: question.difficulty === 0 ? question.difficulty+1 : question.difficulty,
         answers: question.answers.filter((answer) => answer !== ""),
-        idDiscipline: question.idDiscipline,
-        idSubject: question.idSubject,
+        idDiscipline: question.idDiscipline === 0 ? question.idDiscipline+1 : question.idDiscipline,
+        idSubject: question.idSubject === 0 ? question.idSubject+1 : question.idSubject,
         answersSheet: selectedOptions.map((num) => num.toString()),
       }),
     });

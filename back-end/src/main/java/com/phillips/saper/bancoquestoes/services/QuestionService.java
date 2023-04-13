@@ -169,4 +169,9 @@ public class QuestionService {
         return ResponseEntity.status(HttpStatus.OK).body(
             questionRepository.findByIdDisciplineAndIdSubjectAndCertifiedTrue(idDiscipline, idSubject).stream().map((question)->new QuestionResponseDTO(question)).toList());
     }
+
+    public ResponseEntity<List<QuestionResponseDTO>> findByIdSubject(Long idSubject) {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            questionRepository.findByIdSubjectAndCertifiedIsNull(idSubject).stream().map((question)->new QuestionResponseDTO(question)).toList());
+    }
 }
