@@ -9,7 +9,7 @@ export default function CarouselComponent() {
         <>
             <Carousel id="myCarousel" className="Carousel-background" >
                 <Carousel.Item>
-                <img src={studentHappy} className="img-thumbnail" role='img' alt="..." style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <img src={classHappy} className="img-thumbnail" role='img' alt="..." style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                     <Carousel.Caption className="text-start">
                         <h3>Seja nosso aluno!</h3>
                         <p>Através do nosso portal, você conseguirá realizar provas com questões selecionadas pelos nossos clientes! </p>

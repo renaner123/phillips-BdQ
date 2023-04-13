@@ -33,20 +33,20 @@ function FileList() {
   }, []);
 
 
-  const filterTag = (stateFindTag:string) =>{
-    if(stateFindTag.length>0){
+  const filterTag = (stateFindTag: string) => {
+    if (stateFindTag.length > 0) {
       api.get(`/materials/${stateFindTag}`, {})
-      .then((response) => setFiles(response))
-      .catch(error => console.error(error));
+        .then((response) => setFiles(response))
+        .catch(error => console.error(error));
       setStateFindTag("")
-    }else{
+    } else {
       api.get(`/materials`, {})
-      .then((response) => setFiles(response))
-      .catch(error => console.error(error));
+        .then((response) => setFiles(response))
+        .catch(error => console.error(error));
     }
   }
 
-  const sendTag = (stateQuestionID: number, tag: string) => {
+  const sendTag = (stateQuestionID: number, stateTags: string) => {
     api.put(`/materials/tags/${stateQuestionID}?tag=${stateTags}`, {})
       .then((response) => response.data)
       .catch(error => console.error(error));
@@ -82,73 +82,73 @@ function FileList() {
 
 
   return (
-<div className="container">
-  <div className="row text-center">
-    <h1>List of Files</h1>
-  </div>
-  <PopoverExtensions />
-  <div className="row">
-    <div className="col-sm-6">
-      <div className="form-group">
-        <input 
-          type="text"
-          className="form-control"
-          id="example-input"
-          placeholder="TAG"
-          value={stateFindTag}
-          onChange={(event) => handleFindTagChange(event)}
-        />
+    <div className="container">
+      <div className="row text-center">
+        <h1>List of Files</h1>
       </div>
-    </div>
-    <div className="col-sm-6">
-      <button className="btn btn-primary" onClick={() => filterTag(stateFindTag)}>Filtrar Tag</button>
-    </div>
-  </div>
-  <hr/>
-  <div className="row">
-    <div className="col-sm-1 mb-2 h5">ID</div>
-    <div className="col-sm-2 h5">Name</div>
-    <div className="col-sm-2 h5">Date Uploaded</div>
-    <div className="col-sm-2 h5">Download</div>
-  </div>
-  {files.map((file, index) => (
-    <div className="row" key={file.id}>
-      <div className="col-sm-1 mb-2 mt-2">{file.id}</div>
-      <div className="col-sm-2 mb-2 mt-2">{file.fileName}</div>
-      <div className="col-sm-2 mb-2 mt-2">{file.uploadDate}</div>
-      <div className="col-sm-2 mb-1 mt-1">
-        <button
-          className="btn btn-primary btn-sm"
-          onClick={() => downloadFile(file.id)}
-        >
-          Download
-        </button>
-      </div>
-      <div className="col-sm-2">
-        <div className="form-group">
-          <input
-            type="text"
-            key={index}
-            className="form-control"
-            id="example-input"
-            placeholder="TAG"
-            value={stateTags[index]}
-            onChange={(event) => handleSingularTagChange(event, index)}
-          />
+      <PopoverExtensions />
+      <div className="row">
+        <div className="col-sm-6">
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="example-input"
+              placeholder="TAG"
+              value={stateFindTag}
+              onChange={(event) => handleFindTagChange(event)}
+            />
+          </div>
+        </div>
+        <div className="col-sm-6">
+          <button className="btn btn-primary" onClick={() => filterTag(stateFindTag)}>Filtrar Tag</button>
         </div>
       </div>
-      <div className="col-sm-3">
-        <button
-          className="btn btn-success btn-sm"
-          onClick={() => sendTag(parseInt(file.id), stateTags[index])}
-        >
-          Cadastrar
-        </button>
+      <hr />
+      <div className="row">
+        <div className="col-sm-1 mb-2 h5">ID</div>
+        <div className="col-sm-2 h5">Name</div>
+        <div className="col-sm-2 h5">Date Uploaded</div>
+        <div className="col-sm-2 h5">Download</div>
       </div>
+      {files.map((file, index) => (
+        <div className="row" key={file.id}>
+          <div className="col-sm-1 mb-2 mt-2">{file.id}</div>
+          <div className="col-sm-2 mb-2 mt-2">{file.fileName}</div>
+          <div className="col-sm-2 mb-2 mt-2">{file.uploadDate}</div>
+          <div className="col-sm-2 mb-1 mt-1">
+            <button
+              className="btn btn-primary btn-sm"
+              onClick={() => downloadFile(file.id)}
+            >
+              Download
+            </button>
+          </div>
+          <div className="col-sm-2">
+            <div className="form-group">
+              <input
+                type="text"
+                key={index}
+                className="form-control"
+                id="example-input"
+                placeholder="TAG"
+                value={stateTags[index]}
+                onChange={(event) => handleSingularTagChange(event, index)}
+              />
+            </div>
+          </div>
+          <div className="col-sm-3">
+            <button
+              className="btn btn-success btn-sm"
+              onClick={() => sendTag(parseInt(file.id), stateTags[index])}
+            >
+              Cadastrar
+            </button>
+          </div>
+        </div>
+      ))}
+      <Outlet />
     </div>
-  ))}
-  <Outlet />
-</div>
   );
 }
 

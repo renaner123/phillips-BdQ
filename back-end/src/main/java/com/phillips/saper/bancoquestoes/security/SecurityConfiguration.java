@@ -37,6 +37,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.GET, "/v1/tests").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/tests").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/v1/tests/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/materials/tags/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/v1/subjects/amount-access").permitAll()
                 .requestMatchers(HttpMethod.GET, "/v1/materials/amount-access").permitAll()
                 .requestMatchers(HttpMethod.GET, "/v1/questions/**").permitAll()
