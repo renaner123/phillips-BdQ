@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row } from 'react-bootstrap';
 import { config } from "../Constant";
+import { useAPI } from "../services/Api";
 
 interface Question {
   question: string;
@@ -9,6 +10,19 @@ interface Question {
   answersSheet: string[];
   idDiscipline: number;
   idSubject: number;
+}
+
+interface Subject {
+  idSubject: number;
+  idDscipline: number;
+  description: string;
+  amountAccess: number;
+}
+
+interface Discipline {
+  idDiscipline: number;
+  name: string;
+  descrption_Discipline : string;
 }
 interface Discipline {
   id: number;
@@ -31,19 +45,6 @@ function App() {
   });
 
   // TODO buscar no banco e mostrar a lista
-
-  const [disciplines, setDisciplines] = useState<Discipline[]>([
-    { id: 1, name: "Matemática" },
-    { id: 2, name: "História" },
-    { id: 3, name: "Português" },
-  ]);
-
-  // TODO buscar no banco e mostrar a lista
-  const [subjects, setSubjects] = useState<Subject[]>([
-    { id: 1, name: "Álgebra" },
-    { id: 2, name: "Revolução Francesa" },
-    { id: 3, name: "Gramática" },
-  ]);
 
   const handleQuestionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setQuestion((prevQuestion) => ({
@@ -152,6 +153,25 @@ function App() {
     }));
 
   };
+  
+  const [subjects, setSubjects] = useState<Subject[]>([]);
+  const [disciplines, setDisciplines] = useState<Discipline[]>([]);
+
+  const api = useAPI();  
+
+  useEffect(() => {
+    api.get('/disciplines', {}).then((res: React.SetStateAction<Discipline[]>) => {
+      console.log("disciplines: " + res)
+      setDisciplines(res);
+    })
+  }, []);
+
+  useEffect(() => {
+    api.get('/subjects', {}).then((res: React.SetStateAction<Subject[]>) => {
+      console.log("subjects: " + res)
+        setSubjects(res);
+    })
+  },[]);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
@@ -184,7 +204,7 @@ function App() {
             Disciplina:
             <select value={question.idDiscipline} onChange={handleDisciplineChange}>
               {disciplines.map((discipline) => (
-                <option key={discipline.id} value={discipline.id}>
+                <option key={discipline.idDiscipline} value={discipline.idDiscipline}>
                   {discipline.name}
                 </option>
               ))}
@@ -198,8 +218,8 @@ function App() {
             Assunto:
             <select value={question.idSubject} onChange={handleSubjectChange}>
               {subjects.map((subject) => (
-                <option key={subject.id} value={subject.id}>
-                  {subject.name}
+                <option key={subject.idSubject} value={subject.idSubject}>
+                  {subject.description}
                 </option>
               ))}
             </select>
