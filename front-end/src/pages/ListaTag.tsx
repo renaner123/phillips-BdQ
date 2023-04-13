@@ -68,12 +68,12 @@ const ListaTag = () => {
             api.get(`/questions/${stateRescueTag}`, {})
                 .then((response) => setListQuestions(response))
                 .catch(error => console.error(error));
-            
+
         } else if (parseInt(stateDiscipline) && parseInt(stateSubject)) {
             axios.post(`${config.url.BASE_URL}/tests`, dataRB, configHeader)
                 .then(response => setListQuestions(response.data.questions))
                 .catch(error => console.error(error));
-            
+
         } else {
             alert("Selecione os parametros faltantes. ");
         }
@@ -142,18 +142,19 @@ const ListaTag = () => {
                 ))}
             </select>
             <div className="row">
-                <div className="col-6"><div className="form-group">
-                    <input type="text"
-                        className="form-control"
-                        id="example-input"
-                        placeholder="TAG"
-                        value={stateRescueTag}
-                        onChange={(event) =>
-                            handleRescueTagChange(event)
-                        } />
+                <div className="col-6">
+                    <div className="form-group">
+                        <input type="text"
+                            className="form-control"
+                            id="example-input"
+                            placeholder="TAG"
+                            value={stateRescueTag}
+                            onChange={(event) =>
+                                handleRescueTagChange(event)
+                            }
+                        />
+                    </div>
                 </div>
-                </div>
-
             </div>
 
             <button onClick={() => Test(stateRescueTag)}>Filtrar</button>

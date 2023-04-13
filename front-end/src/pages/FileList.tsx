@@ -4,6 +4,9 @@ import { Outlet } from "react-router-dom";
 import { config } from "../Constant";
 import { AuthContext } from "../context/authContext";
 import configHeader from "../services/ConfigHeader";
+import { Button, OverlayTrigger, Popover } from "react-bootstrap";
+import PopoverExtensions from "../components/Popover";
+import { useAPI } from "../services/Api";
 
 type LoginData = {
   username: string,
@@ -12,9 +15,11 @@ type LoginData = {
 
 function FileList() {
   const auth = useContext(AuthContext);
+  const [stateFindTag, setStateFindTag] = useState('');
   const [files, setFiles] = useState<any[]>([]);
   const [state, setState] = useState<LoginData>({ username: '', password: '' });
-
+  const [stateTags, setStateTags] = useState(Array(files.length).fill(""));
+  const api = useAPI();
 
   // os 3 primeiros arquivos do banco não possuem link, para testar é necessário fazer o upload de arquivos
   useEffect(() => {
@@ -27,13 +32,33 @@ function FileList() {
         console.log(error);
       });
   }, []);
+  
+
+  const filterTag = (stateFindTag:string) =>{
+    api.get(`/materials/${stateFindTag}`, {})
+    .then((response) => setFiles(response))
+    .catch(error => console.error(error));
+
+  }
+
+  const sendTag = (stateQuestionID: number, stateTags: string) => {
+    api.put(`/materials/tags/${stateQuestionID}?tag=${stateTags}`, {})
+      .then((response) => response.data)
+      .catch(error => console.error(error));
+    console.log(stateTags);
+  };
+
+  const handleFindTagChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStateFindTag(event.target.value);
+  }
+
+  const handleSingularTagChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const newTags = [...stateTags];
+    newTags[index] = event.target.value;
+    setStateTags(newTags);
+  };
 
   const downloadFile = (id: any) => {
-    
-    /** const username = 'renan';
-    const password = '123';
-    const base64Credentials = btoa(`${username}:${password}`);*/
-
     // FIXME retirar login estático - Exemplo no Arquivo TestCertifieds.tsx
     axios
       .get(`${config.url.BASE_URL}/materials/download-file/${id}`, configHeader)
@@ -50,30 +75,51 @@ function FileList() {
       });
   };
 
-  // TODO Inserir um campo de busca para conseguir pesquisar/filtrar. Fazer paginação
-  
+
+
   return (
     <div className="container">
       <div className="row text-center">
         <h1>List of Files</h1>
       </div>
+      <PopoverExtensions />
+      <div className="row">
+        <div className="col-6">
+          <div className="form-group">
+            <input type="text"
+              className="form-control"
+              id="example-input"
+              placeholder="TAG"
+              value={stateFindTag}
+              onChange={(event) =>
+                handleFindTagChange(event)
+              }
+            />
+          </div>
+        </div>
+        <div className="col-6">
+          <button onClick={() => filterTag(stateFindTag)}>Filtrar Tag</button>
+        </div>
+      </div>
+
 
       <table className="table table-striped">
         <thead>
           <tr>
-          <th>ID</th>
+            <th>ID</th>
             <th>Name</th>
-            <th>Type</th>
+            <th>TAG</th>
             <th>Date Uploaded</th>
             <th>Download</th>
+            <th>Cadastrar TAG</th>
           </tr>
         </thead>
+
         <tbody>
-          {files.map((file) => (
+          {files.map((file, index) => (
             <tr key={file.id}>
               <td>{file.id}</td>
-              <td>{file.fileName}</td>
-              <td>{file.docType}</td>
+              <td>{file.fileName}</td>              
               <td>{file.uploadDate}</td>
               <td>
                 <button
@@ -83,11 +129,32 @@ function FileList() {
                   Download
                 </button>
               </td>
+              <td>
+                <div className="row">
+                    <div className="form-group">
+                      <input type="text"
+                        key={index}
+                        className="form-control"
+                        id="example-input"
+                        placeholder="TAG"
+                        value={stateTags[index]}
+                        onChange={(event) => handleSingularTagChange(event, index)}
+                      />
+                  </div>
+                </div>
+              </td>
+              <td>
+                <button
+                  className="btn btn-success"
+                  onClick={() => sendTag(parseInt(file.id), stateTags[index])}>
+                  Cadastrar
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Outlet/>
+      <Outlet />
     </div>
   );
 }

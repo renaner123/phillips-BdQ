@@ -29,6 +29,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/v1/students/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/teachers/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/materials/").permitAll()
+                .requestMatchers(HttpMethod.POST, "/v1/materials/**").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/v1/materials/tags/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/v1/disciplines").permitAll()
                 .requestMatchers(HttpMethod.GET, "/v1/subjects").permitAll()
                 .requestMatchers(HttpMethod.GET, "/v1/tests").permitAll()

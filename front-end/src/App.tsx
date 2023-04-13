@@ -69,20 +69,3 @@ function App() {
 
 export default App
 
-
-/*          <BrowserRouter>
-
-        <Routes>
-          <Route path='/' element={<NavSideBarComponent />}>
-            <Route path="/home" element={<Home numQuestions={countQuestions} numMaterials={countMaterials} />} />
-            <Route path="/download" element={<FileList />} />
-            <Route path="/upload" element={<UploadFiles />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/performance" element={<StudentTestResultTable studentId={1} />} />
-            <Route path="/institucional" element={ <Institutional/> } />
-          </Route>
-
-
-        </Routes>
-      </BrowserRouter> */
