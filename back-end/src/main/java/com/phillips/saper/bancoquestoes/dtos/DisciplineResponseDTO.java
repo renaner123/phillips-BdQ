@@ -1,5 +1,7 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
+import java.util.Objects;
+
 import com.phillips.saper.bancoquestoes.models.DisciplineModel;
 
 
@@ -34,5 +36,17 @@ public class DisciplineResponseDTO {
         this.description = description;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        DisciplineResponseDTO other = (DisciplineResponseDTO) obj;
+        return Objects.equals(description, other.description) &&
+                name == other.name;
+    }
     
 }

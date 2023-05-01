@@ -36,7 +36,7 @@ public class DisciplineController {
     @Operation(summary = "Get a list of all Disciplines", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
     @GetMapping
     public ResponseEntity<List<DisciplineModel>> findAll(){
-        return disciplineService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(disciplineService.findAll()); 
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -48,7 +48,7 @@ public class DisciplineController {
 
     @Operation(summary = "Update a Discipline", security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})    
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(
+    public ResponseEntity<DisciplineResponseDTO> update(
         @PathVariable(name = "id") Long id,
         @RequestBody DisciplineRequestDTO disciplineResquestDTO){
 

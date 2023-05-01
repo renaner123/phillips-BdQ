@@ -22,25 +22,23 @@ public class DisciplineService {
     @Autowired
     DisciplineRepository disciplineRepository;
 
-    public ResponseEntity<List<DisciplineModel>> findAll() {
-
-        return ResponseEntity.status(HttpStatus.OK).body(disciplineRepository.findAll());
-
+    public List<DisciplineModel> findAll() {
+        return disciplineRepository.findAll();
     }
 
-    public ResponseEntity<DisciplineResponseDTO> save(DisciplineRequestDTO disciplineRequestDTO) {
+    public ResponseEntity<DisciplineResponseDTO> save(DisciplineRequestDTO disciplineRequestDTO) { 
         DisciplineModel disciplineModel = new DisciplineModel();
 
         disciplineModel.setName(disciplineRequestDTO.getName());
         disciplineModel.setdescrption_discipline(disciplineRequestDTO.getDescription());
         
-        DisciplineResponseDTO disciplineResponseDTO = new DisciplineResponseDTO( disciplineRepository.save(disciplineModel));
+        DisciplineResponseDTO disciplineResponseDTO = new DisciplineResponseDTO(disciplineRepository.save(disciplineModel));
             
         return ResponseEntity.ok().body(disciplineResponseDTO);
     }
 
     @Transactional
-    public ResponseEntity<Object> update(Long id, DisciplineRequestDTO disciplineRequestDTO){
+    public ResponseEntity<DisciplineResponseDTO> update(Long id, DisciplineRequestDTO disciplineRequestDTO){
 
         Optional<DisciplineModel> disciplineOptional = disciplineRepository.findById(id);
 
