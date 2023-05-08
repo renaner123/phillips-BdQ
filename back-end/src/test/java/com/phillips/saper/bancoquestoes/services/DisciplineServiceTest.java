@@ -39,7 +39,7 @@ public class DisciplineServiceTest {
             return new DisciplineService();
         }
     }
-
+ 
     @Autowired
     DisciplineService disciplineService;
 
@@ -90,7 +90,7 @@ public class DisciplineServiceTest {
     }
 
     @Test
-    public void deisciplineTestService_DeleteById(){        
+    public void disciplineTestService_DeleteById(){        
         // Cria um objeto DisciplineModel com ID 1
         DisciplineModel disciplineToDelete = new DisciplineModel();
         disciplineToDelete.setIdDiscipline(1L);

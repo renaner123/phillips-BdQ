@@ -1,6 +1,7 @@
 package com.phillips.saper.bancoquestoes.models;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -156,4 +157,16 @@ public class MaterialModel {
         this.certified = certified;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        MaterialModel other = (MaterialModel) obj;
+        return Objects.equals(fileName, other.fileName) &&
+                content == other.content && idClient == other.idClient && data == other.data;
+    }
 }
