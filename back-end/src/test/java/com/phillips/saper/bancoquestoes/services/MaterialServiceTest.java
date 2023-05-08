@@ -137,13 +137,38 @@ public class MaterialServiceTest {
 
         // Verificação do resultado
         assertThat(saveMaterial, equalTo(materialExpectd));
-
-
     }
 
-    @Test
-    public void materialTestService_GetFile() {
 
+    @Test
+    public void materialTestService_DownloadFile() throws IOException {
+        // Criação do objeto de requisição
+        String fileName = "test";
+        Long idMaterial = 3L;
+        MockMultipartFile multipartFile = new MockMultipartFile(
+                "uploaded-file",
+                fileName,
+                "text/plain",
+                "This is the file content".getBytes());
+
+        // Criação do material esperado como resposta
+        MaterialModel materialExpectd = new MaterialModel("test", multipartFile.getContentType(),
+                multipartFile.getBytes(), 0);
+
+        // Simulação do comportamento dos repositórios
+        Mockito.when(materialRepository.save(any(MaterialModel.class)))
+                .thenAnswer(invocation -> {
+                    MaterialModel saveMaterial = invocation.getArgument(0);
+                    saveMaterial.setIdMaterial(idMaterial); // Atribui um id fictício
+                    return saveMaterial;
+                });
+        Mockito.when(materialRepository.findById(idMaterial)).thenReturn(Optional.of(materialExpectd));
+
+        // Execução do método a ser testado
+        Optional<MaterialModel> downloadedMaterial = materialService.getFile(idMaterial);
+
+        // Verificação do resultado
+        assertThat(downloadedMaterial.get(), equalTo(materialExpectd));
     }
 
     @Test
