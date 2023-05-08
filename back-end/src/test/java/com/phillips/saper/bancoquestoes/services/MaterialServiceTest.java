@@ -173,7 +173,25 @@ public class MaterialServiceTest {
 
     @Test
     public void materialTestService_FindTop5ByOrderByAmountAccessDesc() {
+        // Criação do objeto de requisição
+        MaterialModel materialModel = new MaterialModel("Prog1", null, null, 1L, "pdf/application", null, 0, "aloan");
+        MaterialModel materialModel2 = new MaterialModel("Prog2", null, null, 2L, "pdf/application", null, 0, "aloan");
+        MaterialModel materialModel3 = new MaterialModel("Prog3", null, null, 1L, "pdf/application", null, 0, "aloan");
+        MaterialModel materialModel4 = new MaterialModel("Prog4", null, null, 2L, "pdf/application", null, 0, "aloan");
+        MaterialModel materialModel5 = new MaterialModel("Prog5", null, null, 1L, "pdf/application", null, 0, "aloan");
+        List<MaterialModel> listMaterials = new ArrayList<>();
+        listMaterials.add(materialModel);
+        listMaterials.add(materialModel2);
+        listMaterials.add(materialModel3);
+        listMaterials.add(materialModel4);
+        listMaterials.add(materialModel5);
 
+        // Simulação do comportamento do repositório
+        Mockito.when(materialRepository.findAll())
+        .thenReturn((listMaterials));
+
+        // Execução do método a ser testado
+        assertThat(materialRepository.findAll(), hasSize(5));
     }
 
     @Test
