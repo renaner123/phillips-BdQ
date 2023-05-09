@@ -3,6 +3,7 @@ package com.phillips.saper.bancoquestoes.services;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 
@@ -87,7 +88,7 @@ public class MaterialServiceTest {
                 .thenReturn((listMaterials));
 
         // Execução do método a ser testado
-        assertThat(materialRepository.findAll(), hasSize(2));
+        assertThat(materialService.findAll().getBody(), hasSize(2));
     }
 
     @Test
@@ -191,11 +192,32 @@ public class MaterialServiceTest {
         .thenReturn((listMaterials));
 
         // Execução do método a ser testado
-        assertThat(materialRepository.findAll(), hasSize(5));
+        assertThat(materialService.findAll().getBody(), hasSize(5));
     }
 
     @Test
     public void materialTestService_CountMaterials() {
+        // Criação do objeto de requisição
+        MaterialModel materialModel = new MaterialModel("Prog1", null, null, 1L, "pdf/application", null, 0, "aloan");
+        MaterialModel materialModel2 = new MaterialModel("Prog2", null, null, 2L, "pdf/application", null, 0, "aloan");
+        MaterialModel materialModel3 = new MaterialModel("Prog3", null, null, 1L, "pdf/application", null, 0, "aloan");
+        MaterialModel materialModel4 = new MaterialModel("Prog4", null, null, 2L, "pdf/application", null, 0, "aloan");
+        MaterialModel materialModel5 = new MaterialModel("Prog5", null, null, 1L, "pdf/application", null, 0, "aloan");
+        List<MaterialModel> listMaterials = new ArrayList<>();
+        listMaterials.add(materialModel);
+        listMaterials.add(materialModel2);
+        listMaterials.add(materialModel3);
+        listMaterials.add(materialModel4);
+        listMaterials.add(materialModel5);
+
+        Long countExpected = (long) listMaterials.size();        
+
+        // Simulação do comportamento do repositório
+        Mockito.when(materialRepository.count())
+        .thenReturn(((long) listMaterials.size()));
+
+        // Execução do método a ser testado
+        assertEquals(materialService.countMaterials(), countExpected);
 
     }
 
