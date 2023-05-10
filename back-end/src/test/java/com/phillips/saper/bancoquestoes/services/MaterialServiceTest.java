@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 
@@ -281,7 +282,20 @@ public class MaterialServiceTest {
 
     @Test
     public void materialTestService_FindByCertifiedTrue() {
+        String tag = "aloan";
+        MaterialModel materialModel = new MaterialModel("Prog", null, null, 1L, "pdf/application", null, 0, tag);
+        materialModel.setCertified(true);
 
+        List<MaterialModel> listMaterialExpected = new ArrayList<>();
+        listMaterialExpected.add(materialModel);
+
+
+        // Simulação do comportamento do repositório
+        Mockito.when(materialRepository.findByCertifiedTrue())
+                .thenReturn((listMaterialExpected));
+
+        // Execução do método a ser testado
+        assertTrue(materialService.findByCertifiedTrue().getBody().get(0).getCertified());
     }
 
     @Test
