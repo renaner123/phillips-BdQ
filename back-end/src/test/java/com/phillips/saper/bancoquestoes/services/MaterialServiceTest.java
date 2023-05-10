@@ -27,6 +27,7 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.phillips.saper.bancoquestoes.dtos.MaterialResponseDTO;
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.models.MaterialModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
@@ -188,11 +189,11 @@ public class MaterialServiceTest {
         listMaterials.add(materialModel5);
 
         // Simulação do comportamento do repositório
-        Mockito.when(materialRepository.findAll())
+        Mockito.when(materialRepository.findTop5ByOrderByAmountAccessDesc())
         .thenReturn((listMaterials));
 
         // Execução do método a ser testado
-        assertThat(materialService.findAll().getBody(), hasSize(5));
+        assertThat(materialService.findTop5ByOrderByAmountAccessDesc().getBody(), hasSize(5));
     }
 
     @Test
@@ -222,8 +223,40 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_UpdateTag() {
+    public void materialTestService_UpdateTag() throws IOException {
+        // Criação do objeto de requisição
+        String fileName = "test";
+        String tag = "aloan";
+        Long idMaterial = 3L;
+        MockMultipartFile multipartFile = new MockMultipartFile(
+                "uploaded-file",
+                fileName,
+                "text/plain",
+                "This is the file content".getBytes());
 
+        // Criação do material esperado como resposta
+        MaterialModel materialExpectd = new MaterialModel(fileName, multipartFile.getContentType(),
+                multipartFile.getBytes(), 0);
+        materialExpectd.setTag(tag);
+
+        MaterialResponseDTO materialResponseExpectd = new MaterialResponseDTO();
+        BeanUtils.copyProperties(materialExpectd, materialResponseExpectd);
+
+        // Simulação do comportamento dos repositórios
+        Mockito.when(materialRepository.save(any(MaterialModel.class)))
+                .thenAnswer(invocation -> {
+                    MaterialModel saveMaterial = invocation.getArgument(0);
+                    saveMaterial.setIdMaterial(idMaterial); // Atribui um id fictício
+                    saveMaterial.setTag(tag);
+                    return saveMaterial;
+                });
+        Mockito.when(materialRepository.findById(idMaterial)).thenReturn(Optional.of(materialExpectd));
+
+        // Execução do método a ser testado
+        MaterialResponseDTO updateTagMaterial = materialService.updateTag(idMaterial, tag).getBody();
+
+        // Verificação do resultado
+        assertThat(updateTagMaterial, equalTo(materialResponseExpectd));  
     }
 
     @Test

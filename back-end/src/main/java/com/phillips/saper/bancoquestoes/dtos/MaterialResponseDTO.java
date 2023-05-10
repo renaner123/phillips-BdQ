@@ -1,6 +1,7 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import com.phillips.saper.bancoquestoes.models.MaterialModel;
 
@@ -106,4 +107,16 @@ public class MaterialResponseDTO {
         this.certified = certified;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        MaterialResponseDTO other = (MaterialResponseDTO) obj;
+        return Objects.equals(fileName, other.fileName) &&
+                docType == other.docType && tag == other.tag;
+    }
 }
