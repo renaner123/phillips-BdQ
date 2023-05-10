@@ -262,6 +262,21 @@ public class MaterialServiceTest {
     @Test
     public void materialTestService_FindByTag() {
 
+        String tag = "aloan";
+        MaterialModel materialModel = new MaterialModel("Prog", null, null, 1L, "pdf/application", null, 0, tag);
+        MaterialModel materialModel2 = new MaterialModel("Prog2", null, null, 1L, "pdf/txt", null, 0, tag);
+
+        List<MaterialModel> listMaterialExpected = new ArrayList<>();
+        listMaterialExpected.add(materialModel);
+        listMaterialExpected.add(materialModel2);
+
+
+        // Simulação do comportamento do repositório
+        Mockito.when(materialRepository.findByTag(tag))
+                .thenReturn((listMaterialExpected));
+
+        // Execução do método a ser testado
+        assertThat(materialService.findByTag(tag).getBody(), hasSize(2));
     }
 
     @Test
