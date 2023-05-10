@@ -254,10 +254,10 @@ public class MaterialServiceTest {
         Mockito.when(materialRepository.findById(idMaterial)).thenReturn(Optional.of(materialExpectd));
 
         // Execução do método a ser testado
-        MaterialResponseDTO updateTagMaterial = materialService.updateTag(idMaterial, tag).getBody();
+        MaterialResponseDTO updateCertifiedMaterial = materialService.updateTag(idMaterial, tag).getBody();
 
         // Verificação do resultado
-        assertThat(updateTagMaterial, equalTo(materialResponseExpectd));  
+        assertThat(updateCertifiedMaterial, equalTo(materialResponseExpectd));  
     }
 
     @Test
@@ -299,8 +299,39 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_UpdateCertified() {
+    public void materialTestService_UpdateCertified() throws IOException {
+        // Criação do objeto de requisição
+        String fileName = "test";
+        Boolean certified = true;
+        Long idMaterial = 3L;
+        MockMultipartFile multipartFile = new MockMultipartFile(
+                "uploaded-file",
+                fileName,
+                "text/plain",
+                "This is the file content".getBytes());
 
+        // Criação do material esperado como resposta
+        MaterialModel materialExpectd = new MaterialModel(fileName, multipartFile.getContentType(),
+                multipartFile.getBytes(), 0);
+
+        MaterialResponseDTO materialResponseExpectd = new MaterialResponseDTO();
+        BeanUtils.copyProperties(materialExpectd, materialResponseExpectd);
+
+        // Simulação do comportamento dos repositórios
+        Mockito.when(materialRepository.save(any(MaterialModel.class)))
+                .thenAnswer(invocation -> {
+                    MaterialModel saveMaterial = invocation.getArgument(0);
+                    saveMaterial.setIdMaterial(idMaterial); // Atribui um id fictício
+                    saveMaterial.setCertified(certified);
+                    return saveMaterial;
+                });
+        Mockito.when(materialRepository.findById(idMaterial)).thenReturn(Optional.of(materialExpectd));
+
+        // Execução do método a ser testado
+        MaterialResponseDTO updateCertifiedMaterial = materialService.updateCertified(idMaterial, certified).getBody();
+
+        // Verificação do resultado
+        assertThat(updateCertifiedMaterial, equalTo(materialResponseExpectd));  
     }
 
 }
