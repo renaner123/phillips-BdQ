@@ -1,23 +1,28 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-## Sistema de banco de questões
+# Sistema de banco de questões
+
+Esse repositório contém o código do projeto final escolhido para entrega para finalizar o curso [Formação em desenvolvimento WEB - 2023.1](https://saper.ifce.edu.br/turma/2023-1) realizado pelo Polo de Inovação IFCE com o apoio da Philips. O arquivo utilizado na apresentação do projeto está disponível [aqui](https://drive.google.com/file/d/1O2u5nhCuhe5CCQiiNKTm1SP1RefEJFJy/view?usp=sharing).
 
 - [Sistema de banco de questões](#sistema-de-banco-de-questões)
-- [Descrição da narrativa](#descrição-da-narrativa)
-  - [Requisitos gerais do projeto](#requisitos-gerais-do-projeto)
-  - [Requisitos específicos do projeto](#requisitos-específicos-do-projeto)
-- [Diagramas](#diagramas)
-- [Design - Visual do Frontend](#design---visual-do-frontend)
-  - [Prototipos de telas (inicial)](#prototipos-de-telas-inicial)
-  - [Palheta de cores](#palheta-de-cores)
-- [Pré-requisito](#pré-requisito)
-- [Instruções para compilar e executar o projeto](#instruções-para-compilar-e-executar-o-projeto)
-  - [Conexão com o banco de dados](#conexão-com-o-banco-de-dados)
-  - [Compilar e executar o projeto](#compilar-e-executar-o-projeto)
-- [Roadmap/Backlog/TODO LIST do projeto](#roadmapbacklogtodo-list-do-projeto)
-- [Contatos](#contatos)
-- [Licença](#licença)
+  - [Descrição da narrativa](#descrição-da-narrativa)
+    - [Requisitos gerais do projeto](#requisitos-gerais-do-projeto)
+    - [Requisitos específicos do projeto](#requisitos-específicos-do-projeto)
+  - [Diagramas](#diagramas)
+  - [Design - Visual do Frontend](#design---visual-do-frontend)
+    - [Prototipos de telas (inicial)](#prototipos-de-telas-inicial)
+    - [Palheta de cores](#palheta-de-cores)
+- [Pré-requisitos do projeto](#pré-requisitos-do-projeto)
+  - [Instruções para compilar e executar o projeto](#instruções-para-compilar-e-executar-o-projeto)
+    - [Conexão com o banco de dados](#conexão-com-o-banco-de-dados)
+    - [Compilar e executar o projeto](#compilar-e-executar-o-projeto)
+  - [Roadmap/Backlog/TODO LIST do projeto](#roadmapbacklogtodo-list-do-projeto)
+  - [Contatos](#contatos)
+
+
 
 ## Descrição da narrativa
+
+Para elaboração do projeto, foi estipulado a seguinte descrição pelo corpo docente:
 
 O Banco de questões deve permitir visualizar, filtrar, selecionar, e gerar provas com as questões classificadas das principais matérias e atualizadas constantemente. Nele, os atores Alunos, professores e certificadores (um tipo específico de professor) constroem, avaliam e testam materiais e questões.
 
@@ -26,8 +31,9 @@ O sistema é dividido em quatro partes, todas independentes entre si, e que perm
 Ademais, o primeiro módulo, o de armazenamento de questões, também é responsável por ter funções de busca com bases nos filtros das questões.
 
 
-
 ### Requisitos gerais do projeto
+
+Para avaliação do desenvolvimento do projeto, os seguintes requisitos mínimos deveriam ser atendidos.
 
 - [x] Precisa ter uma página inicial institucional estática, a página inicial;
 - [x] Demais páginas precisam ser dinâmicas e abordar os casos de uso;
@@ -76,9 +82,7 @@ Os seguintes diagramas são a versão definida inicialmente para modelagem do pr
 
 ### Prototipos de telas (inicial)
 
-Conseguimos prototipar algumas telas para definirmos alguns escopos de trabalho. 
-
-Para isso, utilizamos o Figma para criar alguns modelos de telas e termos uma base inicial. 
+Foi utilizado o Figma para criar alguns modelos de telas bem simplificados para termos uma base inicial. 
 
 No diretório `telas`, é possível visualizar todas as telas em um *único PDF*. Para acessar diretamente o arquivo, basta clicar [aqui](front-end/telas/Telas.pdf).
 
@@ -97,7 +101,7 @@ No diretório `telas`, é possível visualizar todas as telas em um *único PDF*
 
 
 
-## Pré-requisito
+# Pré-requisitos do projeto
 
 * npm (react)
 * Java 17+ (mvn)
@@ -123,7 +127,7 @@ Após a primeira inicialização, é recomendado *resetar* o *password* do usuá
 docker exec <container ID> resetPassword <password>
 ```
 
-Com o container em execução, é recomendado utilizar a ferramenta de gerenciamento de banco de dados [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/) para acessar o *database* instanciado com o Docker para visualizar as tabelas.
+> Caso queria usar uma ferramenta de gerenciamento de banco de dados, pode se utilizar o  [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/).
 
 A configuração para a aplicação acessar o banco de dados deve ser feita no arquivo [application.properties](src/main/resources/application.properties) conforme o exemplo abaixo:
 
@@ -197,6 +201,4 @@ Giovanni Curcuruto
 <a href="https://www.linkedin.com/in/giovanni-curcuruto-b6689596" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"  height="25"></a>   
 </div>    
 
-## Licença
 
-Licensed under the [MIT License](./LICENSE).
