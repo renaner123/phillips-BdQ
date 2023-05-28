@@ -4,7 +4,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
+import static org.hamcrest.Matchers.hasSize;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -116,5 +119,38 @@ public class TeacherServiceTest {
         // Verifica se o método deleteById do repository foi chamado com o ID correto
         Mockito.verify(teacherRepository, times(1)).delete(teacherToDelete);
     }
+
+    @Test
+    public void shouldFindAllTeachers(){
+        // Criação do objeto esperado
+        TeacherModel TeacherModel1 = new TeacherModel("12345678901", "teacher1", "teacher1@email.com", 1L, false);
+        TeacherModel TeacherModel2 = new TeacherModel("12345678902", "teacher2", "teacher2@email.com", 1L, false);        
+        List<TeacherModel> listDiscipline = new ArrayList<>();        
+        listDiscipline.add(TeacherModel1);
+        listDiscipline.add(TeacherModel2);
+
+        // Simulação do comportamento do repositório
+        Mockito.when(teacherRepository.findAll())
+            .thenReturn((listDiscipline));
+        
+        // Execução do método a ser testado
+        assertThat(teacherService.findAll().getBody(),hasSize(2));
+    }
+
+    @Test
+    public void shouldReturnTeacherByNameArgument(){
+        // Criação do objeto esperado
+        String nameTeacher = "teacher1";
+        TeacherModel TeacherModel1 = new TeacherModel("12345678901", nameTeacher, "teacher1@email.com", 1L, false);
+        TeacherModel1.setIdTeacher(1L);
+
+        // Simulação do comportamento do repositório
+        Mockito.when(teacherRepository.findByName(nameTeacher))
+            .thenReturn((Optional.of(TeacherModel1)));
+        
+        // Execução do método a ser testado
+        assertThat(teacherService.findByName(nameTeacher).get(), equalTo(TeacherModel1));
+    }
+
     
 }
