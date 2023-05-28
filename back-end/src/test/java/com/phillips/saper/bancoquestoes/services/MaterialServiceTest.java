@@ -26,7 +26,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.phillips.saper.bancoquestoes.dtos.MaterialResponseDTO;
 import com.phillips.saper.bancoquestoes.models.ClientModel;

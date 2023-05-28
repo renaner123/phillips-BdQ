@@ -23,6 +23,11 @@ public class RoleModel implements GrantedAuthority {
     @Column(name = "role")
     private  RoleNames role;
 
+    public RoleModel(long l, RoleNames roleTeacher) {
+        this.id = l;
+        this.role = roleTeacher;
+    }
+
     @Override
     public String getAuthority() {
         return role.toString();

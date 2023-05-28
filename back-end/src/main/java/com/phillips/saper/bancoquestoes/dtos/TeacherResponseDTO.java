@@ -1,5 +1,7 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
+import java.util.Objects;
+
 import com.phillips.saper.bancoquestoes.models.TeacherModel;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -23,6 +25,10 @@ public class TeacherResponseDTO {
         this.name = nome;
         this.email = email;
         this.idDiscipline = idDiscipline;
+    }
+
+    public TeacherResponseDTO(){
+
     }
 
     public TeacherResponseDTO(TeacherModel teacherModel){
@@ -64,6 +70,19 @@ public class TeacherResponseDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        TeacherResponseDTO other = (TeacherResponseDTO) obj;
+        return Objects.equals(cpf, other.cpf) &&
+                name == other.name && email == other.email;
     }
         
 }

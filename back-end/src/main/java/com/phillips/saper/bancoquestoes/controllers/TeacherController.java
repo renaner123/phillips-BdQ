@@ -41,8 +41,8 @@ public class TeacherController {
     @Operation(summary = "Register a new Teacher")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseEntity<TeacherResponseDTO> save(@RequestBody @Valid TeacherRequestDTO disciplineRequestDTO){
-        return teacherService.save(disciplineRequestDTO);
+    public ResponseEntity<TeacherResponseDTO> save(@RequestBody @Valid TeacherRequestDTO teacherRequestDTO){
+        return teacherService.save(teacherRequestDTO);
     }
 
     @Operation(summary = "Update a Teacher",security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})

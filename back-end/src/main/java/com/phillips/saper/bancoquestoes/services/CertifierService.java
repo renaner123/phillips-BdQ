@@ -74,7 +74,6 @@ public class CertifierService {
         CertifierModel certifierModel = new CertifierModel(certifierRequestDTO.getCpf(), certifierRequestDTO.getName(), certifierRequestDTO.getLogin(),certifierRequestDTO.getIdDiscipline(),0, false);
 
         certifierModel.setClientModel(client);   
-        System.out.println(certifierRepository.save(certifierModel));
         return ResponseEntity.status(HttpStatus.CREATED).body(new CertifierResponseDTO(certifierRepository.save(certifierModel)));
     }
 

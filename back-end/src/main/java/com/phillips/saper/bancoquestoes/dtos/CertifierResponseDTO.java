@@ -1,5 +1,7 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
+import java.util.Objects;
+
 import com.phillips.saper.bancoquestoes.models.TeacherModel;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -91,6 +93,18 @@ public class CertifierResponseDTO {
         this.cpf = cpf;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        CertifierResponseDTO other = (CertifierResponseDTO) obj;
+        return Objects.equals(cpf, other.cpf) &&
+                name == other.name && email == other.email;
+    }
 
     
 
