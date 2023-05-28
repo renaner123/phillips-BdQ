@@ -76,7 +76,7 @@ public class MaterialServiceTest {
     StudentRepository studentRepository;
 
     @Test
-    public void materialTestService_FindAll() {
+    public void shouldFindAllMaterials() {
 
         MaterialModel materialModel = new MaterialModel("Prog", null, null, 1L, "pdf/application", null, 0, "aloan");
         MaterialModel materialModel2 = new MaterialModel(null, null, null, 2L, "pdf/application", null, 0, "aloan");
@@ -93,7 +93,7 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_DeleteById() {
+    public void shoulDeleteDisciplineWithSuccess() {
         // Cria um objeto DisciplineModel com ID 1
         MaterialModel materialToDelete = new MaterialModel();
         materialToDelete.setIdMaterial(1L);
@@ -109,8 +109,8 @@ public class MaterialServiceTest {
 
     }
 
-    @Test
-    public void materialTestService_SaveFile() throws IOException {
+    @Test 
+    public void shouldSaveFileWithSuccess() throws IOException {
         // Criação do objeto de requisição
         String fileName = "test";
         MockMultipartFile multipartFile = new MockMultipartFile(
@@ -143,7 +143,7 @@ public class MaterialServiceTest {
 
 
     @Test
-    public void materialTestService_DownloadFile() throws IOException {
+    public void shouldDownloadFileWithSuccess() throws IOException {
         // Criação do objeto de requisição
         String fileName = "test";
         Long idMaterial = 3L;
@@ -174,7 +174,7 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_FindTop5ByOrderByAmountAccessDesc() {
+    public void shouldReturnArrayWithTop5AmountAccessInDescOrder() {
         // Criação do objeto de requisição
         MaterialModel materialModel = new MaterialModel("Prog1", null, null, 1L, "pdf/application", null, 0, "aloan");
         MaterialModel materialModel2 = new MaterialModel("Prog2", null, null, 2L, "pdf/application", null, 0, "aloan");
@@ -197,7 +197,7 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_CountMaterials() {
+    public void shouldReturnNumberTotalOfMaterialsInDatabase() {
         // Criação do objeto de requisição
         MaterialModel materialModel = new MaterialModel("Prog1", null, null, 1L, "pdf/application", null, 0, "aloan");
         MaterialModel materialModel2 = new MaterialModel("Prog2", null, null, 2L, "pdf/application", null, 0, "aloan");
@@ -223,7 +223,7 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_UpdateTag() throws IOException {
+    public void shouldUpdateMaterialTagWithSuccess() throws IOException {
         // Criação do objeto de requisição
         String fileName = "test";
         String tag = "aloan";
@@ -260,7 +260,7 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_FindByTag() {
+    public void shouldReturnMaterialByTag() {
 
         String tag = "aloan";
         MaterialModel materialModel = new MaterialModel("Prog", null, null, 1L, "pdf/application", null, 0, tag);
@@ -280,7 +280,7 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_FindByCertifiedTrue() {
+    public void shouldReturnAllMaterialsWithCertifiedTrue() {
         String tag = "aloan";
         MaterialModel materialModel = new MaterialModel("Prog", null, null, 1L, "pdf/application", null, 0, tag);
         materialModel.setCertified(true);
@@ -298,7 +298,7 @@ public class MaterialServiceTest {
     }
 
     @Test
-    public void materialTestService_UpdateCertified() throws IOException {
+    public void shouldUpdateMaterialCertifiedWithSuccess() throws IOException {
         // Criação do objeto de requisição
         String fileName = "test";
         Boolean certified = true;
