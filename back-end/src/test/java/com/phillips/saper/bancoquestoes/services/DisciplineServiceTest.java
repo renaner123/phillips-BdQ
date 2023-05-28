@@ -47,7 +47,7 @@ public class DisciplineServiceTest {
     DisciplineRepository disciplineRepository;
 
     @Test
-    public void disciplineTestService_FindAll(){
+    public void shouldFindAllDisciplines(){
         // Criação do objeto esperado
         DisciplineModel disciplineModel1 = new DisciplineModel(1L, "programação", "Coisas de codar as coisas");
         DisciplineModel disciplineModel2 = new DisciplineModel(2L, "embarcado", "Coisas de embarcar as coisas");
@@ -65,7 +65,7 @@ public class DisciplineServiceTest {
 
 
     @Test
-    public void disciplineTestService_SaveSuccess(){
+    public void shouldSaveDisciplineWithSuccess(){
 
         // Criação do objeto de requisição
         DisciplineRequestDTO disciplineRequest = new DisciplineRequestDTO("cloud", "Coisas das nuvens");
@@ -90,7 +90,7 @@ public class DisciplineServiceTest {
     }
 
     @Test
-    public void disciplineTestService_DeleteById(){        
+    public void shouldDeleteDisciplineWithSuccess(){        
         // Cria um objeto DisciplineModel com ID 1
         DisciplineModel disciplineToDelete = new DisciplineModel();
         disciplineToDelete.setIdDiscipline(1L);
