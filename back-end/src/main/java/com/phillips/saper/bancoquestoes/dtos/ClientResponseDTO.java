@@ -1,6 +1,7 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.models.RoleModel;
@@ -61,6 +62,19 @@ public class ClientResponseDTO {
 
     public void setRole(List<RoleModel> role) {
         this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        ClientResponseDTO other = (ClientResponseDTO) obj;
+        return Objects.equals(name, other.name) &&
+                login == other.login && id_client == other.id_client;
     }
 
 }

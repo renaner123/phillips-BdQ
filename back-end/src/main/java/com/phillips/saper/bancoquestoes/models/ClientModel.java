@@ -2,6 +2,7 @@ package com.phillips.saper.bancoquestoes.models;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
