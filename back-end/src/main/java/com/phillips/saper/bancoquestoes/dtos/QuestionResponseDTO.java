@@ -2,6 +2,7 @@ package com.phillips.saper.bancoquestoes.dtos;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 
@@ -119,5 +120,17 @@ public class QuestionResponseDTO {
 		this.tag = tag;
 	} 
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        QuestionResponseDTO other = (QuestionResponseDTO) obj;
+        return Objects.equals(idDiscipline, other.idDiscipline) &&
+                idSubject == other.idSubject && idQuestion == other.idQuestion;
+    }
         
 }

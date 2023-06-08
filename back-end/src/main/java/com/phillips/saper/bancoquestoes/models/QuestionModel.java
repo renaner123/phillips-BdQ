@@ -51,4 +51,19 @@ public class QuestionModel {
         mappedBy = "questions")
     Set<TeacherModel> teachers;
 
+    public QuestionModel(String question, List<String> answers, List<String> answersSheet, int difficulty,
+            Long idDiscipline, Long idSubject) {
+        this.question = question;
+        this.answers = answers;
+        this.answersSheet = answersSheet;
+        this.difficulty = difficulty;
+        this.idDiscipline = idDiscipline;
+        this.idSubject = idSubject;
+    }
+
+    public QuestionModel() {
+    }
+
+    
+
 }
