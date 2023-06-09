@@ -39,6 +39,7 @@ import org.springframework.data.domain.Pageable;
 import com.phillips.saper.bancoquestoes.dtos.MaterialResponseDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionResponseDTO;
+import com.phillips.saper.bancoquestoes.enums.CertifiedValues;
 import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
@@ -121,5 +122,84 @@ public class QuestionServiceTest {
         // Verificação do resultado
         assertThat(savedQuestion, equalTo(questionExpected));
     }
+
+    @Test
+    public void shouldDeleteQuestionWithSuccess(){        
+        // Cria um objeto QuestionModel com ID 1
+        QuestionModel questionToDelete = new QuestionModel();
+        questionToDelete.setIdQuestion(1L);
+
+        // Simulação do comportamento do repositório
+        Mockito.when(questionRepository.findById(1L)).thenReturn(Optional.of(questionToDelete));
+        
+        // Chama o método deleteById do serviço
+        questionService.delete(1L);
+        
+        // Verifica se o método deleteById do repository foi chamado com o ID correto
+        Mockito.verify(questionRepository, times(1)).delete(questionToDelete);
+    }
+
+    @Test
+    public void shouldReturnTotalQuestionInDatabase(){
+
+    long totalQuestions = 10L;
+
+    Mockito.when(questionRepository.count()).thenReturn(totalQuestions);
+
+    assertEquals(questionService.countQuestions(), totalQuestions);
+
+    }
+
+    @Test
+    public void shouldReturnAllQuestionsWithCertifedTrue(){
+        QuestionModel questionModel1 = new QuestionModel();
+        QuestionModel questionModel2 = new QuestionModel();
+        questionModel1.setCertified(true);
+        questionModel2.setCertified(true);
+
+        List<QuestionModel> listQuestions = new ArrayList<>();
+        listQuestions.add(questionModel1);
+        listQuestions.add(questionModel2);
+
+        Mockito.when(questionRepository.findByCertifiedTrue()).thenReturn(listQuestions);
+
+        assertThat(questionService.findByCertifiedTrue().getBody(), hasSize(2));
+        //assertThat(questionService.findByCertifiedTrue().getBody(), equalTo(listQuestions));
+    }
+
+    @Test
+    public void shouldReturnAllQuestionsWithCertifedFalse(){
+        QuestionModel questionModel1 = new QuestionModel();
+        QuestionModel questionModel2 = new QuestionModel();
+        questionModel1.setCertified(false);
+        questionModel2.setCertified(false);
+
+        List<QuestionModel> listQuestions = new ArrayList<>();
+        listQuestions.add(questionModel1);
+        listQuestions.add(questionModel2);
+
+        Mockito.when(questionRepository.findByCertifiedFalse()).thenReturn(listQuestions);
+
+        assertThat(questionService.findByCertified(CertifiedValues.FALSE).getBody(), hasSize(2));
+        //assertThat(questionService.findByCertifiedTrue().getBody(), equalTo(listQuestions));
+    }
+
+    @Test
+    public void shouldReturnAllQuestionsWithCertifedNull(){
+        QuestionModel questionModel1 = new QuestionModel();
+        QuestionModel questionModel2 = new QuestionModel();
+
+        List<QuestionModel> listQuestions = new ArrayList<>();
+        listQuestions.add(questionModel1);
+        listQuestions.add(questionModel2);
+
+        Mockito.when(questionRepository.findByCertifiedIsNull()).thenReturn(listQuestions);
+
+        assertThat(questionService.findByCertified(CertifiedValues.NULL).getBody(), hasSize(2));
+        //assertThat(questionService.findByCertifiedTrue().getBody(), equalTo(listQuestions));
+    }
+
+
+
     
 }
