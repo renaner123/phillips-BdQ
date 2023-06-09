@@ -4,14 +4,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,24 +25,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.phillips.saper.bancoquestoes.dtos.MaterialResponseDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.QuestionResponseDTO;
 import com.phillips.saper.bancoquestoes.enums.CertifiedValues;
-import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.models.QuestionModel;
-import com.phillips.saper.bancoquestoes.repositories.ClientRepository;
-import com.phillips.saper.bancoquestoes.repositories.MaterialRepository;
 import com.phillips.saper.bancoquestoes.repositories.QuestionRepository;
-import com.phillips.saper.bancoquestoes.repositories.RoleRepository;
-import com.phillips.saper.bancoquestoes.repositories.StudentRepository;
 import com.phillips.saper.bancoquestoes.repositories.TeacherRepository;
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -98,7 +87,7 @@ public class QuestionServiceTest {
     }
 
     @Test
-    public void shouldSaveQuestionWithSuccess(){
+    public void shouldsaveTeacherWithSuccess(){
 
         // Criação do objeto de requisição
         QuestionRequestDTO questionRequest = new QuestionRequestDTO("Porque", new ArrayList<String>(Arrays.asList("A", "B")), 0, 0, 1L, 1L, null);
@@ -199,7 +188,107 @@ public class QuestionServiceTest {
         //assertThat(questionService.findByCertifiedTrue().getBody(), equalTo(listQuestions));
     }
 
+    @Test
+    public void shouldUpdateQuestionTagWithSuccess() throws IOException {
+        // Criação do objeto de requisição
+        String tag = "aloan";
+        Long idQuestion = 1L;
 
+        // Criação da question esperada como resposta
+        QuestionModel questionExpectd = new QuestionModel();
+        questionExpectd.setTag(tag);
 
-    
+        QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO();
+        BeanUtils.copyProperties(questionExpectd, questionResponseDTO);
+
+        // Simulação do comportamento dos repositórios
+        Mockito.when(questionRepository.save(any(QuestionModel.class)))
+                .thenAnswer(invocation -> {
+                    QuestionModel saveTeacher = invocation.getArgument(0);
+                    saveTeacher.setIdQuestion(idQuestion); // Atribui um id fictício
+                    saveTeacher.setTag(tag);
+                    return saveTeacher;
+                });
+        Mockito.when(questionRepository.findById(idQuestion)).thenReturn(Optional.of(questionExpectd));
+
+        // Execução do método a ser testado
+        QuestionResponseDTO updateCertifiedMaterial = questionService.updateTag(idQuestion, tag).getBody();
+
+        // Verificação do resultado
+        assertThat(updateCertifiedMaterial.getTag(), equalTo(questionResponseDTO.getTag()));  
+    }
+
+    @Test
+    public void shouldUpdateQuestionCertifiedWithSuccess() throws IOException {
+        // Criação do objeto de requisição
+        boolean certified = true;
+        Long idQuestion = 1L;
+
+        // Criação da question esperada como resposta
+        QuestionModel questionExpectd = new QuestionModel();
+        questionExpectd.setCertified(certified);
+
+        QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO();
+        BeanUtils.copyProperties(questionExpectd, questionResponseDTO);
+
+        // Simulação do comportamento dos repositórios
+        Mockito.when(questionRepository.save(any(QuestionModel.class)))
+                .thenAnswer(invocation -> {
+                    QuestionModel saveTeacher = invocation.getArgument(0);
+                    saveTeacher.setIdQuestion(idQuestion); // Atribui um id fictício
+                    saveTeacher.setCertified(certified);
+                    return saveTeacher;
+                });
+        Mockito.when(questionRepository.findById(idQuestion)).thenReturn(Optional.of(questionExpectd));
+
+        // Execução do método a ser testado
+        QuestionResponseDTO updateCertifiedMaterial = questionService.updateCertified(idQuestion, certified).getBody();
+
+        // Verificação do resultado
+        assertThat(updateCertifiedMaterial.getCertified(), equalTo(questionResponseDTO.getCertified()));  
+    }
+
+    @Test
+    public void shouldReturnAllQuestionByIdDisciplineAndIdSubjectWithSuccess(){
+        // Criação do objeto de requisição
+        long idDiscipline = 1L;
+        long idSubject = 1L;
+
+        // Criaça do objeto esperado
+        QuestionModel questionModel1 = new QuestionModel("", null, null, 0, idSubject, idSubject);
+        QuestionModel questionModel2 = new QuestionModel("", null, null, 0, idSubject, idSubject);
+
+        List<QuestionModel> listQuestion = new ArrayList<>();
+        listQuestion.add(questionModel1);
+        listQuestion.add(questionModel2);
+
+        // Simulação do comportamento do repositório
+        Mockito.when(questionRepository.findByIdDisciplineAndIdSubjectAndCertifiedTrue(idDiscipline, idSubject)).thenReturn(listQuestion);
+
+        // Verificação do resultado
+        assertThat(questionService.findByidDisciplineAndidSubject(idDiscipline, idSubject).getBody(), hasSize(2));  
+    }  
+
+    @Test
+    public void shouldReturnAllQuestionByTagWithSuccess(){
+
+        // Criação do objeto de requisição
+        String tag = "aloan";
+
+        // Criaça do objeto esperado
+        QuestionModel questionModel1 = new QuestionModel();
+        QuestionModel questionModel2 = new QuestionModel();
+        questionModel1.setTag(tag);
+        questionModel2.setTag(tag);
+
+        List<QuestionModel> listQuestion = new ArrayList<>();
+        listQuestion.add(questionModel1);
+        listQuestion.add(questionModel2);
+
+        // Simulação do comportamento do repositório
+        Mockito.when(questionRepository.findByTag(tag)).thenReturn(listQuestion);
+        
+        // Verificação do resultado
+        assertThat(questionService.findByTag(tag).getBody(), hasSize(2));  
+    }  
 }
