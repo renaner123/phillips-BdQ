@@ -2,10 +2,9 @@ package com.phillips.saper.bancoquestoes.services;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.times;
-import static org.hamcrest.Matchers.hasSize;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,7 +33,6 @@ import com.phillips.saper.bancoquestoes.models.ClientModel;
 import com.phillips.saper.bancoquestoes.models.RoleModel;
 import com.phillips.saper.bancoquestoes.models.StudentModel;
 import com.phillips.saper.bancoquestoes.models.StudentTest;
-import com.phillips.saper.bancoquestoes.models.TeacherModel;
 import com.phillips.saper.bancoquestoes.models.TestModel;
 import com.phillips.saper.bancoquestoes.repositories.CertifierRepository;
 import com.phillips.saper.bancoquestoes.repositories.ClientRepository;

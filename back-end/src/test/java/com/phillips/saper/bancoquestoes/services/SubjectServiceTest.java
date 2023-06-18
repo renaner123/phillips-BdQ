@@ -15,20 +15,15 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.phillips.saper.bancoquestoes.dtos.DisciplineRequestDTO;
-import com.phillips.saper.bancoquestoes.dtos.DisciplineResponseDTO;
 import com.phillips.saper.bancoquestoes.dtos.SubjectRequestDTO;
 import com.phillips.saper.bancoquestoes.dtos.SubjectResponseDTO;
-import com.phillips.saper.bancoquestoes.models.DisciplineModel;
 import com.phillips.saper.bancoquestoes.models.SubjectModel;
-import com.phillips.saper.bancoquestoes.repositories.DisciplineRepository;
 import com.phillips.saper.bancoquestoes.repositories.SubjectRepository;
 
 @TestInstance(Lifecycle.PER_CLASS)
