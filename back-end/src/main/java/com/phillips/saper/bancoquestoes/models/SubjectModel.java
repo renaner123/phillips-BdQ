@@ -17,6 +17,20 @@ public class SubjectModel {
     private String description;
     private int amountAccess;
     private int idDiscipline;
+
+    
+    public SubjectModel(String description, int amountAccess, int idDiscipline) {
+        this.description = description;
+        this.amountAccess = amountAccess;
+        this.idDiscipline = idDiscipline;
+    }
+
+
+    public SubjectModel() {
+    }
+    
    
+
+    
     
 }

@@ -1,5 +1,7 @@
 package com.phillips.saper.bancoquestoes.dtos;
 
+import java.util.Objects;
+
 import com.phillips.saper.bancoquestoes.models.SubjectModel;
 
 public class SubjectResponseDTO {
@@ -40,5 +42,19 @@ public class SubjectResponseDTO {
     }
     public void setIdDscipline(int idDiscipline) {
         this.idDiscipline = idDiscipline;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        SubjectResponseDTO other = (SubjectResponseDTO) obj;
+        return Objects.equals(idDiscipline, other.idDiscipline) &&
+                description == other.description && amountAccess == other.amountAccess;
     }
 }
